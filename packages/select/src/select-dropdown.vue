@@ -3,6 +3,16 @@
     class="el-select-dropdown el-popper"
     :class="[{ 'is-multiple': $parent.multiple }, popperClass]"
     :style="{ minWidth: minWidth }">
+    <div class="search-input-style" v-if="!isRemote">
+      <el-input :size="size" 
+        v-model="searchVal" 
+        @input="searchOptions"
+        @keydown.down.stop.prevent.native="navigateOptions('next')"
+        @keydown.up.stop.prevent.native="navigateOptions('prev')"
+        @keydown.enter.prevent.native="selectOption">
+        <i slot="prefix" class="el-input__icon el-icon-search"></i>
+      </el-input>
+    </div>
     <slot></slot>
   </div>
 </template>
@@ -43,16 +53,33 @@
         default: true
       }
     },
-
+    methods: {
+      searchOptions(x) {
+        this.$parent.handleQueryChange(x);
+      },
+      navigateOptions (direction) {
+        this.$parent.navigateOptions(direction);
+      },
+      selectOption() {
+        this.$parent.selectOption();
+      }
+    },
     data() {
       return {
-        minWidth: ''
+        minWidth: '',
+        searchVal: ''
       };
     },
 
     computed: {
       popperClass() {
         return this.$parent.popperClass;
+      },
+      size() {
+        return this.$parent.selectSize;
+      },
+      isRemote() {
+        return this.$parent.remote
       }
     },
 
@@ -68,6 +95,11 @@
       this.$on('updatePopper', () => {
         if (this.$parent.visible) this.updatePopper();
       });
+      this.$on('visible', () => {
+        if (this.$parent.visible) {
+          this.searchOptions(this.searchVal)
+        }
+      })
       this.$on('destroyPopper', this.destroyPopper);
     }
   };

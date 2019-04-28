@@ -11,6 +11,10 @@
   box-shadow: $--select-dropdown-shadow;
   box-sizing: border-box;
   margin: 5px 0;
+  .search-input-style{
+    padding:8px;
+    padding-bottom:0;
+  }
   & .el-select-dropdown__item.selected{
     i[class^=el-icon-]{
       color:$--select-option-selected;

@@ -391,6 +391,7 @@
                 this.broadcast('ElOption', 'queryChange', '');
                 this.broadcast('ElOptionGroup', 'queryChange');
               }
+              this.broadcast('ElSelectDropdown', 'visible');
               // 点击文本框是否选中文本框文字
               if (this.inputClickSelected) {
                 this.broadcast('ElInput', 'inputSelect');
