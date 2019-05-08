@@ -1,4 +1,11 @@
 ## 更新日志
+### 3.3.9
+*2019-05-08*
+- el-dropdown disable bug fixed (by 春燕)
+- el-progress 添加自定义图标功能（by 大圣）
+- el-message 按规范修改info状态下的背景色和图标颜色（by 大圣）
+- el-select 添加在下拉菜单里可以搜索的功能（by 大圣）
+
 ### 3.3.8
 *2019-04-26*
 - el-dialog limit-area 属性兼容IE修复（by 大圣）

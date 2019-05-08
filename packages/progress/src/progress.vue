@@ -23,7 +23,7 @@
     </div>
     <div class="el-progress-circle" :style="{height: width + 'px', width: width + 'px'}" v-else>
       <svg viewBox="0 0 100 100">
-        <path class="el-progress-circle__track" :d="trackPath" stroke="#f4f4f4" :stroke-width="relativeStrokeWidth" fill="none"></path>
+        <path class="el-progress-circle__track" :d="trackPath" stroke="#e5e5e5" :stroke-width="relativeStrokeWidth" fill="none"></path>
         <path class="el-progress-circle__path" :d="trackPath" stroke-linecap="round" :stroke="stroke" :stroke-width="relativeStrokeWidth" fill="none" :style="circlePathStyle"></path>
       </svg>
     </div>
@@ -32,8 +32,8 @@
       v-if="showText && !textInside"
       :style="{fontSize: progressTextSize + 'px'}"
     >
-      <template v-if="!status">{{percentage}}%</template>
-      <i v-else :class="iconClass"></i>
+      <template v-if="!status && !iconClass">{{percentage}}%</template>
+      <i v-else :class="iconClassName"></i>
     </div>
   </div>
 </template>
@@ -55,6 +55,7 @@
       status: {
         type: String
       },
+      iconClass: String,
       strokeWidth: {
         type: Number,
         default: 6
@@ -103,6 +104,9 @@
         };
       },
       stroke() {
+        if (this.color) {
+          return this.color
+        }
         let ret;
         switch (this.status) {
           case 'success':
@@ -116,7 +120,10 @@
         }
         return ret;
       },
-      iconClass() {
+      iconClassName() {
+        if (this.iconClass) {
+          return this.iconClass
+        }
         if (this.type === 'line') {
           return this.status === 'success' ? 'el-icon-circle-check' : 'el-icon-error';
         } else {

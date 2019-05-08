@@ -90,7 +90,7 @@
   @include e(outer) {
     height: 6px;
     border-radius: 100px;
-    background-color: $--background-color-base;
+    background-color: $--border-split-color;
     overflow: hidden;
     position: relative;
     vertical-align: middle;

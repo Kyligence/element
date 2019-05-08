@@ -38,18 +38,18 @@ $--color-primary-light-9:#e6f3fb;// mix($--color-white, $--color-primary, 89.7%)
 $--color-success: #4cb050 !default;
 $--color-warning: #F7BA2A !default;
 $--color-danger: #e73371 !default;
-$--color-info: #909399 !default;
+$--color-info: #7F7F7F !default;
 $--color-tip: $--color-primary !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
 $--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
-$--color-info-light: mix($--color-white, $--color-info, 80%) !default;
+$--color-info-light: #e6f3fc !default;
 
 $--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
 $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
 $--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
-$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+$--color-info-lighter: #e6f3fc !default;
 $--color-tip-lighter: #eaffea !default;
 
 $--color-text-primary: #191919 !default;
@@ -269,7 +269,7 @@ $--alert-close-font-size: 12px !default;
 $--alert-close-customed-font-size: 13px !default;
 
 $--alert-success-color: $--color-success-lighter !default;
-$--alert-info-color: $--color-info-lighter !default;
+$--alert-info-color: #f4f4f4 !default;
 $--alert-tip-color: $--color-primary-light-9 !default;
 $--alert-warning-color: $--color-warning-lighter !default;
 $--alert-danger-color: $--color-danger-lighter !default;
@@ -304,7 +304,7 @@ $--message-close-size: 16px !default;
 $--message-close-hover-color: $--color-text-secondary !default;
 
 $--message-success-color: $--color-success !default;
-$--message-info-color: $--color-info !default;
+$--message-info-color: $--color-primary !default;
 $--message-warning-color: $--color-warning !default;
 $--message-danger-color: $--color-danger !default;
 
@@ -549,28 +549,28 @@ $--tooltip-padding: 5px 10px !default;
 $--tag-padding: 0 10px !default;
 $--tag-fill: rgba($--color-primary, 0.10) !default;
 $--tag-color: $--color-primary !default;
-$--tag-border: rgba($--color-primary, 0.20) !default;
+$--tag-border: $--color-primary !default;
 $--tag-font-size: 12px !default;
 $--tag-border-radius: 2px !default;
 
 $--tag-info-fill: rgba($--color-info, 0.10) !default;
-$--tag-info-border: rgba($--color-info, 0.20) !default;
+$--tag-info-border: $--color-info !default;
 $--tag-info-color: $--color-info !default;
 
 $--tag-primary-fill: rgba($--color-primary, 0.10) !default;
-$--tag-primary-border: rgba($--color-primary, 0.20) !default;
+$--tag-primary-border: $--color-primary !default;
 $--tag-primary-color: $--color-primary !default;
 
 $--tag-success-fill: rgba($--color-success, 0.10) !default;
-$--tag-success-border: rgba($--color-success, 0.20) !default;
+$--tag-success-border: $--color-success !default;
 $--tag-success-color: $--color-success !default;
 
 $--tag-warning-fill: rgba($--color-warning, 0.10) !default;
-$--tag-warning-border: rgba($--color-warning, 0.20) !default;
+$--tag-warning-border: $--color-warning !default;
 $--tag-warning-color: $--color-warning !default;
 
 $--tag-danger-fill: rgba($--color-danger, 0.10) !default;
-$--tag-danger-border: rgba($--color-danger, 0.20) !default;
+$--tag-danger-border: $--color-danger !default;
 $--tag-danger-color: $--color-danger !default;
 
 /* Tree

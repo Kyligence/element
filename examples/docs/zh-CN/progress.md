@@ -29,6 +29,7 @@
 <el-progress :percentage="70"></el-progress>
 <el-progress :percentage="20" color="#000" ></el-progress>
 <el-progress :percentage="50" status="exception" ></el-progress>
+<el-progress :percentage="50" color="#000" icon-class="el-icon-edit"></el-progress>
 ```
 :::
 
@@ -55,6 +56,7 @@
 <el-progress type="circle" :percentage="25"></el-progress>
 <el-progress type="circle" :percentage="100" status="success"></el-progress>
 <el-progress type="circle" :percentage="50" status="exception"></el-progress>
+<el-progress type="circle" :percentage="50" color="#000" icon-class="el-icon-edit"></el-progress>
 ```
 :::
 
@@ -69,3 +71,4 @@
 | width  | 环形进度条画布宽度（只在 type=circle 时可用） | number |  | 126 |
 | show-text  | 是否显示进度条文字内容 | boolean | — | true |
 | color  | 自定义进度条背景色 | string | — | - |
+| icon-class  | 自定义图标 | string | — | - |

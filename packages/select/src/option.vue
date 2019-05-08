@@ -129,7 +129,6 @@
       },
 
       queryChange(query) {
-        console.log(query, 134)
         // query 里如果有正则中的特殊字符，需要先将这些字符转义
         let parsedQuery = String(query).replace(/(\^|\(|\)|\[|\]|\$|\*|\+|\.|\?|\\|\{|\}|\|)/g, '\\$1');
         this.visible = new RegExp(parsedQuery, 'i').test(this.currentLabel) || this.created;
