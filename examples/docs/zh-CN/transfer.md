@@ -356,6 +356,8 @@
 |------|--------|
 | left-footer | 左侧列表底部的内容 |
 | right-footer | 右侧列表底部的内容 |
+| left-panel-bottom_content | 左侧备选项底部内容 |
+| right-panel-bottom_content | 右侧备选项底部内容 |
 
 ### Methods
 | 方法名 | 说明 | 参数 |

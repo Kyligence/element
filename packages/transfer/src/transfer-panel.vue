@@ -37,6 +37,8 @@
           v-for="item in pagedData">
           <option-content :option="item"></option-content>
         </el-checkbox>
+        <slot name="left-panel-bottom_content"></slot>
+        <slot name="right-panel-bottom_content"></slot>
         <div @click="loadMore" v-if="hasMore" class="load-more">{{loadMoreText}}</div>
       </el-checkbox-group>
       <p
@@ -47,7 +49,8 @@
         v-show="data.length === 0 && !hasNoMatch">{{ t('el.transfer.noData') }}</p>
     </div>
     <p class="el-transfer-panel__footer" v-if="hasFooter">
-      <slot></slot>
+      <slot name="left-footer"></slot>
+      <slot name="right-footer"></slot>
     </p>
   </div>
 </template>
@@ -262,7 +265,7 @@
       },
 
       hasFooter() {
-        return !!this.$slots.default;
+        return !!this.$slots["left-footer"] || !!this.$slots["right-footer"];
       }
     },
 
