@@ -12,8 +12,8 @@
       :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')"
       :before-query="beforeQuery"
       @checked-change="onSourceCheckedChange">
-      <slot name="left-footer" slot="left-footer"></slot>
-      <slot name="left-panel-bottom_content" slot="left-panel-bottom_content"></slot>
+      <template slot="left-footer"><slot name="left-footer"></slot></template>
+      <template slot="left-panel-bottom_content"><slot name="left-panel-bottom_content"></slot></template>
     </transfer-panel>
     <div class="el-transfer__buttons">
       <el-button
@@ -47,8 +47,8 @@
       :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')"
       :before-query="beforeQuery"
       @checked-change="onTargetCheckedChange">
-      <slot name="right-footer" slot="right-footer"></slot>
-      <slot name="right-panel-bottom_content" slot="right-panel-bottom_content"></slot>
+      <template slot="right-footer"><slot name="right-footer"></slot></template>
+      <template slot="right-panel-bottom_content"><slot name="right-panel-bottom_content"></slot></template>
     </transfer-panel>
   </div>
 </template>
