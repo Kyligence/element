@@ -265,7 +265,7 @@
       },
 
       hasFooter() {
-        return !!this.$slots["left-footer"] || !!this.$slots["right-footer"];
+        return (!!this.$slots['left-footer'] && this.$slots['left-footer'].length) || (!!this.$slots['right-footer'] && this.$slots['right-footer'].length);
       }
     },
 
