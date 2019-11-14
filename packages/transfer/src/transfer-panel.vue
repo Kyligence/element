@@ -226,7 +226,10 @@
       },
       checkedSummary() {
         const checkedLength = this.checked.length;
-        const dataLength = this.totalElement || this.data.length;
+        let dataLength = this.data.length;
+        if (this.totalElement !== undefined && this.totalElement !== '' && this.totalElement !== null) {
+          dataLength = this.totalElement;
+        }
         const { noChecked, hasChecked } = this.format;
         if (noChecked && hasChecked) {
           return checkedLength > 0
