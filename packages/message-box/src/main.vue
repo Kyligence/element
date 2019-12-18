@@ -45,6 +45,7 @@
         </div>
         <div class="el-message-box__btns">
           <el-button
+            plain
             :loading="cancelButtonLoading"
             :class="[ cancelButtonClasses ]"
             v-show="showCancelButton"
@@ -56,7 +57,6 @@
             {{ cancelButtonText || t('el.messagebox.cancel') }}
           </el-button>
           <el-button
-            plain
             :loading="confirmButtonLoading"
             ref="confirm"
             :class="[ confirmButtonClasses ]"
@@ -137,7 +137,7 @@
         return this.iconClass ? this.iconClass : this.type && typeMap[this.type] ? `el-icon-${ typeMap[this.type] }` : '';
       },
       confirmButtonClasses() {
-        return `el-button--primary ${ this.confirmButtonClass }`;
+        return `${ this.confirmButtonClass }`;
       },
       cancelButtonClasses() {
         return `${ this.cancelButtonClass }`;

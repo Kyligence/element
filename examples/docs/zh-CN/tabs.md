@@ -116,6 +116,14 @@
     <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
     <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
     <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+    <el-tab-pane label="用户管理1" name="first1">用户管理1</el-tab-pane>
+    <el-tab-pane label="配置管理1" name="second1">配置管理1</el-tab-pane>
+    <el-tab-pane label="角色管理1" name="third1">角色管理1</el-tab-pane>
+    <el-tab-pane label="定时任务补偿1" name="fourth1">定时任务补偿1</el-tab-pane>
+    <el-tab-pane label="用户管理2" name="first2">用户管理2</el-tab-pane>
+    <el-tab-pane label="配置管理2" name="second2">配置管理2</el-tab-pane>
+    <el-tab-pane label="角色管理2" name="third2">角色管理2</el-tab-pane>
+    <el-tab-pane label="定时任务补偿2" name="fourth2">定时任务补偿2</el-tab-pane>
   </el-tabs>
 </template>
 <script>

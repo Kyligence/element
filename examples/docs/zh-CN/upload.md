@@ -13,13 +13,16 @@
     .avatar-uploader {
       .el-upload {
         border: 1px dashed #d9d9d9;
-        border-radius: 6px;
+        border-radius: 2px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
 
         &:hover, &:focus {
           border-color: #409EFF;
+          i {
+            color: #409EFF;
+          }
         }
       }
       .avatar-uploader-icon {
@@ -189,13 +192,16 @@
 <style>
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
-    border-radius: 6px;
+    border-radius: 2px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
   }
   .avatar-uploader .el-upload:hover {
     border-color: #409EFF;
+    i {
+      color: #409EFF;
+    }
   }
   .avatar-uploader-icon {
     font-size: 28px;

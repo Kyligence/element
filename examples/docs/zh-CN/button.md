@@ -43,153 +43,540 @@
   * ##### 请注意把页面原来用mini的换成small。
   * ##### 默认尺寸不需要额外加medium了。
 :::
-常用的操作按钮。
-
 
 
 ### 规范要求按钮用法
+主要分三种层次的按钮，主要按钮(primary)、次要按钮(default)、次次要按钮(plain)。
+dialog、messagebox 上的取消按钮用的是 次次要按钮 ，确认或者提交按钮用的是 次要按钮
+
+:::demo 
+```html
 <div>
   <el-button type="primary">主要按钮</el-button>
   <el-button>次要按钮</el-button>
   <el-button plain>次次要按钮</el-button>
 </div>
+```
+:::
 
+### 禁用状态
 
-### 基础用法
+各种规范类型的按钮的 disable 状态
 
-基础的按钮用法。
-
-:::demo 使用`type`、`plain`和`round`属性来定义 Button 的样式。
-
+:::demo 
 ```html
-
 <div>
-  <el-button>默认按钮</el-button>
-  <el-button type="primary">主要按钮</el-button>
-  <el-button type="success">成功按钮</el-button>
-  <el-button type="info">信息按钮</el-button>
-  <el-button type="warning">警告按钮</el-button>
-  <el-button type="danger">危险按钮</el-button>
-</div>
-
-<div style="margin: 20px 0">
-  <el-button plain>朴素按钮</el-button>
-  <el-button type="primary" plain>主要按钮</el-button>
-  <el-button type="success" plain>成功按钮</el-button>
-  <el-button type="info" plain>信息按钮</el-button>
-  <el-button type="warning" plain>警告按钮</el-button>
-  <el-button type="danger" plain>危险按钮</el-button>
-</div>
-
-<div>
-  <el-button round>圆形按钮</el-button>
-  <el-button type="primary" round>主要按钮</el-button>
-  <el-button type="success" round>成功按钮</el-button>
-  <el-button type="info" round>信息按钮</el-button>
-  <el-button type="warning" round>警告按钮</el-button>
-  <el-button type="danger" round>危险按钮</el-button>
-  <el-button type="danger" icon="el-icon-delete" circle></el-button>
-  <el-button type="warning" icon="el-icon-delete" circle size="medium"></el-button>
-  <el-button type="info" icon="el-icon-delete" circle size="small"></el-button>
-  <el-button icon="el-icon-search" circle size="mini"></el-button>
-  <el-button type="primary" icon="el-icon-search" plain circle size="mini"></el-button>
+  <el-button type="primary" disabled>主要按钮</el-button>
+  <el-button disabled>次要按钮</el-button>
+  <el-button plain disabled>次次要按钮</el-button>
 </div>
 ```
 :::
 
-公司实际项目中用的比较多的几种按钮
-<div>
-<el-button>默认按钮</el-button>
-<el-button type="primary">主要按钮</el-button>
-<el-button plain>朴素按钮</el-button>
-<el-button type="primary" plain>主要按钮</el-button>
-<el-button round>圆形按钮</el-button>
-<el-button type="primary" round>主要按钮</el-button>
-</div>
-
-<br/>
-<div>
-  <el-button type="danger">危险按钮</el-button>
-  <el-button type="danger" plain>危险按钮</el-button>
-  <el-button type="danger" round>危险按钮</el-button>
-</div>
-
-### 禁用状态
-
-按钮不可用状态。
-
-:::demo 你可以使用`disabled`属性来定义按钮是否可用，它接受一个`Boolean`值。
-
+### 按钮尺寸用法，默认 medium 
+主要两种尺寸 medium 和 small，默认是 medium，另外big 和 mini 两种尺寸留作备用
+:::demo 
 ```html
 <div>
-  <el-button disabled>默认按钮</el-button>
-  <el-button type="primary" disabled>主要按钮</el-button>
-  <el-button type="success" disabled>成功按钮</el-button>
-  <el-button type="info" disabled>信息按钮</el-button>
-  <el-button type="warning" disabled>警告按钮</el-button>
-  <el-button type="danger" disabled>危险按钮</el-button>
+  <span>medium: </span>
+  <el-button type="primary">主要按钮</el-button>
+  <el-button>次要按钮</el-button>
+  <el-button plain>次次要按钮</el-button>
 </div>
 
-<div style="margin-top: 20px">
-  <el-button plain disabled>朴素按钮</el-button>
-  <el-button type="primary" plain disabled>主要按钮</el-button>
-  <el-button type="success" plain disabled>成功按钮</el-button>
-  <el-button type="info" plain disabled>信息按钮</el-button>
-  <el-button type="warning" plain disabled>警告按钮</el-button>
-  <el-button type="danger" plain disabled>危险按钮</el-button>
+<div style="margin: 20px 0">
+  <span>small: </span>
+  <el-button type="primary" size="small">主要按钮</el-button>
+  <el-button size="small">次要按钮</el-button>
+  <el-button plain size="small">次次要按钮</el-button>
+</div>
+
+<hr>
+<h4 style="margin: 40px 0 20px 0">big 和 mini 两种尺寸留作备用</h4>
+
+<div style="margin: 20px 0">
+  <span>big: </span>
+  <el-button type="primary" size="big">主要按钮</el-button>
+  <el-button size="big">次要按钮</el-button>
+  <el-button plain size="big">次次要按钮</el-button>
+</div>
+
+<div style="margin: 20px 0">
+  <span>mini: </span>
+  <el-button type="primary" size="mini">主要按钮</el-button>
+  <el-button size="mini">次要按钮</el-button>
+  <el-button plain size="mini">次次要按钮</el-button>
 </div>
 ```
 :::
 
 ### 文字按钮
 
-没有边框和背景色的按钮。
+没有边框和背景色的按钮，你可以使用`text`属性来定义按钮是否是文本样式，它接受一个`Boolean`值。如果是文字类链接，不用 el-button 这个组件
 
-:::demo 你可以使用`text`属性来定义按钮是否是文本样式，它接受一个`Boolean`值。
+:::demo 
 ```html
 <div style="margin: 20px 0">
-  <el-button type="primary" text>主要按钮</el-button>
-  <el-button type="success" text>成功按钮</el-button>
-  <el-button type="info" text>信息按钮</el-button>
-  <el-button type="warning" text>警告按钮</el-button>
-  <el-button type="danger" text>危险按钮</el-button>
-  <el-button type="info" text disabled>禁用按钮</el-button>
+  <el-button type="primary" text>Kyligence</el-button>
+  <el-button type="info" text disabled>Kyligence</el-button>
 </div>
 ```
 :::
 
-### 图标按钮
+### 纯图标按钮
 
-带图标的按钮可增强辨识度（有文字）或节省空间（无文字）。
+图标按钮 hover 需要加上 tooltips 来表示这按钮是用来干嘛的，尺寸一般用 small 类型，表中表时，需要用 mini 尺寸
 
-:::demo 设置`icon`属性即可，icon 的列表可以参考 Element 的 icon 组件，也可以设置在文字右边的 icon ，只要使用`i`标签即可，可以使用自定义图标。
-
+:::demo 
 ```html
-<el-button type="primary" icon="el-icon-edit"></el-button>
-<el-button type="primary" icon="el-icon-share"></el-button>
-<el-button type="primary" icon="el-icon-delete"></el-button>
-<el-button type="primary" icon="el-icon-search">搜索</el-button>
-<el-button type="primary">上传<i class="el-icon-upload el-icon--right"></i></el-button>
+<div>
+  <el-tooltip content="新建模型" placement="top">
+    <el-button type="primary" icon="el-icon-plus" size="small"></el-button>
+  </el-tooltip>
+  <el-tooltip content="新建模型" placement="top">
+    <el-button icon="el-icon-plus" size="small"></el-button>
+  </el-tooltip>
+  <el-tooltip content="新建模型" placement="top">
+    <el-button plain icon="el-icon-plus" size="small"></el-button>
+  </el-tooltip>
+</div>
+
+<div style="margin: 40px 0 20px 0">
+  <el-tooltip content="新增配置" placement="top">
+    <el-button type="primary" icon="el-icon-plus" circle size="small"></el-button>
+  </el-tooltip>
+  <el-tooltip content="新增配置" placement="top">
+    <el-button icon="el-icon-plus" circle size="small"></el-button>
+  </el-tooltip>
+  <el-tooltip content="新增配置" placement="top">
+    <el-button plain icon="el-icon-plus" circle size="small"></el-button>
+  </el-tooltip>
+</div>
+
+<div style="margin: 40px 0 20px 0">
+  正常状态: 
+  <el-tooltip content="查看文档" placement="top">
+    <i class="el-icon-document el-button-only-icon"></i>
+  </el-tooltip>
+</div>
+
+<div style="margin: 20px 0">
+  disable 状态: 
+  <el-tooltip content="需要满足 xx 状态，才可查看" placement="top">
+    <i class="el-icon-document el-button-only-icon is-disabled"></i>
+  </el-tooltip>
+</div>
 ```
 :::
 
+### 文字 + icon
+
+各种规范类型的按钮 前缀加 icon 的情况
+
+:::demo 
+```html
+<div>
+  <el-button type="primary" icon="el-icon-plus">主要按钮</el-button>
+  <el-button icon="el-icon-plus">次要按钮</el-button>
+  <el-button plain icon="el-icon-plus">次次要按钮</el-button>
+</div>
+
+<div style="margin: 20px 0 20px 0">
+  <el-button type="primary" :loading="true">主要按钮</el-button>
+  <el-button :loading="true">次要按钮</el-button>
+  <el-button plain :loading="true">次次要按钮</el-button>
+</div>
+```
+:::
+
+### 警告状态
+警告状态：适用于危险操作（不希望用户操作此按钮，会带来重大影响的情形下）。提交失败的情况，不适用此按钮，只能使用次要按钮形式，避免过度强调。
+
+:::demo
+```html
+<div>
+  <el-button type="danger">高高危操作</el-button>
+  <el-button type="danger" plain>高危操作</el-button>
+  <el-button type="danger" text>删除</el-button>
+</div>
+```
+:::
+
+
 ### 按钮组
 
-以按钮组的方式出现，常用于多项类似操作。
+以按钮组的方式出现，常用于多项类似操作，常用的是蓝底白字和白底蓝字款
 
 :::demo 使用`<el-button-group>`标签来嵌套你的按钮。
 
 ```html
+<h3 style="margin:20px 0">水平组织</h3>
+<h4>主要按钮(左：正常，右：带 disabled)</h4>
 <div>
-<el-button-group>
-  <el-button type="primary" icon="el-icon-arrow-left">上一页</el-button>
-  <el-button type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
-</el-button-group>
-<el-button-group>
-  <el-button type="primary" icon="el-icon-edit"></el-button>
-  <el-button type="primary" icon="el-icon-share"></el-button>
-  <el-button type="primary" icon="el-icon-delete"></el-button>
-</el-button-group>
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit">编辑</el-button>
+    <el-button type="primary" icon="el-icon-share">分享</el-button>
+    <el-button type="primary" icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <p>全部 disabled</p>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button type="primary" icon="el-icon-share" disabled>分享</el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>不同位置 disabled</p>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button type="primary" icon="el-icon-share" >分享</el-button>
+    <el-button type="primary" icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit">编辑</el-button>
+    <el-button type="primary" icon="el-icon-share" disabled>分享</el-button>
+    <el-button type="primary" icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit">编辑</el-button>
+    <el-button type="primary" icon="el-icon-share">分享</el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>有多个 disabled</p>
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button type="primary" icon="el-icon-share" disabled>分享</el-button>
+    <el-button type="primary" icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit">编辑</el-button>
+    <el-button type="primary" icon="el-icon-share" disabled>分享</el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button type="primary" icon="el-icon-share">分享</el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+</div>
+
+<div>
+  <p>纯 icon 版</p>
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button type="primary" icon="el-icon-edit" ></el-button>
+    <el-button type="primary" icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+</div>
+
+<h4 style="margin:20px 0">次要按钮(左：正常，右：带 disabled)</h4>
+<div>
+  <el-button-group>
+    <el-button icon="el-icon-edit">编辑</el-button>
+    <el-button icon="el-icon-share">分享</el-button>
+    <el-button icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <p>全部 disabled</p>
+
+  <el-button-group>
+    <el-button icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button icon="el-icon-share" disabled>分享</el-button>
+    <el-button icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>不同位置 disabled</p>
+  <el-button-group>
+    <el-button icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button icon="el-icon-share">分享</el-button>
+    <el-button icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+  <el-button-group>
+    <el-button icon="el-icon-edit">编辑</el-button>
+    <el-button icon="el-icon-share" disabled>分享</el-button>
+    <el-button icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+  <el-button-group>
+    <el-button icon="el-icon-edit">编辑</el-button>
+    <el-button icon="el-icon-share">分享</el-button>
+    <el-button icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>有多个 disabled</p>
+  <el-button-group>
+    <el-button icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button icon="el-icon-share" disabled>分享</el-button>
+    <el-button icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+  <el-button-group>
+    <el-button icon="el-icon-edit">编辑</el-button>
+    <el-button icon="el-icon-share" disabled>分享</el-button>
+    <el-button icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+  <el-button-group>
+    <el-button icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button icon="el-icon-share">分享</el-button>
+    <el-button icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+</div>
+
+<div>
+  <p>纯 icon 版</p>
+  <el-button-group>
+    <el-button icon="el-icon-edit"></el-button>
+    <el-button icon="el-icon-share"></el-button>
+    <el-button icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button icon="el-icon-edit" disabled></el-button>
+    <el-button icon="el-icon-share" disabled></el-button>
+    <el-button icon="el-icon-delete"></el-button>
+  </el-button-group>
+</div>
+
+<h4 style="margin:20px 0">次次要按钮(左：正常，右：带 disabled)</h4>
+<div>
+  <el-button-group>
+    <el-button plain icon="el-icon-edit">编辑</el-button>
+    <el-button plain icon="el-icon-share">分享</el-button>
+    <el-button plain icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <p>全部 disabled</p>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button plain icon="el-icon-share" disabled>分享</el-button>
+    <el-button plain icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>不同位置 disabled</p>
+  <el-button-group>
+    <el-button plain icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button plain icon="el-icon-share">分享</el-button>
+    <el-button plain icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit">编辑</el-button>
+    <el-button plain icon="el-icon-share" disabled>分享</el-button>
+    <el-button plain icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit">编辑</el-button>
+    <el-button plain icon="el-icon-share">分享</el-button>
+    <el-button plain icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <p>有多个 disabled</p>
+  <el-button-group>
+    <el-button plain icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button plain icon="el-icon-share" disabled>分享</el-button>
+    <el-button plain icon="el-icon-delete">删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit">编辑</el-button>
+    <el-button plain icon="el-icon-share" disabled>分享</el-button>
+    <el-button plain icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit" disabled>编辑</el-button>
+    <el-button plain icon="el-icon-share">分享</el-button>
+    <el-button plain icon="el-icon-delete" disabled>删除</el-button>
+  </el-button-group>
+</div>
+
+<div>
+  <p>纯 icon 版</p>
+  <el-button-group>
+    <el-button plain icon="el-icon-edit"></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group>
+    <el-button plain icon="el-icon-edit" disabled></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+</div>
+
+<hr>
+
+<h3 style="margin:20px 0">垂直组织</h3>
+
+<h4>主要按钮(左：正常，右：带 disabled)</h4>
+
+<div style="margin:20px 0">
+  <el-button-group align="vertical" style="margin-right:60px">
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit"></el-button>
+    <el-button type="primary" icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" icon="el-icon-share"></el-button>
+    <el-button type="primary" icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+</div>
+
+<h4 style="margin:20px 0">次要按钮(左：正常，右：带 disabled)</h4>
+
+<div style="margin:20px 0">
+  <el-button-group align="vertical" style="margin-right:60px">
+    <el-button type="primary" plain icon="el-icon-edit"></el-button>
+    <el-button type="primary" plain icon="el-icon-share"></el-button>
+    <el-button type="primary" plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-share"></el-button>
+    <el-button type="primary" plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit"></el-button>
+    <el-button type="primary" plain icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit"></el-button>
+    <el-button type="primary" plain icon="el-icon-share"></el-button>
+    <el-button type="primary" plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit"></el-button>
+    <el-button type="primary" plain icon="el-icon-share" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button type="primary" plain icon="el-icon-edit" disabled></el-button>
+    <el-button type="primary" plain icon="el-icon-share"></el-button>
+    <el-button type="primary" plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+</div>
+
+<h4 style="margin:20px 0">次次要按钮(左：正常，右：带 disabled)</h4>
+
+<div style="margin:20px 0">
+  <el-button-group align="vertical" style="margin-right:60px">
+    <el-button plain icon="el-icon-edit"></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit" disabled></el-button>
+    <el-button plain icon="el-icon-share" disabled></el-button>
+    <el-button plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit" disabled></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit"></el-button>
+    <el-button plain icon="el-icon-share" disabled></el-button>
+    <el-button plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit"></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit" disabled></el-button>
+    <el-button plain icon="el-icon-share" disabled></el-button>
+    <el-button plain icon="el-icon-delete"></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit"></el-button>
+    <el-button plain icon="el-icon-share" disabled></el-button>
+    <el-button plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
+
+  <el-button-group align="vertical">
+    <el-button plain icon="el-icon-edit" disabled></el-button>
+    <el-button plain icon="el-icon-share"></el-button>
+    <el-button plain icon="el-icon-delete" disabled></el-button>
+  </el-button-group>
 </div>
 ```
 :::
@@ -224,30 +611,14 @@ locales: {
   }
 }
 ```
-:::demo 支持的尺寸：`big`、 `medium`、`small`、`mini`，通过设置`size`属性来配置它们，默认是medium的尺寸。
+:::demo 支持的尺寸：`big`、 `medium`、`small`、`mini`，通过设置`size`属性来配置它们，默认是medium的尺寸，但现在项目中用的都是small 尺寸的这个
 
 ```html
 <div>
   <el-button-group>
-  <el-button size="big"  @click="changeLang('en')"  :class="{'active':lang=='en'}">EN</el-button>
-  <el-button size="big"  @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
-</el-button-group>
-<el-button-group>
-  <el-button @click="changeLang('en')" :class="{'active':lang=='en'}">EN</el-button>
-  <el-button @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
-</el-button-group>
-<el-button-group>
-  <el-button size="medium" @click="changeLang('en')" :class="{'active':lang=='en'}">EN</el-button>
-  <el-button size="medium" @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
-</el-button-group>
-<el-button-group>
-  <el-button size="small" @click="changeLang('en')" :class="{'active':lang=='en'}">EN</el-button>
-  <el-button size="small" @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
-</el-button-group>
-<el-button-group>
-  <el-button size="mini" @click="changeLang('en')" :class="{'active':lang=='en'}">EN</el-button>
-  <el-button size="mini" @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
-</el-button-group>
+    <el-button size="small" @click="changeLang('en')" :class="{'active':lang=='en'}">EN</el-button>
+    <el-button size="small" @click="changeLang('zh-cn')" :class="{'active':lang=='zh-cn'}">中文</el-button>
+  </el-button-group>
 </div>
 <script>
   export default {
@@ -266,50 +637,6 @@ locales: {
 ```
 :::
 
-### 加载中
-
-点击按钮后进行数据加载操作，在按钮上显示加载状态。
-
-:::demo 要设置为 loading 状态，只要设置`loading`属性为`true`即可。
-
-```html
-<el-button type="primary" :loading="true">加载中</el-button>
-```
-:::
-
-加载中按钮样式，多数会和disable结合使用，常用场景是submit一个表单时，为防止重复提交，但点击一次后，请求还未返回前，按钮是处理加载中，且不可点状态，效果如下：
-:::demo
-
-```html
-<el-button type="primary" :loading="true" disabled>提交中</el-button>
-```
-:::
-
-### 不同尺寸
-
-* 新规范规定 项目场景中使用两种尺寸 【medium 高度为30px】 【small 高度为24px】 默认medium 
-
-Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
-
-:::demo 额外的尺寸：`big`、`medium`、`small`、`mini`，通过设置`size`属性来配置它们。默认是medium
-
-```html
-<div>
-  <el-button size="big">较大尺寸按钮</el-button>
-  <el-button>默认按钮</el-button>
-  <el-button size="medium">中等按钮</el-button>
-  <el-button size="small">小型按钮</el-button>
-  <el-button size="mini">超小按钮</el-button>
-</div>
-<div style="margin-top: 20px">
-  <el-button round size="big">较大尺寸按钮</el-button>
-  <el-button round>默认按钮</el-button>
-  <el-button size="medium" round>中等按钮</el-button>
-  <el-button size="small" round>小型按钮</el-button>
-  <el-button size="mini" round>超小按钮</el-button>
-</div>
-```
-:::
 
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

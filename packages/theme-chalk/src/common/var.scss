@@ -437,7 +437,7 @@ $--button-mini-border-radius: #{$--border-radius-base} !default;
 $--button-mini-padding-vertical: 4px !default;
 $--button-mini-padding-horizontal: 8px !default;
 
-$--button-default-color: $--color-text-disabled !default;
+$--button-default-color: $--color-text-primary !default;
 $--button-default-fill: $--color-white !default;
 $--button-default-border: $--border-color-base !default;
 
@@ -467,6 +467,8 @@ $--button-info-fill: $--color-info !default;
 
 $--button-hover-tint-percent: 20% !default;
 $--button-active-shade-percent: 10% !default;
+
+$--button-icon-btn: $--color-primary !default;
 
 
 /* cascader

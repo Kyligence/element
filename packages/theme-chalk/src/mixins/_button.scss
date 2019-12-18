@@ -1,5 +1,5 @@
 @import "../common/var";
-@mixin button-plain($color) {
+/* @mixin button-plain($color) {
   color: $color;
   background: mix($--color-white, $color, 100%);
   border-color: $color;
@@ -26,6 +26,37 @@
       border-color: mix($--color-white, $color, 80%);
     }
   }
+} */
+/* 次要按钮的样式改动 by hcy 2019-12-12 */
+@mixin button-plain2($color, $background-color, $border-color) {
+  color: $background-color;
+  background: mix($--color-white, $background-color, 100%);
+  border-color: $background-color;
+
+  &:not(.is-disabled):hover {
+    background: mix($--color-white, $background-color, 90%);
+    border-color: $border-color; // #4DA9E7
+    color: $border-color; // #4DA9E7
+  }
+  
+  &:not(.is-disabled):active {
+    background: mix($--color-white, $background-color, 90%);
+    border-color: $--color-primary-dark;
+    color: $--color-primary-dark;
+    outline: none;
+  }
+
+  /* &.is-disabled {
+    &,
+    &:hover,
+    &:active {
+      color: $--button-disabled-color;
+      cursor: not-allowed;
+      background-image: none;
+      background-color: $--button-disabled-fill;
+      border-color: $--button-disabled-border;
+    }
+  } */
 }
 
 @mixin button-variant($color, $background-color, $border-color) {
@@ -33,13 +64,13 @@
   background-color: $background-color;
   border-color: $border-color;
 
-  &:hover {
+  &:not(.is-disabled):hover {
     background: mix($--color-white, $background-color, $--button-hover-tint-percent);
     border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
     color: $color;
   }
   
-  &:active {
+  &:not(.is-disabled):active {
     background: mix($--color-black, $background-color, $--button-active-shade-percent);
     border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
     color: $color;
@@ -52,7 +83,7 @@
     color: $color;
   }
 
-  &.is-disabled {
+  /* &.is-disabled {
     &,
     &:hover,
     &:active {
@@ -60,10 +91,11 @@
       background-color: mix($background-color, $--color-white);
       border-color: mix($border-color, $--color-white);
     }
-  }
+  } */
 
   &.is-plain {
-    @include button-plain($background-color);
+    /* @include button-plain($background-color); */
+    @include button-plain2($color, $background-color, $border-color);
   }
   &.is-text {
     border-color: transparent;
@@ -83,7 +115,7 @@
     }
     &.is-disabled,
     &.is-disabled:hover{
-      color: mix($--color-white, $background-color, 40%);
+      color: $--color-text-disabled;
       border-color: transparent;
     }
   }

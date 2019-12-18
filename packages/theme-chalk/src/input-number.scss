@@ -174,10 +174,11 @@
     &[class*=mini] {
       [class*=increase], [class*=decrease] {
         line-height: #{($--input-mini-height - 2) / 2};
+        height: #{($--input-mini-height - 2) / 2};
       }
       [class*=decrease] i {
         position: relative;
-        top: 2px;
+        top: 0px;
       }
     }
   }

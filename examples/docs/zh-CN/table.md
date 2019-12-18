@@ -383,6 +383,13 @@
       width: 50%;
     }
   }
+  /* .el-table__fixed-body-wrapper{
+    .el-table__expanded-cell {
+      & > *{
+        visibility: hidden;
+      }
+    }
+  } */
 </style>
 
 ## Table 表格
@@ -770,8 +777,30 @@
     :data="tableData"
     border
     style="width: 100%">
+    <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-table
+          size="medium"
+          :data="tableData5"
+          nested
+          border
+          style="width: 100%">
+          <el-table-column
+            label="商品 ID"
+            prop="id">
+          </el-table-column>
+          <el-table-column
+            label="商品名称"
+            prop="name">
+          </el-table-column>
+          <el-table-column
+            label="描述"
+            prop="desc">
+          </el-table-column>
+        </el-table>
+      </template>
+    </el-table-column>
     <el-table-column
-      fixed
       prop="date"
       label="日期"
       width="150">

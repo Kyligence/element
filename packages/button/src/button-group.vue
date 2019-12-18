@@ -1,10 +1,17 @@
 <template>
-  <div class="el-button-group">
+  <div class="el-button-group" :class="{'is-vertical': align === 'vertical'}">
     <slot></slot>
   </div>
 </template>
 <script>
   export default {
-    name: 'ElButtonGroup'
+    name: 'ElButtonGroup',
+
+    props: {
+      align: {
+        type: String,
+        default: 'horizontal' // horizontal、vertical
+      }
+    }
   };
 </script>
