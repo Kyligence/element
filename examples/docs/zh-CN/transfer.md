@@ -50,7 +50,7 @@
         for (let i = 1; i <= 20; i++) {
           data.push({
             key: i,
-            label: `备选项 ${ i }`,
+            label: i === 1 ? `备选项备选项备选项备选项备选项备选项${ i }` : `备选项${i}`,
             disabled: false
           });
         }
@@ -159,10 +159,10 @@
 :::
 
 ### 加载更多，远端分页
-:::demo Transfer 的数据通过 `data` 属性传入。接口分页数据是ajax 回来，全量的那个分页不适合，这时候可以用 `left-remote-load-more` 作为 slot 传入，自主外部控制分页逻辑
+:::demo Transfer 的数据通过 `data` 属性传入。接口分页数据是ajax 回来，全量的那个分页不适合，这时候可以用 `left-remote-load-more` 作为 slot 传入，自主外部控制分页逻辑, `show-overflow-tip` 当内容过多被隐藏时展示tooltip。
 ```html
 <template>
-  <el-transfer v-model="valueRemote" :data="dataRemote" :total-elements="remoteTotal" @change="handleChangeRemote">
+  <el-transfer v-model="valueRemote" :data="dataRemote" :total-elements="remoteTotal" :show-overflow-tip="true" @change="handleChangeRemote">
     <div v-show="leftHasMore" @click="loadMoreFormRemote" class="load-more" slot="left-remote-load-more">加载更多</div>
   </el-transfer>
 </template>
@@ -453,6 +453,7 @@
 | before-query | 搜索框异步搜索前，触发的函数 | function(title, query) | — | [ ] |
 | page-sizes | 穿梭框分页条数 | array[number, number] | — | [ ] |
 | total-elements | 自定义穿梭框总条数 | array[number, number] | — | [ ] |
+| show-overflow-tip | 内容超出限制宽度是否展示tooltip | Boolean | - | false |
 ### Slot
 | name | 说明 |
 |------|--------|

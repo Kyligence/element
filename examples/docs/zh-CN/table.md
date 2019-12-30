@@ -227,7 +227,8 @@
         }],
         currentRow: null,
         multipleSelection: [],
-        expandRows: ['12987125']
+        expandRows: ['12987125'],
+        filterTags: []
       };
     },
 
@@ -298,8 +299,14 @@
         return row.address;
       },
 
-      filterTag(value, row) {
-        return row.tag === value;
+      filterTag(value) {
+        this.filterTags = value
+      },
+
+      handleClose(tag) {
+        const index = this.filterTags.indexOf(tag)
+        this.filterTags.splice(index, 1)
+        console.log(tag)
       },
 
       filterHandler(value, row, column) {
@@ -382,6 +389,10 @@
       margin-bottom: 0;
       width: 50%;
     }
+  }
+
+  .el-table-filter .filter-icon {
+    margin-right: 5px;
   }
 </style>
 
@@ -1441,6 +1452,9 @@
 :::demo 在列中设置`filters` `filter-method`属性即可开启该列的筛选，filters 是一个数组，`filter-method`是一个方法，它用于决定某些数据是否显示，会传入三个参数：`value`, `row` 和 `column`。
 ```html
 <template>
+  <div style="margin-bottom: 10px;">
+    <el-tag size="small" closable v-for="(item, index) in filterTags" :key="index" @close="handleClose(item)" style="margin-left: 5px;">{{item}}</el-tag>
+  </div>
   <el-table
     :data="tableData"
     style="width: 100%">
@@ -1467,8 +1481,11 @@
       prop="tag"
       label="标签"
       width="100"
-      :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
-      :filter-method="filterTag"
+      :filters="[{ text: '家', value: '家', icon: 'el-icon-warning' }, { text: '公司', value: '公司' }]"
+      :show-multiple-footer="false"
+      :filter-panel-top="24"
+      :filter-change="filterTag"
+      :filtered-value="filterTags"
       filter-placement="bottom-end">
       <template slot-scope="scope">
         <el-tag
@@ -1503,15 +1520,16 @@
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄',
           tag: '公司'
-        }]
+        }],
+        filterTags: []
       }
     },
     methods: {
       formatter(row, column) {
         return row.address;
       },
-      filterTag(value, row) {
-        return row.tag === value;
+      filterTag(value) {
+        this.filterTags = value
       },
       filterHandler(value, row, column) {
         const property = column['property'];
@@ -2171,8 +2189,12 @@
 | label-class-name | 当前列标题的自定义类名 | string | — | — |
 | selectable | 仅对 type=selection 的列有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选 | Function(row, index) | — | — |
 | reserve-selection | 仅对 type=selection 的列有效，类型为 Boolean，为 true 则代表会保留之前数据的选项，需要配合 Table 的 clearSelection 方法使用。 | Boolean | — | false |
-| filters | 数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 | Array[{ text, value }] | — | — |
+| filters | 数据过滤的选项，数组格式，数组中的元素需要有 text 、 value 和 icon 属性。 | Array[{ text, value, icon }] | — | — |
 | filter-placement | 过滤弹出框的定位 | String | 与 Tooltip 的 `placement` 属性相同 | — |
 | filter-multiple | 数据过滤的选项是否多选 | Boolean | — | true |
 | filter-method | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 | Function(value, row, column) | — | — |
 | filtered-value | 选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。 | Array | — | — |
+| show-multiple-footer | 是否显示复选列表底部筛选和重置按钮。 | Boolean | - | true |
+| filter-change | 复选内容更改时的返回数据, 当`show-multiple-footer`为false时可以使用。 | Function | - | - |
+| filter-icon | 筛选自定义icon。 | String | - | - |
+| filter-panel-top | 筛选框top值偏移量。 | Number | - | - |

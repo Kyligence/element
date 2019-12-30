@@ -173,14 +173,21 @@ export default {
     selectable: Function,
     reserveSelection: Boolean,
     filterMethod: Function,
+    filterChange: Function,
     filteredValue: Array,
     filters: Array,
+    showMultipleFooter: {
+      type: Boolean,
+      default: true
+    },
     filterPlacement: String,
     filterMultiple: {
       type: Boolean,
       default: true
     },
-    index: [Number, Function]
+    index: [Number, Function],
+    filterIcon: String,
+    filterPanelTop: Number
   },
 
   data() {
@@ -263,10 +270,14 @@ export default {
       filters: this.filters,
       filterable: this.filters || this.filterMethod,
       filterMultiple: this.filterMultiple,
+      filterChange: this.filterChange,
       filterOpened: false,
       filteredValue: this.filteredValue || [],
       filterPlacement: this.filterPlacement || '',
-      index: this.index
+      index: this.index,
+      showMultipleFooter: this.showMultipleFooter,
+      filterIcon: this.filterIcon || '',
+      filterPanelTop: this.filterPanelTop
     });
 
     objectAssign(column, forced[type] || {});

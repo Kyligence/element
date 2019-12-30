@@ -125,7 +125,7 @@ export default {
                         }
                         {
                           column.filterable
-                            ? <span class="el-table__column-filter-trigger" on-click={ ($event) => this.handleFilterClick($event, column) }><i class={ ['el-icon-arrow-down', column.filterOpened ? 'el-icon-arrow-up' : ''] }></i></span>
+                            ? <span class="el-table__column-filter-trigger" on-click={ ($event) => this.handleFilterClick($event, column) }><i class={ [column.filterIcon ? column.filterIcon : 'el-icon-arrow-down', column.filterIcon ? (column.filterOpened ? 'filter-open' : '') : (column.filterOpened ? 'el-icon-arrow-up' : '')] }></i></span>
                             : ''
                         }
                       </div>
@@ -341,6 +341,8 @@ export default {
         if (column.filterPlacement) {
           filterPanel.placement = column.filterPlacement;
         }
+        filterPanel.showMultipleFooter = column.showMultipleFooter;
+        filterPanel.filterChange = column.filterChange;
         filterPanel.table = table;
         filterPanel.cell = cell;
         filterPanel.column = column;

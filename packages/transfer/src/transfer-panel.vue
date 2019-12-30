@@ -29,14 +29,17 @@
         v-show="!hasNoMatch && data.length > 0"
         :class="{ 'is-filterable': filterable }"
         class="el-transfer-panel__list">
-        <el-checkbox
-          class="el-transfer-panel__item"
-          :label="item[keyProp]"
-          :disabled="item[disabledProp]"
-          :key="item[keyProp]"
-          v-for="item in pagedData">
-          <option-content :option="item"></option-content>
-        </el-checkbox>
+        <div class="checkbox-item" v-for="(item, index) in pagedData" :key="item[keyProp]">
+          <el-tooltip :content="item.label" effect="dark" placement="top" :disabled="!showOverflowTip ? !showOverflowTip : showToolTip($el, index)">
+            <el-checkbox
+              class="el-transfer-panel__item"
+              :label="item[keyProp]"
+              :disabled="item[disabledProp]"
+              >
+                <option-content class="option-items" :option="item" ref="optionContentLable"></option-content>
+            </el-checkbox>
+          </el-tooltip>
+        </div>
         <slot name="left-remote-load-more"></slot>
         <slot name="right-remote-load-more"></slot>
         <div @click="loadMore" v-if="hasMore" class="load-more">{{loadMoreText}}</div>
@@ -117,6 +120,10 @@
         default() {
           return () => {};
         }
+      },
+      showOverflowTip: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -129,7 +136,8 @@
         queryStr: '',
         inputHover: false,
         checkChangeByUser: true,
-        currentPage: 1
+        currentPage: 1,
+        labelLen: 0
       };
     },
 
@@ -167,16 +175,25 @@
         }
       },
 
-      data() {
-        const checked = [];
-        const filteredDataKeys = this.filteredData.map(item => item[this.keyProp]);
-        this.checked.forEach(item => {
-          if (filteredDataKeys.indexOf(item) > -1) {
-            checked.push(item);
-          }
-        });
-        this.checkChangeByUser = false;
-        this.checked = checked;
+      data: {
+        immediate: true,
+        handler() {
+          const checked = [];
+          const filteredDataKeys = this.filteredData.map(item => item[this.keyProp]);
+          this.checked.forEach(item => {
+            if (filteredDataKeys.indexOf(item) > -1) {
+              checked.push(item);
+            }
+          });
+          this.checkChangeByUser = false;
+          this.checked = checked;
+          this.$nextTick(() => {
+            this.$forceUpdate();
+            this.$nextTick(() => {
+              this.labelWidth('data');
+            });
+          });
+        }
       },
 
       checkableData() {
@@ -292,7 +309,22 @@
         if (this.inputIcon === 'circle-close') {
           this.query = '';
         }
+      },
+
+      showToolTip(e, index) {
+        const w = e && e.querySelectorAll('.el-checkbox__label .option-items').length && e.querySelectorAll('.el-checkbox__label .option-items')[index] && e.querySelectorAll('.el-checkbox__label .option-items')[index].offsetWidth || 0;
+        return w <= this.labelLen;
+      },
+
+      labelWidth() {
+        if (this.labelLen > 0) return;
+        const el = this.$el.querySelectorAll('.el-transfer-panel__item .el-checkbox__label');
+        el.length && (this.labelLen = el[0].offsetWidth - 24);
       }
+    },
+
+    mounted() {
+      this.labelWidth();
     }
   };
 </script>

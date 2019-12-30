@@ -1,15 +1,16 @@
 <template>
   <transition name="el-zoom-in-top">
-    <div class="el-table-filter" v-if="multiple" v-show="showPopper">
+    <div class="el-table-filter" v-if="multiple" v-show="showPopper" :style="filterStyle">
       <div class="el-table-filter__content">
-        <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue">
+        <div>{{filterPanelTop}}</div>
+        <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue" @change="filterMultipleValue">
           <el-checkbox
             v-for="filter in filters"
             :key="filter.value"
-            :label="filter.value">{{ filter.text }}</el-checkbox>
+            :label="filter.value"><i :class="['filter-icon', filter.icon]" v-if="filter.icon"></i>{{ filter.text }}</el-checkbox>
         </el-checkbox-group>
       </div>
-      <div class="el-table-filter__bottom">
+      <div class="el-table-filter__bottom" v-show="showMultipleFooter">
         <button @click="handleConfirm"
           :class="{ 'is-disabled': filteredValue.length === 0 }"
           :disabled="filteredValue.length === 0">{{ t('el.table.confirmFilter') }}</button>
@@ -59,7 +60,13 @@
       placement: {
         type: String,
         default: 'bottom-end'
-      }
+      },
+      showMultipleFooter: {
+        type: Boolean,
+        default: true
+      },
+      filterChange: Function,
+      filterPanelTop: Number
     },
 
     customRender(h) {
@@ -111,6 +118,25 @@
           values: filteredValue
         });
         this.table.store.updateAllSelected();
+      },
+      // 抛出多选值
+      filterMultipleValue(val) {
+        if (this.showMultipleFooter) return;
+        if (typeof this.filterChange === 'function') {
+          this.filterChange(val);
+        }
+      },
+
+      changefilterTop() {
+        const top = this.popperElm && +this.popperElm.style.top.replace(/px$/, '');
+        if (this.filteredValue.length) {
+          if (this.isAddTop) return;
+          this.isAddTop = true;
+          this.filterStyle = {'top': `${top + this.column.filterPanelTop}px`};
+        } else {
+          this.isAddTop = false;
+          this.filterStyle = {'top': `${top - this.column.filterPanelTop}px`};
+        }
       }
     },
 
@@ -118,7 +144,9 @@
       return {
         table: null,
         cell: null,
-        column: null
+        column: null,
+        filterStyle: {},
+        isAddTop: false
       };
     },
 
@@ -152,6 +180,10 @@
         set(value) {
           if (this.column) {
             this.column.filteredValue = value;
+            if (typeof this.column.filterPanelTop === 'undefined') return;
+            setTimeout(() => {
+              this.changefilterTop();
+            }, 100);
           }
         }
       },
