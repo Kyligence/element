@@ -273,6 +273,7 @@ Por defecto Transfer busca los atributos `key`, `label`, y `disabled` en cada el
 | props                 | prop alias para el origen de datos       | object{key, label, disabled}    | —                 | —                                        |
 | left-default-checked  | Array de claves de los elementos marcados inicialmente en la lista de la izquierda | array                           | —                 | [ ]                                      |
 | right-default-checked | Array de claves de los elementos marcados inicialmente en la lista de la derecha | array                           | —                 | [ ]                                      |
+| show-overflow-tip | Cuando el contenido supera el límite de anchura | Boolean | - | false |
 
 ### Slot
 | Nombre       | Descripcion                              |

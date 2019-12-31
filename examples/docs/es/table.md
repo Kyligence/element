@@ -186,7 +186,8 @@
           amount3: 15
         }],
         currentRow: null,
-        multipleSelection: []
+        multipleSelection: [],
+        filterTags: []
       };
     },
     
@@ -253,8 +254,13 @@
         return row.address;
       },
     
-      filterTag(value, row) {
-        return row.tag === value;
+      filterTag(value) {
+        this.filterTags = value
+      },
+
+      handleClose(tag) {
+        const index = this.filterTags.indexOf(tag)
+        this.filterTags.splice(index, 1)
       },
     
       filterHandler(value, row, column) {
@@ -1335,6 +1341,9 @@ Filtra la tabla para encontrar la información que necesita.
 :::demo Establezca el atributo `filters` y `filter-method` en `el-table-column` haciendo esta columna filtrable. `filters` es un arreglo, y `filter-method` es una función que decide que filas se muestra. Esta tiene tres parámetros: `value`, `row` y `column`.
 ```html
 <template>
+  <div style="margin-bottom: 10px;">
+    <el-tag size="small" closable v-for="(item, index) in filterTags" :key="index" @close="handleClose(item)" style="margin-left: 5px;">{{item}}</el-tag>
+  </div>
   <el-table
     :data="tableData"
     style="width: 100%">
@@ -1362,7 +1371,9 @@ Filtra la tabla para encontrar la información que necesita.
       label="Etiqueta"
       width="100"
       :filters="[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]"
-      :filter-method="filterTag"
+      :show-multiple-footer="false"
+      :filter-change="filterTag"
+      :filtered-value="filterTags"
       filter-placement="bottom-end">
       <template slot-scope="scope">
         <el-tag
@@ -1397,15 +1408,16 @@ Filtra la tabla para encontrar la información que necesita.
           name: 'Tom',
           address: 'No. 189, Grove St, Los Angeles',
           tag: 'Office'
-        }]
+        }],
+        filterTags: []
       }
     },
     methods: {
       formatter(row, column) {
         return row.address;
       },
-      filterTag(value, row) {
-        return row.tag === value;
+      filterTag(value) {
+        this.filterTags = value
       },
       filterHandler(value, row, column) {
         const property = column['property'];
@@ -2044,3 +2056,6 @@ Puede personalizar el índice de la fila con la propiedad `type=index` de las co
 | filter-multiple       | especifica si el filtrado de datos soporta múltiples opciones | Boolean                           | —                             | true        |
 | filter-method         | método para filtrado de datos. Si `filter-multiple` está habilitado, este método se invocará varias veces para cada fila, y una fila puede mostrar si una de las llamadas devuelve `true` | Function(value, row, column)      | —                             | —           |
 | filtered-value        | el valor del filtro para los datos seleccionados, puede ser útil cuando el encabezado de la tabla se representará con `render-header` | Array                             | —                             | —           |
+| show-multiple-footer | Mostrar los botones de selección y sustitución del Fondo de la lista | Boolean | - | true |
+| filter-change | Cuando `show - multiple - footer` es false, datos de retorno al cambiar el contenido | Function | - | - |
+| filter-icon | Seleccione el icono personalizado | String | - | - |

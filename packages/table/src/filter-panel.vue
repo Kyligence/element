@@ -1,6 +1,6 @@
 <template>
   <transition name="el-zoom-in-top">
-    <div class="el-table-filter" v-if="multiple" v-show="showPopper" :style="filterStyle">
+    <div class="el-table-filter" v-if="multiple" v-show="showPopper">
       <div class="el-table-filter__content">
         <div>{{filterPanelTop}}</div>
         <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue" @change="filterMultipleValue">
@@ -125,18 +125,6 @@
         if (typeof this.filterChange === 'function') {
           this.filterChange(val);
         }
-      },
-
-      changefilterTop() {
-        const top = this.popperElm && +this.popperElm.style.top.replace(/px$/, '');
-        if (this.filteredValue.length) {
-          if (this.isAddTop) return;
-          this.isAddTop = true;
-          this.filterStyle = {'top': `${top + this.column.filterPanelTop}px`};
-        } else {
-          this.isAddTop = false;
-          this.filterStyle = {'top': `${top - this.column.filterPanelTop}px`};
-        }
       }
     },
 
@@ -144,9 +132,7 @@
       return {
         table: null,
         cell: null,
-        column: null,
-        filterStyle: {},
-        isAddTop: false
+        column: null
       };
     },
 
@@ -180,10 +166,6 @@
         set(value) {
           if (this.column) {
             this.column.filteredValue = value;
-            if (typeof this.column.filterPanelTop === 'undefined') return;
-            setTimeout(() => {
-              this.changefilterTop();
-            }, 100);
           }
         }
       },
@@ -210,6 +192,12 @@
         } else {
           Dropdown.close(this);
         }
+      });
+
+      this.$watch('filteredValue', (val) => {
+        setTimeout(() => {
+          this.updatePopper();
+        }, 400);
       });
     },
     watch: {

@@ -272,6 +272,7 @@ By default, Transfer looks for `key`, `label` and `disabled` in a data item. If 
 | props | prop aliases for data source | object{key, label, disabled} | — | — |
 | left-default-checked | key array of initially checked data items of the left list | array | — | [ ] |
 | right-default-checked | key array of initially checked data items of the right list | array | — | [ ] |
+| show-overflow-tip | show tooltip when content over the limit | Boolean | - | false |
 
 ### Slot
 | Name | Description |

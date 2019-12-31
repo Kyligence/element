@@ -255,8 +255,13 @@
         return row.address;
       },
 
-      filterTag(value, row) {
-        return row.tag === value;
+       filterTag(value) {
+        this.filterTags = value
+      },
+
+      handleClose(tag) {
+        const index = this.filterTags.indexOf(tag)
+        this.filterTags.splice(index, 1)
       },
 
       filterHandler(value, row, column) {
@@ -1364,7 +1369,9 @@ Filter the table to find desired data.
       label="Tag"
       width="100"
       :filters="[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]"
-      :filter-method="filterTag"
+      :show-multiple-footer="false"
+      :filter-change="filterTag"
+      :filtered-value="filterTags"
       filter-placement="bottom-end">
       <template slot-scope="scope">
         <el-tag
@@ -1406,8 +1413,8 @@ Filter the table to find desired data.
       formatter(row, column) {
         return row.address;
       },
-      filterTag(value, row) {
-        return row.tag === value;
+      filterTag(value) {
+        this.filterTags = value
       },
       filterHandler(value, row, column) {
         const property = column['property'];
@@ -2042,3 +2049,6 @@ You can customize row index in `type=index` columns.
 | filter-multiple | whether data filtering supports multiple options | Boolean | — | true |
 | filter-method | data filtering method. If `filter-multiple` is on, this method will be called multiple times for each row, and a row will display if one of the calls returns `true` | Function(value, row, column) | — | — |
 | filtered-value | filter value for selected data, might be useful when table header is rendered with `render-header` | Array | — | — |
+| show-multiple-footer | show or hide the confirm and reset buttons | Boolean | - | true |
+| filter-change | return the checkbox content, when `show-multiple-footer` is false | Function | - | - |
+| filter-icon | change the filter icon | String | - | - |
