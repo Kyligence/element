@@ -329,6 +329,9 @@ export default {
       const table = this.$parent;
 
       let filterPanel = this.filterPanels[column.id];
+      let otherFilters = Object.keys(this.filterPanels)
+
+      otherFilters.length && otherFilters.filter(item => item !== column.id).forEach(it => this.filterPanels[it].showPopper = false)
 
       if (filterPanel && column.filterOpened) {
         filterPanel.showPopper = false;
