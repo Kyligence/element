@@ -361,8 +361,6 @@ export default {
     handleHeaderClick(event, column) {
       if (!column.filters && column.sortable) {
         this.handleSortClick(event, column);
-      } else if (column.filters && !column.sortable) {
-        this.handleFilterClick(event, column);
       }
 
       this.$parent.$emit('header-click', column, event);

@@ -211,7 +211,10 @@
       box-sizing: border-box;
 
       &.highlight {
-        color: $--color-primary;
+        // color: $--color-primary;
+        .el-table__column-filter-trigger > i {
+          color: $--color-primary;
+        }
       }
     }
 
