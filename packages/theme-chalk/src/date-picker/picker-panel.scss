@@ -1,7 +1,7 @@
 @import "../common/var";
 
 @include b(picker-panel) {
-  color: $--color-text-regular;
+  color: $--datepicker-color;
   border: 1px solid $--datepicker-border-color;
   box-shadow: $--box-shadow-light;
   background: $--color-white;
