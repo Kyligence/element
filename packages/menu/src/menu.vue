@@ -108,7 +108,7 @@
       },
       subBackgroundColor: {
         type: String,
-        default: '#053c6c'
+        default: '#00437c'
       },
       activeSubBackgroundColor: {
         type: String,
@@ -120,7 +120,7 @@
       },
       textColor: {
         type: String,
-        default: '#e0e0e0'
+        default: '#fff'
       },
       activeTextColor: String,
       hoverTextColor: {

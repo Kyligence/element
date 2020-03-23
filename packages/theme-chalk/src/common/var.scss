@@ -132,7 +132,7 @@ $--icon-color-base: $--color-info !default;
 -------------------------- */
 $--checkbox-font-size: 14px !default;
 $--checkbox-font-weight: 400 !default;
-$--checkbox-color: $--color-text-regular !default;
+$--checkbox-color: $--color-text-primary !default;
 $--checkbox-input-height: 14px !default;
 $--checkbox-input-width: 14px !default;
 $--checkbox-input-border-radius: $--border-radius-small !default;
@@ -182,7 +182,7 @@ $--checkbox-button-checked-border-color: $--color-primary !default;
 -------------------------- */
 $--radio-font-size: 14px !default;
 $--radio-font-weight: 400 !default;
-$--radio-color: $--color-text-regular !default;
+$--radio-color: $--color-text-primary !default;
 $--radio-input-height: 14px !default;
 $--radio-input-width: 14px !default;
 $--radio-input-border-radius: $--border-radius-circle !default;
@@ -239,7 +239,7 @@ $--select-multiple-input-color: #5c5c5c !default;
 $--select-input-focus-background: $--color-primary !default;
 $--select-input-font-size: 14px !default;
 
-$--select-option-color: $--color-text-regular !default;
+$--select-option-color: $--color-text-primary !default;
 $--select-option-disabled-color: $--color-text-placeholder !default;
 $--select-option-disabled-background: $--color-white !default;
 $--select-option-height: 28px !default;

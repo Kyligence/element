@@ -225,7 +225,7 @@
   }
 
   @include e(item-name) {
-    color: $--color-text-regular;
+    color: $--color-text-primary;
     display: block;
     margin-right: 40px;
     overflow: hidden;
