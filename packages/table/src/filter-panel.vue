@@ -205,8 +205,14 @@
       });
 
       this.$watch('filteredValue', (val) => {
-        setTimeout(() => {
-          this.updatePopper();
+        let timer = null
+        let _this = this
+        timer = setTimeout(function () {
+          if (_this._isDestroyed) {
+            clearTimeout(timer)
+            return
+          }
+          _this.updatePopper();
         }, 400);
       });
     },
