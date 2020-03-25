@@ -1638,7 +1638,7 @@
     :expand-row-keys="expandRows"
     :row-key="rowKey"
     style="width: 100%">
-    <el-table-column type="expand">
+    <el-table-column type="expand" :width="36">
       <template slot-scope="props">
         <el-table
             size="medium"
