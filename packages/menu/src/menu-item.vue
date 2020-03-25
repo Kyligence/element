@@ -67,7 +67,7 @@
       },
       backgroundColor() {
         if (this.active) {
-          return this.rootMenu.activeSubBackgroundColor
+          return this.rootMenu.activeSubBackgroundColor;
         } else {
           return this.isNested ? this.rootMenu.subBackgroundColor : this.rootMenu.backgroundColor;
         }

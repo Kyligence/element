@@ -205,12 +205,12 @@
       });
 
       this.$watch('filteredValue', (val) => {
-        let timer = null
-        let _this = this
-        timer = setTimeout(function () {
+        let timer = null;
+        let _this = this;
+        timer = setTimeout(function() {
           if (_this._isDestroyed) {
-            clearTimeout(timer)
-            return
+            clearTimeout(timer);
+            return;
           }
           _this.updatePopper();
         }, 400);
