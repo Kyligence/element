@@ -44,6 +44,10 @@ export default {
       type: Boolean,
       default: true
     },
+    popperContainer: {
+      type: String,
+      default: 'body'
+    },
     popperOptions: {
       type: Object,
       default() {
@@ -96,7 +100,15 @@ export default {
 
       if (!popper || !reference) return;
       if (this.visibleArrow) this.appendArrow(popper);
-      if (this.appendToBody) document.body.appendChild(this.popperElm);
+      if (this.appendToBody) {
+        document.body.appendChild(this.popperElm);
+      } else {
+        // 如果指定了父容器，就追加到父容器
+        let $el = document.getElementById(this.popperContainer)
+        if (this.popperContainer && $el) {
+          $el.appendChild(this.popperElm);
+        }
+      }
       if (this.popperJS && this.popperJS.destroy) {
         this.popperJS.destroy();
       }

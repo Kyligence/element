@@ -416,6 +416,7 @@
 :::demo 当`el-table`元素中注入`data`对象数组后，在`el-table-column`中用`prop`属性来对应对象中的键名即可填入数据，用`label`属性来定义表格的列名。可以使用`width`属性来定义列宽。 可以通过 `size` 属性设置表格的尺寸类型（目前主要使用默认尺寸和medium内嵌table尺寸）
 ```html
   <template>
+    <div id="testDiv">
     <el-table
       :data="tableData"
       style="width: 100%">
@@ -433,7 +434,30 @@
         prop="address"
         label="地址">
       </el-table-column>
+      <el-table-column label="操作" width="80">
+        <template slot-scope="scope">
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link">
+              ...<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown" :append-to-body="false" :popper-container="'testDiv'">
+              <el-dropdown-item>优化建议</el-dropdown-item>
+              <el-dropdown-item>分区设置</el-dropdown-item>
+              <el-dropdown-item divided disabled>导入 MDX</el-dropdown-item>
+              <el-dropdown-item divided disabled>导入 TDS</el-dropdown-item>
+              <el-dropdown-item divided disabled>导出 MDX</el-dropdown-item>
+              <el-dropdown-item>导出元数据</el-dropdown-item>
+              <el-dropdown-item divided>重命名</el-dropdown-item>
+              <el-dropdown-item>克隆</el-dropdown-item>
+              <el-dropdown-item>删除</el-dropdown-item>
+              <el-dropdown-item>清空</el-dropdown-item>
+              <el-dropdown-item>模型下线</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </template>
+      </el-table-column>
     </el-table>
+    </div>
   </template>
   <script>
     export default {

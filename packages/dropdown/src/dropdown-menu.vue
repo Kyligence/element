@@ -19,6 +19,14 @@
       visibleArrow: {
         type: Boolean,
         default: true
+      },
+      appendToBody: {
+        type: Boolean,
+        default: true
+      },
+      popperContainer: {
+        type: String,
+        default: 'body' // 默认是 body
       }
     },
 

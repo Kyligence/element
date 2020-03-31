@@ -355,6 +355,13 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 | command  | 点击菜单项触发的事件回调 | dropdown-item 的指令 |
 | visible-change | 下拉框出现/隐藏时触发 | 出现则为 true，隐藏则为 false |
 
+### Dropdown Menu Attributes
+| 参数          | 说明            | 类型            | 可选值                 | 默认值   |
+|-------------  |---------------- |---------------- |---------------------- |-------- |
+| append-to-body  | 是否追加到body | Boolean          | — | true |
+| popper-container  | 追加容器，只接受 id | String          | — | '' |
+
+
 ### Dropdown Menu Item Attributes
 | 参数          | 说明            | 类型            | 可选值                 | 默认值   |
 |-------------  |---------------- |---------------- |---------------------- |-------- |
