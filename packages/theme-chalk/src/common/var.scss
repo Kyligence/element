@@ -33,7 +33,8 @@ $--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /
 $--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* #9dcff2 */
 $--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* #b5dbf5 */
 $--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* #cee7f8 */
-$--color-primary-light-9:#e6f3fb;// mix($--color-white, $--color-primary, 89.7%) !default;
+// $--color-primary-light-9:#e6f3fb;// mix($--color-white, $--color-primary, 89.7%) !default;
+$--color-primary-light-9: mix($--color-white, $--color-primary, 89.7%) !default; /* #e6f3fc */
 
 $--color-success: #4cb050 !default;
 $--color-warning: #F7BA2A !default;
@@ -413,7 +414,8 @@ $--tab-vertical-header-count-fill: $--color-text-secondary !default;
 
 /* Button
 -------------------------- */
-$--button-hover-color: #4DA9E7!default;
+// $--button-hover-color: #4DA9E7!default;
+$--button-hover-color: $--color-primary-light-2!default;
 $--button-font-size: 14px !default;
 $--button-font-weight: $--font-weight-primary !default;
 $--button-border-radius: $--border-radius-base !default;

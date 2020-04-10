@@ -35,14 +35,16 @@
 
   &:not(.is-disabled):hover {
     background: mix($--color-white, $background-color, 90%);
-    border-color: $border-color; // #4DA9E7
-    color: $border-color; // #4DA9E7
+    border-color: mix($--color-white, $border-color, $--button-hover-tint-percent);
+    color: mix($--color-white, $border-color, $--button-hover-tint-percent);
   }
   
   &:not(.is-disabled):active {
     background: mix($--color-white, $background-color, 90%);
-    border-color: $--color-primary-dark;
-    color: $--color-primary-dark;
+    /* border-color: $--color-primary-dark;
+    color: $--color-primary-dark; */
+    border-color: mix($--color-black, $border-color, $--button-active-shade-percent);
+    color: mix($--color-black, $border-color, $--button-active-shade-percent);
     outline: none;
   }
 

@@ -4,16 +4,15 @@
 @import "mixins/mixins";
 @import "mixins/utils";
 
+// 次要按钮 - 默认按钮
 @include b(button) {
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  background: $--button-default-fill;
+  background: $--button-default-fill;/* 对应的 $--color-white */
   border: $--border-base;
-  /* border-color: $--button-default-border;
-  color: $--button-default-color; */
-  border-color: $--button-primary-border;
+  border-color: $--button-primary-border; /* 对应的 $--color-primary */
   color: $--color-primary;
   -webkit-appearance: none;
   text-align: center;
@@ -21,7 +20,6 @@
   outline: none;
   margin: 0;
   transition: .1s;
-  // font-weight: $--button-font-weight;
   @include utils-user-select(none);
   & + .el-button {
     margin-left: 10px;
@@ -30,14 +28,14 @@
   @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius);
 
   &:hover {
-    color: $--button-hover-color;
+    color: $--button-hover-color; /* 对应的 color-primary-light-2 */
     border-color: $--button-hover-color;
     background-color: $--color-primary-light-9;
   }
 
   &:active {
-    color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+    color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
+    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
     outline: none;
   }
 
@@ -50,29 +48,30 @@
       margin-left: 5px;
     }
   }
-
+  // 次要按钮 active 时
+  @include when(active) {
+    color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
+    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
+  }
+  // 基于次要按钮的样式上进行覆写，生成次次要按钮
   @include when(plain) {
-    border-color: $--button-default-border;
-    color: $--button-default-color;
+    border-color: $--button-default-border; /* #ddd */
+    color: $--button-default-color; /* 对应的 color-text-primary */
     &:not(.is-disabled):hover {
       background: $--color-white;
-      border-color: $--button-hover-color;
+      border-color: $--button-hover-color; /* 对应的 color-primary-light-2 */
       color: $--button-hover-color;
     }
 
     &:not(.is-disabled):active {
       background: $--color-white;
-      border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-      color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
+      border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
+      color: mix($--color-black, $--color-primary, $--button-active-shade-percent); /* 主色混黑 10% */
       outline: none;
     }
   }
-
-  @include when(active) {
-    color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-    border-color: mix($--color-black, $--color-primary, $--button-active-shade-percent);
-  }
-
+  
+  // 按钮 disabled 时，所有disable 状态都是用的一类效果
   @include when(disabled) {
     color: $--button-disabled-color;
     cursor: not-allowed;
@@ -101,6 +100,7 @@
     }
   }
 
+  // 次要按钮 有 loading 时
   @include when(loading) {
     position: relative;
     pointer-events: none;
@@ -125,9 +125,11 @@
     border-radius: 50%;
     padding: $--button-padding-vertical;
   }
+  // 基于默认按钮覆写样式，生成主要按钮
   @include m(primary) {
     @include button-variant($--button-primary-color, $--button-primary-fill, $--button-primary-border);
   }
+  // 基于默认按钮覆写样式，生成对应状态按钮
   @include m(success) {
     @include button-variant($--button-success-color, $--button-success-fill, $--button-success-border);
   }
