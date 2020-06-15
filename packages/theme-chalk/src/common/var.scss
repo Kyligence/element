@@ -122,7 +122,7 @@ $--index-popper: 2000 !default;
 -------------------------- */
 $--disabled-fill-base: $--background-color-base !default;
 $--disabled-color-base: $--color-text-disabled !default;
-$--disabled-border-base: $--border-color-light !default;
+$--disabled-border-base: $--border-color-base !default;
 
 /* Icon
 -------------------------- */
@@ -143,10 +143,10 @@ $--checkbox-input-border-color: $--border-color-base !default;
 $--checkbox-icon-color: $--color-white !default;
 
 $--checkbox-disabled-input-border-color: $--border-color-base !default;
-$--checkbox-disabled-input-fill: #fafafa !default;
+$--checkbox-disabled-input-fill: #f5f5f5 !default;
 $--checkbox-disabled-icon-color: $--color-text-placeholder !default;
 
-$--checkbox-disabled-checked-input-fill: $--border-color-extra-light !default;
+$--checkbox-disabled-checked-input-fill: #f5f5f5 !default;
 $--checkbox-disabled-checked-input-border-color: $--border-color-base !default;
 $--checkbox-disabled-checked-icon-color: $--color-text-placeholder !default;
 
