@@ -4,6 +4,31 @@
 @import "tooltip";
 @import "common/var";
 
+@mixin draggable-border() {
+  > .cell:after {
+    content: ' ';
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    right: 0;
+    width: 1px;
+    background-color: $--border-color-base;
+  }
+}
+
+@mixin draggable-header() {
+  thead.has-gutter {
+    th:not(:nth-last-child(2)) {
+      @include draggable-border();
+    }
+  }
+  thead:not(.has-gutter) {
+    th:not(:nth-last-child(1)) {
+      @include draggable-border();
+    }
+  }
+}
+
 @include b(table) {
   position: relative;
   overflow: hidden;
@@ -318,6 +343,18 @@
 
     & th {
       border-bottom: $--table-border;
+    }
+  }
+
+  &:not(.el-table--border) {
+    .el-table__header-wrapper {
+      @include draggable-header();
+    }
+    .el-table__body-wrapper.is-scrolling-left + .el-table__fixed > .el-table__fixed-header-wrapper {
+      @include draggable-header();
+    }
+    .el-table__body-wrapper.is-scrolling-right + .el-table__fixed-right > .el-table__fixed-header-wrapper {
+      @include draggable-header();
     }
   }
 
