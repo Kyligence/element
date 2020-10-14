@@ -1,6 +1,6 @@
 {
   "name": "kyligence-ui",
-  "version": "3.6.15",
+  "version": "3.6.16",
   "description": "powered by kyligence-ui",
   "main": "lib/kyligence-ui.common.js",
   "files": [
