@@ -54,7 +54,7 @@
           {{ item[valueKey] }}
         </slot>
       </li>
-      <li class="load-more" v-if="showLoadMore" @click.prevent="handleLoadingMore"><i class="el-icon-loading" v-if="loadingMore"></i>{{loadMoreText}}</li>
+      <li :class="['load-more', { 'is-disabled': loadingMore }]" v-if="showLoadMore" @click.prevent="handleLoadingMore"><i class="el-icon-loading" v-if="loadingMore"></i>{{loadMoreText}}</li>
     </el-autocomplete-suggestions>
   </div>
 </template>
@@ -185,6 +185,7 @@
         }
       },
       handleBlur(event) {
+        this.loadingMore = false;
         this.$emit('blur', event);
       },
       close(e) {
@@ -236,16 +237,16 @@
         this.$el.querySelector('.el-input__inner').setAttribute('aria-activedescendant', `${this.id}-item-${this.highlightedIndex}`);
       },
       handleLoadingMore () {
-        this.loadingMore = true
+        this.loadingMore = true;
         let callback = (suggestions) => {
-          this.loadingMore = false
+          this.loadingMore = false;
           if (Array.isArray(suggestions)) {
             this.suggestions = suggestions;
           } else {
             console.error('autocomplete suggestions must be an array');
           }
         }
-        this.$emit('loadMore', callback)
+        this.$emit('loadMore', callback);
       }
     },
     mounted() {

@@ -58,6 +58,14 @@
     &.divider:last-child {
       margin-bottom: -6px;
     }
+
+    &.load-more {
+
+      &.is-disabled {
+        pointer-events: none;
+      }
+
+    }
   }
 
   @include when(loading) {
