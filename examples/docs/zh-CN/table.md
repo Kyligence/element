@@ -1500,9 +1500,14 @@
       sortable
       :info-icon="'el-icon-info'"
       :info-tooltip="'测试tooltip'"
+      :show-search-input="true"
+      :show-multiple-footer="false"
+      placeholder="kkk"
       width="180"
+      :filters2="[{text: '全部', value: ''}]"
       :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
       :filter-method="filterHandler"
+      filter-filters-change="filterFiltersChange"
     >
     </el-table-column>
     <el-table-column
@@ -1521,7 +1526,7 @@
       width="100"
       :filters="[{ text: '家', value: '家', icon: 'el-icon-warning' }, { text: '公司', value: '公司' }]"
       :filter-multiple="false"
-      :show-all-select-option="false"
+      :show-multiple-footer="false"
       :filter-change="filterTag"
       :filtered-value="filterTags"
       filter-placement="bottom-end">
@@ -1572,6 +1577,9 @@
       filterHandler(value, row, column) {
         const property = column['property'];
         return row[property] === value;
+      },
+      filterFiltersChange(value) {
+        console.log(value)
       }
     }
   }
@@ -2237,5 +2245,9 @@
 | filter-change | 复选内容更改时的返回数据, 当`show-multiple-footer`为false时可以使用。 | Function | - | - |
 | filter-icon | 筛选自定义icon。 | String | - | - |
 | show-all-select-option | 是否显示`全部`筛选项（筛选数据为单选时该字段可用），如为false可以通过`filter-change`函数获取筛选值。 ｜ Boolean | - | true |
+| show-search-input | 是否显示筛选项搜索框 | Boolean | - | false |
+| placeholder | 筛选项搜索框占位符文案 | String | - | - |
+| filter-filters-change | 筛选项搜索框搜索时过滤筛选项的方法 | Function | - | - |
+| filters2 | 特殊组的数据过滤的选项，数组格式，数组中的元素需要有 text 、 value 和 icon 属性。下划线分割 | Array[{ text, value, icon }] | — | — |
 | info-icon | info icon，用于提示列的解释 | String | - | - |
 | info-tooltip | 用于提示列的解释详细 | String | - | - |
