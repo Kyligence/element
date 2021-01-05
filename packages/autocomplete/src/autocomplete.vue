@@ -236,7 +236,7 @@
         this.highlightedIndex = index;
         this.$el.querySelector('.el-input__inner').setAttribute('aria-activedescendant', `${this.id}-item-${this.highlightedIndex}`);
       },
-      handleLoadingMore () {
+      handleLoadingMore() {
         this.loadingMore = true;
         let callback = (suggestions) => {
           this.loadingMore = false;
@@ -245,7 +245,7 @@
           } else {
             console.error('autocomplete suggestions must be an array');
           }
-        }
+        };
         this.$emit('loadMore', callback);
       }
     },

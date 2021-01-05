@@ -138,10 +138,10 @@
         }
       },
 
-      onPrefixIconClick (event) {
-        event.preventDefault()
-        event.stopPropagation()
-        this.$emit('prefix-icon-click', this.value)
+      onPrefixIconClick(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.$emit('prefix-icon-click', this.value);
       }
     },
 
