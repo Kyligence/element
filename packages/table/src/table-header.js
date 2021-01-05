@@ -350,8 +350,11 @@ export default {
           filterPanel.placement = column.filterPlacement;
         }
         filterPanel.showMultipleFooter = column.showMultipleFooter;
+        filterPanel.showSearchInput = column.showSearchInput;
+        filterPanel.placeholder = column.placeholder;
         filterPanel.showAllSelectOption = column.showAllSelectOption;
         filterPanel.filterChange = column.filterChange;
+        filterPanel.filterFiltersChange = column.filterFiltersChange;
         filterPanel.table = table;
         filterPanel.cell = cell;
         filterPanel.column = column;

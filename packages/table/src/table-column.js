@@ -199,9 +199,19 @@ export default {
     filterChange: Function,
     filteredValue: Array,
     filters: Array,
+    filters2: Array, // 用于底部全量筛选项
     showMultipleFooter: {
       type: Boolean,
       default: true
+    },
+    filterFiltersChange: Function, // 用于表头筛选的下拉中的输入框中的搜索回调
+    showSearchInput: {
+      type: Boolean,
+      default: false
+    },
+    placeholder: { // 用于表头筛选的下拉中的输入框中的文案
+      type: String,
+      default: ''
     },
     filterPlacement: String,
     filterMultiple: {
@@ -303,6 +313,7 @@ export default {
       fixed: this.fixed === '' ? true : this.fixed,
       filterMethod: this.filterMethod,
       filters: this.filters,
+      filters2: this.filters2,
       filterable: this.filters || this.filterMethod,
       filterMultiple: this.filterMultiple,
       filterChange: this.filterChange,
@@ -311,6 +322,9 @@ export default {
       filterPlacement: this.filterPlacement || '',
       index: this.index,
       showMultipleFooter: this.showMultipleFooter,
+      showSearchInput: this.showSearchInput,
+      filterFiltersChange: this.filterFiltersChange,
+      placeholder: this.placeholder,
       filterIcon: this.filterIcon || '',
       showAllSelectOption: this.showAllSelectOption,
       infoIcon: this.infoIcon, // 表头对表头标题的解释 icon

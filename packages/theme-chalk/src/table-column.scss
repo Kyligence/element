@@ -52,6 +52,15 @@
     min-width: 100px;
   }
 
+  @include e(search-input) {
+    padding: 10px 10px 0 10px;
+  }
+
+  @include e(bottom-line) {
+    border-top: 1px solid $--background-color-base;
+    margin-bottom: 10px;
+  }
+
   @include e(bottom) {
     border-top: 1px solid $--border-color-base;
     padding: 8px;

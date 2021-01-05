@@ -1,14 +1,15 @@
 <template>
   <transition name="el-zoom-in-top">{{showMultipleFooter}}
-    <div class="el-table-filter-search" v-if="showSearchInput">
-      <el-input
-        :placeholder="placeholder"
-        @change="filterFilters"
-        v-model.trim="searchValue">
-        <i slot="prefix" class="el-input__icon el-icon-search"></i>
-      </el-input>
-    </div>
     <div class="el-table-filter" v-if="multiple" v-show="showPopper">
+      <div class="el-table-filter__search-input" v-if="showSearchInput">
+        <el-input
+          size="small"
+          :placeholder="placeholder"
+          @change="filterFilters"
+          v-model.trim="searchValue">
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
+      </div>
       <div class="el-table-filter__content">
         <div>{{filterPanelTop}}</div>
         <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue" @change="filterMultipleValue">
@@ -17,7 +18,7 @@
             :key="filter.value"
             :label="filter.value"><i :class="['filter-icon', filter.icon]" v-if="filter.icon"></i>{{ filter.text }}</el-checkbox>
           <template v-if="filters2 && filters2.length">
-            <div class="filter-line"></div>
+            <div class="el-table-filter__bottom-line"></div>
             <el-checkbox
               v-for="filter in filters2"
               :key="filter.value"
@@ -33,6 +34,15 @@
       </div>
     </div>
     <div class="el-table-filter" v-else v-show="showPopper">
+      <div class="el-table-filter__search-input" v-if="showSearchInput">
+        <el-input
+          size="small"
+          :placeholder="placeholder"
+          @change="filterFilters"
+          v-model.trim="searchValue">
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
+      </div>
       <ul class="el-table-filter__list">
         <li class="el-table-filter__list-item"
             v-if="showAllSelectOption"
@@ -45,7 +55,7 @@
             :class="{ 'is-active': isActive(filter) }"
             @click="handleSelect(filter.value)" >{{ filter.text }}</li>
         <template v-if="filters2 && filters2.length">
-          <div class="filter-line"></div>
+          <div class="el-table-filter__bottom-line"></div>
           <li class="el-table-filter__list-item"
             v-for="filter in filters2"
             :label="filter.value"

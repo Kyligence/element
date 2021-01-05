@@ -361,6 +361,10 @@
       radioChange(radio, row) {
         console.log(radio);
         console.log(row);
+      },
+
+      filterFiltersChange(value) {
+        console.log(value);
       }
     },
 
@@ -1502,12 +1506,12 @@
       :info-tooltip="'测试tooltip'"
       :show-search-input="true"
       :show-multiple-footer="false"
-      placeholder="kkk"
+      placeholder="请搜索"
       width="180"
-      :filters2="[{text: '全部', value: ''}]"
+      :filters2="[{text: 'all models', value: ''}]"
       :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
       :filter-method="filterHandler"
-      filter-filters-change="filterFiltersChange"
+      :filter-filters-change="filterFiltersChange"
     >
     </el-table-column>
     <el-table-column
