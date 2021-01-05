@@ -1,5 +1,5 @@
 <template>
-  <transition name="el-zoom-in-top">{{showMultipleFooter}}
+  <transition name="el-zoom-in-top">
     <div class="el-table-filter" v-if="multiple" v-show="showPopper">
       <div class="el-table-filter__search-input" v-if="showSearchInput">
         <el-input
