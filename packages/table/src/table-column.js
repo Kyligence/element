@@ -199,7 +199,11 @@ export default {
     filterChange: Function,
     filteredValue: Array,
     filters: Array,
-    filters2: Array, // 用于底部全量筛选项
+    filters2: Array, // 用于顶部全量筛选项
+    emptyFilterText: {
+      type: String,
+      default: 'No Data'
+    },
     showMultipleFooter: {
       type: Boolean,
       default: true
@@ -314,6 +318,7 @@ export default {
       filterMethod: this.filterMethod,
       filters: this.filters,
       filters2: this.filters2,
+      emptyFilterText: this.emptyFilterText,
       filterable: this.filters || this.filterMethod,
       filterMultiple: this.filterMultiple,
       filterChange: this.filterChange,

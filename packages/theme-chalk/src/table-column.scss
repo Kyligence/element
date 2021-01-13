@@ -58,7 +58,7 @@
 
   @include e(bottom-line) {
     border-top: 1px solid $--background-color-base;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   @include e(bottom) {
@@ -86,6 +86,16 @@
         cursor: not-allowed;
       }
     }
+  }
+
+  @include e(no-data) {
+    width: 100%;
+    padding: 20px;
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    color: $--color-text-disabled;
   }
 
   @include e(checkbox-group) {

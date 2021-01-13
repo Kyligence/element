@@ -5,26 +5,29 @@
         <el-input
           size="small"
           :placeholder="placeholder"
-          @change="filterFilters"
+          @input="filterFilters"
           v-model.trim="searchValue">
           <i slot="prefix" class="el-input__icon el-icon-search"></i>
         </el-input>
       </div>
       <div class="el-table-filter__content">
         <div>{{filterPanelTop}}</div>
-        <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue" @change="filterMultipleValue">
-          <el-checkbox
-            v-for="filter in filters"
-            :key="filter.value"
-            :label="filter.value"><i :class="['filter-icon', filter.icon]" v-if="filter.icon"></i>{{ filter.text }}</el-checkbox>
-          <template v-if="filters2 && filters2.length">
-            <div class="el-table-filter__bottom-line"></div>
+        <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue" @change="filterMultipleValue" v-if="filters.length">
+          <template v-if="!searchValue && filters2 && filters2.length">
             <el-checkbox
               v-for="filter in filters2"
               :key="filter.value"
               :label="filter.value"><i :class="['filter-icon', filter.icon]" v-if="filter.icon"></i>{{ filter.text }}</el-checkbox>
+            <div class="el-table-filter__bottom-line"></div>
           </template>
+          <el-checkbox
+            v-for="filter in filters"
+            :key="filter.value"
+            :label="filter.value"><i :class="['filter-icon', filter.icon]" v-if="filter.icon"></i>{{ filter.text }}</el-checkbox>
         </el-checkbox-group>
+        <template v-else>
+          <span class="el-table-filter__no-data">{{emptyFilterText}}</span>
+        </template>
       </div>
       <div class="el-table-filter__bottom" v-show="showMultipleFooter">
         <button @click="handleConfirm"
@@ -38,30 +41,35 @@
         <el-input
           size="small"
           :placeholder="placeholder"
-          @change="filterFilters"
+          @input="filterFilters"
           v-model.trim="searchValue">
           <i slot="prefix" class="el-input__icon el-icon-search"></i>
         </el-input>
       </div>
       <ul class="el-table-filter__list">
-        <li class="el-table-filter__list-item"
-            v-if="showAllSelectOption"
-            :class="{ 'is-active': filterValue === undefined || filterValue === null }"
-            @click="handleSelect(null)">{{ t('el.table.clearFilter') }}</li>
-        <li class="el-table-filter__list-item"
-            v-for="filter in filters"
-            :label="filter.value"
-            :key="filter.value"
-            :class="{ 'is-active': isActive(filter) }"
-            @click="handleSelect(filter.value)" >{{ filter.text }}</li>
-        <template v-if="filters2 && filters2.length">
-          <div class="el-table-filter__bottom-line"></div>
+        <template v-if="filters.length">
           <li class="el-table-filter__list-item"
-            v-for="filter in filters2"
-            :label="filter.value"
-            :key="filter.value"
-            :class="{ 'is-active': isActive(filter) }"
-            @click="handleSelect(filter.value)" >{{ filter.text }}</li>
+              v-if="showAllSelectOption"
+              :class="{ 'is-active': filterValue === undefined || filterValue === null }"
+              @click="handleSelect(null)">{{ t('el.table.clearFilter') }}</li>
+          <template v-if="filters2 && filters2.length">
+            <li class="el-table-filter__list-item"
+              v-for="filter in filters2"
+              :label="filter.value"
+              :key="filter.value"
+              :class="{ 'is-active': isActive(filter) }"
+              @click="handleSelect(filter.value)" >{{ filter.text }}</li>
+            <div class="el-table-filter__bottom-line"></div>
+          </template>
+          <li class="el-table-filter__list-item"
+              v-for="filter in filters"
+              :label="filter.value"
+              :key="filter.value"
+              :class="{ 'is-active': isActive(filter) }"
+              @click="handleSelect(filter.value)" >{{ filter.text }}</li>
+        </template>
+        <template v-else>
+          <span class="el-table-filter__no-data">{{emptyFilterText}}</span>
         </template>
       </ul>
     </div>
@@ -110,7 +118,11 @@
       },
       filterFiltersChange: Function,
       filterChange: Function,
-      filterPanelTop: Number
+      filterPanelTop: Number,
+      emptyFilterText: {
+        type: String,
+        default: 'No Data'
+      }
     },
 
     customRender(h) {
