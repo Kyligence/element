@@ -359,6 +359,7 @@ export default {
         filterPanel.cell = cell;
         filterPanel.column = column;
         filterPanel.emptyFilterText = column.emptyFilterText;
+        filterPanel.customFilterClass = column.customFilterClass;
         !this.$isServer && filterPanel.$mount(document.createElement('div'));
       }
 

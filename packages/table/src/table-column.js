@@ -204,6 +204,7 @@ export default {
       type: String,
       default: 'No Data'
     },
+    customFilterClass: String, // 自定义filter样式
     showMultipleFooter: {
       type: Boolean,
       default: true
@@ -319,6 +320,7 @@ export default {
       filters: this.filters,
       filters2: this.filters2,
       emptyFilterText: this.emptyFilterText,
+      customFilterClass: this.customFilterClass,
       filterable: this.filters || this.filterMethod,
       filterMultiple: this.filterMultiple,
       filterChange: this.filterChange,

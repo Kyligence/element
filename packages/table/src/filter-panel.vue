@@ -1,6 +1,6 @@
 <template>
   <transition name="el-zoom-in-top">
-    <div class="el-table-filter" v-if="multiple" v-show="showPopper">
+    <div :class="['el-table-filter', customFilterClass]" v-if="multiple" v-show="showPopper">
       <div class="el-table-filter__search-input" v-if="showSearchInput">
         <el-input
           size="small"
@@ -36,7 +36,7 @@
         <button @click="handleReset">{{ t('el.table.resetFilter') }}</button>
       </div>
     </div>
-    <div class="el-table-filter" v-else v-show="showPopper">
+    <div :class="['el-table-filter', customFilterClass]" v-else v-show="showPopper">
       <div class="el-table-filter__search-input" v-if="showSearchInput">
         <el-input
           size="small"
@@ -122,6 +122,10 @@
       emptyFilterText: {
         type: String,
         default: 'No Data'
+      },
+      customFilterClass: {
+        type: String,
+        default: ''
       }
     },
 
