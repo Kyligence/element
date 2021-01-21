@@ -405,6 +405,24 @@ export default {
       }
     },
 
+    filters2: function filters2(newVal) {
+      if (this.columnConfig) {
+        this.columnConfig.filters2 = newVal;
+      }
+    },
+
+    placeholder: function placeholder(newVal) {
+      if (this.columnConfig) {
+        this.columnConfig.placeholder = newVal;
+      }
+    },
+
+    emptyFilterText: function emptyFilterText(newVal) {
+      if (this.columnConfig) {
+        this.columnConfig.emptyFilterText = newVal;
+      }
+    },
+
     filterMultiple(newVal) {
       if (this.columnConfig) {
         this.columnConfig.filterMultiple = newVal;

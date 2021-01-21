@@ -112,17 +112,9 @@
         type: Boolean,
         default: false
       },
-      placeholder: {
-        type: String,
-        default: ''
-      },
       filterFiltersChange: Function,
       filterChange: Function,
       filterPanelTop: Number,
-      emptyFilterText: {
-        type: String,
-        default: 'No Data'
-      },
       customFilterClass: {
         type: String,
         default: ''
@@ -219,6 +211,14 @@
 
       filters2() {
         return this.column && this.column.filters2;
+      },
+
+      emptyFilterText: function emptyFilterText() {
+        return this.column && this.column.emptyFilterText
+      },
+
+      placeholder: function placeholder() {
+        return this.column && this.column.placeholder
       },
 
       filterValue: {
