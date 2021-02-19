@@ -5,11 +5,12 @@
     role="tree"
   >
     <el-tree-node
-      v-for="child in root.childNodes"
+      v-for="(child, index) in root.childNodes"
       :node="child"
       :props="props"
       :render-after-expand="renderAfterExpand"
       :key="getNodeKey(child)"
+      :index="index"
       :render-content="renderContent"
       @node-expand="handleNodeExpand">
     </el-tree-node>
@@ -25,6 +26,8 @@
   import ElTreeNode from './tree-node.vue';
   import {t} from 'kyligence-ui/src/locale';
   import emitter from 'kyligence-ui/src/mixins/emitter';
+
+  const DEFAULT_FUNC_TRUE = () => true
 
   export default {
     name: 'ElTree',
@@ -106,6 +109,10 @@
       indent: {
         type: Number,
         default: 18
+      },
+      shouldNodeRender: {
+        type: Function,
+        default: DEFAULT_FUNC_TRUE
       }
     },
 
