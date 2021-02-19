@@ -298,7 +298,8 @@
         defaultExpandedKeys: this.defaultExpandedKeys,
         autoExpandParent: this.autoExpandParent,
         defaultExpandAll: this.defaultExpandAll,
-        filterNodeMethod: this.filterNodeMethod
+        filterNodeMethod: this.filterNodeMethod,
+        shouldNodeRender: this.shouldNodeRender
       });
 
       this.root = this.store.root;

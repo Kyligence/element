@@ -294,6 +294,10 @@
       filterNode(value, data) {
         if (!value) return true;
         return data.label.indexOf(value) !== -1;
+      },
+
+      shouldNodeRender(node, data, index) {
+        return data.label !== '三级 3-2-1'
       }
     },
 
@@ -304,6 +308,7 @@
         data3,
         data4: JSON.parse(JSON.stringify(data2)),
         data5: JSON.parse(JSON.stringify(data2)),
+        data6: JSON.parse(JSON.stringify(data3)),
         regions,
         defaultProps,
         props,
@@ -998,6 +1003,73 @@
     methods: {
       handleNodeClick(data) {
         console.log(data);
+      }
+    }
+  };
+</script>
+```
+:::
+
+### 判断节点是否展示
+
+判断节点是否展示
+
+:::demo
+```html
+<div>
+  <el-tree
+    :data="data6"
+    show-overflow-tooltip
+    :props="defaultProps"
+    :should-node-render="shouldNodeRender"
+    @node-click="handleNodeClick">
+  </el-tree>
+</div>
+
+<script>
+  export default {
+    data() {
+      return {
+        data: [{
+          id: 1,
+          label: '一级 2',
+          children: [{
+            id: 3,
+            label: '二级 2-1',
+            children: [{
+              id: 4,
+              label: '三级 3-1-1'
+            }, {
+              id: 5,
+              label: '三级 3-1-2',
+              disabled: true
+            }]
+          }, {
+            id: 2,
+            label: '二级 2-2',
+            disabled: true,
+            children: [{
+              id: 6,
+              label: '三级 3-2-1'
+            }, {
+              id: 7,
+              label: '三级 3-2-2',
+              disabled: true
+            }]
+          }]
+        }],
+        defaultProps: {
+          children: 'children',
+          label: 'label'
+        }
+      };
+    },
+    methods: {
+      handleNodeClick(data) {
+        console.log(data);
+      },
+      shouldNodeRender(node, data, index) {
+        return data.label !== '三级 3-2-1'
       }
     }
   };
