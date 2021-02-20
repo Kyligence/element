@@ -32,13 +32,11 @@ export default class TreeStore {
 
   filter(value) {
     const filterNodeMethod = this.filterNodeMethod;
-    const shouldNodeRender = this.shouldNodeRender;
     const traverse = function(node) {
       const childNodes = node.root ? node.root.childNodes : node.childNodes;
 
       childNodes.forEach((child, index) => {
-        child.visible = filterNodeMethod.call(child, value, child.data, child) &&
-          shouldNodeRender.call(child, child, child.data, index);
+        child.visible = filterNodeMethod.call(child, value, child.data, child);
 
         traverse(child);
       });

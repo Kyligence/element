@@ -297,7 +297,7 @@
       },
 
       shouldNodeRender(node, data, index) {
-        return data.label !== '三级 3-2-1'
+        return data.label !== this.hiddenNodeLabel
       }
     },
 
@@ -315,7 +315,8 @@
         props1,
         defaultCheckedKeys: [5],
         defaultExpandedKeys: [2, 3],
-        filterText: ''
+        filterText: '',
+        hiddenNodeLabel: '三级 3-2-1'
       };
     }
   };
@@ -1010,13 +1011,18 @@
 ```
 :::
 
-### 判断节点是否展示
+### 判断节点是否渲染
 
-判断节点是否展示
+判断节点是否渲染
 
 :::demo
 ```html
 <div>
+  <el-form label-position="left">
+    <el-form-item label="隐藏节点的label">
+      <el-input v-model="hiddenNodeLabel"></el-input>
+    </el-form-item>
+  </el-form>
   <el-tree
     :data="data6"
     show-overflow-tooltip
@@ -1030,6 +1036,7 @@
   export default {
     data() {
       return {
+        hiddenNodeLabel: '三级 3-2-1',
         data: [{
           id: 1,
           label: '一级 2',
@@ -1069,7 +1076,7 @@
         console.log(data);
       },
       shouldNodeRender(node, data, index) {
-        return data.label !== '三级 3-2-1'
+        return data.label !== this.hiddenNodeLabel
       }
     }
   };
@@ -1096,7 +1103,7 @@
 | check-strictly        | 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法，默认为 false   | boolean                     | —    | false |
 | default-checked-keys  | 默认勾选的节点的 key 的数组                        | array                       | —    | —     |
 | filter-node-method    | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(value, data, node) | —    | —     |
-| should-node-render    | 对树节点进行渲染时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(node, data, index) | —    | —     |
+| should-node-render    | 对树节点进行渲染时执行的方法，返回 true 表示这个节点可以渲染，返回 false 则表示这个节点不被渲染(非display: none) | Function(node, data, index) | —    | —     |
 | accordion             | 是否每次只打开一个同级树节点展开                   | boolean                     | —    | false |
 | indent                | 相邻级节点间的水平缩进，单位为像素                 | number                     | —    | 16 |
 | lazy                  | 是否懒加载子节点，需与 load 方法结合使用           | boolean                     | —    | false |

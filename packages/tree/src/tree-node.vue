@@ -3,11 +3,11 @@
     class="el-tree-node"
     @click.stop="handleClick"
     @contextmenu="($event) => this.handleContextMenu($event)"
-    v-show="node.visible && shouldNodeRender"
+    v-show="node.visible"
     :class="{
       'is-expanded': expanded,
       'is-current': tree.store.currentNode === node,
-      'is-hidden': !node.visible || !shouldNodeRender,
+      'is-hidden': !node.visible,
       'is-focusable': !node.disabled,
       'is-checked': !node.disabled && node.checked
     }"
@@ -53,11 +53,11 @@
       >
         <el-tree-node
           :render-content="renderContent"
-          v-for="(child, childIndex) in node.childNodes"
+          v-for="child in childNodes"
           :render-after-expand="renderAfterExpand"
           :key="getNodeKey(child)"
           :node="child"
-          :index="childIndex"
+          :should-node-render="shouldNodeRender"
           @node-expand="handleChildNodeExpand">
         </el-tree-node>
       </div>
@@ -88,12 +88,12 @@
         }
       },
       props: {},
-      index: Number,
       renderContent: Function,
       renderAfterExpand: {
         type: Boolean,
         default: true
-      }
+      },
+      shouldNodeRender: Function
     },
 
     components: {
@@ -152,9 +152,11 @@
     },
 
     computed: {
-      shouldNodeRender () {
-        const { tree, node, index } = this
-        return tree.shouldNodeRender(node, node.data, index)
+      childNodes() {
+        const { node: { childNodes }, shouldNodeRender } = this
+        return childNodes.filter(
+          (childNode, index) => shouldNodeRender(childNode, childNode.data, index)
+        )
       }
     },
 

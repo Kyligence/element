@@ -5,16 +5,16 @@
     role="tree"
   >
     <el-tree-node
-      v-for="(child, index) in root.childNodes"
+      v-for="child in childNodes"
       :node="child"
       :props="props"
       :render-after-expand="renderAfterExpand"
       :key="getNodeKey(child)"
-      :index="index"
       :render-content="renderContent"
+      :should-node-render="shouldNodeRender"
       @node-expand="handleNodeExpand">
     </el-tree-node>
-    <div class="el-tree__empty-block" v-if="!root.childNodes || root.childNodes.length === 0">
+    <div class="el-tree__empty-block" v-if="!childNodes || childNodes.length === 0">
       <span class="el-tree__empty-text">{{ emptyText }}</span>
     </div>
   </div>
@@ -27,7 +27,7 @@
   import {t} from 'kyligence-ui/src/locale';
   import emitter from 'kyligence-ui/src/mixins/emitter';
 
-  const DEFAULT_FUNC_TRUE = () => true
+  const DEFAULT_FUNC_TRUE = () => true;
 
   export default {
     name: 'ElTree',
@@ -124,6 +124,12 @@
         get() {
           return this.data;
         }
+      },
+      childNodes() {
+        const { root: { childNodes }, shouldNodeRender } = this
+        return childNodes.filter(
+          (childNode, index) => shouldNodeRender(childNode, childNode.data, index)
+        )
       },
       treeItemArray() {
         return Array.prototype.slice.call(this.treeItems);
@@ -298,8 +304,7 @@
         defaultExpandedKeys: this.defaultExpandedKeys,
         autoExpandParent: this.autoExpandParent,
         defaultExpandAll: this.defaultExpandAll,
-        filterNodeMethod: this.filterNodeMethod,
-        shouldNodeRender: this.shouldNodeRender
+        filterNodeMethod: this.filterNodeMethod
       });
 
       this.root = this.store.root;
