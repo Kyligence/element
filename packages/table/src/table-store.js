@@ -324,7 +324,7 @@ TableStore.prototype.mutations = {
     if (selectionChanged) {
       table.$emit('selection-change', selection ? selection.slice() : []);
     }
-    table.$emit('select-all', selection);
+    table.$emit('select-all', selection, value);
     states.isAllSelected = value;
   })
 };

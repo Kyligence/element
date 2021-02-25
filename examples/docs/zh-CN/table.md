@@ -291,6 +291,10 @@
         this.multipleSelection = val;
       },
 
+      handleSelectAll (selection, isSelectAll) {
+        console.log(selection, isSelectAll)
+      },
+
       handleCurrentChange(val) {
         this.currentRow = val;
       },
@@ -1347,6 +1351,7 @@
     :data="tableData3"
     tooltip-effect="dark"
     style="width: 100%"
+    @select-all="handleSelectAll"
     @selection-change="handleSelectionChange">
     <el-table-column
       type="selection"
@@ -1423,6 +1428,9 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
+      },
+      handleSelectAll (selection, isSelectAll) {
+        console.log(selection, isSelectAll)
       }
     }
   }
@@ -2194,7 +2202,7 @@
 | 事件名 | 说明 | 参数 |
 | ---- | ---- | ---- |
 | select | 当用户手动勾选数据行的 Checkbox 时触发的事件 | selection, row |
-| select-all | 当用户手动勾选全选 Checkbox 时触发的事件 | selection |
+| select-all | 当用户手动勾选全选 Checkbox 时触发的事件 | selection, isSelectAll |
 | selection-change | 当选择项发生变化时会触发该事件 | selection |
 | radio-change | 当单选选项发生变化时会触发该事件 | selection, row |
 | cell-mouse-enter | 当单元格 hover 进入时会触发该事件 | row, column, cell, event |
