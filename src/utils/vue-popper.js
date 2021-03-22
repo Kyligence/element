@@ -184,7 +184,7 @@ export default {
         }
       }
 
-      const arrow = document.createElement('div');
+      const arrow = document.createElement('span');
 
       if (hash) {
         arrow.setAttribute(hash, '');

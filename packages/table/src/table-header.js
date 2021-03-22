@@ -351,14 +351,12 @@ export default {
         }
         filterPanel.showMultipleFooter = column.showMultipleFooter;
         filterPanel.showSearchInput = column.showSearchInput;
-        filterPanel.placeholder = column.placeholder;
         filterPanel.showAllSelectOption = column.showAllSelectOption;
         filterPanel.filterChange = column.filterChange;
         filterPanel.filterFiltersChange = column.filterFiltersChange;
         filterPanel.table = table;
         filterPanel.cell = cell;
         filterPanel.column = column;
-        filterPanel.emptyFilterText = column.emptyFilterText;
         filterPanel.customFilterClass = column.customFilterClass;
         !this.$isServer && filterPanel.$mount(document.createElement('div'));
       }
