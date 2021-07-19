@@ -260,7 +260,6 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 ```html
 <template>
   <el-select v-model="value" placeholder="请选择">
-    <span slot="prefix" class="el-input__icon el-icon-loading"></span>
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -341,6 +340,55 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 </script>
 ```
 :::
+
+### 指定下拉出现位置的用法
+
+适用弹窗里比较靠下部分时，下拉无法撑开弹窗，这时候可以指定下拉出现的方向。
+
+推荐可用的值：top/top-start/top-end/bottom/bottom-start/bottom-end，上下排布是常用场景。
+
+不推荐的值：left/left-start/left-end/right/right-start/right-end，左右分布虽然也支持，但没有做箭头的适配。
+:::demo `v-model`的值为当前被选中的`el-option`的 value 属性值
+```html
+<template>
+  <el-select v-model="value" placeholder="请选择" :placement="'top-start'">
+    <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: ''
+      }
+    }
+  }
+</script>
+```
+:::
+
 
 ### 有选中值的用法
 
@@ -945,6 +993,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | page-size | 分页加载，每页加载option条数 | number | - | 50 |
 | load-more-text | 加载更多的提示文案 | String | 加载更多 | - |
 | duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean | false | - |
+|  placement        |  select 的下拉框出现位置  | String           |  top/top-start/top-end/bottom/bottom-start/bottom-end |  bottom-start  |
 
 
 ### Select Events
