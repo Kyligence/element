@@ -2,7 +2,9 @@
   module.exports = {
     methods: {
       open() {
-        this.$message('这是一条消息提示');
+        this.$message({
+          message: '这是一条消息提示'
+        });
       },
 
       openVn() {
@@ -90,6 +92,18 @@
 
 常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。
 
+另外由于一些项目线定制，需要全局针对 message 的停留时间，以及是否出现关闭按钮做统一配置，所以全局提供参数 `messageDuration` 和 `messageShowClose`, 用于统一控制项目中的 message 停留时间和关闭按钮。该配置的优先级低于实例化时的参数优先级。
+
+全局参数的使用方式如下：
+
+```
+Vue.use(Element, {
+  messageDuration: 6000,
+  messageShowClose: true
+});
+// Element 即组件库实例
+```
+
 ### 基础用法
 
 从顶部出现，3 秒后自动消失。
@@ -169,10 +183,22 @@
 ### 可关闭
 
 可以添加关闭按钮
-1、错误信息需要手动关闭，不会自动消失，duration设置为0。
-2、页面上出现较多message时，就需要每打开一个，关闭其他所有，这时可以配置closeOtherMessages为true，默认不会关闭其他。
-3、示例中，是全局设置了统一关闭的，消息message，设置了不关闭。
 
+1、错误信息需要手动关闭，不会自动消失，duration 设置为 0。
+
+2、页面上出现较多 message 时，就需要每打开一个，关闭其他所有，这时可以配置 closeOtherMessages 为 true，默认不会关闭其他。
+
+3、由于一些项目线定制，需要全局针对 message 的停留时间，以及是否出现关闭按钮做统一配置，所以全局提供参数 `messageDuration` 和 `messageShowClose`, 用于统一控制项目中的 message 停留时间和关闭按钮。该配置的优先级低于实例化时的参数优先级。
+
+全局参数的使用方式如下：
+
+```
+Vue.use(Element, {
+  messageDuration: 6000,
+  messageShowClose: true
+});
+// Element 即组件库实例
+```
 
 :::demo 默认的 Message 是不可以被人工关闭的，如果需要可手动关闭的 Message，可以使用`showClose`字段。此外，和 Notification 一样，Message 拥有可控的`duration`，设置`0`为不会被自动关闭，默认为 3000 毫秒。
 ```html

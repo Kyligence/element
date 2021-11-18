@@ -33,6 +33,8 @@ const install = function(Vue, opts = {}) {
 
   const ELEMENT = {};
   ELEMENT.size = opts.size || '';
+  ELEMENT.messageDuration = opts.messageDuration !== undefined ? opts.messageDuration : undefined;
+  ELEMENT.messageShowClose = opts.messageShowClose !== undefined ? opts.messageShowClose : undefined;
 
   Vue.prototype.$loading = Loading.service;
   Vue.prototype.$msgbox = MessageBox;
@@ -46,8 +48,8 @@ const install = function(Vue, opts = {}) {
   Vue.prototype.$KY_ELEMENT = getKyligenceConfiguration(opts);
 
   Vue.nextTick(() => {
-    document.getElementsByTagName("script").length > 0 && require('./iconfont/iconfont.js')
-  })
+    document.getElementsByTagName('script').length > 0 && require('./iconfont/iconfont.js');
+  });
 };
 
 /* istanbul ignore if */

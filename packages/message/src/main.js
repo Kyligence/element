@@ -20,6 +20,13 @@ const Message = function(options) {
   if (options.closeOtherMessages || ((Vue.prototype.$ELEMENT || {}).closeOtherMessages && options.closeOtherMessages === undefined)) {
     Message.closeAll();
   }
+  // 如果组件本身没设置 duration 和 showClose 这个字段，但全局配置了，这时候需要将全局的设置给组件，便于全局设置消失时间和是否可关闭
+  if (Vue.prototype.$ELEMENT && Vue.prototype.$ELEMENT.messageDuration !== undefined && options.duration === undefined) {
+    options.duration = Vue.prototype.$ELEMENT.messageDuration;
+  }
+  if (Vue.prototype.$ELEMENT && Vue.prototype.$ELEMENT.messageShowClose !== undefined && options.showClose === undefined) {
+    options.showClose = Vue.prototype.$ELEMENT.messageShowClose;
+  }
   let userOnClose = options.onClose;
   let id = 'message_' + seed++;
 
