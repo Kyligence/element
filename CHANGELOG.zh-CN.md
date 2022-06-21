@@ -1,5 +1,15 @@
 ## 更新日志
 
+### 4.0.61
+*2022-06-01*
+- 新增：input-number 组件 input 内容对齐方式（left、right)
+- 新增：tags 增加一系列浅色图标
+- 新增：tabs 增加 large 和 small 尺寸，并去除 card-tabs、nav-tabs 之间的间距
+- 修改：button 文字设置最小宽度
+- 修改：组件库 $--font-weight-medium 字体粗细变量由原先的 500 改为 600
+- 修改：Dropdown Active 样式调整
+- 修改：Pagination 页数之间增加 2px 间距
+
 ### 4.0.60
 *2022-06-01*
 - 新增：新规范 icon （large close、linked、unlinked）

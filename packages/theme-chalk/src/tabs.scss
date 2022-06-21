@@ -108,7 +108,7 @@
     text-align: center;
     color: $--color-text-regular;
     position: relative;
-    margin-right: 32px;
+    // margin-right: 32px;
 
     &:last-child {
       margin-right: 0px;
@@ -122,9 +122,11 @@
     }
     .prefixIcon22{
       font-size: 22px;
+      margin-right: 4px;
     }
     .prefixIcon16{
       font-size: 16px;
+      margin-right: 4px;
     }
 
     &:hover {
@@ -157,8 +159,8 @@
     @include when(active) {
       color: $--color-text-primary;
       font-weight: $--font-weight-medium;
-      height: 38px;
-      line-height: 38px;
+      // height: 38px;
+      // line-height: 38px;
     }
 
     &:hover {
@@ -170,6 +172,30 @@
     @include when(disabled) {
       color: $--disabled-color-base;
       cursor: default;
+    }
+  }
+  @include m(large) {
+    .el-tabs__item {
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  @include m(small) {
+    .el-tabs__item {
+      height: 32px;
+      line-height: 32px;
+      font-size: 12px;
+      padding: 0 12px !important;
+      [class^="el-ksd-icon-"], [class^="el-ksd-n-icon-"] {
+        font-size: 16px;
+      }
+    }
+    &.el-tabs--card {
+      .el-tabs__item {
+        height: 30px;
+        line-height: 30px;
+      }
     }
   }
   @include e(content) {
@@ -207,7 +233,7 @@
       transform-origin: 100% 50%;
     }
     > .el-tabs__header .el-tabs__item {
-      padding: 0 20px;
+      // padding: 0 20px;
       border-bottom: 1px solid transparent;
       // border-right: 1px solid $--border-secondary;
       margin-right: 0px;
@@ -228,22 +254,22 @@
       // }
       &.is-active {
         border: 1px solid $--border-divider-color;
-        height: 37px;
-        line-height: 37px;
+        // height: 37px;
+        // line-height: 37px;
         border-bottom-color: #fff;
         border-radius: 4px 4px 0 0;
         box-sizing: content-box;
         background-color: $--color-white;
         left: -1px;
 
-        &.is-closable {
-          padding-left: 20px;
-          padding-right: 20px;
+        // &.is-closable {
+          // padding-left: 20px;
+          // padding-right: 20px;
 
-          .close-btn-icon {
+          // .close-btn-icon {
             // width: 14px;
-          }
-        }
+        //   }
+        // }
       }
       &.is-top:not(.is-active) {
         &::after {

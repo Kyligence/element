@@ -114,7 +114,8 @@
 :::tip 
 新规范调整内容
 * ##### 按照新的规范，tab主要使用两种 1.默认tab 2.card类型 。
-* ##### 按照新的规范，line-tab 高度调整为38px，card-tab 高度调整为39px，可关闭模式下 close 样式调整（hover 展示关闭按钮）
+* ##### 可关闭模式下 close 样式调整（hover 展示关闭按钮）
+* ##### 增加 large、small 尺寸
 
 注意修改事项：
 * ##### 一级tab使用card模式 二级使用默认tab。不可以超过两级
@@ -131,7 +132,21 @@
 ```html
 <template>
   <p>基础用法</p>
-  <el-tabs v-model="activeName" @tab-click="handleClick" :before-leave="beforeLeave">
+  <el-tabs v-model="activeName" @tab-click="handleClick" :before-leave="beforeLeave" size="large">
+    <el-tab-pane label="用户" name="first">用户管理</el-tab-pane>
+    <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+    <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+    <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+  </el-tabs>
+
+  <el-tabs v-model="activeName" @tab-click="handleClick" size="medium">
+    <el-tab-pane label="用户" name="first">用户管理</el-tab-pane>
+    <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+    <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+    <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+  </el-tabs>
+
+  <el-tabs v-model="activeName" @tab-click="handleClick" size="small">
     <el-tab-pane label="用户" name="first">用户管理</el-tab-pane>
     <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
     <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
@@ -218,7 +233,45 @@
 
 ```html
 <template>
+  <el-tabs v-model="activeName2" type="card" @tab-click="handleClick" closable size="large">
+    <el-tab-pane name="first">
+      <span slot="label"><i class="el-ksd-icon-banch_22 prefixIcon22"></i> 用户管理</span>
+      用户管理
+    </el-tab-pane>
+    <el-tab-pane name="second">
+      <span slot="label"><i class="el-ksd-icon-cluster_22 prefixIcon22"></i> 配置管理</span>
+      配置管理
+    </el-tab-pane>
+    <el-tab-pane name="third">
+      <span slot="label"><i class="el-ksd-icon-company_22 prefixIcon22"></i> 角色管理</span>
+      角色管理
+    </el-tab-pane>
+    <el-tab-pane name="fourth">
+      <span slot="label"><i class="el-ksd-n-icon-workspace-outlined prefixIcon22"></i> 定时任务补偿</span>
+      定时任务补偿</el-tab-pane>
+  </el-tabs>
+  <br/>
+
   <el-tabs v-model="activeName2" type="card" @tab-click="handleClick" closable>
+    <el-tab-pane name="first">
+      <span slot="label"><i class="el-ksd-icon-banch_22 prefixIcon22"></i> 用户管理</span>
+      用户管理
+    </el-tab-pane>
+    <el-tab-pane name="second">
+      <span slot="label"><i class="el-ksd-icon-cluster_22 prefixIcon22"></i> 配置管理</span>
+      配置管理
+    </el-tab-pane>
+    <el-tab-pane name="third">
+      <span slot="label"><i class="el-ksd-icon-company_22 prefixIcon22"></i> 角色管理</span>
+      角色管理
+    </el-tab-pane>
+    <el-tab-pane name="fourth">
+      <span slot="label"><i class="el-ksd-n-icon-workspace-outlined prefixIcon22"></i> 定时任务补偿</span>
+      定时任务补偿</el-tab-pane>
+  </el-tabs>
+  <br/>
+
+  <el-tabs v-model="activeName2" type="card" @tab-click="handleClick" closable size="small">
     <el-tab-pane name="first">
       <span slot="label"><i class="el-ksd-icon-banch_22 prefixIcon22"></i> 用户管理</span>
       用户管理
