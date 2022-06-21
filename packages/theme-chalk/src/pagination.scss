@@ -184,6 +184,7 @@
       color: $--color-text-regular;
       min-width: $--pagination-button-height;
       border-radius: 0;
+      margin-right: 0;
       &.disabled {
         color: $--color-text-placeholder;
         background-color: $--background-color-base;
@@ -257,8 +258,11 @@
     cursor: pointer;
     box-sizing: border-box;
     text-align: center;
-    margin: 0;
+    margin: 0 2px 0 0;
     border-radius: 4px;
+    &:last-child {
+      margin-right: 0;
+    }
 
     &.btn-quicknext,
     &.btn-quickprev {

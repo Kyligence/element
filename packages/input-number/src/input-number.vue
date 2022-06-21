@@ -28,6 +28,7 @@
     </span>
     <el-input
       ref="input"
+      :class="[getContentAlign]"
       :value="currentValue"
       :disabled="inputNumberDisabled"
       :size="inputNumberSize"
@@ -101,7 +102,8 @@
       },
       name: String,
       label: String,
-      inputEnabled: Boolean
+      inputEnabled: Boolean,
+      contentAlign: String
     },
     data() {
       return {
@@ -143,6 +145,12 @@
       },
       inputNumberDisabled() {
         return this.disabled || (this.elForm || {}).disabled;
+      },
+      getContentAlign() {
+        if (!this.contentAlign) return ''
+        if (this.contentAlign === 'left') return 'text-left'
+        if (this.contentAlign === 'left') return 'text-right'
+        return ''
       }
     },
     methods: {

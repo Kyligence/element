@@ -352,10 +352,14 @@
         margin-left: -6px;
       }
     }
+    .button-text {
+      display: inline-block;
+      min-width: 42px;
+    }
   }
   @include m(medium) {
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius, $--button-medium-line-height, $--button-medium-icon-padding, $--button-medium-icon-mini-padding);
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 2px;
       }
@@ -366,6 +370,10 @@
         right: -5px;
         margin-left: -5px;
       }
+    }
+    .button-text {
+      display: inline-block;
+      min-width: 38px;
     }
   }
   @include m(small) {
@@ -383,10 +391,14 @@
     span {
       line-height: $--button-mini-line-height;
     }
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 2px;
       }
+    }
+    .button-text {
+      display: inline-block;
+      min-width: 34px;
     }
   }
   @include m(mini) {
@@ -404,7 +416,7 @@
     span {
       line-height: $--button-small-line-height;
     }
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 1px;
       }
