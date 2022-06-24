@@ -123,11 +123,11 @@
     outline: none;
     min-width: 72px;
     &:not(.is-disabled):hover, &:focus {
-      // background-color: $--dropdown-menuItem-hover-fill;
-      color: $--color-primary;
+      background-color: $--dropdown-menuItem-hover-fill;
+      // color: $--color-primary;
     }
     &:not(.is-disabled):active {
-      // background-color: $--background-color-hover;
+      background-color: transparent;
       color: $--color-primary;
     }
 
