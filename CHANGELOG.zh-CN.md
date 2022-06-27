@@ -1,7 +1,7 @@
 ## 更新日志
 
 ### 4.0.61
-*2022-06-01*
+*2022-06-27*
 - 新增：input-number 组件 input 内容对齐方式（left、right)
 - 新增：tags 增加一系列浅色图标
 - 新增：tabs 增加 large 和 small 尺寸，并去除 card-tabs、nav-tabs 之间的间距
