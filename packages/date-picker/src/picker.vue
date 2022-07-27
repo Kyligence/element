@@ -14,7 +14,7 @@
     @keydown.native="handleKeydown"
     @keyup.native="handleKeyup"
     :value="displayValue"
-    @input="value => userInput = value"
+    @input="handleInputEvent"
     @change="handleChange"
     @mouseenter.native="handleMouseEnter"
     @mouseleave.native="showClose = false"
@@ -569,6 +569,13 @@ export default {
       } else {
         return date;
       }
+    },
+
+    handleInputEvent (value) {
+      this.userInput = value;
+      let v = this.parseString(value);
+      if (!v) return
+      this.picker.value = v;
     },
 
     // {parse, formatTo} String deals with user input
