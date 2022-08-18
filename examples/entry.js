@@ -11,8 +11,8 @@ import SideNav from './components/side-nav';
 import FooterNav from './components/footer-nav';
 import title from './i18n/title.json';
 import VueI18n from 'vue-i18n';
-import enLocale from '../lib/locale/lang/en';
-import zhLocale from '../lib/locale/lang/zh-CN';
+import enLocale from '../src/locale/lang/en';
+import zhLocale from '../src/locale/lang/zh-CN';
 import '../src/iconfont/iconfont.js';
 import '../src/multicolorFont/iconfont.js';
 Vue.use(VueI18n);
@@ -27,7 +27,7 @@ Vue.use(Element, {
   // infoMessageDuration: 3000,
   // successMessageShowClose: true,
   warningMessageShowClose: true,
-  errorMessageShowClose: true,
+  errorMessageShowClose: true
   // infoMessageShowClose: true
 });
 Vue.use(VueRouter);

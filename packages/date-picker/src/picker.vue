@@ -19,17 +19,22 @@
     @mouseenter.native="handleMouseEnter"
     @mouseleave.native="showClose = false"
     :validateEvent="false"
-    ref="reference">
-    <i slot="prefix"
+    ref="reference"
+  >
+    <i
+      slot="prefix"
       class="el-input__icon"
       :class="triggerClass"
-      @click="handleFocus">
+      @click="handleFocus"
+    >
     </i>
-    <i slot="suffix"
+    <i
+      slot="suffix"
       class="el-input__icon"
       @click="handleClickIcon"
       :class="[showClose ? '' + clearIcon : '']"
-      v-if="haveTrigger">
+      v-if="haveTrigger"
+    >
     </i>
   </el-input>
   <div
@@ -37,9 +42,9 @@
     :class="[
       isOnlyIcon ? '' : 'el-input__inner',
       'el-date-editor--' + type,
-      pickerSize ? `el-range-editor--${ pickerSize }` : '',
+      pickerSize ? `el-range-editor--${pickerSize}` : '',
       pickerDisabled ? 'is-disabled' : '',
-      pickerVisible ? 'is-active' : ''
+      pickerVisible ? 'is-active' : '',
     ]"
     @click="handleRangeClick"
     @mouseenter="handleMouseEnter"
@@ -47,7 +52,8 @@
     @keydown="handleKeydown"
     ref="reference"
     v-clickoutside="handleClose"
-    v-else>
+    v-else
+  >
     <div v-if="!isOnlyIcon" class="el-flex-box">
       <i :class="['el-input__icon', 'el-range__icon', triggerClass]"></i>
       <input
@@ -57,11 +63,12 @@
         :id="id && id[0]"
         :readonly="!editable || readonly"
         :name="name && name[0]"
-        @keyup="event => handleKeyup(event, 0)"
+        @keyup="(event) => handleKeyup(event, 0)"
         @input="handleStartInput"
         @change="handleStartChange"
         @focus="handleFocus"
-        class="el-range-input">
+        class="el-range-input"
+      />
       <span class="el-range-separator">{{ rangeSeparator }}</span>
       <input
         :placeholder="endPlaceholder"
@@ -70,16 +77,18 @@
         :id="id && id[1]"
         :readonly="!editable || readonly"
         :name="name && name[1]"
-        @keyup="event => handleKeyup(event, 1)"
+        @keyup="(event) => handleKeyup(event, 1)"
         @input="handleEndInput"
         @change="handleEndChange"
         @focus="handleFocus"
-        class="el-range-input">
+        class="el-range-input"
+      />
       <i
         @click="handleClickIcon"
         v-if="haveTrigger"
         :class="[showClose ? '' + clearIcon : '']"
-        class="el-input__icon el-range__close-icon">
+        class="el-input__icon el-range__close-icon"
+      >
       </i>
     </div>
     <i v-else :class="toggleIcon"></i>
@@ -89,7 +98,16 @@
 <script>
 import Vue from 'vue';
 import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-import { formatDate, parseDate, isDateObject, getWeekNumber, setDate, parseDateInput, autoCompleteDateSplit, getCurrntParentByClass } from './util';
+import {
+  formatDate,
+  parseDate,
+  isDateObject,
+  getWeekNumber,
+  setDate,
+  parseDateInput,
+  autoCompleteDateSplit,
+  getCurrntParentByClass
+} from './util';
 import Popper from 'kyligence-ui/src/utils/vue-popper';
 import Emitter from 'kyligence-ui/src/mixins/emitter';
 import ElInput from 'kyligence-ui/packages/input';
@@ -132,11 +150,15 @@ const HAVE_TRIGGER_TYPES = [
   'timerange',
   'datetimerange'
 ];
-const newDate = function (date) {
-  if (navigator.userAgent.indexOf('Windows NT') >= 0 && typeof date === 'string' && /^\d{4}-\d{2}-\d{2}/.test(date)) {
-    return new Date(date.replace(/-/g, '/'))
+const newDate = function(date) {
+  if (
+    navigator.userAgent.indexOf('Windows NT') >= 0 &&
+    typeof date === 'string' &&
+    /^\d{4}-\d{2}-\d{2}/.test(date)
+  ) {
+    return new Date(date.replace(/-/g, '/'));
   } else {
-    return new Date(date)
+    return new Date(date);
   }
 };
 const DATE_FORMATTER = function(value, format) {
@@ -188,7 +210,9 @@ const TYPE_VALUE_RESOLVER_MAP = {
       const trueDate = newDate(value);
       if (week === 1 && month === 11) {
         trueDate.setHours(0, 0, 0, 0);
-        trueDate.setDate(trueDate.getDate() + 3 - (trueDate.getDay() + 6) % 7);
+        trueDate.setDate(
+          trueDate.getDate() + 3 - ((trueDate.getDay() + 6) % 7)
+        );
       }
       let date = formatDate(trueDate, format);
 
@@ -264,11 +288,15 @@ const PLACEMENT_MAP = {
   right: 'bottom-end'
 };
 
-const parseAsFormatAndType = (value, customFormat, type, rangeSeparator = '-') => {
+const parseAsFormatAndType = (
+  value,
+  customFormat,
+  type,
+  rangeSeparator = '-'
+) => {
   if (!value) return null;
   const parser = (
-    TYPE_VALUE_RESOLVER_MAP[type] ||
-    TYPE_VALUE_RESOLVER_MAP['default']
+    TYPE_VALUE_RESOLVER_MAP[type] || TYPE_VALUE_RESOLVER_MAP['default']
   ).parser;
   const format = customFormat || DEFAULT_FORMATS[type];
   return parser(value, format, rangeSeparator);
@@ -277,8 +305,7 @@ const parseAsFormatAndType = (value, customFormat, type, rangeSeparator = '-') =
 const formatAsFormatAndType = (value, customFormat, type) => {
   if (!value) return null;
   const formatter = (
-    TYPE_VALUE_RESOLVER_MAP[type] ||
-    TYPE_VALUE_RESOLVER_MAP['default']
+    TYPE_VALUE_RESOLVER_MAP[type] || TYPE_VALUE_RESOLVER_MAP['default']
   ).formatter;
   const format = customFormat || DEFAULT_FORMATS[type];
   return formatter(value, format);
@@ -289,8 +316,10 @@ const valueEquals = function(a, b) {
   const aIsArray = a instanceof Array;
   const bIsArray = b instanceof Array;
   if (aIsArray && bIsArray) {
-    return newDate(a[0]).getTime() === newDate(b[0]).getTime() &&
-           newDate(a[1]).getTime() === newDate(b[1]).getTime();
+    return (
+      newDate(a[0]).getTime() === newDate(b[0]).getTime() &&
+      newDate(a[1]).getTime() === newDate(b[1]).getTime()
+    );
   }
   if (!aIsArray && !bIsArray) {
     return newDate(a).getTime() === newDate(b).getTime();
@@ -410,7 +439,9 @@ export default {
       } else {
         this.hidePicker();
         // 新增对 IE 下的操作
-        navigator.userAgent.indexOf('Windows NT') >= 0 ? this.emitChange(this.userInput || this.value) : this.emitChange(this.value);
+        navigator.userAgent.indexOf('Windows NT') >= 0
+          ? this.emitChange(this.userInput || this.value)
+          : this.emitChange(this.value);
         // flush user input if it is parsable
         // this.displayValue here is not a typo, it merges text for both panels in range mode
         const parsedValue = this.parseString(this.displayValue);
@@ -473,7 +504,10 @@ export default {
     },
 
     triggerClass() {
-      return this.prefixIcon || (this.type.indexOf('time') !== -1 ? 'el-icon-time' : 'el-icon-date');
+      return (
+        this.prefixIcon ||
+        (this.type.indexOf('time') !== -1 ? 'el-icon-time' : 'el-icon-date')
+      );
     },
 
     selectionMode() {
@@ -496,7 +530,12 @@ export default {
     },
 
     displayValue() {
-      const formattedValue = formatAsFormatAndType(this.parsedValue, this.format, this.type, this.rangeSeparator);
+      const formattedValue = formatAsFormatAndType(
+        this.parsedValue,
+        this.format,
+        this.type,
+        this.rangeSeparator
+      );
       if (Array.isArray(this.userInput)) {
         return [
           this.userInput[0] || (formattedValue && formattedValue[0]) || '',
@@ -508,9 +547,18 @@ export default {
     },
 
     parsedValue() {
-      const isParsed = isDateObject(this.value) || (Array.isArray(this.value) && this.value.every(isDateObject));
+      const isParsed =
+        isDateObject(this.value) ||
+        (Array.isArray(this.value) && this.value.every(isDateObject));
       if (this.valueFormat && !isParsed) {
-        return parseAsFormatAndType(this.value, this.valueFormat, this.type, this.rangeSeparator) || this.value;
+        return (
+          parseAsFormatAndType(
+            this.value,
+            this.valueFormat,
+            this.type,
+            this.rangeSeparator
+          ) || this.value
+        );
       } else {
         return this.value;
       }
@@ -521,7 +569,12 @@ export default {
     },
 
     pickerSize() {
-      return this.size || this._elFormItemSize || (this.$KY_ELEMENT['ElPicker'] || {}).size || (this.$ELEMENT || {}).size;
+      return (
+        this.size ||
+        this._elFormItemSize ||
+        (this.$KY_ELEMENT['ElPicker'] || {}).size ||
+        (this.$ELEMENT || {}).size
+      );
     },
 
     pickerDisabled() {
@@ -549,43 +602,62 @@ export default {
     },
 
     blur() {
-      this.refInput.forEach(input => input.blur());
+      this.refInput.forEach((input) => input.blur());
     },
 
     // {parse, formatTo} Value deals maps component value with internal Date
     parseValue(value) {
-      const isParsed = isDateObject(value) || (Array.isArray(value) && value.every(isDateObject));
+      const isParsed =
+        isDateObject(value) ||
+        (Array.isArray(value) && value.every(isDateObject));
       if (this.valueFormat && !isParsed) {
-        return parseAsFormatAndType(value, this.valueFormat, this.type, this.rangeSeparator) || value;
+        return (
+          parseAsFormatAndType(
+            value,
+            this.valueFormat,
+            this.type,
+            this.rangeSeparator
+          ) || value
+        );
       } else {
         return value;
       }
     },
 
     formatToValue(date) {
-      const isFormattable = isDateObject(date) || (Array.isArray(date) && date.every(isDateObject));
+      const isFormattable =
+        isDateObject(date) || (Array.isArray(date) && date.every(isDateObject));
       if (this.valueFormat && isFormattable) {
-        return formatAsFormatAndType(date, this.valueFormat, this.type, this.rangeSeparator);
+        return formatAsFormatAndType(
+          date,
+          this.valueFormat,
+          this.type,
+          this.rangeSeparator
+        );
       } else {
         return date;
       }
     },
 
-    handleInputEvent (value) {
+    handleInputEvent(value) {
       this.userInput = value;
       let v = this.parseString(value);
-      if (!v) return
+      if (!v) return;
       this.picker.value = v;
     },
 
     // {parse, formatTo} String deals with user input
     parseString(value) {
-      const type = Array.isArray(value) ? this.type : this.type.replace('range', '');
+      const type = Array.isArray(value)
+        ? this.type
+        : this.type.replace('range', '');
       return parseAsFormatAndType(value, this.format, type);
     },
 
     formatToString(value) {
-      const type = Array.isArray(value) ? this.type : this.type.replace('range', '');
+      const type = Array.isArray(value)
+        ? this.type
+        : this.type.replace('range', '');
       return formatAsFormatAndType(value, this.format, type);
     },
 
@@ -599,33 +671,60 @@ export default {
     handleKeyup(event, valueIdx) {
       const deleteCodes = [8, 46, 37, 38, 39, 40];
       const isDateType = ['datetime', 'date'].includes(this.type);
-      const isDateRangeType = ['datetimerange', 'daterange'].includes(this.type);
+      const isDateRangeType = ['datetimerange', 'daterange'].includes(
+        this.type
+      );
       const isDelete = deleteCodes.includes(event.keyCode);
       if (!isDelete && this.isAutoComplete) {
         // 普通时间输入框自动format
         if (isDateType) {
-          this.userInput = autoCompleteDateSplit(this.type, this.userInput || '');
+          this.userInput = autoCompleteDateSplit(
+            this.type,
+            this.userInput || ''
+          );
 
           const valueMaps = parseDateInput(this.userInput);
           const dateMaps = Object.entries(valueMaps);
 
           dateMaps.forEach(([dateType, dateValue]) => {
-            dateValue && (this.picker.date = setDate(this.picker.date, dateType, dateValue));
+            dateValue &&
+              (this.picker.date = setDate(
+                this.picker.date,
+                dateType,
+                dateValue
+              ));
           });
 
-        // 时间区间输入框自动format
+          // 时间区间输入框自动format
         } else if (isDateRangeType) {
           const type = this.type.replace('range', '');
-          const value = autoCompleteDateSplit(type, this.userInput[valueIdx] || '');
+          const value = autoCompleteDateSplit(
+            type,
+            this.userInput[valueIdx] || ''
+          );
 
-          valueIdx === 0 ? this.handleStartInput({ target: { value } }) : this.handleEndInput({ target: { value } });
+          valueIdx === 0
+            ? this.handleStartInput({ target: { value } })
+            : this.handleEndInput({ target: { value } });
 
           const valueMaps = parseDateInput(this.userInput[valueIdx]);
           const dateMaps = Object.entries(valueMaps);
 
           dateMaps.forEach(([dateType, dateValue]) => {
-            valueIdx === 0 && dateValue && (this.picker.leftDate = setDate(this.picker.leftDate, dateType, dateValue));
-            valueIdx === 1 && dateValue && (this.picker.rightDate = setDate(this.picker.rightDate, dateType, dateValue));
+            valueIdx === 0 &&
+              dateValue &&
+              (this.picker.leftDate = setDate(
+                this.picker.leftDate,
+                dateType,
+                dateValue
+              ));
+            valueIdx === 1 &&
+              dateValue &&
+              (this.picker.rightDate = setDate(
+                this.picker.rightDate,
+                dateType,
+                dateValue
+              ));
           });
         }
       }
@@ -640,7 +739,8 @@ export default {
             this.emitInput(value);
             this.userInput = null;
           }
-        } else { // TODO 暂时先暴力清空
+        } else {
+          // TODO 暂时先暴力清空
           this.userInput = '';
         }
       }
@@ -754,7 +854,10 @@ export default {
 
       // Enter
       if (keyCode === 13) {
-        if (this.userInput === '' || this.isValidValue(this.parseString(this.displayValue))) {
+        if (
+          this.userInput === '' ||
+          this.isValidValue(this.parseString(this.displayValue))
+        ) {
           this.handleChange();
           this.pickerVisible = this.picker.visible = false;
           this.blur();
@@ -816,10 +919,12 @@ export default {
       this.picker.popperClass = this.popperClass;
       this.popperElm = this.picker.$el;
       this.picker.width = this.reference.getBoundingClientRect().width;
-      this.picker.showTime = this.type === 'datetime' || this.type === 'datetimerange';
+      this.picker.showTime =
+        this.type === 'datetime' || this.type === 'datetimerange';
       this.picker.selectionMode = this.selectionMode;
       this.picker.unlinkPanels = this.unlinkPanels;
-      this.picker.arrowControl = this.arrowControl || this.timeArrowControl || false;
+      this.picker.arrowControl =
+        this.arrowControl || this.timeArrowControl || false;
       if (this.format) {
         this.picker.format = this.format;
       }
@@ -833,19 +938,27 @@ export default {
           const format = DEFAULT_FORMATS.timerange;
 
           ranges = Array.isArray(ranges) ? ranges : [ranges];
-          this.picker.selectableRange = ranges.map(range => parser(range, format, this.rangeSeparator));
+          this.picker.selectableRange = ranges.map((range) =>
+            parser(range, format, this.rangeSeparator)
+          );
         }
 
         for (const option in options) {
-          if (options.hasOwnProperty(option) &&
-              // 忽略 time-picker 的该配置项
-              option !== 'selectableRange') {
+          if (
+            options.hasOwnProperty(option) &&
+            // 忽略 time-picker 的该配置项
+            option !== 'selectableRange'
+          ) {
             this.picker[option] = options[option];
           }
         }
       };
       updateOptions();
-      this.unwatchPickerOptions = this.$watch('pickerOptions', () => updateOptions(), { deep: true });
+      this.unwatchPickerOptions = this.$watch(
+        'pickerOptions',
+        () => updateOptions(),
+        { deep: true }
+      );
 
       this.$el.appendChild(this.picker.$el);
       this.picker.resetView && this.picker.resetView();
@@ -886,7 +999,11 @@ export default {
 
     emitChange(val) {
       // determine user real change only
-      if (navigator.userAgent.indexOf('Windows NT') >= 0 || (navigator.userAgent.indexOf('Windows NT') < 0 && val !== this.valueOnOpen)) {
+      if (
+        navigator.userAgent.indexOf('Windows NT') >= 0 ||
+        (navigator.userAgent.indexOf('Windows NT') < 0 &&
+          val !== this.valueOnOpen)
+      ) {
         this.$emit('change', val);
         this.dispatch('ElFormItem', 'el.form.change', val);
         this.valueOnOpen = val;
@@ -918,10 +1035,14 @@ export default {
 
     fixDialogExtendBottom(isPickVisible) {
       if (this.reference && this.picker && this.dialogEl) {
-        const { y: refTop, height: refHeight } = this.reference.getBoundingClientRect();
+        const {
+          y: refTop,
+          height: refHeight
+        } = this.reference.getBoundingClientRect();
         const pickerHeight = this.picker.$el.clientHeight;
         const isPickerAtBottom = ~this.placement.indexOf('bottom');
-        const isPickerOutOfWindow = refTop + refHeight + pickerHeight > window.innerHeight;
+        const isPickerOutOfWindow =
+          refTop + refHeight + pickerHeight > window.innerHeight;
 
         if (!isPickVisible) {
           this.dialogEl.style.marginBottom = '0px';
@@ -938,16 +1059,24 @@ export default {
     },
 
     addMouseWheelEvent() {
-      this.dialogWarpperEl && this.picker.$el.addEventListener('mousewheel', this.handleMouseWheel);
+      this.dialogWarpperEl &&
+        this.picker.$el.addEventListener('mousewheel', this.handleMouseWheel);
     },
 
     removeMouseWheelEvent() {
-      this.dialogWarpperEl && this.picker.$el.removeEventListener('mousewheel', this.handleMouseWheel);
+      this.dialogWarpperEl &&
+        this.picker.$el.removeEventListener(
+          'mousewheel',
+          this.handleMouseWheel
+        );
     },
 
     getParentDialogs() {
       this.dialogEl = getCurrntParentByClass(this.reference, 'el-dialog');
-      this.dialogWarpperEl = getCurrntParentByClass(this.reference, 'el-dialog__wrapper');
+      this.dialogWarpperEl = getCurrntParentByClass(
+        this.reference,
+        'el-dialog__wrapper'
+      );
     }
   }
 };
