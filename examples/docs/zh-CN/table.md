@@ -2542,3 +2542,15 @@ table 空态效果有多种组合。
 | info-tooltip | 用于提示列的解释详细, 没有info-icon时，hover在label上出tooltips | String | - | - |
 | checkbox-disable-tooltip | disabled 状态的 checkbox 增加 tooltip 提示 | String, Function | - | - |
 | checkbox-disable-tooltip-placement | checkbox tooltip 展示方位 | String | - | - |
+
+### Table-draggable-wrapper Attributes
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| handle | 格式为简单css选择器的字符串，使列表单元中符合选择器的元素成为拖动的手柄，只有按住拖动手柄才能使列表单元进行拖动 | string | selection/index/expand | — |
+
+
+### Table-draggable-wrapper Events
+| 方法名 | 说明 | 参数 |
+| ---- | ---- | ---- |
+| drag | 开始拖拽时触发的事件 | {target, index} |
+| drop | 拖拽结束触发的事件 | {newIndex, oldIndex, target, list} |

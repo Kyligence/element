@@ -3,4 +3,5 @@ import Swap from './swap';
 
 Sortable.mount(new Swap());
 
-export { Sortable };
+export default Sortable;
+

@@ -88,7 +88,6 @@ function SwapPlugin() {
         }
         lastSwapEl = dragEl;
         lastSwapElIndex = dragElIndex;
-        console.log('dragElIndex', dragElIndex);
       }
     },
     dragOverValid({

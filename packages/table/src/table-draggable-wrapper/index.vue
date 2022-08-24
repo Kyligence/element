@@ -7,7 +7,15 @@
 </template>
 
 <script>
-import { Sortable } from './sortable.js';
+import Sortable from './sortable-swap.js';
+
+// import { Sortable } from 'sortablejs';
+// import Swap from './swap';
+
+// if (!Sortable.Swap) {
+//   Sortable.mount(new Swap());
+//   Sortable.Swap = true;
+// }
 
 export default {
   name: 'ElTableDraggableWrapper',
@@ -72,9 +80,7 @@ export default {
       }
     }
   },
-  created() {
-    console.log('Sortable', Sortable);
-  },
+  created() {},
   mounted() {
     this.makeTableSortAble();
   },
