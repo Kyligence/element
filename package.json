@@ -1,6 +1,6 @@
 {
   "name": "kyligence-ui",
-  "version": "4.0.62",
+  "version": "4.0.63",
   "description": "Kyligence UI for Vue",
   "main": "lib/kyligence-ui.common.js",
   "files": [
@@ -61,6 +61,7 @@
     "deepmerge": "^1.2.0",
     "normalize-wheel": "^1.0.1",
     "throttle-debounce": "^1.0.1",
+    "sortablejs": "1.15.0",
     "user": "0.0.0"
   },
   "peerDependencies": {
@@ -133,7 +134,6 @@
     "sass-loader": "^6.0.6",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
-    "sortablejs": "^1.15.0",
     "style-loader": "^0.19.0",
     "transliteration": "^1.1.11",
     "uppercamelcase": "^1.1.0",

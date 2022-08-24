@@ -26,6 +26,7 @@ import Button from '../packages/button/index.js';
 import ButtonGroup from '../packages/button-group/index.js';
 import Table from '../packages/table/index.js';
 import TableColumn from '../packages/table-column/index.js';
+import TableDraggableWrapper from '../packages/table-draggable-wrapper/index.js';
 import DatePicker from '../packages/date-picker/index.js';
 import TimeSelect from '../packages/time-select/index.js';
 import TimePicker from '../packages/time-picker/index.js';
@@ -105,6 +106,7 @@ const components = [
   ButtonGroup,
   Table,
   TableColumn,
+  TableDraggableWrapper,
   DatePicker,
   TimeSelect,
   TimePicker,
@@ -198,7 +200,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '4.0.62',
+  version: '4.0.63',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -230,6 +232,7 @@ module.exports = {
   ButtonGroup,
   Table,
   TableColumn,
+  TableDraggableWrapper,
   DatePicker,
   TimeSelect,
   TimePicker,

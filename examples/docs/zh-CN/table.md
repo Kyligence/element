@@ -1,9 +1,7 @@
 
 <script>
-import DraggableWrapper from '../../components/table/draggable-wrapper.vue';
-
   export default {
-    components:{DraggableWrapper},
+    components:{},
     data() {
       return {
         tableEmpty: [],
@@ -580,7 +578,7 @@ import DraggableWrapper from '../../components/table/draggable-wrapper.vue';
 ```html
   <template>
     <div id="testDiv">
-      <draggable-wrapper handle=".draggable-td">
+      <el-table-draggable-wrapper handle=".draggable-td">
         <el-table
           :data="tableData"
           @radio-change="radioChange"
@@ -605,13 +603,11 @@ import DraggableWrapper from '../../components/table/draggable-wrapper.vue';
             label="地址">
           </el-table-column>
         </el-table>
-      </draggable-wrapper>
+      </el-table-draggable-wrapper>
     </div>
   </template>
   <script>
-    import SortableTable from 'SortableTable';
     export default {
-      components:{ SortableTable },
       data() {
         return {
           tableData: [{

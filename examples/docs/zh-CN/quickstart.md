@@ -99,6 +99,7 @@ import {
   ButtonGroup,
   Table,
   TableColumn,
+  ElTableDraggableWrapper,
   DatePicker,
   TimeSelect,
   TimePicker,
@@ -168,6 +169,7 @@ Vue.use(Button)
 Vue.use(ButtonGroup)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(ElTableDraggableWrapper)
 Vue.use(DatePicker)
 Vue.use(TimeSelect)
 Vue.use(TimePicker)

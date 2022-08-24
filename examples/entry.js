@@ -9,6 +9,7 @@ import MainFooter from './components/footer.vue';
 import MainHeader from './components/header.vue';
 import SideNav from './components/side-nav';
 import FooterNav from './components/footer-nav';
+// import DraggableWrapper from './components/table/draggable-wrapper';
 import title from './i18n/title.json';
 import VueI18n from 'vue-i18n';
 import enLocale from '../src/locale/lang/en';
@@ -36,6 +37,7 @@ Vue.component('main-footer', MainFooter);
 Vue.component('main-header', MainHeader);
 Vue.component('side-nav', SideNav);
 Vue.component('footer-nav', FooterNav);
+// Vue.component('draggable-wrapper', DraggableWrapper);
 
 const router = new VueRouter({
   mode: 'hash',
