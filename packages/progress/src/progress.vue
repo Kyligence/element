@@ -128,10 +128,10 @@
         <div class="el-progress-circle__content" v-if="showText">
           <span
             v-if="status"
-            :class="[`is-${status}`, 'icon']"
-            :style="getStyles"
-            ><i :class="[iconClass || getStatusIcons]"></i
-          ></span>
+            :class="[`is-${status}`, 'icon-text']"
+            >
+            {{getStatusText}}
+            </span>
           <span class="progress-text" v-else>{{ percentage }}%</span>
         </div>
       </div>
@@ -280,6 +280,9 @@ export default {
           break;
         case 'exception':
           ret = '#CA1616';
+          if (this.percentage === 100) {
+            ret = '#F7CACA';
+          }
           break;
         default:
           ret = '#0875DA';
@@ -319,15 +322,22 @@ export default {
           return 'el-ksd-n-icon-pending-outlined';
       }
     },
-    getStyles() {
-      if (this.status) {
-        return {
-          width: `${this.width * 0.35}px`,
-          height: `${this.width * 0.35}px`
-        };
-      } else {
-        return {};
+    getStatusText() {
+      let text;
+      switch (this.status) {
+        case 'success':
+          text = 'Done';
+          break;
+        case 'exception':
+          text = Number(this.percentage) === 100 ? 'Error' : `${this.percentage}%`;
+          break;
+        case 'pending':
+          text = 'Pending';
+          break;
+        default:
+          break;
       }
+      return text;
     }
   },
   methods: {
