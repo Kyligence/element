@@ -58,6 +58,7 @@ import { ElSubmenu } from './submenu'
 import { ElSwitch } from './switch'
 import { ElTable } from './table'
 import { ElTableColumn } from './table-column'
+import { ElTableDraggableWrapper } from './table-draggable-wrapper'
 import { ElTag } from './tag'
 import { ElTabs } from './tabs'
 import { ElTabPane } from './tab-pane'
@@ -265,6 +266,9 @@ export class Table extends ElTable {}
 
 /** Table Column Component */
 export class TableColumn extends ElTableColumn {}
+
+/** Table DraggableWrapper Component */
+export class TableDraggableWrapper extends ElTableDraggableWrapper {}
 
 /** Tabs Component */
 export class Tabs extends ElTabs {}

@@ -9,10 +9,11 @@ import MainFooter from './components/footer.vue';
 import MainHeader from './components/header.vue';
 import SideNav from './components/side-nav';
 import FooterNav from './components/footer-nav';
+// import DraggableWrapper from './components/table/draggable-wrapper';
 import title from './i18n/title.json';
 import VueI18n from 'vue-i18n';
-import enLocale from '../lib/locale/lang/en';
-import zhLocale from '../lib/locale/lang/zh-CN';
+import enLocale from '../src/locale/lang/en';
+import zhLocale from '../src/locale/lang/zh-CN';
 import '../src/iconfont/iconfont.js';
 import '../src/multicolorFont/iconfont.js';
 Vue.use(VueI18n);
@@ -27,7 +28,7 @@ Vue.use(Element, {
   // infoMessageDuration: 3000,
   // successMessageShowClose: true,
   warningMessageShowClose: true,
-  errorMessageShowClose: true,
+  errorMessageShowClose: true
   // infoMessageShowClose: true
 });
 Vue.use(VueRouter);
@@ -36,6 +37,7 @@ Vue.component('main-footer', MainFooter);
 Vue.component('main-header', MainHeader);
 Vue.component('side-nav', SideNav);
 Vue.component('footer-nav', FooterNav);
+// Vue.component('draggable-wrapper', DraggableWrapper);
 
 const router = new VueRouter({
   mode: 'hash',

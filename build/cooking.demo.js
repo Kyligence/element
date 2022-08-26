@@ -1,3 +1,4 @@
+var dotenv = require('dotenv');
 var cooking = require('cooking');
 var config = require('./config');
 var md = require('markdown-it')();
@@ -6,6 +7,7 @@ var striptags = require('./strip-tags');
 var slugify = require('transliteration').slugify;
 var isProd = process.env.NODE_ENV === 'production';
 var isPlay = !!process.env.PLAY_ENV;
+var env = dotenv.config().parsed;
 
 function convert(str) {
   str = str.replace(/(&#x)(\w{4});/gi, function($0) {
@@ -31,7 +33,7 @@ cooking.set({
   hash: true,
   devServer: {
     hostname: '0.0.0.0',
-    port: 9000,
+    port: env.DEV_PORT || 9000,
     log: false,
     publicPath: '/'
   },
