@@ -1,0 +1,7 @@
+{
+  "i18n-ally.localesPaths": [
+    "examples/i18n",
+    "src/locale",
+    "src/locale/lang"
+  ]
+}
