@@ -99,6 +99,14 @@
           return this.requestApi(`/api/cities?name=${query}&limit=10&offset=1`);
         }
       },
+      scrollToBottom() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            this.loadMoreFormRemote()
+            resolve();
+          }, 1000);
+        });
+      },
       loadMoreFormRemote () {
         // 模拟数据追加
         let arr = [];
@@ -157,6 +165,97 @@
 </script>
 ```
 :::
+
+### 拖拽
+在数据很多的情况下，可以对数据进行搜索和过滤。
+:::demo 设置 `draggable` 为 `true` 且使用 `:data.sync="data"` 开启拖拽模式。
+```html
+<template>
+  <el-transfer v-model="value1" :data.sync="data" draggable>
+  </el-transfer>
+</template>
+
+<script>
+  export default {
+    data() {
+      const generateData = _ => {
+        const data = [];
+        for (let i = 1; i <= 15; i++) {
+          data.push({
+            key: i,
+            label: `备选项 ${ i }`,
+            disabled: i % 4 === 0
+          });
+        }
+        return data;
+      };
+      return {
+        data: generateData(),
+        value1: [1, 4]
+      };
+    }
+  };
+</script>
+```
+:::
+### 加载更多，远端分页(scrollToBottom)
+:::demo Transfer 的数据通过 `data` 属性传入。接口分页数据是ajax 回来，可以用 `left-scroll-to-botton` 作为 属性 传入，自主外部控制分页逻辑,通过 `total-elements`判断是否达到最大条数而是否继续调用接口请求， `show-overflow-tip` 当内容过多被隐藏时展示tooltip。
+
+```html
+<template>
+  <el-transfer v-model="valueRemote" :data="dataRemote" :left-scroll-to-bottom="scrollToBottom" :total-elements="remoteTotal" :show-overflow-tip="true" auto-move-to-right @change="handleChangeRemote">
+  </el-transfer>
+</template>
+
+<script>
+  export default {
+    data() {
+      const generateData = _ => {
+        const data = [];
+        for (let i = 1; i <= 20; i++) {
+          data.push({
+            key: i,
+            label: `备选项 ${ i }`,
+            disabled: false
+          });
+        }
+        return data;
+      };
+      return {
+        initRemoteTotal: 200,
+        remoteTotal: [200],
+        dataRemote: generateData(),
+        valueRemote: []
+      };
+    },
+    methods: {
+      loadMoreFormRemote () {
+        // 模拟数据追加
+        let arr = [];
+        for (let i = 1; i <=20; i++) {
+          let item = {
+            key: this.dataRemote.length + i,
+            label: 'xxx' + i,
+            disabled: false
+          }
+          arr.push(item);
+        }
+        this.dataRemote = this.dataRemote.concat(arr);
+      },
+      handleChangeRemote (value, direc, movedKeys) {
+        // 每次数据左右挪的时候，需要动态变化左侧的总量数字
+        this.remoteTotal = [this.initRemoteTotal - value.length];
+        // 当前总的取回来的数据个数在左侧剩的只有8个了，就自动加载下一页
+        if (this.dataRemote.length - this.valueRemote.length < 8 && this.dataRemote.length < this.initRemoteTotal) {
+          this.loadMoreFormRemote()
+        }
+      }
+    }
+  };
+</script>
+```
+:::
+
 
 ### 加载更多，远端分页
 :::demo Transfer 的数据通过 `data` 属性传入。接口分页数据是ajax 回来，全量的那个分页不适合，这时候可以用 `left-remote-load-more` 作为 slot 传入，自主外部控制分页逻辑, `show-overflow-tip` 当内容过多被隐藏时展示tooltip。
@@ -230,6 +329,10 @@
     filter-placeholder="请输入城市拼音"
     v-model="value2"
     :data="data2" :total-elements="[1400, 1500]">
+    <div  slot="left-functions">
+      <el-button size="small">操作1</el-button>
+      <el-button size="small">操作2</el-button>
+    </div>
   </el-transfer>
 </template>
 
@@ -438,7 +541,7 @@
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| data | Transfer 的数据源 | array[{ key, label, disabled }] | — | [ ] |
+| data | Transfer 的数据源 | array[{ key, label, disabled, icon, description }] | — | [ ] |
 | filterable | 是否可搜索 | boolean | — | false |
 | filter-placeholder | 搜索框占位符 | string | — | 请输入搜索内容 |
 | filter-method | 自定义搜索方法 | function | — | — |
@@ -456,13 +559,18 @@
 | total-elements | 自定义穿梭框总条数 | array[number, number] | — | [ ] |
 | show-overflow-tip | 内容超出限制宽度是否展示tooltip | Boolean | - | false |
 | query-str-trim | 搜索框里的搜索词是否去收尾空格，默认不去除 | Boolean | - | false |
+| left-scroll-to-bottom | 到达list底部触发，配合 `total-elements` 使用 | () => Promise | - |  |
+| right-scroll-to-bottom | 到达list底部触发，配合 `total-elements` 使用 | () => Promise | - |  |
+| auto-move-to-right | 勾选后自动移动到右侧列表 | Boolean | false |  |
 ### Slot
 | name | 说明 |
 |------|--------|
 | left-footer | 左侧列表底部的内容 |
 | right-footer | 右侧列表底部的内容 |
-| left-remote-load-more | 左侧列表异步分页的按钮位置 |
-| right-remote-load-more | 右侧列表异步分页的按钮位置 |
+| left-remote-load-more | 左侧列表异步分页的按钮位置(或者其它位于底部的内容) |
+| right-remote-load-more | 右侧列表异步分页的按钮位置(或者其它位于底部的内容) |
+| left-functions | 左侧列表功能区的内容 |
+| right-functions | 右侧列表功能区的内容 |
 
 ### Methods
 | 方法名 | 说明 | 参数 |

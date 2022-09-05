@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Sortable from './sortable-swap.js';
+import Sortable from '../../../_utils/sortable';
 
 // import { Sortable } from 'sortablejs';
 // import Swap from './swap';

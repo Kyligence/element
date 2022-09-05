@@ -1,10 +1,10 @@
-@import "mixins/mixins";
-@import "mixins/utils";
-@import "common/var";
-@import "input";
-@import "button";
-@import "checkbox";
-@import "checkbox-group";
+@import 'mixins/mixins';
+@import 'mixins/utils';
+@import 'common/var';
+@import 'input';
+@import 'button';
+@import 'checkbox';
+@import 'checkbox-group';
 
 @include b(transfer) {
   font-size: $--font-size-base;
@@ -20,7 +20,7 @@
   @include e(buttons) {
     display: inline-block;
     vertical-align: middle;
-    padding: 0 10px;
+    padding: 0 8px;
   }
 
   @include e(button) {
@@ -47,7 +47,9 @@
         color: $--color-text-placeholder;
       }
     }
-
+    .button-text {
+      min-width: 22px;
+    }
     &:first-child {
       margin-bottom: 10px;
     }
@@ -56,11 +58,12 @@
       margin: 0;
     }
 
-    i, span {
+    i,
+    span {
       font-size: 14px;
     }
 
-    & [class*="el-icon-"] + span {
+    & [class*='el-icon-'] + span {
       margin-left: 0;
     }
   }
@@ -80,6 +83,11 @@
 
   @include e(body) {
     height: $--transfer-panel-body-height;
+    display: flex;
+    flex-direction: column;
+    :not(.el-transfer-panel__list) {
+      flex: none;
+    }
 
     @include when(with-footer) {
       padding-bottom: $--transfer-panel-footer-height;
@@ -93,6 +101,7 @@
     height: $--transfer-panel-body-height;
     overflow: auto;
     box-sizing: border-box;
+    position: relative;
 
     @include when(filterable) {
       height: #{$--transfer-panel-body-height - $--transfer-filter-height - 20px};
@@ -101,9 +110,10 @@
   }
 
   @include e(item) {
+    flex: 1;
+    overflow: hidden;
     height: $--transfer-item-height;
     line-height: $--transfer-item-height;
-    padding-left: 15px;
     display: block;
 
     & + .el-transfer-panel__item {
@@ -123,29 +133,64 @@
       @include utils-ellipsis;
       // display: block;
       box-sizing: border-box;
-      padding-left: 24px;
+      padding-left: 20px;
       line-height: $--transfer-item-height;
     }
 
     .el-checkbox__input {
+      height: fit-content;
+      line-height: 1;
       position: absolute;
-      top: 8px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &-dragger {
+      flex: none;
+      font-size: 16px;
+      margin-right: 8px;
+      cursor: grab;
+      &:hover {
+        color: $--color-primary;
+      }
+    }
+    &-icon {
+      color: $--color-text-secondary;
+      font-size: $--font-size-medium;
+      margin-right: 4px;
+    }
+    &-inline {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-inline &-left {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-inline &-right {
+      flex: none;
+      margin-left: 4px;
+      padding-right: 2px;
     }
   }
 
   @include e(filter) {
     text-align: center;
-    padding: 10px 15px;
-    padding-bottom: 9px;
+    padding: 0 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
     box-sizing: border-box;
     display: block;
     width: 100%;
-    border-bottom: 1px solid $--transfer-border-color;
 
     &.el-input-group {
       display: inline-table;
       .el-input-group__append {
-        padding: 0 15px 0 8px;
+        padding: 0 8px 0 8px;
       }
     }
 
@@ -157,12 +202,17 @@
       box-sizing: border-box;
       border-radius: 2px;
       padding-right: 14px;
-      padding-left: 20px;
+      padding-left: 22px;
+      border: 1px solid $--border-secondary;
+      border-radius: 6px;
     }
 
+    .el-input__prefix {
+      left: 0;
+    }
     .el-input__suffix {
       top: 10px;
-      right: 15px;
+      right: 8px;
       // border: 1px solid $--border-color-base;
       color: $--color-info;
       // background-color: $--background-color-base;
@@ -180,12 +230,12 @@
     }
   }
 
-  .el-transfer-panel__header {
+  &__header {
     height: $--transfer-panel-header-height;
     // line-height: $--transfer-panel-header-height;
     background: $--color-white;
     margin: 0;
-    padding-left: 15px;
+    padding-left: 8px;
     padding-top: 4px;
     border-bottom: 1px solid $--transfer-border-color;
     box-sizing: border-box;
@@ -199,12 +249,11 @@
         font-size: 14px;
         color: $--color-text-primary;
         font-weight: normal;
-
       }
     }
     .count {
       position: absolute;
-      right: 15px;
+      right: 8px;
       top: 8px;
       color: $--color-text-primary;
       font-size: 12px;
@@ -212,18 +261,22 @@
     }
   }
 
-  .el-transfer-panel__footer {
+  &__footer {
     height: $--transfer-panel-footer-height;
+    overflow: hidden;
     background: $--color-white;
     margin: 0;
-    padding: 0;
+    padding: 8px;
     border-top: 1px solid $--transfer-border-color;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: $--index-normal;
-    @include utils-vertical-center;
+    // @include utils-vertical-center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 
     .el-checkbox {
       padding-left: 20px;
@@ -231,11 +284,11 @@
     }
   }
 
-  .el-transfer-panel__empty {
+  &__empty {
     margin: 0;
     height: $--transfer-item-height;
     line-height: $--transfer-item-height;
-    padding: 6px 15px 0;
+    padding: 6px 8px 0;
     color: $--color-text-disabled;
     text-align: center;
   }
@@ -252,6 +305,51 @@
       height: 6px;
       width: 3px;
       left: 4px;
+    }
+  }
+
+  &__load-more {
+    font-size: $--font-size-base;
+    padding: $--font-size-base;
+    color: $--color-text-regular;
+    text-align: center;
+    // cursor: pointer;
+    // &:hover {
+    //   color: $--color-primary;
+    // }
+  }
+
+  &-filterable &__header {
+    border: none;
+  }
+
+  @include e(functions) {
+    padding: 0 8px;
+    margin: 8px 0 4px 0;
+  }
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+  .el-transfer-draggable--swap{
+    &-up,
+    &-down {
+      position: relative;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        background-color: #0875da;
+      }
+    }
+    &-up::before {
+      top: 0;
+    }
+    &-down::before {
+      bottom: 0;
     }
   }
 }
