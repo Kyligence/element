@@ -47,15 +47,14 @@
         <div
           class="el-transfer-panel__checkbox checkbox-item"
           v-for="(item, index) in pagedData"
-          :key="`${index}-${item[keyProp]}`"
-          :draggable="!item.disabled"
+          :key="`_${index}-${item[keyProp]}`"
           @dragstart="$emit('dragstart', $event, item)"
         >
           <i
             v-if="draggable"
-            
             class="el-transfer-panel__item-dragger el-ksd-n-icon-grab-dots-outlined"
           />
+          
           <el-tooltip
             :content="item.label"
             effect="dark"
@@ -69,6 +68,7 @@
               :label="item[keyProp]"
               :disabled="item[disabledProp]"
             >
+            
               <option-content
                 class="option-items"
                 :option="item"
@@ -396,6 +396,11 @@ export default {
   },
 
   methods: {
+    dragstart(e, disabled) {
+      if (disabled) {
+        e.preventDefault();
+      }
+    },
     getDataLength() {
       let dataLength = this.data.length;
       if (

@@ -85,7 +85,7 @@
     height: $--transfer-panel-body-height;
     display: flex;
     flex-direction: column;
-    :not(.el-transfer-panel__list) {
+    > :not(.el-transfer-panel__list) {
       flex: none;
     }
 
@@ -152,6 +152,10 @@
       cursor: grab;
       &:hover {
         color: $--color-primary;
+      }
+      &[disabled] {
+        cursor: not-allowed;
+        color: $--color-text-disabled;
       }
     }
     &-icon {

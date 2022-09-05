@@ -13,8 +13,7 @@
       :before-query="beforeQuery"
       :show-overflow-tip="showOverflowTip"
       :scroll-to-bottom="leftScrollToBottom"
-      :draggable="draggable"
-      @dragstart="dragstart"
+      :draggable="false"
       @checked-change="onSourceCheckedChange"
     >
       <template slot="functions"><slot name="left-functions"></slot></template>
@@ -160,7 +159,7 @@ export default {
     },
     targetOrder: {
       type: String,
-      default: 'original'
+      default: 'unshift'
     },
     beforeQuery: {
       type: Function,
@@ -248,12 +247,12 @@ export default {
   },
   mounted() {
     const transfer = this.$refs.transfer; // .$el
-    const leftPanel = transfer
-      .getElementsByClassName('el-transfer-panel')[0]
-      .getElementsByClassName('el-transfer-panel__body')[0];
-    const leftEl = leftPanel.getElementsByClassName(
-      'el-transfer-panel__list'
-    )[0];
+    // const leftPanel = transfer
+    //   .getElementsByClassName('el-transfer-panel')[0]
+    //   .getElementsByClassName('el-transfer-panel__body')[0];
+    // const leftEl = leftPanel.getElementsByClassName(
+    //   'el-transfer-panel__list'
+    // )[0];
     const rightPanel = transfer
       .getElementsByClassName('el-transfer-panel')[1]
       .getElementsByClassName('el-transfer-panel__body')[0];
@@ -274,73 +273,72 @@ export default {
           return;
         }
         const currentValue = [...this.value];
-
         const target = currentValue.splice(oldIndex, 1)[0];
         currentValue.splice(newIndex, 0, target);
         this.$emit('input', currentValue);
         this.$emit('change', currentValue, 'drag', [newIndex, oldIndex]);
       }
     });
-    Sortable.create(leftEl, {
-      handle: '.el-transfer-panel__item-dragger',
-      swap: true,
-      swapClass: [
-        'el-transfer-draggable--swap-up',
-        'el-transfer-draggable--swap-down'
-      ],
-      onEnd: (e) => {
-        setTimeout(() => {
-          let { oldIndex, newIndex } = e;
-          const temp = this.data[oldIndex];
-          if (!temp || temp === 'undefined') {
-            return;
-          }
-          let target;
-          let currentData = [...this.data];
-          const currentPagedData = [...this.$refs.leftPanel.pagedData];
+    // Sortable.create(leftEl, {
+    //   handle: '.el-transfer-panel__item-dragger',
+    //   swap: true,
+    //   swapClass: [
+    //     'el-transfer-draggable--swap-up',
+    //     'el-transfer-draggable--swap-down'
+    //   ],
+    //   onEnd: (e) => {
+    //     setTimeout(() => {
+    //       let { oldIndex, newIndex } = e;
+    //       const temp = this.data[oldIndex];
+    //       if (!temp || temp === 'undefined') {
+    //         return;
+    //       }
+    //       let target;
+    //       let currentData = [...this.data];
+    //       const currentPagedData = [...this.$refs.leftPanel.pagedData];
 
-          const diff = newIndex - oldIndex;
-          oldIndex = currentData.findIndex(
-            (item) => item === currentPagedData[oldIndex]
-          );
-          newIndex = oldIndex + diff;
+    //       const diff = newIndex - oldIndex;
+    //       oldIndex = currentData.findIndex(
+    //         (item) => item === currentPagedData[oldIndex]
+    //       );
+    //       newIndex = oldIndex + diff;
 
-          target = currentData.splice(oldIndex, 1)[0];
-          currentData.splice(newIndex, 0, target);
-          currentData = currentData.map((item) => {
-            item.index = Math.random();
-            return item;
-          });
-          this.$emit('update:data', currentData);
-        });
+    //       target = currentData.splice(oldIndex, 1)[0];
+    //       currentData.splice(newIndex, 0, target);
+    //       currentData = currentData.map((item) => {
+    //         item.index = Math.random();
+    //         return item;
+    //       });
+    //       this.$emit('update:data', currentData);
+    //     });
 
-      }
-    });
-    leftPanel.ondragover = (e) => {
-      e.preventDefault();
-    };
-    leftPanel.ondrop = (e) => {
-      e.preventDefault();
-      const index = this.value.indexOf(this.draggingKey);
-      if (index !== -1) {
-        const currentValue = [...this.value];
-        currentValue.splice(index, 1);
-        this.$emit('input', currentValue);
-        this.$emit('change', currentValue, 'drag', [index, -1]);
-      }
-    };
+    //   }
+    // });
+    // leftPanel.ondragover = (e) => {
+    //   e.preventDefault();
+    // };
+    // leftPanel.ondrop = (e) => {
+    //   e.preventDefault();
+    //   const index = this.value.indexOf(this.draggingKey);
+    //   if (index !== -1) {
+    //     const currentValue = [...this.value];
+    //     currentValue.splice(index, 1);
+    //     this.$emit('input', currentValue);
+    //     this.$emit('change', currentValue, 'drag', [index, -1]);
+    //   }
+    // };
     rightPanel.ondragover = (e) => {
       e.preventDefault();
     };
     rightPanel.ondrop = (e) => {
       e.preventDefault();
-      const index = this.value.indexOf(this.draggingKey);
-      if (index === -1) {
-        const currentValue = [...this.value];
-        currentValue.push(this.draggingKey);
-        this.$emit('input', currentValue);
-        this.$emit('change', currentValue, 'drag', [index, -1]);
-      }
+      // const index = this.value.indexOf(this.draggingKey);
+      // if (index === -1) {
+      //   const currentValue = [...this.value];
+      //   currentValue.push(this.draggingKey);
+      //   this.$emit('input', currentValue);
+      //   this.$emit('change', currentValue, 'drag', [index, -1]);
+      // }
     };
   },
   methods: {
