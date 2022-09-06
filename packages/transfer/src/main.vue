@@ -1,5 +1,9 @@
 <template>
-  <div ref="transfer" class="el-transfer">
+  <div
+    ref="transfer"
+    class="el-transfer"
+    :class="{ 'el-transfer--no-buttons': !showAddToLeft && !showAddToRight }"
+  >
     <transfer-panel
       v-bind="$props"
       ref="leftPanel"
@@ -14,9 +18,14 @@
       :show-overflow-tip="showOverflowTip"
       :scroll-to-bottom="leftScrollToBottom"
       :draggable="false"
+      :item-handles="leftItemHandles"
       @checked-change="onSourceCheckedChange"
     >
       <template slot="functions"><slot name="left-functions"></slot></template>
+      <template slot="item-hover">
+        <slot name="left-item-hover"></slot>
+      </template>
+
       <template slot="left-remote-load-more"
         ><slot name="left-remote-load-more"></slot
       ></template>
@@ -24,6 +33,7 @@
     </transfer-panel>
     <div class="el-transfer__buttons">
       <el-button
+        v-if="showAddToLeft"
         type="primary"
         plain
         icon-button-mini
@@ -35,6 +45,7 @@
         <span v-if="buttonTexts[0] !== undefined">{{ buttonTexts[0] }}</span>
       </el-button>
       <el-button
+        v-if="showAddToRight"
         type="primary"
         plain
         icon-button-mini
@@ -60,10 +71,17 @@
       :show-overflow-tip="showOverflowTip"
       :scroll-to-bottom="rightScrollToBottom"
       :draggable="draggable"
+      :item-handles="rightItemHandles"
+      closable
+      :checkable="rightCheckable"
       @dragstart="dragstart"
       @checked-change="onTargetCheckedChange"
+      @remove="removeValues"
     >
       <template slot="functions"><slot name="right-functions"></slot></template>
+      <template v-slot:item-hover>
+        <slot name="right-item-hover"></slot>
+      </template>
       <template slot="right-remote-load-more"
         ><slot name="right-remote-load-more"></slot
       ></template>
@@ -197,13 +215,31 @@ export default {
     rightScrollToBottom: {
       type: Function
     },
-    autoMoveToRight: {
+    autoAddToRight: {
       type: Boolean,
       default: false
     },
     draggable: {
       type: Boolean,
       default: false
+    },
+    rightCheckable: {
+      type: Boolean,
+      default: true
+    },
+    showAddToRight: {
+      type: Boolean,
+      default: true
+    },
+    showAddToLeft: {
+      type: Boolean,
+      default: true
+    },
+    leftItemHandles: {
+      type: Array
+    },
+    rightItemHandles: {
+      type: Array
     }
   },
 
@@ -246,39 +282,54 @@ export default {
     }
   },
   mounted() {
-    const transfer = this.$refs.transfer; // .$el
+    if (this.draggable) {
+      const transfer = this.$refs.transfer; // .$el
+      const rightPanel = transfer
+        .getElementsByClassName('el-transfer-panel')[1]
+        .getElementsByClassName('el-transfer-panel__body')[0];
+      const rightEl = rightPanel.getElementsByClassName(
+        'el-transfer-panel__list'
+      )[0];
+      Sortable.create(rightEl, {
+        handle: '.el-transfer-panel__item-dragger',
+        swap: false,
+        swapClass: [
+          'el-transfer-draggable--swap-up',
+          'el-transfer-draggable--swap-down'
+        ],
+        onEnd: (e) => {
+          const { oldIndex, newIndex } = e;
+          const temp = this.value[oldIndex];
+          if (!temp || temp === 'undefined') {
+            return;
+          }
+          const currentValue = [...this.value];
+          const target = currentValue.splice(oldIndex, 1)[0];
+          currentValue.splice(newIndex, 0, target);
+          this.$emit('input', currentValue);
+          this.$emit('change', currentValue, 'drag', [newIndex, oldIndex]);
+        }
+      });
+      rightPanel.ondragover = (e) => {
+        e.preventDefault();
+      };
+      rightPanel.ondrop = (e) => {
+        e.preventDefault();
+        // const index = this.value.indexOf(this.draggingKey);
+        // if (index === -1) {
+        //   const currentValue = [...this.value];
+        //   currentValue.push(this.draggingKey);
+        //   this.$emit('input', currentValue);
+        //   this.$emit('change', currentValue, 'drag', [index, -1]);
+        // }
+      };
+    }
     // const leftPanel = transfer
     //   .getElementsByClassName('el-transfer-panel')[0]
     //   .getElementsByClassName('el-transfer-panel__body')[0];
     // const leftEl = leftPanel.getElementsByClassName(
     //   'el-transfer-panel__list'
     // )[0];
-    const rightPanel = transfer
-      .getElementsByClassName('el-transfer-panel')[1]
-      .getElementsByClassName('el-transfer-panel__body')[0];
-    const rightEl = rightPanel.getElementsByClassName(
-      'el-transfer-panel__list'
-    )[0];
-    Sortable.create(rightEl, {
-      handle: '.el-transfer-panel__item-dragger',
-      swap: true,
-      swapClass: [
-        'el-transfer-draggable--swap-up',
-        'el-transfer-draggable--swap-down'
-      ],
-      onEnd: (e) => {
-        const { oldIndex, newIndex } = e;
-        const temp = this.value[oldIndex];
-        if (!temp || temp === 'undefined') {
-          return;
-        }
-        const currentValue = [...this.value];
-        const target = currentValue.splice(oldIndex, 1)[0];
-        currentValue.splice(newIndex, 0, target);
-        this.$emit('input', currentValue);
-        this.$emit('change', currentValue, 'drag', [newIndex, oldIndex]);
-      }
-    });
     // Sortable.create(leftEl, {
     //   handle: '.el-transfer-panel__item-dragger',
     //   swap: true,
@@ -327,19 +378,6 @@ export default {
     //     this.$emit('change', currentValue, 'drag', [index, -1]);
     //   }
     // };
-    rightPanel.ondragover = (e) => {
-      e.preventDefault();
-    };
-    rightPanel.ondrop = (e) => {
-      e.preventDefault();
-      // const index = this.value.indexOf(this.draggingKey);
-      // if (index === -1) {
-      //   const currentValue = [...this.value];
-      //   currentValue.push(this.draggingKey);
-      //   this.$emit('input', currentValue);
-      //   this.$emit('change', currentValue, 'drag', [index, -1]);
-      // }
-    };
   },
   methods: {
     dragstart(_e, item) {
@@ -357,7 +395,7 @@ export default {
       this.leftChecked = val;
       if (movedKeys === undefined) return;
       this.$emit('left-check-change', val, movedKeys);
-      if (this.autoMoveToRight) {
+      if (this.autoAddToRight) {
         this.$nextTick(() => {
           this.addToRight();
         });
@@ -370,9 +408,9 @@ export default {
       this.$emit('right-check-change', val, movedKeys);
     },
 
-    addToLeft() {
+    removeValues(values) {
       let currentValue = this.value.slice();
-      this.rightChecked.forEach((item) => {
+      values.forEach((item) => {
         const index = currentValue.indexOf(item);
         if (index > -1) {
           currentValue.splice(index, 1);
@@ -380,6 +418,10 @@ export default {
       });
       this.$emit('input', currentValue);
       this.$emit('change', currentValue, 'left', this.rightChecked);
+    },
+
+    addToLeft() {
+      this.removeValues(this.rightChecked);
     },
 
     addToRight() {

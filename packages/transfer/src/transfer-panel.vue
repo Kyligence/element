@@ -3,6 +3,7 @@
     :class="[
       'el-transfer-panel',
       filterable ? 'el-transfer-panel-filterable' : '',
+      !checkable ? 'el-transfer-panel-check-disable' : '',
     ]"
   >
     <div class="el-transfer-panel__header">
@@ -54,7 +55,7 @@
             v-if="draggable"
             class="el-transfer-panel__item-dragger el-ksd-n-icon-grab-dots-outlined"
           />
-          
+
           <el-tooltip
             :content="item.label"
             effect="dark"
@@ -68,12 +69,32 @@
               :label="item[keyProp]"
               :disabled="item[disabledProp]"
             >
-            
               <option-content
                 class="option-items"
                 :option="item"
                 ref="optionContentLable"
               ></option-content>
+              <div class="el-transfer-panel__item-hover">
+                <template v-if="!!itemHandles">
+                  <el-button
+                    v-for="({ label, bind: handleProps, click: handleClick }, handleIndex) in itemHandles"
+                    :key="handleIndex"
+                    v-bind="handleProps"
+                    @click="handleClick && handleClick($event, item)"
+                  >
+                    {{ label }}
+                  </el-button>
+                </template>
+                <el-button
+                  v-if="closable"
+                  text
+                  type="primary"
+                  icon-button-mini
+                  size="small"
+                  icon="el-ksd-n-icon-close-L-outlined"
+                  @click="$emit('remove', [item[keyProp]])"
+                ></el-button>
+              </div>
             </el-checkbox>
           </el-tooltip>
         </div>
@@ -202,6 +223,17 @@ export default {
     draggable: {
       type: Boolean,
       default: false
+    },
+    closable: {
+      type: Boolean,
+      default: false
+    },
+    checkable: {
+      type: Boolean,
+      default: true
+    },
+    itemHandles: {
+      type: Array
     }
   },
 

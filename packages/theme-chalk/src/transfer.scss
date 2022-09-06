@@ -50,12 +50,9 @@
     .button-text {
       min-width: 22px;
     }
-    &:first-child {
-      margin-bottom: 10px;
-    }
-
-    &:nth-child(2) {
-      margin: 0;
+    & + & {
+      margin-left: 0;
+      margin-top: 10px;
     }
 
     i,
@@ -65,6 +62,22 @@
 
     & [class*='el-icon-'] + span {
       margin-left: 0;
+    }
+  }
+  &--no-buttons {
+    @include b(transfer) {
+      &__buttons {
+        display: none;
+      }
+      &-panel {
+        &:first-child {
+          border-radius: 6px 0 0 6px;
+          margin-right: -1px;
+        }
+        &:last-child {
+          border-radius: 0 6px 6px 0;
+        }
+      }
     }
   }
 }
@@ -124,9 +137,9 @@
       color: $--color-text-primary;
     }
 
-    &:hover {
-      color: $--color-primary;
-    }
+    // &:hover {
+    //   color: $--color-primary;
+    // }
 
     &.el-checkbox .el-checkbox__label {
       width: 100%;
@@ -296,6 +309,22 @@
     color: $--color-text-disabled;
     text-align: center;
   }
+  &-check-disable &__header > .el-checkbox {
+    & > .el-checkbox__input {
+      display: none;
+    }
+    & > .el-checkbox__label {
+      padding-left: 0;
+    }
+  }
+  &-check-disable &__item {
+    & > .el-checkbox__input {
+      display: none;
+    }
+    & > .el-checkbox__label {
+      padding-left: 0;
+    }
+  }
 
   .el-checkbox__label {
     padding-left: 8px;
@@ -335,8 +364,41 @@
     display: flex;
     align-items: center;
     padding-left: 8px;
+    &.sortable-ghost {
+      visibility: hidden !important;
+    }
+    &:hover {
+      background-color: $--background-color-secondary;
+    }
   }
-  .el-transfer-draggable--swap{
+  &__checkbox:hover &__item-hover {
+    display: flex;
+  }
+  &__item-hover {
+    width: fit-content;
+    height: 100%;
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 4px;
+    background-color: $--background-color-secondary;
+    &::before {
+      content: '';
+      width: 8px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -8px;
+      background: linear-gradient(
+        270deg,
+        $--background-color-secondary 18.75%,
+        rgba($--background-color-secondary, 0) 106.25%
+      );
+    }
+  }
+  .el-transfer-draggable--swap {
     &-up,
     &-down {
       position: relative;
