@@ -18,7 +18,8 @@
       :show-overflow-tip="showOverflowTip"
       :scroll-to-bottom="leftScrollToBottom"
       :draggable="false"
-      :item-handles="leftItemHandles"
+      :render-item-handles="leftRenderItemHandles"
+      :render-description="leftRenderDescription"
       @checked-change="onSourceCheckedChange"
     >
       <template slot="functions"><slot name="left-functions"></slot></template>
@@ -71,7 +72,8 @@
       :show-overflow-tip="showOverflowTip"
       :scroll-to-bottom="rightScrollToBottom"
       :draggable="draggable"
-      :item-handles="rightItemHandles"
+      :render-item-handles="rightRenderItemHandles"
+      :render-description="rightRenderDescription"
       closable
       :checkable="rightCheckable"
       @dragstart="dragstart"
@@ -235,11 +237,17 @@ export default {
       type: Boolean,
       default: true
     },
-    leftItemHandles: {
-      type: Array
+    leftRenderItemHandles: {
+      type: Function | Array
     },
-    rightItemHandles: {
-      type: Array
+    rightRenderItemHandles: {
+      type: Function | Array
+    },
+    leftRenderDescription: {
+      type: Function
+    },
+    rightRenderDescription: {
+      type: Function
     }
   },
 

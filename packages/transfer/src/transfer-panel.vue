@@ -45,59 +45,24 @@
         infinite-scroll-disabled="scrollDisabled"
         infinite-scroll-distance="10"
       >
-        <div
-          class="el-transfer-panel__checkbox checkbox-item"
+        <transfer-panel-item
           v-for="(item, index) in pagedData"
           :key="`_${index}-${item[keyProp]}`"
-          @dragstart="$emit('dragstart', $event, item)"
-        >
-          <i
-            v-if="draggable"
-            class="el-transfer-panel__item-dragger el-ksd-n-icon-grab-dots-outlined"
-          />
-
-          <el-tooltip
-            :content="item.label"
-            effect="dark"
-            placement="top"
-            :disabled="
-              !showOverflowTip ? !showOverflowTip : showToolTip($el, index)
-            "
-          >
-            <el-checkbox
-              class="el-transfer-panel__item"
-              :label="item[keyProp]"
-              :disabled="item[disabledProp]"
-            >
-              <option-content
-                class="option-items"
-                :option="item"
-                ref="optionContentLable"
-              ></option-content>
-              <div class="el-transfer-panel__item-hover">
-                <template v-if="!!itemHandles">
-                  <el-button
-                    v-for="({ label, bind: handleProps, click: handleClick }, handleIndex) in itemHandles"
-                    :key="handleIndex"
-                    v-bind="handleProps"
-                    @click="handleClick && handleClick($event, item)"
-                  >
-                    {{ label }}
-                  </el-button>
-                </template>
-                <el-button
-                  v-if="closable"
-                  text
-                  type="primary"
-                  icon-button-mini
-                  size="small"
-                  icon="el-ksd-n-icon-close-L-outlined"
-                  @click="$emit('remove', [item[keyProp]])"
-                ></el-button>
-              </div>
-            </el-checkbox>
-          </el-tooltip>
-        </div>
+          @dragstart.native="dragstart($event, item)"
+          :index="index"
+          :item="item"
+          :key-prop="keyProp"
+          :label-prop="labelProp"
+          :disabled-prop="disabledProp"
+          :render-content="renderContent"
+          :remove="remove"
+          :show-tool-tip="showToolTip"
+          :show-overflow-tip="showOverflowTip"
+          :draggable="draggable"
+          :closable="closable"
+          :render-item-handles="renderItemHandles"
+          :render-description="renderDescription"
+        ></transfer-panel-item>
         <slot name="left-remote-load-more"></slot>
         <slot name="right-remote-load-more"></slot>
         <div
@@ -130,6 +95,7 @@ import ElCheckbox from 'kyligence-ui/packages/checkbox';
 import ElInput from 'kyligence-ui/packages/input';
 import Locale from 'kyligence-ui/src/mixins/locale';
 import infiniteScroll from '../../_utils/vue-infinite-scroll';
+import TransferPanelItem from './transfer-panel-item';
 
 export default {
   mixins: [Locale],
@@ -140,6 +106,7 @@ export default {
   componentName: 'ElTransferPanel',
 
   components: {
+    TransferPanelItem,
     ElCheckboxGroup,
     ElCheckbox,
     ElInput,
@@ -162,26 +129,9 @@ export default {
         return parent.renderContent ? (
           parent.renderContent(h, this.option)
         ) : (
-          <div class='el-transfer-panel__item-inline'>
-            <div class='el-transfer-panel__item-left'>
-              {this.option.icon ? (
-                <span class='el-transfer-panel__item-icon'>
-                  {this.option.icon}
-                </span>
-              ) : (
-                ''
-              )}
-              {this.option[parent.labelProp] || this.option[parent.keyProp]}
-            </div>
-
-            {this.option.description ? (
-              <div class='el-transfer-panel__item-right'>
-                {this.option.description}
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
+          <span>
+            {this.option[parent.labelProp] || this.option[parent.keyProp]}
+          </span>
         );
       }
     }
@@ -232,8 +182,11 @@ export default {
       type: Boolean,
       default: true
     },
-    itemHandles: {
-      type: Array
+    renderItemHandles: {
+      type: Function | Array
+    },
+    renderDescription: {
+      type: Function
     }
   },
 
@@ -428,10 +381,14 @@ export default {
   },
 
   methods: {
-    dragstart(e, disabled) {
+    remove(value) {
+      this.$emit('remove', value);
+    },
+    dragstart(e, item, disabled) {
       if (disabled) {
         e.preventDefault();
       }
+      this.$emit('dragstart', e, item);
     },
     getDataLength() {
       let dataLength = this.data.length;

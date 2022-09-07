@@ -16,6 +16,7 @@
           data.push({
             key: i,
             label: `备选项 ${ i }`,
+            description: Math.ceil(Math.random() * 100),
             disabled: i % 4 === 0
           });
         }
@@ -91,6 +92,9 @@ const generateData4 =_ => {
     },
 
     methods: {
+      renderDescription(h, { description }) {
+        return <span> -{description}- </span>;
+      },
       onItemHandleClick(...e){
         console.log('onItemHandleClick', e)
       },
@@ -186,7 +190,11 @@ const generateData4 =_ => {
 
 ```html
 <template>
-  <el-transfer v-model="value1" :data.sync="data" :right-item-handles="rightItemHandles" draggable>
+  <el-transfer v-model="value1" :data="data"
+    draggable
+    :right-item-handles="rightItemHandles" 
+    :right-render-description="renderDescription"
+  >
   </el-transfer>
 </template>
 
@@ -598,8 +606,10 @@ const generateData4 =_ => {
 | auto-add-to-right | 勾选后自动移动到右侧列表 | Boolean | false |  |
 | show-add-to-right | 是否显示向右button | Boolean | true |  |
 | show-add-to-left | 是否显示向左button | Boolean | true |  |
-| left-item-handles | 左侧列表项鼠标hover后显示的按钮 | [{label:string, click:function(event, item), props:object}] |  |  |
-| right-item-handles | 右侧列表项鼠标hover后显示的按钮 | [{label:string, click:function(event, item), props:object}] |  |  |
+| left-render-item-handles | 左侧列表项鼠标hover后显示的内容 | JSX |  |  |
+| right-render-item-handles | 右侧列表项鼠标hover后显示的内容 | JSX |  |  |
+| left-render-description | 左侧列表项 `description` 显示的内容 | JSX |  |  |
+| right-render-description | 右侧列表项 `description` 显示的内容 | JSX |  |  |
 
 ### Slot
 

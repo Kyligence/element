@@ -7,9 +7,9 @@
 @import 'checkbox-group';
 
 @include b(transfer) {
-  font-size: $--font-size-base;
+  font-size: $--font-size-extra-small;
   .load-more {
-    font-size: 12px;
+    font-size: $--font-size-extra-small;
     color: $--color-text-regular;
     text-align: center;
     cursor: pointer;
@@ -57,7 +57,7 @@
 
     i,
     span {
-      font-size: 14px;
+      font-size: $--font-size-extra-small;
     }
 
     & [class*='el-icon-'] + span {
@@ -181,6 +181,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-right: 8px;
+      font-size: $--font-size-extra-small;
     }
     &-inline &-left {
       flex: 1;
@@ -191,7 +193,7 @@
     &-inline &-right {
       flex: none;
       margin-left: 4px;
-      padding-right: 2px;
+      color: $--color-text-placeholder;
     }
   }
 
@@ -214,7 +216,7 @@
     .el-input__inner {
       height: $--transfer-filter-height;
       width: 100%;
-      font-size: 12px;
+      font-size: $--font-size-extra-small;
       display: inline-block;
       box-sizing: border-box;
       border-radius: 2px;
@@ -257,23 +259,28 @@
     border-bottom: 1px solid $--transfer-border-color;
     box-sizing: border-box;
     color: $--color-text-primary;
+    position: relative;
 
     .el-checkbox {
       // display: block;
       // line-height: $--transfer-panel-header-height;
       color: $--color-text-primary;
       .el-checkbox__label {
-        font-size: 14px;
+        font-size: $--font-size-extra-small;
         color: $--color-text-primary;
-        font-weight: normal;
+        font-weight: 600;
       }
     }
     .count {
+      height: 12px;
+      height: fit-content;
       position: absolute;
       right: 8px;
-      top: 8px;
-      color: $--color-text-primary;
-      font-size: 12px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      color: $--color-text-placeholder;
+      font-size: $--font-size-extra-small;
       font-weight: normal;
     }
   }
@@ -342,7 +349,7 @@
   }
 
   &__load-more {
-    font-size: $--font-size-base;
+    font-size: $--font-size-extra-small;
     padding: $--font-size-base;
     color: $--color-text-regular;
     text-align: center;
@@ -382,7 +389,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0 4px;
+    // padding: 0 4px;
     background-color: $--background-color-secondary;
     &::before {
       content: '';
@@ -396,6 +403,12 @@
         $--background-color-secondary 18.75%,
         rgba($--background-color-secondary, 0) 106.25%
       );
+    }
+    &:first-child {
+      margin-left: 4px;
+    }
+    &:last-child {
+      margin-right: 4px;
     }
   }
   .el-transfer-draggable--swap {
