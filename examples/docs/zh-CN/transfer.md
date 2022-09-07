@@ -182,7 +182,7 @@ const generateData4 =_ => {
 ### 拖拽
 
 可以对数据拖拽排序。
-:::demo 设置 `draggable` 为 `true` 且使用 `:data.sync="data"` 开启拖拽模式。
+:::demo 设置 `draggable` 为 `true` 开启拖拽模式。
 
 ```html
 <template>
