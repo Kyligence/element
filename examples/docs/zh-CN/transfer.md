@@ -181,7 +181,7 @@ const generateData4 =_ => {
 
 ### 拖拽
 
-在数据很多的情况下，可以对数据进行搜索和过滤。
+可以对数据拖拽排序。
 :::demo 设置 `draggable` 为 `true` 且使用 `:data.sync="data"` 开启拖拽模式。
 
 ```html
