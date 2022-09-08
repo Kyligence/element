@@ -308,12 +308,13 @@ export default {
         onEnd: (e) => {
           const { oldIndex, newIndex } = e;
           const temp = this.value[oldIndex];
-          if (!temp || temp === 'undefined') {
+          if (temp === undefined) {
             return;
           }
           const currentValue = [...this.value];
           const target = currentValue.splice(oldIndex, 1)[0];
           currentValue.splice(newIndex, 0, target);
+
           this.$emit('input', currentValue);
           this.$emit('change', currentValue, 'drag', [newIndex, oldIndex]);
         }

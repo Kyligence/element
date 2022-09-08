@@ -92,6 +92,12 @@ const generateData4 =_ => {
     },
 
     methods: {
+      input(value){
+        console.log('input', value)
+      },
+      change(value, handle , [oldIndex, newIndex]){
+        console.log('change', value, handle , oldIndex, newIndex)
+      },
       renderDescription(h, { description }) {
         return <span> -{description}- </span>;
       },
@@ -194,6 +200,8 @@ const generateData4 =_ => {
     draggable
     :right-item-handles="rightItemHandles" 
     :right-render-description="renderDescription"
+    @input="input"
+    @change="change"
   >
   </el-transfer>
 </template>
