@@ -232,10 +232,12 @@
         return value.split(',')
       },
       parseSelected(option) {
-        if(option.currentLabel > 100) {
+        if (option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        } else if(this.duplicateValue.filter(value=> value === option.value).length > 1) {
+        } else if (this.duplicateValue.filter(value=> value === option.value).length > 1) {
           option.type = 'danger'
+        } else if (option.type) {
+          option.type = ''
         }
         return option
       }
@@ -1034,10 +1036,12 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
         return value.split(',')
       },
       parseSelected(option) {
-        if(option.currentLabel > 100) {
+        if (option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        } else if(this.duplicateValue.filter(value=> value === option.value).length > 1) {
+        } else if (this.duplicateValue.filter(value=> value === option.value).length > 1) {
           option.type = 'danger'
+        } else if (option.type) {
+          option.type = ''
         }
         return option
       }
