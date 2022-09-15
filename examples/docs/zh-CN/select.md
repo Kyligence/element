@@ -1017,6 +1017,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | load-more-text | 加载更多的提示文案 | String | 加载更多 | - |
 | duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean | false | - |
 | placement | select 的下拉框出现位置 | String | top/top-start/top-end/bottom/bottom-start/bottom-end | bottom-start |
+| on-before-create | 创建前的处理函数 | (value) => string | string[] | - |
 
 
 ### Select Events

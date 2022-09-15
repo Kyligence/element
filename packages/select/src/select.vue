@@ -817,7 +817,7 @@ export default {
           ? this.onBeforeCreate(option.value)
           : option.value;
       if (this.multiple) {
-        if (typeof optionValue === 'string') {
+        if (!(optionValue instanceof Array)) {
           optionValue = [optionValue];
         }
         const value = this.value.slice();
@@ -846,9 +846,6 @@ export default {
         }
         if (this.filterable) this.$refs.input.focus();
       } else {
-        if (typeof optionValue === 'string') {
-          optionValue = optionValue.toString();
-        }
         this.$emit('input', optionValue);
         this.emitChange(optionValue);
         this.visible = false;
