@@ -43,6 +43,8 @@
           :closable="!selectDisabled"
           :size="collapseTagSize"
           :hit="item.hitState"
+          :type="item.type"
+          :class="item.className"
           @close="deleteTag($event, item)"
           disable-transitions
         >
@@ -394,7 +396,8 @@ export default {
       type: Boolean,
       default: false
     },
-    onBeforeCreate: Function
+    onBeforeCreate: Function,
+    parseSelected: Function
   },
 
   data() {
@@ -646,7 +649,7 @@ export default {
           break;
         }
       }
-      if (option) return option;
+      if (option) return this.parseSelected ? this.parseSelected(option) : option;
       const label = !isObject ? value : '';
       let newOption = {
         value: value,
@@ -655,7 +658,7 @@ export default {
       if (this.multiple) {
         newOption.hitState = false;
       }
-      return newOption;
+      return this.parseSelected ? this.parseSelected(newOption) : newOption;
     },
 
     setSelected() {
