@@ -221,7 +221,7 @@
       box-sizing: border-box;
       border-radius: 2px;
       padding-right: 14px;
-      padding-left: 22px;
+      padding-left: 24px;
       border: 1px solid $--border-secondary;
       border-radius: 6px;
     }
@@ -230,8 +230,10 @@
       left: 0;
     }
     .el-input__suffix {
-      top: 10px;
+      top: 0;
+      bottom: 0;
       right: 8px;
+      margin: auto;
       // border: 1px solid $--border-color-base;
       color: $--color-info;
       // background-color: $--background-color-base;

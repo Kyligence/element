@@ -329,6 +329,9 @@ export default {
     checkedSummary() {
       const checkedLength = this.checked.length;
       const dataLength = this.getDataLength();
+      if (!this.checkable) {
+        return dataLength;
+      }
       const { noChecked, hasChecked } = this.format;
       if (noChecked && hasChecked) {
         return checkedLength > 0
