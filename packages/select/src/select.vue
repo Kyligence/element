@@ -393,7 +393,7 @@ export default {
       default: '-'
     },
     duplicateRemove: {
-      type: [Boolean, Number],
+      type: [Boolean, String],
       default: false
     },
     onBeforeCreate: Function,
@@ -639,7 +639,7 @@ export default {
         Object.prototype.toString.call(value).toLowerCase() ===
         '[object object]';
       if (
-        this.duplicateRemove !== -1 ||
+        this.duplicateRemove !== 'allowDuplicate' ||
         this.value.filter((item) => item === value).length === 1
       ) {
         for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
@@ -834,7 +834,7 @@ export default {
         for (const optionValueItem of optionValue) {
           // createdSeparator
           const optionIndex = this.getValueIndex(value, optionValueItem);
-          if (optionIndex > -1 && this.duplicateRemove !== -1) {
+          if (optionIndex > -1 && this.duplicateRemove !== 'allowDuplicate') {
             // 新加一个属性，如果创建标签时，带了去重标签，就不做任何处理
             if (this.duplicateRemove !== true) {
               value.splice(optionIndex, 1);
