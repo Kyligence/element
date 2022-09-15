@@ -227,6 +227,9 @@
       },
       handlePrefixIconClick (optionValue) {
         console.log(optionValue)
+      },
+      onBeforeCreate(value) {
+        return value.split(',')
       }
     }
   };
@@ -921,6 +924,24 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
       :value="item.value">
     </el-option>
   </el-select>
+
+  <p>创建多个</p>
+  <el-select
+    v-model="duplicateValue"
+    multiple
+    :duplicate-remove="true"
+    filterable
+    allow-create
+    default-first-option
+    :on-before-create="onBeforeCreate"
+    placeholder="请选择文章标签">
+    <el-option
+      v-for="item in options5"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
 </template>
 
 <script>
@@ -949,6 +970,11 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
           { value: 'test', label: 'test' }
         ],
         specialValues: [null, 'Null', false, true, undefined, '']
+      }
+    },
+    methods:{
+      onBeforeCreate(value) {
+        return value.split(',')
       }
     }
   }
