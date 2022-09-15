@@ -1089,21 +1089,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean \| -1 | false | - |
 | placement | select 的下拉框出现位置 | String | top/top-start/top-end/bottom/bottom-start/bottom-end | bottom-start |
 | on-before-create | 创建前的处理函数 | (value) => (string) | string[] | - |
-| parse-selected | 处理 multiple 选中值的显示 | ({
-  value,
-  currentLabel,
-  hitState,
-  prefixIcon,
-  onPrefixIconClick
-}) => ({
-  value,
-  currentLabel,
-  hitState,
-  prefixIcon,
-  onPrefixIconClick,
-  className?: string,
-  type?: Tag.type,
-}) | - |
+| parse-selected | 处理 multiple 选中值的显示 | ({ value, currentLabel, hitState, prefixIcon, onPrefixIconClick }) => ({ value, currentLabel, hitState, prefixIcon, onPrefixIconClick, className?: string, type?: Tag.type, }) | - |
 
 ### Select Events
 

@@ -638,18 +638,25 @@ export default {
       const isObject =
         Object.prototype.toString.call(value).toLowerCase() ===
         '[object object]';
-      for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
-        const cachedOption = this.cachedOptions[i];
-        const isEqual = isObject
-          ? getValueByPath(cachedOption.value, this.valueKey) ===
-            getValueByPath(value, this.valueKey)
-          : cachedOption.value === value;
-        if (isEqual) {
-          option = cachedOption;
-          break;
+      if (
+        this.duplicateRemove !== -1 ||
+        this.value.filter((item) => item === value).length === 1
+      ) {
+        for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
+          const cachedOption = this.cachedOptions[i];
+          const isEqual = isObject
+            ? getValueByPath(cachedOption.value, this.valueKey) ===
+              getValueByPath(value, this.valueKey)
+            : cachedOption.value === value;
+          if (isEqual) {
+            option = cachedOption;
+            break;
+          }
         }
       }
-      if (option) {return this.parseSelected ? this.parseSelected(option) : option;}
+      if (option) {
+        return this.parseSelected ? this.parseSelected(option) : option;
+      }
       const label = !isObject ? value : '';
       let newOption = {
         value: value,
