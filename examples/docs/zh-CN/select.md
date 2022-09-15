@@ -234,7 +234,7 @@
       parseSelected(option) {
         if(option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        } else if(option.currentLabel > 10) {
+        } else if(this.duplicateValue.filter(value=> value === option.value).length > 1) {
           option.type = 'danger'
         }
         return option
@@ -968,7 +968,24 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   <el-select
     v-model="duplicateValue"
     multiple
-    :duplicate-remove="true"
+    filterable
+    allow-create
+    default-first-option
+    :on-before-create="onBeforeCreate"
+    placeholder="请选择文章标签">
+    <el-option
+      v-for="item in options5"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
+
+  <p>格式化选中值显示</p>
+  <el-select
+    v-model="duplicateValue"
+    multiple
+    :duplicate-remove="-1"
     filterable
     allow-create
     default-first-option
@@ -1019,7 +1036,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
       parseSelected(option) {
         if(option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        } else if(option.currentLabel > 10) {
+        } else if(this.duplicateValue.filter(value=> value === option.value).length > 1) {
           option.type = 'danger'
         }
         return option
@@ -1065,7 +1082,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | data-for-paper | 是否支持分页加载数据属性 | array | 可选项的数据 | [] |
 | page-size | 分页加载，每页加载option条数 | number | - | 50 |
 | load-more-text | 加载更多的提示文案 | String | 加载更多 | - |
-| duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean | false | - |
+| duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean \| -1 | false | - |
 | placement | select 的下拉框出现位置 | String | top/top-start/top-end/bottom/bottom-start/bottom-end | bottom-start |
 | on-before-create | 创建前的处理函数 | (value) => (string) | string[] | - |
 | parse-selected | 处理 multiple 选中值的显示 | ({

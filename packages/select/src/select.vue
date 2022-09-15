@@ -393,7 +393,7 @@ export default {
       default: '-'
     },
     duplicateRemove: {
-      type: Boolean,
+      type: [Boolean, Number],
       default: false
     },
     onBeforeCreate: Function,
@@ -649,7 +649,7 @@ export default {
           break;
         }
       }
-      if (option) return this.parseSelected ? this.parseSelected(option) : option;
+      if (option) {return this.parseSelected ? this.parseSelected(option) : option;}
       const label = !isObject ? value : '';
       let newOption = {
         value: value,
@@ -827,9 +827,9 @@ export default {
         for (const optionValueItem of optionValue) {
           // createdSeparator
           const optionIndex = this.getValueIndex(value, optionValueItem);
-          if (optionIndex > -1) {
+          if (optionIndex > -1 && this.duplicateRemove !== -1) {
             // 新加一个属性，如果创建标签时，带了去重标签，就不做任何处理
-            if (!this.duplicateRemove) {
+            if (this.duplicateRemove !== true) {
               value.splice(optionIndex, 1);
             }
           } else if (
