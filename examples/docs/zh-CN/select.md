@@ -234,8 +234,7 @@
       parseSelected(option) {
         if(option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        }
-        if(option.currentLabel > 10) {
+        } else if(option.currentLabel > 10) {
           option.type = 'danger'
         }
         return option
@@ -1020,8 +1019,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
       parseSelected(option) {
         if(option.currentLabel > 100) {
           option.className = 'select-tag-error'
-        }
-        if(option.currentLabel > 10) {
+        } else if(option.currentLabel > 10) {
           option.type = 'danger'
         }
         return option
