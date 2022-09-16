@@ -1,5 +1,11 @@
 ## 更新日志
 
+### 4.1.4
+*2022-09-16*
+- 新增：select组件`duplicate-remove` 增加可选值 `allowDuplicate`
+- 新增：select组件`on-before-create`
+- 新增：select组件`parse-selected`
+
 ### 4.1.3
 *2022-09-08*
 - 修改：transfer组件增加拖拽功能，交互调整，样式调整
