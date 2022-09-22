@@ -16,9 +16,16 @@ import enLocale from '../src/locale/lang/en';
 import zhLocale from '../src/locale/lang/zh-CN';
 import '../src/iconfont/iconfont.js';
 import '../src/multicolorFont/iconfont.js';
+
 Vue.use(VueI18n);
+Vue.config.lang = 'zh-cn';
 Vue.locale('zh-cn', zhLocale);
 Vue.locale('en', enLocale);
+
+// 设置语言
+// import locale from 'kyligence-ui/src/locale';
+// locale.use(zhLocale);
+// console.log('locale', locale.t('el.select.noMatch'));
 
 Vue.use(Element, {
   closeOtherMessages: true,
@@ -45,7 +52,7 @@ const router = new VueRouter({
   routes
 });
 
-router.afterEach(route => {
+router.afterEach((route) => {
   const data = title[route.meta.lang];
   for (let val in data) {
     if (new RegExp('^' + val, 'g').test(route.name)) {
@@ -56,7 +63,8 @@ router.afterEach(route => {
   document.title = 'Element';
 });
 
-window.elementVm = new Vue({ // eslint-disable-line
-  render: h => h(entry),
+window.elementVm = new Vue({
+  // eslint-disable-line
+  render: (h) => h(entry),
   router
 }).$mount('#app');

@@ -196,7 +196,7 @@
         states: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
       };
     },
-    
+
     mounted() {
       this.list = this.states.map(item => { return { value: item, label: item }; });
     },
@@ -227,6 +227,19 @@
       },
       handlePrefixIconClick (optionValue) {
         console.log(optionValue)
+      },
+      onBeforeCreate(value) {
+        return value.split(',')
+      },
+      parseSelected(option) {
+        if (option.currentLabel > 100) {
+          option.className = 'select-tag-error'
+        } else if (this.duplicateValue.filter(value=> value === option.value).length > 1) {
+          option.type = 'danger'
+        } else if (option.type) {
+          option.type = ''
+        }
+        return option
       }
     }
   };
@@ -235,6 +248,11 @@
 <style>
   .demo-select .el-select {
     width: 240px;
+  }
+  .demo-select .select-tag-error {
+    border-color: #E03B3B;
+    color: #E03B3B;
+    background-color: #FCE9E9;
   }
 </style>
 
@@ -250,6 +268,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 
 适用广泛的基础单选
 :::demo `v-model`的值为当前被选中的`el-option`的 value 属性值
+
 ```html
 <template>
   <el-select v-model="value" placeholder="请选择">
@@ -288,12 +307,14 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 带前缀icon 的用法
 
 适用广泛的基础单选
 :::demo `v-model`的值为当前被选中的`el-option`的 value 属性值
+
 ```html
 <template>
   <el-select v-model="value" placeholder="请选择">
@@ -333,6 +354,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 指定下拉出现位置的用法
@@ -343,6 +365,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 
 不推荐的值：left/left-start/left-end/right/right-start/right-end，左右分布虽然也支持，但没有做箭头的适配。
 :::demo `v-model`的值为当前被选中的`el-option`的 value 属性值
+
 ```html
 <template>
   <el-select v-model="value" placeholder="请选择" :placement="'top-start'">
@@ -381,11 +404,13 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 有选中值的用法
 
 :::demo
+
 ```html
 <template>
   <el-select v-model="hasValue" placeholder="请选择">
@@ -424,11 +449,13 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 有禁用选项
 
 :::demo 在`el-option`中，设定`disabled`值为 true，即可禁用该选项
+
 ```html
 <template>
   <el-select v-model="value2" placeholder="请选择">
@@ -469,6 +496,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 禁用状态
@@ -476,6 +504,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 选择器不可用状态
 
 :::demo 为`el-select`设置`disabled`属性，则整个选择器不可用
+
 ```html
 <template>
   <el-select v-model="value3" disabled placeholder="请选择">
@@ -514,6 +543,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 可清空单选
@@ -521,6 +551,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 包含清空按钮，可将选择器清空为初始状态
 
 :::demo 为`el-select`设置`clearable`属性，则可将选择器清空。需要注意的是，`clearable`属性仅适用于单选。
+
 ```html
 <template>
   <el-select v-model="value4" clearable placeholder="请选择">
@@ -559,6 +590,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 基础多选
@@ -566,6 +598,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 适用性较广的基础多选，用 Tag 展示已选项
 
 :::demo 为`el-select`设置`multiple`属性即可启用多选，此时`v-model`的值为当前选中值所组成的数组。默认情况下选中值会以 Tag 的形式展现，你也可以设置`collapse-tags`属性将它们合并为一段文字。
+
 ```html
 <template>
   <el-button type="primary" @click="value5 = []">清空</el-button> <el-button type="primary" @click="checkAll">全选</el-button><br/>
@@ -633,6 +666,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 自定义模板
@@ -640,6 +674,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 可以自定义备选项
 
 :::demo 将自定义的 HTML 模板插入`el-option`的 slot 中即可。
+
 ```html
 <template>
   <el-select v-model="value6" placeholder="请选择">
@@ -684,6 +719,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 分组
@@ -691,6 +727,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 备选项进行分组展示
 
 :::demo 使用`el-option-group`对备选项进行分组，它的`label`属性为分组名
+
 ```html
 <template>
   <el-select v-model="value7" placeholder="请选择">
@@ -743,6 +780,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 可搜索
@@ -750,6 +788,7 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 可以利用搜索功能快速查找选项
 
 :::demo 为`el-select`添加`filterable`属性即可启用搜索功能。默认情况下，Select 会找出所有`label`属性包含输入值的选项。如果希望使用其他的搜索逻辑，可以通过传入一个`filter-method`来实现。`filter-method`为一个`Function`，它会在输入值发生变化时调用，参数为当前输入值。
+
 ```html
 <template>
   <el-select v-model="value8" filterable placeholder="请选择">
@@ -789,12 +828,14 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 远程搜索
 
 从服务器搜索数据，输入关键字进行查找
 :::demo 为了启用远程搜索，需要将`filterable`和`remote`设置为`true`，同时传入一个`remote-method`。`remote-method`为一个`Function`，它会在输入值发生变化时调用，参数为当前输入值。需要注意的是，如果`el-option`是通过`v-for`指令渲染出来的，此时需要为`el-option`添加`key`属性，且其值需具有唯一性，比如此例中的`item.value`。
+
 ```html
 <template>
   <el-select
@@ -866,11 +907,14 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
   }
 </script>
 ```
+
 :::
 
 ### 创建条目
+
 可以创建并选中选项中不存在的条目
 :::demo 使用`allow-create`属性即可通过在输入框中输入文字来创建新的条目。注意此时`filterable`必须为真。本例还使用了`default-first-option`属性，在该属性打开的情况下，按下回车就可以选中当前选项列表中的第一个选项，无需使用鼠标或键盘方向键进行定位。duplicate-remove 属于业务场景特殊需要属性，输入时，去重留一处理，tag中已经存在，就不再创建
+
 ```html
 <template>
   <el-select
@@ -921,6 +965,42 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
       :value="item.value">
     </el-option>
   </el-select>
+
+  <p>创建多个</p>
+  <el-select
+    v-model="duplicateValue"
+    multiple
+    filterable
+    allow-create
+    default-first-option
+    :on-before-create="onBeforeCreate"
+    placeholder="请选择文章标签">
+    <el-option
+      v-for="item in options5"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
+
+  <p>格式化选中值显示</p>
+  <el-select
+    v-model="duplicateValue"
+    multiple
+    duplicate-remove="allowDuplicate"
+    filterable
+    allow-create
+    default-first-option
+    :on-before-create="onBeforeCreate"
+    :parse-selected="parseSelected"
+    placeholder="请选择文章标签">
+    <el-option
+      v-for="item in options5"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value">
+    </el-option>
+  </el-select>
 </template>
 
 <script>
@@ -950,17 +1030,34 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
         ],
         specialValues: [null, 'Null', false, true, undefined, '']
       }
+    },
+    methods:{
+      onBeforeCreate(value) {
+        return value.split(',')
+      },
+      parseSelected(option) {
+        if (option.currentLabel > 100) {
+          option.className = 'select-tag-error'
+        } else if (this.duplicateValue.filter(value=> value === option.value).length > 1) {
+          option.type = 'danger'
+        } else if (option.type) {
+          option.type = ''
+        }
+        return option
+      }
     }
   }
 </script>
 ```
+
 :::
 
 :::tip
 如果 Select 的绑定值为对象类型，请务必指定 `value-key` 作为它的唯一性标识。
 :::
 
-### Select Attributes 
+### Select Attributes
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | multiple | 是否多选 | boolean | — | false |
@@ -989,11 +1086,13 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | data-for-paper | 是否支持分页加载数据属性 | array | 可选项的数据 | [] |
 | page-size | 分页加载，每页加载option条数 | number | - | 50 |
 | load-more-text | 加载更多的提示文案 | String | 加载更多 | - |
-| duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean | false | - |
+| duplicate-remove | 配置是否去重创建标签，默认 false，多次输入重复时，奇数次加入，偶数次取消创建 | Boolean \| `allowDuplicate` | false | - |
 | placement | select 的下拉框出现位置 | String | top/top-start/top-end/bottom/bottom-start/bottom-end | bottom-start |
-
+| on-before-create | 创建前的处理函数 | (value) => (string) | string[] | - |
+| parse-selected | 处理 multiple 选中值的显示 | ({ value, currentLabel, hitState, prefixIcon, onPrefixIconClick }) => ({ value, currentLabel, hitState, prefixIcon, onPrefixIconClick, className?: string, type?: Tag.type, }) | - |
 
 ### Select Events
+
 | 事件名称 | 说明 | 回调参数 |
 |---------|---------|---------|
 | change | 选中值发生变化时触发 | 目前的选中值 |
@@ -1004,18 +1103,21 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | focus | 当 input 获得焦点时触发 | (event: Event) |
 
 ### Select Slots
+
 |   name  | 说明     |
 |---------|---------|
 |    —    | Option 组件列表 |
 | prefix  | Select 组件头部内容 |
 
 ### Option Group Attributes
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | label | 分组的组名 | string | — | — |
 | disabled | 是否将该分组下所有选项置为禁用 | boolean | — | false |
 
 ### Option Attributes
+
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | value | 选项的值 | string/number/object | — | — |
@@ -1024,11 +1126,13 @@ select和radio、checkbox一样，选中值和下拉选项中的值是===比较�
 | prefix-icon | 选项的选中标签前缀icon | string | — | - |
 
 ### Option Attributes
+
 | 事件名称 | 说明 | 回调参数 |
 |---------|---------|---------|
 | prefix-icon-click | 选项的选中标签前缀icon的点击事件 | - |
 
 ### Methods
+
 | 方法名 | 说明 | 参数 |
 | ---- | ---- | ---- |
 | focus | 使 input 获取焦点 | - |

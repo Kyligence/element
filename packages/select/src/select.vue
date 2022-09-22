@@ -4,26 +4,32 @@
     ref="$root"
     :class="[selectSize ? 'el-select--' + selectSize : '']"
     @click.stop="toggleMenu"
-    v-clickoutside="handleClose">
+    v-clickoutside="handleClose"
+  >
     <div
       class="el-select__tags"
       v-if="multiple"
       ref="tags"
-      :style="{ 'max-width': inputWidth - 32 + 'px' }">
+      :style="{ 'max-width': inputWidth - 32 + 'px' }"
+    >
       <span v-if="collapseTags && selected.length">
         <el-tag
           :closable="!selectDisabled"
           :size="collapseTagSize"
           :hit="selected[0].hitState"
           @close="deleteTag($event, selected[0])"
-          disable-transitions>
-          <span class="el-select__tags-text">{{ selected[0].currentLabel }}</span>
+          disable-transitions
+        >
+          <span class="el-select__tags-text">{{
+            selected[0].currentLabel
+          }}</span>
         </el-tag>
         <el-tag
           v-if="selected.length > 1"
           :closable="false"
           :size="collapseTagSize"
-          disable-transitions>
+          disable-transitions
+        >
           <span class="el-select__tags-text">+ {{ selected.length - 1 }}</span>
         </el-tag>
       </span>
@@ -31,14 +37,24 @@
         <el-tag
           v-for="item in selected"
           :key="getValueKey(item)"
-          :data-value="JSON.stringify({value: item.value, label: item.currentLabel})"
+          :data-value="
+            JSON.stringify({ value: item.value, label: item.currentLabel })
+          "
           :closable="!selectDisabled"
           :size="collapseTagSize"
           :hit="item.hitState"
+          :type="item.type"
+          :class="item.className"
           @close="deleteTag($event, item)"
-          disable-transitions>
+          disable-transitions
+        >
           <span class="el-select__tags-text">
-            <i v-if="item.prefixIcon" class="el-select__tags-icon" :class="item.prefixIcon" @click="item.onPrefixIconClick" />
+            <i
+              v-if="item.prefixIcon"
+              class="el-select__tags-icon"
+              :class="item.prefixIcon"
+              @click="item.onPrefixIconClick"
+            />
             {{ item.currentLabel }}
           </span>
         </el-tag>
@@ -47,7 +63,7 @@
       <input
         type="text"
         class="el-select__input"
-        :class="[selectSize ? `is-${ selectSize }` : '']"
+        :class="[selectSize ? `is-${selectSize}` : '']"
         :disabled="selectDisabled"
         :autocomplete="autoComplete"
         :clearable="false"
@@ -61,11 +77,15 @@
         @keydown.delete="deletePrevTag"
         @keydown.tab="visible = false"
         v-model="query"
-        @input="e => handleQueryChange(e.target.value)"
+        @input="(e) => handleQueryChange(e.target.value)"
         :debounce="remote ? 300 : 0"
         v-if="filterable"
-        :style="{ width: inputLength + 'px', 'max-width': inputWidth - 42 + 'px' }"
-        ref="input">
+        :style="{
+          width: inputLength + 'px',
+          'max-width': inputWidth - 42 + 'px',
+        }"
+        ref="input"
+      />
     </div>
     <el-input
       ref="reference"
@@ -78,7 +98,7 @@
       :auto-complete="autoComplete"
       :size="selectSize"
       :disabled="selectDisabled"
-      :readonly="!filterable || multiple"
+      :readonly="!filterable || multiple || (filterable && !visible)"
       :validate-event="false"
       :class="{ 'is-focus': visible }"
       @focus="handleFocus"
@@ -91,49 +111,58 @@
       @keydown.native.tab="visible = false"
       @paste.native="debouncedOnInputChange"
       @mouseenter.native="inputHovering = true"
-      @mouseleave.native="inputHovering = false">
+      @mouseleave.native="inputHovering = false"
+    >
       <template slot="prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
       </template>
-      <i slot="suffix"
-       :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"
-       @click="handleIconClick"
+      <i
+        slot="suffix"
+        :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"
+        @click="handleIconClick"
       ></i>
     </el-input>
     <transition
       name="el-zoom-in-top"
       @before-enter="handleMenuEnter"
-      @after-leave="doDestroy">
+      @after-leave="doDestroy"
+    >
       <el-select-menu
         ref="popper"
         :append-to-body="popperAppendToBody"
         :placement="placement"
-        v-show="visible && emptyText !== false">
+        v-show="visible && emptyText !== false"
+      >
         <el-scrollbar
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
           ref="scrollbar"
-          :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
-          v-show="options.length > 0 && !loading">
-          <el-option
-            :value="query"
-            created
-            v-if="showNewOption">
-          </el-option>
+          :class="{
+            'is-empty': !allowCreate && query && filteredOptionsCount === 0,
+          }"
+          v-show="options.length > 0 && !loading"
+        >
+          <el-option :value="query" created v-if="showNewOption"> </el-option>
           <el-option
             v-for="item in pagedData"
             :key="item.value"
             :label="item.label"
-            :value="item.value">
+            :value="item.value"
+          >
           </el-option>
-          <div @click="loadMore" v-if="hasMore" class="load-more">{{loadMoreText}}</div>
+          <div @click="loadMore" v-if="hasMore" class="load-more">
+            {{ loadMoreText }}
+          </div>
           <slot></slot>
         </el-scrollbar>
         <p
           class="el-select-dropdown__empty"
-          v-if="emptyText &&
-            (!allowCreate || loading || (allowCreate && options.length === 0 ))">
+          v-if="
+            emptyText &&
+              (!allowCreate || loading || (allowCreate && options.length === 0))
+          "
+        >
           {{ emptyText }}
         </p>
       </el-select-menu>
@@ -142,805 +171,896 @@
 </template>
 
 <script type="text/babel">
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import Focus from 'kyligence-ui/src/mixins/focus';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import ElInput from 'kyligence-ui/packages/input';
-  import ElSelectMenu from './select-dropdown.vue';
-  import ElOption from './option.vue';
-  import ElTag from 'kyligence-ui/packages/tag';
-  import ElScrollbar from 'kyligence-ui/packages/scrollbar';
-  import debounce from 'throttle-debounce/debounce';
-  import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-  import { addClass, removeClass, hasClass } from 'kyligence-ui/src/utils/dom';
-  import { addResizeListener, removeResizeListener } from 'kyligence-ui/src/utils/resize-event';
-  import { t } from 'kyligence-ui/src/locale';
-  import scrollIntoView from 'kyligence-ui/src/utils/scroll-into-view';
-  import { getValueByPath } from 'kyligence-ui/src/utils/util';
-  import { valueEquals } from 'kyligence-ui/src/utils/util';
-  import NavigationMixin from './navigation-mixin';
+import Emitter from 'kyligence-ui/src/mixins/emitter';
+import Focus from 'kyligence-ui/src/mixins/focus';
+import Locale from 'kyligence-ui/src/mixins/locale';
+import ElInput from 'kyligence-ui/packages/input';
+import ElSelectMenu from './select-dropdown.vue';
+import ElOption from './option.vue';
+import ElTag from 'kyligence-ui/packages/tag';
+import ElScrollbar from 'kyligence-ui/packages/scrollbar';
+import debounce from 'throttle-debounce/debounce';
+import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
+import { addClass, removeClass, hasClass } from 'kyligence-ui/src/utils/dom';
+import {
+  addResizeListener,
+  removeResizeListener
+} from 'kyligence-ui/src/utils/resize-event';
+import { t } from 'kyligence-ui/src/locale';
+import scrollIntoView from 'kyligence-ui/src/utils/scroll-into-view';
+import { getValueByPath } from 'kyligence-ui/src/utils/util';
+import { valueEquals } from 'kyligence-ui/src/utils/util';
+import NavigationMixin from './navigation-mixin';
 
-  const sizeMap = {
-    'medium': 34,
-    'small': 28,
-    'mini': 24
-  };
+const sizeMap = {
+  medium: 34,
+  small: 28,
+  mini: 24
+};
 
-  export default {
-    mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
+export default {
+  mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
 
-    name: 'ElSelect',
+  name: 'ElSelect',
 
-    componentName: 'ElSelect',
+  componentName: 'ElSelect',
 
-    inject: {
-      elForm: {
-        default: ''
-      },
-
-      elFormItem: {
-        default: ''
-      }
+  inject: {
+    elForm: {
+      default: ''
     },
 
-    provide() {
-      return {
-        'select': this
-      };
-    },
+    elFormItem: {
+      default: ''
+    }
+  },
 
-    computed: {
-      filteredData() {
-        return this.dataForPaper.filter(item => {
-          if (typeof this.filterMethod === 'function') {
-            return this.filterMethod(this.query, item);
-          } else {
-            const label = item.label || item.value.toString();
-            return label.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
-          }
-        });
-      },
-      pagedData() {
-        if (this.pageSize) {
-          return this.filteredData.slice(0, this.currentPage * this.pageSize);
-        }
-        return this.filteredData;
-      },
-      hasMore() {
-        return this.pagedData.length < this.filteredData.length;
-      },
-      _elFormItemSize() {
-        return (this.elFormItem || {}).elFormItemSize;
-      },
-      iconClass() {
-        let criteria = this.clearable &&
-          !this.selectDisabled &&
-          this.inputHovering &&
-          !this.multiple &&
-          this.value !== undefined &&
-          this.value !== '';
-        return criteria ? 'circle-close is-show-close' : (this.remote && this.filterable ? '' : 'arrow-up');
-      },
+  provide() {
+    return {
+      select: this
+    };
+  },
 
-      debounce() {
-        return this.remote ? 300 : 0;
-      },
-
-      emptyText() {
-        if (this.loading) {
-          return this.loadingText || this.t('el.select.loading');
+  computed: {
+    filteredData() {
+      return this.dataForPaper.filter((item) => {
+        if (typeof this.filterMethod === 'function') {
+          return this.filterMethod(this.query, item);
         } else {
-          if (this.remote && this.query === '' && this.options.length === 0) return false;
-          if (this.filterable && this.query && this.options.length > 0 && this.filteredOptionsCount === 0) {
-            return this.noMatchText || this.t('el.select.noMatch');
-          }
-          if (this.options.length === 0) {
-            return this.noDataText || this.t('el.select.noData');
-          }
+          const label = item.label || item.value.toString();
+          return label.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
         }
-        return null;
-      },
+      });
+    },
+    pagedData() {
+      if (this.pageSize) {
+        return this.filteredData.slice(0, this.currentPage * this.pageSize);
+      }
+      return this.filteredData;
+    },
+    hasMore() {
+      return this.pagedData.length < this.filteredData.length;
+    },
+    _elFormItemSize() {
+      return (this.elFormItem || {}).elFormItemSize;
+    },
+    iconClass() {
+      let criteria =
+        this.clearable &&
+        !this.selectDisabled &&
+        this.inputHovering &&
+        !this.multiple &&
+        this.value !== undefined &&
+        this.value !== '';
+      return criteria
+        ? 'circle-close is-show-close'
+        : this.remote && this.filterable
+          ? ''
+          : 'arrow-up';
+    },
 
-      showNewOption() {
-        let hasExistingOption = this.options.filter(option => !option.created)
-          .some(option => option.currentLabel === this.query);
-        return this.filterable && this.allowCreate && this.query !== '' && !hasExistingOption;
-      },
+    debounce() {
+      return this.remote ? 300 : 0;
+    },
 
-      selectSize() {
-        return this.size || this._elFormItemSize || (this.$KY_ELEMENT['ElSelect'] || {}).size || (this.$ELEMENT || {}).size;
-      },
+    emptyText() {
+      if (this.loading) {
+        return this.loadingText || this.t('el.select.loading');
+      } else {
+        if (this.remote && this.query === '' && this.options.length === 0) {
+          return false;
+        }
+        if (
+          this.filterable &&
+          this.query &&
+          this.options.length > 0 &&
+          this.filteredOptionsCount === 0
+        ) {
+          return this.noMatchText || this.t('el.select.noMatch');
+        }
+        if (this.options.length === 0) {
+          return this.noDataText || this.t('el.select.noData');
+        }
+      }
+      return null;
+    },
 
-      selectDisabled() {
-        return this.disabled || (this.elForm || {}).disabled;
-      },
+    showNewOption() {
+      let hasExistingOption = this.options
+        .filter((option) => !option.created)
+        .some((option) => option.currentLabel === this.query);
+      return (
+        this.filterable &&
+        this.allowCreate &&
+        this.query !== '' &&
+        !hasExistingOption
+      );
+    },
 
-      collapseTagSize() {
-        return ['small', 'mini'].indexOf(this.selectSize) > -1
-          ? 'mini'
-          : 'small';
+    selectSize() {
+      return (
+        this.size ||
+        this._elFormItemSize ||
+        (this.$KY_ELEMENT['ElSelect'] || {}).size ||
+        (this.$ELEMENT || {}).size
+      );
+    },
+
+    selectDisabled() {
+      return this.disabled || (this.elForm || {}).disabled;
+    },
+
+    collapseTagSize() {
+      return ['small', 'mini'].indexOf(this.selectSize) > -1 ? 'mini' : 'small';
+    }
+  },
+
+  components: {
+    ElInput,
+    ElSelectMenu,
+    ElOption,
+    ElTag,
+    ElScrollbar
+  },
+
+  directives: { Clickoutside },
+
+  props: {
+    name: String,
+    id: String,
+    value: {
+      required: true
+    },
+    autoComplete: {
+      type: String,
+      default: 'off'
+    },
+    size: {
+      type: String,
+      default: 'medium'
+    },
+    inputClickSelected: {
+      type: Boolean,
+      default: true
+    },
+    disabled: Boolean,
+    clearable: Boolean,
+    filterable: Boolean,
+    allowCreate: Boolean,
+    loading: Boolean,
+    popperClass: String,
+    remote: Boolean,
+    loadingText: String,
+    noMatchText: String,
+    noDataText: String,
+    remoteMethod: Function,
+    filterMethod: Function,
+    multiple: Boolean,
+    multipleLimit: {
+      type: Number,
+      default: 0
+    },
+    placeholder: {
+      type: String,
+      default() {
+        return t('el.select.placeholder');
+      }
+    },
+    defaultFirstOption: Boolean,
+    reserveKeyword: Boolean,
+    valueKey: {
+      type: String,
+      default: 'value'
+    },
+    collapseTags: Boolean,
+    popperAppendToBody: {
+      type: Boolean,
+      default: true
+    },
+    placement: {
+      default: 'bottom-start'
+    },
+    dataForPaper: {
+      type: Array,
+      default: () => []
+    },
+    pageSize: {
+      type: Number,
+      default: 50
+    },
+    loadMoreText: {
+      type: String,
+      default: '-'
+    },
+    duplicateRemove: {
+      type: [Boolean, String],
+      default: false
+    },
+    onBeforeCreate: Function,
+    parseSelected: Function
+  },
+
+  data() {
+    return {
+      options: [],
+      cachedOptions: [],
+      createdLabel: null,
+      createdSelected: false,
+      selected: this.multiple ? [] : {},
+      inputLength: 20,
+      inputWidth: 0,
+      cachedPlaceHolder: '',
+      optionsCount: 0,
+      filteredOptionsCount: 0,
+      visible: false,
+      softFocus: false,
+      selectedLabel: '',
+      hoverIndex: -1,
+      query: '',
+      previousQuery: null,
+      inputHovering: false,
+      currentPlaceholder: '',
+      menuVisibleOnFocus: false,
+      ST: null,
+      currentPage: 1,
+      isSilentBlur: false
+    };
+  },
+
+  watch: {
+    selectDisabled() {
+      this.$nextTick(() => {
+        this.resetInputHeight();
+      });
+    },
+
+    placeholder(val) {
+      this.cachedPlaceHolder = this.currentPlaceholder = val;
+    },
+
+    value(val) {
+      if (this.multiple) {
+        this.resetInputHeight();
+        if (val.length > 0 || (this.$refs.input && this.query !== '')) {
+          this.currentPlaceholder = '';
+        } else {
+          this.currentPlaceholder = this.cachedPlaceHolder;
+        }
+        if (this.filterable && !this.reserveKeyword) {
+          this.query = '';
+          this.handleQueryChange(this.query);
+        }
+      }
+      this.setSelected();
+      if (this.filterable && !this.multiple) {
+        this.inputLength = 20;
       }
     },
 
-    components: {
-      ElInput,
-      ElSelectMenu,
-      ElOption,
-      ElTag,
-      ElScrollbar
-    },
-
-    directives: { Clickoutside },
-
-    props: {
-      name: String,
-      id: String,
-      value: {
-        required: true
-      },
-      autoComplete: {
-        type: String,
-        default: 'off'
-      },
-      size: {
-        type: String,
-        default: 'medium'
-      },
-      inputClickSelected: {
-        type: Boolean,
-        default: true
-      },
-      disabled: Boolean,
-      clearable: Boolean,
-      filterable: Boolean,
-      allowCreate: Boolean,
-      loading: Boolean,
-      popperClass: String,
-      remote: Boolean,
-      loadingText: String,
-      noMatchText: String,
-      noDataText: String,
-      remoteMethod: Function,
-      filterMethod: Function,
-      multiple: Boolean,
-      multipleLimit: {
-        type: Number,
-        default: 0
-      },
-      placeholder: {
-        type: String,
-        default() {
-          return t('el.select.placeholder');
+    visible(val) {
+      if (!val) {
+        this.handleIconHide();
+        this.broadcast('ElSelectDropdown', 'destroyPopper');
+        if (this.$refs.input) {
+          this.$refs.input.blur();
         }
-      },
-      defaultFirstOption: Boolean,
-      reserveKeyword: Boolean,
-      valueKey: {
-        type: String,
-        default: 'value'
-      },
-      collapseTags: Boolean,
-      popperAppendToBody: {
-        type: Boolean,
-        default: true
-      },
-      placement: {
-        default: 'bottom-start'
-      },
-      dataForPaper: {
-        type: Array,
-        default: () => []
-      },
-      pageSize: {
-        type: Number,
-        default: 50
-      },
-      loadMoreText: {
-        type: String,
-        default: '-'
-      },
-      duplicateRemove: {
-        type: Boolean,
-        default: false
-      }
-    },
-
-    data() {
-      return {
-        options: [],
-        cachedOptions: [],
-        createdLabel: null,
-        createdSelected: false,
-        selected: this.multiple ? [] : {},
-        inputLength: 20,
-        inputWidth: 0,
-        cachedPlaceHolder: '',
-        optionsCount: 0,
-        filteredOptionsCount: 0,
-        visible: false,
-        softFocus: false,
-        selectedLabel: '',
-        hoverIndex: -1,
-        query: '',
-        previousQuery: null,
-        inputHovering: false,
-        currentPlaceholder: '',
-        menuVisibleOnFocus: false,
-        ST: null,
-        currentPage: 1,
-        isSilentBlur: false
-      };
-    },
-
-    watch: {
-      selectDisabled() {
+        this.query = '';
+        this.previousQuery = null;
+        this.selectedLabel = '';
+        this.inputLength = 20;
+        this.menuVisibleOnFocus = false;
+        this.resetHoverIndex();
         this.$nextTick(() => {
-          this.resetInputHeight();
-        });
-      },
-
-      placeholder(val) {
-        this.cachedPlaceHolder = this.currentPlaceholder = val;
-      },
-
-      value(val) {
-        if (this.multiple) {
-          this.resetInputHeight();
-          if (val.length > 0 || (this.$refs.input && this.query !== '')) {
-            this.currentPlaceholder = '';
-          } else {
+          if (
+            this.$refs.input &&
+            this.$refs.input.value === '' &&
+            this.selected.length === 0
+          ) {
             this.currentPlaceholder = this.cachedPlaceHolder;
           }
-          if (this.filterable && !this.reserveKeyword) {
-            this.query = '';
-            this.handleQueryChange(this.query);
-          }
-        }
-        this.setSelected();
-        if (this.filterable && !this.multiple) {
-          this.inputLength = 20;
-        }
-      },
-
-      visible(val) {
-        if (!val) {
-          this.handleIconHide();
-          this.broadcast('ElSelectDropdown', 'destroyPopper');
-          if (this.$refs.input) {
-            this.$refs.input.blur();
-          }
-          this.query = '';
-          this.previousQuery = null;
-          this.selectedLabel = '';
-          this.inputLength = 20;
-          this.menuVisibleOnFocus = false;
-          this.resetHoverIndex();
-          this.$nextTick(() => {
-            if (this.$refs.input &&
-              this.$refs.input.value === '' &&
-              this.selected.length === 0) {
-              this.currentPlaceholder = this.cachedPlaceHolder;
+        });
+        if (!this.multiple) {
+          if (this.selected) {
+            if (
+              this.filterable &&
+              this.allowCreate &&
+              this.createdSelected &&
+              this.createdOption
+            ) {
+              this.selectedLabel = this.createdLabel;
+            } else {
+              this.selectedLabel = this.selected.currentLabel;
             }
-          });
-          if (!this.multiple) {
-            if (this.selected) {
-              if (this.filterable && this.allowCreate &&
-                this.createdSelected && this.createdOption) {
-                this.selectedLabel = this.createdLabel;
-              } else {
-                this.selectedLabel = this.selected.currentLabel;
-              }
-              if (this.filterable) this.query = this.selectedLabel;
-              if (this.filterable && this.dataForPaper.length) this.query = '';
+            if (this.filterable) this.query = this.selectedLabel;
+            if (this.filterable && this.dataForPaper.length) this.query = '';
+          }
+          // 同步官方的处理 filter 时的交互问题 来自 issue #14989
+          if (this.filterable) {
+            this.currentPlaceholder = this.cachedPlaceHolder;
+          }
+        }
+      } else {
+        this.handleIconShow();
+        this.broadcast('ElSelectDropdown', 'updatePopper');
+        if (this.filterable) {
+          this.query = this.remote ? '' : this.selectedLabel;
+          if (this.dataForPaper.length) this.query = '';
+          this.handleQueryChange(this.query);
+          if (this.multiple) {
+            this.$refs.input.focus();
+          } else {
+            if (!this.remote) {
+              this.broadcast('ElOption', 'queryChange', '');
+              this.broadcast('ElOptionGroup', 'queryChange');
             }
             // 同步官方的处理 filter 时的交互问题 来自 issue #14989
-            if (this.filterable) {
-              this.currentPlaceholder = this.cachedPlaceHolder;
-            }
-          }
-        } else {
-          this.handleIconShow();
-          this.broadcast('ElSelectDropdown', 'updatePopper');
-          if (this.filterable) {
-            this.query = this.remote ? '' : this.selectedLabel;
-            if (this.dataForPaper.length) this.query = '';
-            this.handleQueryChange(this.query);
-            if (this.multiple) {
-              this.$refs.input.focus();
-            } else {
-              if (!this.remote) {
-                this.broadcast('ElOption', 'queryChange', '');
-                this.broadcast('ElOptionGroup', 'queryChange');
-              }
-              // 同步官方的处理 filter 时的交互问题 来自 issue #14989
-              if (this.selectedLabel) {
-                this.currentPlaceholder = this.selectedLabel;
-                this.selectedLabel = '';
-              }
+            if (this.selectedLabel) {
+              this.currentPlaceholder = this.selectedLabel;
+              this.selectedLabel = '';
             }
           }
         }
-        this.$emit('visible-change', val);
-      },
+      }
+      this.$emit('visible-change', val);
+    },
 
-      options() {
-        if (this.$isServer) return;
-        this.$nextTick(() => {
-          this.broadcast('ElSelectDropdown', 'updatePopper');
-        });
-        if (this.multiple) {
-          this.resetInputHeight();
-        }
-        let inputs = this.$el.querySelectorAll('input');
-        if ([].indexOf.call(inputs, document.activeElement) === -1) {
-          this.setSelected();
-        }
-        if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
-          this.checkDefaultFirstOption();
-        }
+    options() {
+      if (this.$isServer) return;
+      this.$nextTick(() => {
+        this.broadcast('ElSelectDropdown', 'updatePopper');
+      });
+      if (this.multiple) {
+        this.resetInputHeight();
+      }
+      let inputs = this.$el.querySelectorAll('input');
+      if ([].indexOf.call(inputs, document.activeElement) === -1) {
+        this.setSelected();
+      }
+      if (
+        this.defaultFirstOption &&
+        (this.filterable || this.remote) &&
+        this.filteredOptionsCount
+      ) {
+        this.checkDefaultFirstOption();
+      }
+    }
+  },
+
+  methods: {
+    loadMore() {
+      this.currentPage++;
+    },
+    handleQueryChange(val) {
+      // if (!this.visible) {
+      //   this.query = this.multiple ? '' : this.value;
+      //   return;
+      // }
+      if (this.previousQuery === val) return;
+      if (
+        this.previousQuery === null &&
+        (typeof this.filterMethod === 'function' ||
+          typeof this.remoteMethod === 'function')
+      ) {
+        this.previousQuery = val;
+        return;
+      }
+      this.previousQuery = val;
+      this.currentPage = 1;
+      this.$nextTick(() => {
+        if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
+      });
+      this.hoverIndex = -1;
+      if (this.multiple && this.filterable) {
+        const length = this.$refs.input.value.length * 15 + 20;
+        this.inputLength = this.collapseTags ? Math.min(50, length) : length;
+        this.managePlaceholder();
+        this.resetInputHeight();
+      }
+      if (this.remote && typeof this.remoteMethod === 'function') {
+        this.hoverIndex = -1;
+        this.remoteMethod(val);
+      } else if (typeof this.filterMethod === 'function') {
+        this.filterMethod(val);
+        this.broadcast('ElOptionGroup', 'queryChange');
+      } else {
+        this.filteredOptionsCount = this.optionsCount;
+        this.broadcast('ElOption', 'queryChange', val);
+        this.broadcast('ElOptionGroup', 'queryChange');
+      }
+      if (
+        this.defaultFirstOption &&
+        (this.filterable || this.remote) &&
+        this.filteredOptionsCount
+      ) {
+        this.checkDefaultFirstOption();
       }
     },
 
-    methods: {
-      loadMore() {
-        this.currentPage++;
-      },
-      handleQueryChange(val) {
-        if (this.previousQuery === val) return;
-        if (
-          this.previousQuery === null &&
-          (typeof this.filterMethod === 'function' || typeof this.remoteMethod === 'function')
-        ) {
-          this.previousQuery = val;
-          return;
-        }
-        this.previousQuery = val;
-        this.currentPage = 1;
-        this.$nextTick(() => {
-          if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
-        });
-        this.hoverIndex = -1;
-        if (this.multiple && this.filterable) {
-          const length = this.$refs.input.value.length * 15 + 20;
-          this.inputLength = this.collapseTags ? Math.min(50, length) : length;
-          this.managePlaceholder();
-          this.resetInputHeight();
-        }
-        if (this.remote && typeof this.remoteMethod === 'function') {
-          this.hoverIndex = -1;
-          this.remoteMethod(val);
-        } else if (typeof this.filterMethod === 'function') {
-          this.filterMethod(val);
-          this.broadcast('ElOptionGroup', 'queryChange');
-        } else {
-          this.filteredOptionsCount = this.optionsCount;
-          this.broadcast('ElOption', 'queryChange', val);
-          this.broadcast('ElOptionGroup', 'queryChange');
-        }
-        if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
-          this.checkDefaultFirstOption();
-        }
-      },
+    handleIconHide() {
+      let icon = this.$el.querySelector('.el-input__icon');
+      if (icon) {
+        removeClass(icon, 'is-reverse');
+      }
+    },
 
-      handleIconHide() {
-        let icon = this.$el.querySelector('.el-input__icon');
-        if (icon) {
-          removeClass(icon, 'is-reverse');
-        }
-      },
+    handleIconShow() {
+      let icon = this.$el.querySelector('.el-input__icon');
+      if (icon && !hasClass(icon, 'el-icon-circle-close')) {
+        addClass(icon, 'is-reverse');
+      }
+    },
 
-      handleIconShow() {
-        let icon = this.$el.querySelector('.el-input__icon');
-        if (icon && !hasClass(icon, 'el-icon-circle-close')) {
-          addClass(icon, 'is-reverse');
-        }
-      },
+    scrollToOption(option) {
+      const target =
+        Array.isArray(option) && option[0] ? option[0].$el : option.$el;
+      if (this.$refs.popper && target) {
+        const menu = this.$refs.popper.$el.querySelector(
+          '.el-select-dropdown__wrap'
+        );
+        scrollIntoView(menu, target);
+      }
+      this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
+    },
 
-      scrollToOption(option) {
-        const target = Array.isArray(option) && option[0] ? option[0].$el : option.$el;
-        if (this.$refs.popper && target) {
-          const menu = this.$refs.popper.$el.querySelector('.el-select-dropdown__wrap');
-          scrollIntoView(menu, target);
-        }
-        this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
-      },
+    handleMenuEnter() {
+      this.$nextTick(() => this.scrollToOption(this.selected));
+    },
 
-      handleMenuEnter() {
-        this.$nextTick(() => this.scrollToOption(this.selected));
-      },
+    emitChange(val) {
+      if (!valueEquals(this.value, val)) {
+        this.$emit('change', val);
+        this.dispatch('ElFormItem', 'el.form.change', val);
+      }
+    },
 
-      emitChange(val) {
-        if (!valueEquals(this.value, val)) {
-          this.$emit('change', val);
-          this.dispatch('ElFormItem', 'el.form.change', val);
-        }
-      },
-
-      getOption(value) {
-        let option;
-        const isObject = Object.prototype.toString.call(value).toLowerCase() === '[object object]';
+    getOption(value) {
+      let option;
+      const isObject =
+        Object.prototype.toString.call(value).toLowerCase() ===
+        '[object object]';
+      if (
+        this.duplicateRemove !== 'allowDuplicate' ||
+        this.value.filter((item) => item === value).length === 1
+      ) {
         for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
           const cachedOption = this.cachedOptions[i];
           const isEqual = isObject
-            ? getValueByPath(cachedOption.value, this.valueKey) === getValueByPath(value, this.valueKey)
+            ? getValueByPath(cachedOption.value, this.valueKey) ===
+              getValueByPath(value, this.valueKey)
             : cachedOption.value === value;
           if (isEqual) {
             option = cachedOption;
             break;
           }
         }
-        if (option) return option;
-        const label = !isObject
-          ? value : '';
-        let newOption = {
-          value: value,
-          currentLabel: label
-        };
-        if (this.multiple) {
-          newOption.hitState = false;
-        }
-        return newOption;
-      },
+      }
+      if (option) {
+        return this.parseSelected ? this.parseSelected(option) : option;
+      }
+      const label = !isObject ? value : '';
+      let newOption = {
+        value: value,
+        currentLabel: label
+      };
+      if (this.multiple) {
+        newOption.hitState = false;
+      }
+      return this.parseSelected ? this.parseSelected(newOption) : newOption;
+    },
 
-      setSelected() {
-        if (!this.multiple) {
-          let option = this.getOption(this.value);
-          if (option.created) {
-            this.createdLabel = option.currentLabel;
-            this.createdSelected = true;
-          } else {
-            this.createdSelected = false;
-          }
-          this.selectedLabel = option.currentLabel;
-          this.selected = option;
-          if (this.filterable) this.query = this.selectedLabel;
-          if (this.filterable && this.dataForPaper.length) this.query = '';
-          return;
-        }
-        let result = [];
-        if (Array.isArray(this.value)) {
-          this.value.forEach(value => {
-            result.push(this.getOption(value));
-          });
-        }
-        this.selected = result;
-        this.$nextTick(() => {
-          this.resetInputHeight();
-        });
-      },
-
-      handleFocus(event) {
-        if (!this.softFocus) {
-          if (this.automaticDropdown || this.filterable) {
-            this.visible = true;
-            if (this.filterable) {
-              this.menuVisibleOnFocus = true;
-            }
-          }
-          this.$emit('focus', event);
+    setSelected() {
+      if (!this.multiple) {
+        let option = this.getOption(this.value);
+        if (option.created) {
+          this.createdLabel = option.currentLabel;
+          this.createdSelected = true;
         } else {
-          this.softFocus = false;
+          this.createdSelected = false;
         }
-      },
-
-      handleBlur(event) {
-        setTimeout(() => {
-          if (this.isSilentBlur) {
-            this.isSilentBlur = false;
-          } else {
-            this.$emit('blur', event);
-          }
-        }, 50);
-        this.softFocus = false;
-      },
-
-      handleIconClick(event) {
-        if (this.iconClass.indexOf('circle-close') > -1) {
-          this.deleteSelected(event);
-        }
-      },
-
-      doDestroy() {
-        this.$refs.popper && this.$refs.popper.doDestroy();
-      },
-
-      handleClose() {
-        this.visible = false;
-      },
-
-      toggleLastOptionHitState(hit) {
-        if (!Array.isArray(this.selected)) return;
-        const option = this.selected[this.selected.length - 1];
-        if (!option) return;
-
-        if (hit === true || hit === false) {
-          option.hitState = hit;
-          return hit;
-        }
-
-        option.hitState = !option.hitState;
-        return option.hitState;
-      },
-
-      deletePrevTag(e) {
-        if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
-          const value = this.value.slice();
-          value.pop();
-          this.$emit('input', value);
-          this.emitChange(value);
-        }
-      },
-
-      managePlaceholder() {
-        if (this.currentPlaceholder !== '') {
-          this.currentPlaceholder = this.$refs.input.value ? '' : this.cachedPlaceHolder;
-        }
-      },
-
-      resetInputState(e) {
-        if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
-        this.inputLength = this.$refs.input.value.length * 15 + 20;
+        this.selectedLabel = option.currentLabel;
+        this.selected = option;
+        if (this.filterable) this.query = this.selectedLabel;
+        if (this.filterable && this.dataForPaper.length) this.query = '';
+        return;
+      }
+      let result = [];
+      if (Array.isArray(this.value)) {
+        this.value.forEach((value) => {
+          result.push(this.getOption(value));
+        });
+      }
+      this.selected = result;
+      this.$nextTick(() => {
         this.resetInputHeight();
-      },
+      });
+    },
 
-      resetInputHeight() {
-        clearTimeout(this.ST);
-        if (this.collapseTags && !this.filterable) return;
-        this.$nextTick(() => {
-          if (!this.$refs.reference) return;
-          let inputChildNodes = this.$refs.reference.$el.childNodes;
-          let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0];
-          const tags = this.$refs.tags;
-          const sizeInMap = sizeMap[this.selectSize] || 38;
-          if (this.selected.length === 0) {
-            this.ST = setTimeout(() => {
-              if (this.selected.length === 0) {
-                input.style.height = sizeInMap + 'px';
-              }
-            }, 10);
-          } else {
-            input.style.height = Math.max(
-              tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
+    handleFocus(event) {
+      if (!this.softFocus) {
+        if (this.automaticDropdown || this.filterable) {
+          this.visible = true;
+          if (this.filterable) {
+            this.menuVisibleOnFocus = true;
+          }
+        }
+        this.$emit('focus', event);
+      } else {
+        this.softFocus = false;
+      }
+    },
+
+    handleBlur(event) {
+      setTimeout(() => {
+        if (this.isSilentBlur) {
+          this.isSilentBlur = false;
+        } else {
+          this.$emit('blur', event);
+        }
+      }, 50);
+      this.softFocus = false;
+    },
+
+    handleIconClick(event) {
+      if (this.iconClass.indexOf('circle-close') > -1) {
+        this.deleteSelected(event);
+      }
+    },
+
+    doDestroy() {
+      this.$refs.popper && this.$refs.popper.doDestroy();
+    },
+
+    handleClose() {
+      this.visible = false;
+    },
+
+    toggleLastOptionHitState(hit) {
+      if (!Array.isArray(this.selected)) return;
+      const option = this.selected[this.selected.length - 1];
+      if (!option) return;
+
+      if (hit === true || hit === false) {
+        option.hitState = hit;
+        return hit;
+      }
+
+      option.hitState = !option.hitState;
+      return option.hitState;
+    },
+
+    deletePrevTag(e) {
+      if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
+        const value = this.value.slice();
+        value.pop();
+        this.$emit('input', value);
+        this.emitChange(value);
+      }
+    },
+
+    managePlaceholder() {
+      if (this.currentPlaceholder !== '') {
+        this.currentPlaceholder = this.$refs.input.value
+          ? ''
+          : this.cachedPlaceHolder;
+      }
+    },
+
+    resetInputState(e) {
+      if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
+      this.inputLength = this.$refs.input.value.length * 15 + 20;
+      this.resetInputHeight();
+    },
+
+    resetInputHeight() {
+      clearTimeout(this.ST);
+      if (this.collapseTags && !this.filterable) return;
+      this.$nextTick(() => {
+        if (!this.$refs.reference) return;
+        let inputChildNodes = this.$refs.reference.$el.childNodes;
+        let input = [].filter.call(
+          inputChildNodes,
+          (item) => item.tagName === 'INPUT'
+        )[0];
+        const tags = this.$refs.tags;
+        const sizeInMap = sizeMap[this.selectSize] || 38;
+        if (this.selected.length === 0) {
+          this.ST = setTimeout(() => {
+            if (this.selected.length === 0) {
+              input.style.height = sizeInMap + 'px';
+            }
+          }, 10);
+        } else {
+          input.style.height =
+            Math.max(
+              tags
+                ? tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)
+                : 0,
               sizeInMap
             ) + 'px';
-          }
-          if (this.visible && this.emptyText !== false) {
-            this.broadcast('ElSelectDropdown', 'updatePopper');
-          }
-        });
-      },
+        }
+        if (this.visible && this.emptyText !== false) {
+          this.broadcast('ElSelectDropdown', 'updatePopper');
+        }
+      });
+    },
 
-      resetHoverIndex() {
-        setTimeout(() => {
-          if (!this.multiple) {
-            this.hoverIndex = this.options.indexOf(this.selected);
+    resetHoverIndex() {
+      setTimeout(() => {
+        if (!this.multiple) {
+          this.hoverIndex = this.options.indexOf(this.selected);
+        } else {
+          if (this.selected.length > 0) {
+            this.hoverIndex = Math.min.apply(
+              null,
+              this.selected.map((item) => this.options.indexOf(item))
+            );
           } else {
-            if (this.selected.length > 0) {
-              this.hoverIndex = Math.min.apply(null, this.selected.map(item => this.options.indexOf(item)));
-            } else {
-              this.hoverIndex = -1;
-            }
+            this.hoverIndex = -1;
           }
-        }, 300);
-      },
+        }
+      }, 300);
+    },
 
-      handleOptionSelect(option, byClick) {
-        if (this.multiple) {
-          const value = this.value.slice();
-          const optionIndex = this.getValueIndex(value, option.value);
-          if (optionIndex > -1) {
+    handleOptionSelect(option, byClick) {
+      let optionValue =
+        option.created && this.onBeforeCreate
+          ? this.onBeforeCreate(option.value)
+          : option.value;
+      if (this.multiple) {
+        if (!(optionValue instanceof Array)) {
+          optionValue = [optionValue];
+        }
+        const value = this.value.slice();
+        for (const optionValueItem of optionValue) {
+          // createdSeparator
+          const optionIndex = this.getValueIndex(value, optionValueItem);
+          if (optionIndex > -1 && this.duplicateRemove !== 'allowDuplicate') {
             // 新加一个属性，如果创建标签时，带了去重标签，就不做任何处理
-            if (!this.duplicateRemove) {
+            if (this.duplicateRemove !== true) {
               value.splice(optionIndex, 1);
             }
-          } else if (this.multipleLimit <= 0 || value.length < this.multipleLimit) {
-            value.push(option.value);
-          }
-          this.$emit('input', value);
-          this.emitChange(value);
-          if (option.created) {
-            this.query = '';
-            this.handleQueryChange('');
-            this.inputLength = 20;
-          }
-          if (this.filterable) this.$refs.input.focus();
-        } else {
-          this.$emit('input', option.value);
-          this.emitChange(option.value);
-          this.visible = false;
-        }
-        this.isSilentBlur = byClick;
-        this.setSoftFocus();
-        if (this.visible) return;
-        this.$nextTick(() => {
-          // if (this.visible) return;
-          this.scrollToOption(option);
-          // this.setSoftFocus();
-        });
-      },
-
-      setSoftFocus() {
-        this.softFocus = true;
-        (this.$refs.input || this.$refs.reference).focus();
-      },
-
-      getValueIndex(arr = [], value) {
-        const isObject = Object.prototype.toString.call(value).toLowerCase() === '[object object]';
-        if (!isObject) {
-          return arr.indexOf(value);
-        } else {
-          const valueKey = this.valueKey;
-          let index = -1;
-          arr.some((item, i) => {
-            if (getValueByPath(item, valueKey) === getValueByPath(value, valueKey)) {
-              index = i;
-              return true;
-            }
-            return false;
-          });
-          return index;
-        }
-      },
-
-      toggleMenu() {
-        if (!this.selectDisabled) {
-          if (this.menuVisibleOnFocus) {
-            this.menuVisibleOnFocus = false;
-          } else {
-            this.visible = !this.visible;
-          }
-          if (this.visible) {
-            (this.$refs.input || this.$refs.reference).focus();
+          } else if (
+            this.multipleLimit <= 0 ||
+            value.length < this.multipleLimit
+          ) {
+            value.push(optionValueItem);
           }
         }
-      },
+        this.$emit('input', value);
 
-      selectOption() {
-        if (!this.visible) {
-          this.toggleMenu();
-        } else {
-          if (this.options[this.hoverIndex]) {
-            this.handleOptionSelect(this.options[this.hoverIndex]);
-          }
+        this.emitChange(value);
+        if (option.created) {
+          this.query = '';
+          this.handleQueryChange('');
+          this.inputLength = 20;
         }
-      },
-
-      deleteSelected(event) {
-        event.stopPropagation();
-        this.$emit('input', '');
-        this.emitChange('');
+        if (this.filterable) this.$refs.input.focus();
+      } else {
+        this.$emit('input', optionValue);
+        this.emitChange(optionValue);
         this.visible = false;
-        this.$emit('clear');
-      },
+      }
+      this.isSilentBlur = byClick;
+      this.setSoftFocus();
+      if (this.visible) return;
+      this.$nextTick(() => {
+        // if (this.visible) return;
+        this.scrollToOption(option);
+        // this.setSoftFocus();
+      });
+    },
 
-      deleteTag(event, tag) {
-        let index = this.selected.indexOf(tag);
-        if (index > -1 && !this.selectDisabled) {
-          const value = this.value.slice();
-          value.splice(index, 1);
-          this.$emit('input', value);
-          this.emitChange(value);
-          this.$emit('remove-tag', tag.value);
+    setSoftFocus() {
+      this.softFocus = true;
+      (this.$refs.input || this.$refs.reference).focus();
+    },
+
+    getValueIndex(arr = [], value) {
+      const isObject =
+        Object.prototype.toString.call(value).toLowerCase() ===
+        '[object object]';
+      if (!isObject) {
+        return arr.indexOf(value);
+      } else {
+        const valueKey = this.valueKey;
+        let index = -1;
+        arr.some((item, i) => {
+          if (
+            getValueByPath(item, valueKey) === getValueByPath(value, valueKey)
+          ) {
+            index = i;
+            return true;
+          }
+          return false;
+        });
+        return index;
+      }
+    },
+
+    toggleMenu() {
+      if (!this.selectDisabled) {
+        if (this.menuVisibleOnFocus) {
+          this.menuVisibleOnFocus = false;
+        } else {
+          this.visible = !this.visible;
         }
-        event.stopPropagation();
-      },
-
-      onInputChange() {
-        if (this.filterable && this.query !== this.selectedLabel) {
-          this.query = this.selectedLabel;
-          this.handleQueryChange(this.query);
+        if (this.visible) {
+          (this.$refs.input || this.$refs.reference).focus();
         }
-      },
+      }
+    },
 
-      onOptionDestroy(index) {
-        if (index > -1) {
-          this.optionsCount--;
-          this.filteredOptionsCount--;
-          this.options.splice(index, 1);
+    selectOption() {
+      if (!this.visible) {
+        this.toggleMenu();
+      } else {
+        if (this.options[this.hoverIndex]) {
+          this.handleOptionSelect(this.options[this.hoverIndex]);
         }
-      },
+      }
+    },
 
-      resetInputWidth() {
-        this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
-      },
+    deleteSelected(event) {
+      event.stopPropagation();
+      this.$emit('input', '');
+      this.emitChange('');
+      this.visible = false;
+      this.$emit('clear');
+    },
 
-      handleResize() {
-        this.resetInputWidth();
-        if (this.multiple) this.resetInputHeight();
-      },
+    deleteTag(event, tag) {
+      let index = this.selected.indexOf(tag);
+      if (index > -1 && !this.selectDisabled) {
+        const value = this.value.slice();
+        value.splice(index, 1);
+        this.$emit('input', value);
+        this.emitChange(value);
+        this.$emit('remove-tag', tag.value);
+      }
+      event.stopPropagation();
+    },
 
-      checkDefaultFirstOption() {
-        this.hoverIndex = -1;
-        // highlight the created option
-        let hasCreated = false;
-        for (let i = this.options.length - 1; i >= 0; i--) {
-          if (this.options[i].created) {
-            hasCreated = true;
+    onInputChange() {
+      if (this.filterable && this.query !== this.selectedLabel) {
+        this.query = this.selectedLabel;
+        this.handleQueryChange(this.query);
+      }
+    },
+
+    onOptionDestroy(index) {
+      if (index > -1) {
+        this.optionsCount--;
+        this.filteredOptionsCount--;
+        this.options.splice(index, 1);
+      }
+    },
+
+    resetInputWidth() {
+      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+    },
+
+    handleResize() {
+      this.resetInputWidth();
+      if (this.multiple) this.resetInputHeight();
+    },
+
+    checkDefaultFirstOption() {
+      this.hoverIndex = -1;
+      // highlight the created option
+      let hasCreated = false;
+      for (let i = this.options.length - 1; i >= 0; i--) {
+        if (this.options[i].created) {
+          hasCreated = true;
+          this.hoverIndex = i;
+          break;
+        }
+      }
+      if (hasCreated) return;
+      for (let i = 0; i !== this.options.length; ++i) {
+        const option = this.options[i];
+        if (this.query) {
+          // highlight first options that passes the filter
+          if (!option.disabled && !option.groupDisabled && option.visible) {
+            this.hoverIndex = i;
+            break;
+          }
+        } else {
+          // highlight currently selected option
+          if (option.itemSelected) {
             this.hoverIndex = i;
             break;
           }
         }
-        if (hasCreated) return;
-        for (let i = 0; i !== this.options.length; ++i) {
-          const option = this.options[i];
-          if (this.query) {
-            // highlight first options that passes the filter
-            if (!option.disabled && !option.groupDisabled && option.visible) {
-              this.hoverIndex = i;
-              break;
-            }
-          } else {
-            // highlight currently selected option
-            if (option.itemSelected) {
-              this.hoverIndex = i;
-              break;
-            }
-          }
-        }
-      },
+      }
+    },
 
-      getValueKey(item) {
-        if (Object.prototype.toString.call(item.value).toLowerCase() !== '[object object]') {
-          // 数据可视化的业务上，数据的不确定性很多，会有 null 或者 undefined 等数据，这时候对应的key 值需要特殊处理
-          let value = item.value;
-          if (item.value === null) {
-            value = 'Empty Object';
-          } else if (item.value === undefined) {
-            value = 'undefined';
-          } else if (item.value === '') {
-            value = 'Empty String';
-          } else if (item.value === false) {
-            value = 'Boolean False';
-          } else if (item.value === true) {
-            value = 'Boolean True';
-          } else {
-            value = item.value;
-          }
-          return value;
+    getValueKey(item) {
+      if (
+        Object.prototype.toString.call(item.value).toLowerCase() !==
+        '[object object]'
+      ) {
+        // 数据可视化的业务上，数据的不确定性很多，会有 null 或者 undefined 等数据，这时候对应的key 值需要特殊处理
+        let value = item.value;
+        if (item.value === null) {
+          value = 'Empty Object';
+        } else if (item.value === undefined) {
+          value = 'undefined';
+        } else if (item.value === '') {
+          value = 'Empty String';
+        } else if (item.value === false) {
+          value = 'Boolean False';
+        } else if (item.value === true) {
+          value = 'Boolean True';
         } else {
-          return getValueByPath(item.value, this.valueKey);
+          value = item.value;
         }
+        return value;
+      } else {
+        return getValueByPath(item.value, this.valueKey);
       }
-    },
-
-    created() {
-      this.cachedPlaceHolder = this.currentPlaceholder = this.placeholder;
-      if (this.multiple && !Array.isArray(this.value)) {
-        this.$emit('input', []);
-      }
-      if (!this.multiple && Array.isArray(this.value)) {
-        this.$emit('input', '');
-      }
-
-      this.debouncedOnInputChange = debounce(this.debounce, () => {
-        this.onInputChange();
-      });
-
-      this.$on('handleOptionClick', this.handleOptionSelect);
-      this.$on('setSelected', this.setSelected);
-      this.$on('fieldReset', () => {
-        this.dispatch('ElFormItem', 'el.form.change');
-      });
-    },
-
-    mounted() {
-      if (this.multiple && Array.isArray(this.value) && this.value.length > 0) {
-        this.currentPlaceholder = '';
-      }
-      addResizeListener(this.$el, this.handleResize);
-      if (this.remote && this.multiple) {
-        this.resetInputHeight();
-      }
-      this.$nextTick(() => {
-        if (this.$refs.reference && this.$refs.reference.$el) {
-          this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
-        }
-      });
-      this.setSelected();
-    },
-
-    beforeDestroy() {
-      if (this.$el && this.handleResize) removeResizeListener(this.$el, this.handleResize);
     }
-  };
+  },
+
+  created() {
+    this.cachedPlaceHolder = this.currentPlaceholder = this.placeholder;
+    if (this.multiple && !Array.isArray(this.value)) {
+      this.$emit('input', []);
+    }
+    if (!this.multiple && Array.isArray(this.value)) {
+      this.$emit('input', '');
+    }
+
+    this.debouncedOnInputChange = debounce(this.debounce, () => {
+      this.onInputChange();
+    });
+
+    this.$on('handleOptionClick', this.handleOptionSelect);
+    this.$on('setSelected', this.setSelected);
+    this.$on('fieldReset', () => {
+      this.dispatch('ElFormItem', 'el.form.change');
+    });
+  },
+
+  mounted() {
+    if (this.multiple && Array.isArray(this.value) && this.value.length > 0) {
+      this.currentPlaceholder = '';
+    }
+    addResizeListener(this.$el, this.handleResize);
+    if (this.remote && this.multiple) {
+      this.resetInputHeight();
+    }
+    this.$nextTick(() => {
+      if (this.$refs.reference && this.$refs.reference.$el) {
+        this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+      }
+    });
+    this.setSelected();
+  },
+
+  beforeDestroy() {
+    if (this.$el && this.handleResize) {
+      removeResizeListener(this.$el, this.handleResize);
+    }
+  }
+};
 </script>
