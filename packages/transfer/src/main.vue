@@ -272,11 +272,12 @@ export default {
     },
 
     targetData() {
-      return this.targetOrder === 'original'
+      const result = this.targetOrder === 'original'
         ? this.data.filter(
           (item) => this.value.indexOf(item[this.props.key]) > -1
         )
-        : this.value.map((key) => this.dataObj[key]);
+        : this.value.map((key) => this.dataObj[key]).filter(item=>item !== undefined);
+      return result;
     },
 
     hasButtonTexts() {
