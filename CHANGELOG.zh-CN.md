@@ -1,5 +1,9 @@
 ## 更新日志
 
+### 4.1.5
+*2022-09-22*
+- 新增：分享 icon
+
 ### 4.1.4
 *2022-09-16*
 - 新增：select组件`duplicate-remove` 增加可选值 `allowDuplicate`
