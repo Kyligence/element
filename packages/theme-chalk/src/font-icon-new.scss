@@ -32,6 +32,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.el-ksd-n-icon-play-filled:before {
+  content: "\e723";
+}
+
 .el-ksd-n-icon-share-outlined:before {
   content: "\e603";
 }
@@ -739,3 +743,4 @@
 .el-ksd-n-icon-right-join-filled:before {
   content: "\e673";
 }
+
