@@ -6,6 +6,13 @@
   "description": "新标准的 icon，就一个尺寸",
   "glyphs": [
     {
+      "icon_id": "32265026",
+      "name": "play-filled",
+      "font_class": "play-filled",
+      "unicode": "e723",
+      "unicode_decimal": 59171
+    },
+    {
       "icon_id": "31967892",
       "name": "share-outlined",
       "font_class": "share-outlined",
