@@ -1,0 +1,7 @@
+@import './palette.scss';
+
+$elevation-0: inset 0px 0px 0px 1px $palette-gray-200 !default;
+$elevation-1: 0px 1px 4px fade-out(#3f5980, 0.80) !default;
+$elevation-2: 0px 2px 8px 0px fade-out(#32496b, 0.24) !default;
+$elevation-3: 0px 4px 12px 0px fade-out(#304667, 0.32) !default;
+$elevation-4: 0px 8px 32px 0px fade-out(#354864, 0.24) !default;

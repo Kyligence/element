@@ -1,0 +1,96 @@
+@import "./palette.scss";
+
+$color-fill-primary: $palette-blue-500 !default;
+$color-fill-primary-hover: $palette-blue-600 !default;
+$color-fill-primary-active: $palette-blue-700 !default;
+
+$color-fill-secondary: $palette-gray-200 !default;
+$color-fill-secondary-hover: $palette-gray-300 !default;
+$color-fill-secondary-active: $palette-gray-400 !default;
+
+$color-fill-nav: $palette-navy-800 !default;
+$color-fill-nav-hover: $palette-navy-600 !default;
+$color-fill-nav-active: $palette-navy-700 !default;
+
+$color-border-primary: $palette-blue-500 !default;
+$color-border-primary-hover: $palette-blue-600 !default;
+$color-border-primary-active: $palette-blue-700 !default;
+
+$color-border-secondary: $palette-gray-300 !default;
+$color-border-secondary-hover: $palette-gray-400 !default;
+$color-border-secondary-active: $palette-gray-500 !default;
+
+$color-container-primary: $palette-white !default;
+$color-container-secondary: $palette-gray-100 !default;
+$color-container-hover: $palette-gray-200 !default;
+$color-container-active: $palette-gray-300 !default;
+
+$color-divider-primary: $palette-gray-200 !default;
+$color-divider-secondary: $palette-gray-300 !default;
+
+$color-overlay-primary: fade-out($palette-gray-900, 0.64) !default;
+$color-overlay-secondary: fade-out($palette-gray-900, 0.8) !default;
+$color-overlay-reverse: fade-out($palette-white, 0.8) !default;
+
+$color-text-primary: $palette-gray-900 !default;
+$color-text-secondary: $palette-gray-700 !default;
+$color-text-tertiary: $palette-gray-600 !default;
+$color-text-placeholder: $palette-gray-500 !default;
+$color-text-reverse: $palette-white !default;
+
+$color-success: $palette-green-500 !default;
+$color-success-hover: $palette-green-700 !default;
+$color-success-active: $palette-green-800 !default;
+$color-success-bg: $palette-green-100 !default;
+$color-success-tag-bg: $palette-green-200 !default;
+$color-success-background: $color-success-bg !default;
+
+$color-danger: $palette-red-500 !default;
+$color-danger-hover: $palette-red-700 !default;
+$color-danger-active: $palette-red-800 !default;
+$color-danger-bg: $palette-red-100 !default;
+$color-danger-tag-bg: $palette-red-200 !default;
+$color-danger-background: $color-danger-bg !default;
+
+$color-error: $color-danger !default;
+$color-error-hover: $color-danger-hover !default;
+$color-error-active: $color-danger-active !default;
+$color-error-bg: $color-danger-bg !default;
+$color-error-tag-bg: $color-danger-tag-bg !default;
+$color-error-background: $color-danger-background !default;
+
+$color-failure: $color-danger !default;
+$color-failure-hover: $color-danger-hover !default;
+$color-failure-active: $color-danger-active !default;
+$color-failure-bg: $color-danger-bg !default;
+$color-failure-tag-bg: $color-danger-tag-bg !default;
+$color-failure-background: $color-danger-background !default;
+
+$color-warning: $palette-orange-500 !default;
+$color-warning-hover: $palette-orange-700 !default;
+$color-warning-active: $palette-orange-800 !default;
+$color-warning-bg: $palette-orange-100 !default;
+$color-warning-tag-bg: $palette-orange-200 !default;
+$color-warning-background: $color-warning-bg !default;
+
+$color-info-primary: $palette-blue-500 !default;
+$color-info-primary-hover: $palette-blue-700 !default;
+$color-info-primary-active: $palette-blue-800 !default;
+$color-info-primary-bg: $palette-blue-100 !default;
+$color-info-primary-tag-bg: $palette-blue-200 !default;
+$color-info-primary-background: $color-info-primary-bg !default;
+
+$color-info-secondary: $palette-gray-500 !default;
+$color-info-secondary-hover: $palette-gray-700 !default;
+$color-info-secondary-active: $palette-gray-800 !default;
+$color-info-secondary-bg: $palette-gray-100 !default;
+$color-info-secondary-tag-bg: $palette-gray-200 !default;
+$color-info-secondary-background: $color-info-secondary-bg !default;
+
+$color-utility-bg1: #F8F8F8 !default;
+$color-utility-content1: #FF4499 !default;
+$color-utility-content2: #C344FF !default;
+$color-utility-text: #000000 !default;
+
+$color-white: $palette-white !default;
+$color-black: $palette-black !default;

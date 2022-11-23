@@ -104,19 +104,19 @@
       collapse: Boolean,
       backgroundColor: {
         type: String,
-        default: '#08457D'
+        default: '#19284b'
       },
       subBackgroundColor: {
         type: String,
-        default: '#08457D'
+        default: '#19284b'
       },
       activeSubBackgroundColor: {
         type: String,
-        default: '#0659A7'
+        default: '#253c70'
       },
       hoverBackgroundColor: {
         type: String,
-        default: 'rgb(8, 103, 191, 0.2)'
+        default: 'rgba(52,78,140,.2)'
       },
       textColor: {
         type: String,
