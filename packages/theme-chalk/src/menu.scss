@@ -60,6 +60,7 @@
 
   @include m(horizontal) {
     border-right: none;
+    // TODO: 颜色值
     border-bottom: solid 1px #e6e6e6;
     li {
       margin-bottom: 0px;
@@ -84,7 +85,7 @@
 
       &:not(.is-disabled):hover,
       &:not(.is-disabled):focus{
-        background-color: #fff;
+        background-color: $--color-white;
       }
     }
     & > .el-submenu {
@@ -114,7 +115,7 @@
         border-radius: 0;
 
         &:hover {
-          background-color: #fff;
+          background-color: $--color-white;
         }
       }
       & .el-submenu__icon-arrow {

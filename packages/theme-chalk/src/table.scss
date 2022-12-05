@@ -107,6 +107,7 @@
   @include e(expand-icon) {
     position: relative;
     cursor: pointer;
+    // TODO：颜色值
     color: #5c5c5c;
     font-size: 14px;
     transition: transform 0.2s ease-in-out;
@@ -298,6 +299,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      // TODO：颜色值
       background: #ff4d51;
       margin-right: 5px;
       vertical-align: middle;
@@ -608,6 +610,7 @@
     & .el-table__body {
       & tr.el-table__row--striped {
         td {
+          // TODO：颜色值
           background: #fafafa;
         }
 

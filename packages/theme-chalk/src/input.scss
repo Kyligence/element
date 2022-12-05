@@ -34,6 +34,7 @@
     &:active {
       outline: none;
       border-color: $--input-focus-border;
+      // TODO: 颜色值
       box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
     }
   }
@@ -102,6 +103,7 @@
     &:active {
       outline: none;
       border-color: $--input-focus-border;
+      // TODO: 颜色值
       box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
     }
   }
@@ -156,6 +158,7 @@
     .el-input__inner {
       outline: none;
       border-color: $--input-focus-border;
+      // TODO: 颜色值
       box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
     }
   }

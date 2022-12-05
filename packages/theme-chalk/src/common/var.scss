@@ -29,6 +29,7 @@ $--color-grey-1: $palette-gray-500 !default;
 $--color-grey-2: $palette-gray-200 !default;
 $--color-grey-3: $palette-gray-300 !default;
 $--color-grey-4: $palette-gray-100 !default;
+$--color-grey-5: $palette-gray-700 !default;
 
 $--color-primary: $color-fill-primary !default;
 $--color-primary-hover: $color-fill-primary-hover !default;
@@ -123,6 +124,8 @@ $--color-beta: $palette-purple-500 !default;
 $--color-beta-hover: $palette-purple-700 !default;
 $--color-beta-tag-bg: $palette-purple-200 !default;
 $--color-beta-tag-light: $palette-purple-100 !default;
+
+$--color-success-border: $palette-green-200 !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
