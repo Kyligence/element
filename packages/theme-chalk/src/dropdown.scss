@@ -51,10 +51,10 @@
       top: $gap;
       bottom: $gap;
       left: 0;
-      background: mix(white, transparent, 50%);
+      background: mix($--color-white, transparent, 50%);
     }
     &.el-button--primary::before {
-      background: mix(white, transparent, 10%);
+      background: mix($--color-white, transparent, 10%);
     }
 
     &.is-text {

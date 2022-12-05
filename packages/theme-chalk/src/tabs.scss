@@ -19,6 +19,7 @@
   }
   @include e(new-tab) {
     float: right;
+    // TODO：颜色值
     border: 1px solid #d3dce6;
     height: 18px;
     width: 18px;
@@ -27,6 +28,7 @@
     border-radius: 3px;
     text-align: center;
     font-size: 12px;
+    // TODO：颜色值
     color: #d3dce6;
     cursor: pointer;
     transition: all .15s;
@@ -256,7 +258,7 @@
         border: 1px solid $--border-divider-color;
         // height: 37px;
         // line-height: 37px;
-        border-bottom-color: #fff;
+        border-bottom-color: $--color-white;
         border-radius: 4px 4px 0 0;
         box-sizing: content-box;
         background-color: $--color-white;
@@ -310,6 +312,7 @@
       text-align: center;
       &.is-active {
         background-color: $--color-white;
+        // TODO：颜色值
         box-shadow: 0px 1px 4px rgba(63, 89, 128, 0.16);
         border-radius: $--border-radius-small;
       }
@@ -318,7 +321,7 @@
   @include m(border-card) {
     background: $--color-white;
     border: 1px solid $--border-color-base;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12), 0 0 6px 0 rgba(0,0,0,0.04);
+    box-shadow: 0 2px 4px 0 rgba($--color-black,0.12), 0 0 6px 0 rgba($--color-black,0.04);
     >.el-tabs__content {
       padding: 15px;
     }
@@ -504,7 +507,7 @@
       }
       .el-tabs__item.is-left.is-active {
         border: 1px solid $--border-color-base;
-        border-right-color: #fff;
+        border-right-color: $--color-white;
         border-left: none;
         border-bottom: none;
 
@@ -537,7 +540,9 @@
 
         &.is-active {
           border-color: transparent;
+          // TODO：颜色值
           border-top-color: rgb(209, 219, 229);
+          // TODO：颜色值
           border-bottom-color: rgb(209, 219, 229);
         }
       }
@@ -581,7 +586,7 @@
       }
       .el-tabs__item.is-right.is-active {
         border: 1px solid $--border-color-light;
-        border-left-color: #fff;
+        border-left-color: $--color-white;
         border-right: none;
         border-bottom: none;
 
@@ -601,6 +606,7 @@
     }
     &.el-tabs--border-card {
       .el-tabs__header.is-right {
+        // TODO：颜色值
         border-left: 1px solid #dfe4ed;
       }
       .el-tabs__item.is-right {
@@ -609,7 +615,9 @@
 
         &.is-active {
           border-color: transparent;
+          // TODO：颜色值
           border-top-color: rgb(209, 219, 229);
+          // TODO：颜色值
           border-bottom-color: rgb(209, 219, 229);
         }
       }

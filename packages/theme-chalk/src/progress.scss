@@ -135,7 +135,7 @@
     @include utils-ellipsis
   }
   .progress-text {
-    color: #A5B2C5;
+    color: $--color-grey-1;
   }
 }
 
@@ -148,7 +148,7 @@
 }
 
 @include b(progress-close) {
-  color: #546174;
+  color: $--color-grey-5;
   cursor: pointer;
 }
 
@@ -209,7 +209,7 @@
     position: absolute;
     width: 20%;
     height: 100%;
-    background: linear-gradient(270deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 88.16%);
+    background: linear-gradient(270deg, rgba($--color-white, 0.5) 0%, rgba($--color-white, 0) 88.16%);
     animation: progress-loading 3s linear infinite forwards;
   }
 }

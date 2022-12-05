@@ -59,7 +59,7 @@
 }
 
 @include b(upload-dragger) {
-  background-color: #fff;
+  background-color: $--color-white;
   border: 1px dashed $--border-secondary;
   border-radius: 6px;
   box-sizing: border-box;
@@ -103,6 +103,7 @@
   }
 
   @include when(dragover) {
+    // TODO：颜色值
     background-color: rgba(32, 159, 255, .06);
     border: 2px dashed $--color-primary;
   }
@@ -275,7 +276,7 @@
 
     .el-upload-list__item {
       overflow: hidden;
-      background-color: #fff;
+      background-color: $--color-white;
       border: 1px solid $--border-secondary;
       border-radius: 6px;
       box-sizing: border-box;
@@ -321,7 +322,7 @@
       background: $--background-color-secondary;
       text-align: center;
       transform: rotate(45deg);
-      box-shadow: 0 0 1pc 1px rgba(0,0,0,0.2);
+      box-shadow: 0 0 1pc 1px rgba($--color-black,0.2);
 
       i {
         font-size: 12px;
@@ -338,10 +339,10 @@
       top: 0;
       cursor: default;
       text-align: center;
-      color: #fff;
+      color: $--color-white;
       opacity: 0;
       font-size: 20px;
-      background-color: rgba(0, 0, 0, .5);
+      background-color: rgba($--color-black, .5);
       transition: opacity .3s;
       &::after {
         display: inline-block;
@@ -390,7 +391,7 @@
     .el-upload-list__item {
       overflow: hidden;
       z-index: 0;
-      background-color: #fff;
+      background-color: $--color-white;
       border: 1px solid $--border-secondary;
       border-radius: 6px;
       box-sizing: border-box;
@@ -460,6 +461,7 @@
       background: $--background-color-secondary;
       text-align: center;
       transform: rotate(45deg);
+      // TODO：颜色值
       box-shadow: 0 1px 1px #ccc;
 
       i {
@@ -502,13 +504,13 @@
     background: $--background-color-secondary;
     text-align: center;
     transform: rotate(45deg);
-    box-shadow: 0 0 1pc 1px rgba(0,0,0,0.2);
+    box-shadow: 0 0 1pc 1px rgba($--color-black,0.2);
 
     i {
       font-size: 12px;
       margin-top: 11px;
       transform: rotate(-45deg);
-      color: #fff;
+      color: $--color-white;
     }
   }
 
@@ -537,7 +539,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(#000, .72);
+    background-color: rgba($--color-black, .72);
     text-align: center;
 
     .btn {

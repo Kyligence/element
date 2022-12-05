@@ -25,38 +25,38 @@
     }
   }
   .bg-blue-primary {
-    background-color: #0875DA;
+    background-color: #1268FB;
   }
   .bg-blue-hover {
-    background-color: #0867BF;
+    background-color: #0454DC;
   }
   .bg-blue-active {
-    background-color: #0659A7;
+    background-color: #0343B0;
   }
   .bg-secondary {
-    background-color: #ECF0F8;
+    background-color: #EDF0F8;
   }
   .bg-secondary-hover {
     background-color: #E6EBF4;
   }
   .bg-secondary-active {
-    background-color: #CED6E4;
+    background-color: #CED7E4;
   }
   .bg-nav {
-    background-color: #054885;
+    background-color: #19284B;
   }
   .bg-nav-hover {
-    background-color: #0867BF
+    background-color: #253C70
   }
   .bg-nav-active {
-    background-color: #0659A7;
+    background-color: #344E8C;
   }
 
   .bg-success {
     background-color: #66C942;
   }
   .bg-success-hover {
-    background-color: #499F2B;
+    background-color: #49A82B;
   }
   .bg-success-active {
     background-color: #32671E;
@@ -69,7 +69,7 @@
     background-color: #E03B3B;
   }
   .bg-danger-hover {
-    background-color: #AA3B2A;
+    background-color: #CA1616;
   }
   .bg-danger-active {
     background-color: #7F2727;
@@ -79,29 +79,29 @@
   }
 
   .bg-warning {
-    background-color: #FEA856;
+    background-color: #F29D41;
   }
   .bg-warning-hover {
-    background-color: #CB6301;
+    background-color: #EC8600;
   }
   .bg-warning-active {
     background-color: #844001;
   }
   .bg-warning-bg {
-    background-color: #FFF2E6;
+    background-color: #FFF2E5;
   }
 
   .bg-info-primary {
-    background-color: #0875DA;
+    background-color: #1268FB;
   }
   .bg-info-primary-hover {
-    background-color: #0659A7;
+    background-color: #0343B0;
   }
   .bg-info-primary-active {
-    background-color: #054885;
+    background-color: #023284;
   }
   .bg-info-primary-bg {
-    background-color: #F0F8FF;
+    background-color: #F1F6FE;
   }
 
   .bg-info {
@@ -160,23 +160,23 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 <el-row :gutter="12">
   <el-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-blue-primary">Blue<div class="value">#0875DA</div></div>
-      <div class="demo-color-box bg-blue-hover">Hover<div class="value">#0867BF</div></div>
-      <div class="demo-color-box bg-blue-active">Active<div class="value">#0659A7</div></div>
+      <div class="demo-color-box bg-blue-primary">Blue<div class="value">#1268FB</div></div>
+      <div class="demo-color-box bg-blue-hover">Hover<div class="value">#0454DC</div></div>
+      <div class="demo-color-box bg-blue-active">Active<div class="value">##0343B0</div></div>
     </div>
   </el-col>
   <el-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-secondary">Secondary<div class="value">#ECF0F8</div></div>
+      <div class="demo-color-box bg-secondary">Secondary<div class="value">#EDF0F8</div></div>
       <div class="demo-color-box bg-secondary-hover">Secondary-hover<div class="value">#E6EBF4</div></div>
       <div class="demo-color-box bg-secondary-active">Secondary-active<div class="value">#CED7E4</div></div>
     </div>
   </el-col>
   <el-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-nav">Nav<div class="value">#054885</div></div>
-      <div class="demo-color-box bg-nav-hover">Nav-hover<div class="value">#0867BF</div></div>
-      <div class="demo-color-box bg-nav-active">Nav-active<div class="value">#0659A7</div></div>
+      <div class="demo-color-box bg-nav">Nav<div class="value">#19284B</div></div>
+      <div class="demo-color-box bg-nav-hover">Nav-hover<div class="value">#253C70</div></div>
+      <div class="demo-color-box bg-nav-active">Nav-active<div class="value">#253C70</div></div>
     </div>
   </el-col>
 </el-row>
@@ -189,7 +189,7 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="4">
     <div class="demo-color-box-group">
       <div class="demo-color-box bg-success">Success<div class="value">#66C942</div></div>
-      <div class="demo-color-box bg-success-hover">Success-hover<div class="value">#499F2B</div></div>
+      <div class="demo-color-box bg-success-hover">Success-hover<div class="value">#49A82B</div></div>
       <div class="demo-color-box bg-success-active">Success-active<div class="value">#32671E</div></div>
       <div class="demo-color-box bg-success-bg">Success-bg<div class="value">#EFF9EB</div></div>
     </div>
@@ -197,25 +197,25 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="4">
     <div class="demo-color-box-group">
       <div class="demo-color-box bg-danger">Danger<div class="value">#E03B3B</div></div>
-      <div class="demo-color-box bg-danger-hover">Danger-hover<div class="value">#AA3B2A</div></div>
+      <div class="demo-color-box bg-danger-hover">Danger-hover<div class="value">#CA1616</div></div>
       <div class="demo-color-box bg-danger-active">Danger-active<div class="value">#7F2727</div></div>
       <div class="demo-color-box bg-danger-bg">Danger-bg<div class="value">#FCE9E9</div></div>
     </div>
   </el-col>
   <el-col :span="4">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-warning">Warning<div class="value">#FEA856</div></div>
-      <div class="demo-color-box bg-warning-hover">Warning-hover<div class="value">#CB6301</div></div>
+      <div class="demo-color-box bg-warning">Warning<div class="value">#F29D41</div></div>
+      <div class="demo-color-box bg-warning-hover">Warning-hover<div class="value">#EC8600</div></div>
       <div class="demo-color-box bg-warning-active">Warning-active<div class="value">#844001</div></div>
       <div class="demo-color-box bg-warning-bg">Warning-bg<div class="value">#FFF2E5</div></div>
     </div>
   </el-col>
   <el-col :span="4">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-info-primary">Info-primary<div class="value">#0875DA</div></div>
-      <div class="demo-color-box bg-info-primary-hover">Info-primary-hover<div class="value">#0659A7</div></div>
-      <div class="demo-color-box bg-info-primary-active">Info-primary-active<div class="value">#054885</div></div>
-      <div class="demo-color-box bg-info-primary-bg">Info-primary-bg<div class="value">#F0F8FF</div></div>
+      <div class="demo-color-box bg-info-primary">Info-primary<div class="value">#1268FB</div></div>
+      <div class="demo-color-box bg-info-primary-hover">Info-primary-hover<div class="value">#0343B0</div></div>
+      <div class="demo-color-box bg-info-primary-active">Info-primary-active<div class="value">#023284</div></div>
+      <div class="demo-color-box bg-info-primary-bg">Info-primary-bg<div class="value">#F1F6FE</div></div>
     </div>
   </el-col>
   <el-col :span="4">
