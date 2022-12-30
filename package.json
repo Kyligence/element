@@ -63,9 +63,11 @@
     "babel-helper-vue-jsx-merge-props": "^2.0.0",
     "deepmerge": "^1.2.0",
     "normalize-wheel": "^1.0.1",
-    "throttle-debounce": "^1.0.1",
     "sortablejs": "1.15.0",
-    "user": "0.0.0"
+    "throttle-debounce": "^1.0.1",
+    "user": "0.0.0",
+    "vue-waypoint": "^3.5.2",
+    "intersection-observer": "^0.12.2"
   },
   "peerDependencies": {
     "vue": "2.5.2"

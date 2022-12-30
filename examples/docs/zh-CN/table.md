@@ -1,5 +1,20 @@
 
 <script>
+  function getHugeData() {
+    const hugeData = [];
+    for (let i = 0; i < 200; i += 1) {
+      hugeData.push({
+        date: '2016-05-03' + i,
+        name: '王小虎',
+        province: '上海',
+        city: '普陀区',
+        address: '上海市普陀区金沙江路 1518 弄',
+        zip: 200333,
+        tag: '家'
+      });
+    }
+    return hugeData;
+  }
   export default {
     components:{},
     data() {
@@ -228,6 +243,7 @@
           amount2: '4.1',
           amount3: 15
         }],
+        tableData7: getHugeData(),
         currentRow: null,
         multipleSelection: [],
         expandRows: ['12987125'],
@@ -2422,6 +2438,80 @@ table 空态效果有多种组合。
 ```
 :::
 
+### 单元格懒加载
+
+定义 `virtual-cell-height=高度` 每一格单元格的高度，即可触发单元格滚动懒加载，来解决单元格内组件太复杂造成的性能慢问题。
+:::demo 通过给 `virtual-cell-height=40px` el-table 传入 高度属性，即可打开单元格滚动懒加载。
+
+```html
+<template>
+  <el-table
+    :data="tableData7"
+    height="250"
+    border
+    virtual-cell-height="40px"
+    style="width: 100%">
+    <el-table-column
+      prop="date"
+      label="日期"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址">
+    </el-table-column>
+  </el-table>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        tableData3: [{
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-06',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-07',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }]
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### Table Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -2454,6 +2544,7 @@ table 空态效果有多种组合。
 | summary-method | 自定义的合计计算方法 | Function({ columns, data }) | — | — |
 | span-method | 合并行或列的计算方法 | Function({ row, column, rowIndex, columnIndex }) | — | — |
 | show-empty-img | 控制table 空态时，是否显示空态图，默认显示 | boolean | - | true |
+| virtual-cell-height | 虚拟单元格高度 | string | - | - |
 
 ### Table Events
 | 事件名 | 说明 | 参数 |

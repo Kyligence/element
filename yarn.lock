@@ -9,6 +9,11 @@
   dependencies:
     object-set "^1.0.1"
 
+"@babel/parser@^7.18.4":
+  version "7.20.7"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/@babel/parser/-/parser-7.20.7.tgz#66fe23b3c8569220817d5feb8b9dcdc95bb4f71b"
+  integrity sha512-T3Z9oHybU+0vZlY9CiDSJQTD5ZapcW18ZctFMi0MOAl/4BjFF4ul7NVSARLdbGO5vDqy9eQiGTV0LtKfvCYvcg==
+
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/@eslint/eslintrc/-/eslintrc-1.3.0.tgz#29f92c30bb3e771e4a2048c95fa6855392dfac4f"
@@ -73,6 +78,15 @@
   version "7.0.11"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
+
+"@vue/compiler-sfc@2.7.14":
+  version "2.7.14"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/@vue/compiler-sfc/-/compiler-sfc-2.7.14.tgz#3446fd2fbb670d709277fc3ffa88efc5e10284fd"
+  integrity sha512-aNmNHyLPsw+sVvlQFQ2/8sjNuLtK54TC6cuKnVzAY93ks4ZBrvwQSnkkIh7bsbNhum5hJBS00wSDipQ937f5DA==
+  dependencies:
+    "@babel/parser" "^7.18.4"
+    postcss "^8.4.14"
+    source-map "^0.6.1"
 
 CSSselect@~0.4.0:
   version "0.4.1"
@@ -2879,6 +2893,11 @@ cssom@0.3.x, "cssom@>= 0.3.0 < 0.4.0":
   integrity sha512-FUpKc+1FNBsHUr9IsfSGCovr8VuGOiiuzlgCyppKBjJi2jYTOFLN3oiiNRMIvYqbFzF38mqKj4BgcevzU5/kIA==
   dependencies:
     cssom "0.3.x"
+
+csstype@^3.1.0:
+  version "3.1.1"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
+  integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -6112,6 +6131,11 @@ interpret@^1.0.0:
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
+intersection-observer@^0.12.2:
+  version "0.12.2"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/intersection-observer/-/intersection-observer-0.12.2.tgz#4a45349cc0cd91916682b1f44c28d7ec737dc375"
+  integrity sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==
+
 invariant@^2.2.2:
   version "2.2.4"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -8130,6 +8154,11 @@ nan@^2.12.1, nan@^2.13.2:
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/nan/-/nan-2.16.0.tgz#664f43e45460fb98faf00edca0bb0d7b8dce7916"
   integrity sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==
 
+nanoid@^3.3.4:
+  version "3.3.4"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
+  integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -9043,6 +9072,11 @@ perspective.js@^1.0.0:
     dom-walk "^0.1.1"
     throttle-debounce "^1.0.1"
 
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
+
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
@@ -9818,6 +9852,15 @@ postcss@^6.0.1, postcss@^6.0.17, postcss@^6.0.8:
     chalk "^2.4.1"
     source-map "^0.6.1"
     supports-color "^5.4.0"
+
+postcss@^8.4.14:
+  version "8.4.20"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/postcss/-/postcss-8.4.20.tgz#64c52f509644cecad8567e949f4081d98349dc56"
+  integrity sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
 
 precss@^1.4.0:
   version "1.4.0"
@@ -11144,6 +11187,11 @@ source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
+
+source-map-js@^1.0.2:
+  version "1.0.2"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
+  integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
@@ -12539,10 +12587,25 @@ vue-template-es2015-compiler@^1.6.0:
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
+vue-waypoint@^3.5.2:
+  version "3.5.2"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/vue-waypoint/-/vue-waypoint-3.5.2.tgz#410aaa607f4fe7938652a50b2bf7303216fab298"
+  integrity sha512-NvZI0B39afbik88UNUX7Ot2xVZwuubkeoz2QIcauTj5Eq7qOHhx50Vxg4U++sYfiBYhNiYxfWd0m1OZljaLNOg==
+  dependencies:
+    vue "^2.5.2"
+
 vue@2.5.2:
   version "2.5.2"
   resolved "https://repo-ofs.kyligence.com/repository/npm-public/vue/-/vue-2.5.2.tgz#fd367a87bae7535e47f9dc5c9ec3b496e5feb5a4"
   integrity sha512-Au9rf8fPkBulFHfZ406UaQDd1jH9fqGRIM+0IHilrXnJ/0TeeMH4SBkNxWf2dGevl2S3aVeu0E/WklEv0/msag==
+
+vue@^2.5.2:
+  version "2.7.14"
+  resolved "https://repo-ofs.kyligence.com/repository/npm-public/vue/-/vue-2.7.14.tgz#3743dcd248fd3a34d421ae456b864a0246bafb17"
+  integrity sha512-b2qkFyOM0kwqWFuQmgd4o+uHGU7T+2z3T+WQp8UBjADfEv2n4FEMffzBmCKNP0IGzOEEfYjvtcC62xaSKeQDrQ==
+  dependencies:
+    "@vue/compiler-sfc" "2.7.14"
+    csstype "^3.1.0"
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"
