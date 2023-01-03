@@ -101,6 +101,7 @@
       :readonly="!filterable || multiple || (filterable && !visible)"
       :validate-event="false"
       :class="{ 'is-focus': visible }"
+      :title="selectedLabel"
       @focus="handleFocus"
       @blur="handleBlur"
       @keyup.native="debouncedOnInputChange"
