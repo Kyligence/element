@@ -5,6 +5,7 @@ import ElRadio from 'kyligence-ui/packages/radio';
 import ElTooltip from 'kyligence-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
+import ElTableDataCell from './table-data-cell';
 
 export default {
   name: 'ElTableBody',
@@ -14,7 +15,8 @@ export default {
   components: {
     ElCheckbox,
     ElTooltip,
-    ElRadio
+    ElRadio,
+    ElTableDataCell
   },
 
   props: {
@@ -26,7 +28,8 @@ export default {
     rowClassName: [String, Function],
     rowStyle: [Object, Function],
     fixed: String,
-    highlight: Boolean
+    highlight: Boolean,
+    virtualCellHeight: String
   },
 
   render(h) {
@@ -54,64 +57,23 @@ export default {
                 on-mouseenter={ _ => this.handleMouseEnter($index) }
                 on-mouseleave={ _ => this.handleMouseLeave() }
                 class={ [this.getRowClass(row, $index)] }>
-                {
-                  this._l(this.columns, (column, cellIndex) => {
-                    const { rowspan, colspan } = this.getSpan(row, column, $index, cellIndex);
-                    if (!rowspan || !colspan) {
-                      return '';
-                    } else {
-                      if (rowspan === 1 && colspan === 1) {
-                        return (
-                          <td
-                            style={ this.getCellStyle($index, cellIndex, row, column) }
-                            class={ this.getCellClass($index, cellIndex, row, column) }
-                            on-mouseenter={ ($event) => this.handleCellMouseEnter($event, row) }
-                            on-mouseleave={ this.handleCellMouseLeave }>
-                            {
-                              column.renderCell.call(
-                                this._renderProxy,
-                                h,
-                                {
-                                  row,
-                                  column,
-                                  $index,
-                                  store: this.store,
-                                  _self: this.context || this.table.$vnode.context
-                                },
-                                columnsHidden[cellIndex]
-                              )
-                            }
-                          </td>
-                        );
-                      } else {
-                        return (
-                          <td
-                            style={ this.getCellStyle($index, cellIndex, row, column) }
-                            class={ this.getCellClass($index, cellIndex, row, column) }
-                            rowspan={ rowspan }
-                            colspan={ colspan }
-                            on-mouseenter={ ($event) => this.handleCellMouseEnter($event, row) }
-                            on-mouseleave={ this.handleCellMouseLeave }>
-                            {
-                              column.renderCell.call(
-                                this._renderProxy,
-                                h,
-                                {
-                                  row,
-                                  column,
-                                  $index,
-                                  store: this.store,
-                                  _self: this.context || this.table.$vnode.context
-                                },
-                                columnsHidden[cellIndex]
-                              )
-                            }
-                          </td>
-                        );
-                      }
-                    }
-                  })
-                }
+                {this._l(this.columns, (column, cellIndex) => (
+                  <ElTableDataCell
+                    row={row}
+                    column={column}
+                    columnsHidden={columnsHidden}
+                    virtualCellHeight={this.virtualCellHeight}
+                    $index={$index}
+                    cellIndex={cellIndex}
+                    store={this.store}
+                    self={this.context || this.table.$vnode.context}
+                    getSpan={this.getSpan}
+                    getCellStyle={this.getCellStyle}
+                    getCellClass={this.getCellClass}
+                    on-cell-mouse-enter={this.handleCellMouseEnter}
+                    on-cell-mouse-leave={this.handleCellMouseLeave}
+                  />
+                ))}
               </tr>,
               this.store.isRowExpanded(row)
                 ? (<tr>
