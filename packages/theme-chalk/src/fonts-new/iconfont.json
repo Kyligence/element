@@ -6,6 +6,20 @@
   "description": "新标准的 icon，就一个尺寸",
   "glyphs": [
     {
+      "icon_id": "33618304",
+      "name": "bell-filled",
+      "font_class": "bell-filled",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "33618070",
+      "name": "upload-outlined",
+      "font_class": "upload-outlined",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "32265026",
       "name": "play-filled",
       "font_class": "play-filled",
