@@ -38,12 +38,25 @@
 :::tip 
 新规范调整内容：
 * ##### 新规范中规定设计稿中默认只能有两种尺寸的按钮（medium默认和small），medium调整为默认按钮，高度30px，small对应高度24px。如果有其他意外情况。请提出给设计师矫正。另外添加了 big 34px  mini 22px 这两种 超大和 极小的尺寸作为意外情况的备用。
+* ##### 对 button 文字增加了最小宽度（详见示例一）。
 
 注意修改事项：
   * ##### 请注意把页面原来用mini的换成small。
   * ##### 默认尺寸不需要额外加medium了。
 :::
 
+### 按钮文字增加最小宽度
+big 按钮最小宽度为 42px; medium 按钮最小宽度为 38px; small 按钮最小宽度为 34px;
+
+:::demo 
+```html
+<div>
+  <el-button type="primary" size="big" icon="el-ksd-icon-add_22">按钮</el-button>
+  <el-button type="primary" icon="el-ksd-icon-add_22">按钮</el-button>
+  <el-button type="primary" size="small" icon="el-ksd-icon-add_16">按钮</el-button>
+</div>
+```
+:::
 
 ### 规范要求按钮用法
 主要分三种层次的按钮，主要按钮(primary)、次要按钮(default)、次次要按钮(plain)。

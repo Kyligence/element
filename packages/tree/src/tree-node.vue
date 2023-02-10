@@ -156,7 +156,7 @@
       },
 
       'node.showExpanded'(val) {
-        console.log(val, 'showExpand')
+        // console.log(val, 'showExpand')
       },
     },
 

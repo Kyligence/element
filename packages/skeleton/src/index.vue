@@ -1,7 +1,10 @@
 <template>
   <div>
     <template v-if="uiLoading">
-      <div :class="['el-skeleton', animated ? 'is-animated' : '', ]" v-bind="$attrs">
+      <div
+        :class="['el-skeleton', animated ? 'is-animated' : '']"
+        v-bind="$attrs"
+      >
         <slot name="content">
           <template v-for="i in count">
             <template v-if="loading">
@@ -75,7 +78,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$slots)
+    // console.log(this.$slots);
   }
 };
 </script>

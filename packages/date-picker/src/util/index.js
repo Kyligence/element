@@ -262,6 +262,7 @@ export const autoCompleteDateSplit = function(type, value = '') {
   const timeSplitIdxs = [13, 16];
   const dateTimeSplitIdxs = [10];
   const splitChars = ['-', ' ', ':'];
+  const regx = /^(\d{1,4})(\d{1,2})(\d{1,2})$/;
   value = value.replace(/^\s+|\s+$/, '');
   const autoCompleteIdxs = [
     ...(['date', 'datetime'].includes(type) ? dateSplitIdxs : []),
@@ -285,6 +286,10 @@ export const autoCompleteDateSplit = function(type, value = '') {
       // 分隔符结束的个位数自动补0
       value = `${value.slice(0, lastSplitCharIdx + 1)}0${lastValueItem}`;
     }
+  } else if (value.length === 8 && regx.test(value)) {
+    return value.replace(regx, (_, $0, $1, $2) => {
+      return `${$0}-${$1}-${$2}`;
+    });
   }
 
   // 自动补齐分隔符

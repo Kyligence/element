@@ -6,7 +6,8 @@
         type ? 'el-tag--' + type : '',
         tagSize && `el-tag--${tagSize}`,
         {'is-hit': hit},
-        {'closeable': closable}
+        {'closeable': closable},
+        {'is-light': isLight}
       ]"
       :style="{backgroundColor: color}">
       <span class="el-tag__text"><slot></slot></span>
@@ -27,7 +28,8 @@
       hit: Boolean,
       disableTransitions: Boolean,
       color: String,
-      size: String
+      size: String,
+      isLight: Boolean
     },
     methods: {
       handleClose(event) {

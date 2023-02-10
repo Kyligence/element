@@ -28,7 +28,9 @@ transitionList.forEach(function(file) {
 });
 
 externals = [Object.assign({
-  vue: 'vue'
+  vue: 'vue',
+  'intersection-observer': 'intersection-observer',
+  'vue-waypoint': 'vue-waypoint'
 }, externals), nodeExternals()];
 
 exports.externals = externals;

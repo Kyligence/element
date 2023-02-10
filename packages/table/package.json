@@ -12,6 +12,7 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
+    "sortablejs": "^1.15.0",
     "throttle-debounce": "^1.0.1"
   }
 }

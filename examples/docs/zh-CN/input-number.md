@@ -135,7 +135,7 @@
 :::demo 设置 `controls-position` 属性可以控制按钮位置。
 ```html
 <template>
-  <el-input-number v-model="num8" controls-position="right" @change="handleChange" :min="1" :max="10"></el-input-number>
+  <el-input-number v-model="num8" controls-position="right" @change="handleChange" :min="1" :max="10" content-align="left"></el-input-number>
   <el-input-number size="mini" v-model="num9" controls-position="right" @change="handleChange" :min="1" :max="10"></el-input-number>
 </template>
 <script>
@@ -169,7 +169,8 @@
 | controls-position | 控制按钮位置 | string | right | - |
 | name | 原生属性 | string | — | — |
 | label | 输入框关联的label文字 | string | — | — |
-| input-enabled | 支持 input 输入数据响应 ｜ Boolean | - | false |
+| input-enabled | 支持 input 输入数据响应 | Boolean | - | false |
+| content-align | input 内容对齐方式 | string | left、right | - |
 ### Events
 | 事件名称 | 说明 | 回调参数 |
 |---------|--------|---------|
