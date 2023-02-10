@@ -164,7 +164,7 @@ Agrega más modulos basados en su escenario.
 ```
 :::
 <script>
-  import { addClass } from 'kyligence-ui/src/utils/dom';
+  import { addClass } from 'kyligence-kylin-ui/src/utils/dom';
   export default {
     data() {
       return {

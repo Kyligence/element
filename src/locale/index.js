@@ -1,4 +1,4 @@
-import defaultLang from 'kyligence-ui/src/locale/lang/zh-CN';
+import defaultLang from 'kyligence-kylin-ui/src/locale/lang/zh-CN';
 import Vue from 'vue';
 import deepmerge from 'deepmerge';
 import Format from './format';

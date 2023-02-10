@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Loading from './loading.vue';
-import { addClass, removeClass, getStyle } from 'kyligence-ui/src/utils/dom';
-import { PopupManager } from 'kyligence-ui/src/utils/popup';
-import afterLeave from 'kyligence-ui/src/utils/after-leave';
+import { addClass, removeClass, getStyle } from 'kyligence-kylin-ui/src/utils/dom';
+import { PopupManager } from 'kyligence-kylin-ui/src/utils/popup';
+import afterLeave from 'kyligence-kylin-ui/src/utils/after-leave';
 const Mask = Vue.extend(Loading);
 
 const loadingDirective = {};

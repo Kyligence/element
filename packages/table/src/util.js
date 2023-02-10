@@ -1,4 +1,4 @@
-import { getValueByPath } from 'kyligence-ui/src/utils/util';
+import { getValueByPath } from 'kyligence-kylin-ui/src/utils/util';
 
 export const getCell = function(event) {
   let cell = event.target;

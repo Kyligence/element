@@ -25,13 +25,13 @@
     }
   }
   .bg-blue-primary {
-    background-color: #0875DA;
+    background-color: #3c8dbc;
   }
   .bg-blue-hover {
-    background-color: #0867BF;
+    background-color: #3c8dbc;
   }
   .bg-blue-active {
-    background-color: #0659A7;
+    background-color: #3c8dbc;
   }
   .bg-secondary {
     background-color: #ECF0F8;
@@ -46,10 +46,10 @@
     background-color: #054885;
   }
   .bg-nav-hover {
-    background-color: #0867BF
+    background-color: #3c8dbc
   }
   .bg-nav-active {
-    background-color: #0659A7;
+    background-color: #3c8dbc;
   }
 
   .bg-success {
@@ -92,10 +92,10 @@
   }
 
   .bg-info-primary {
-    background-color: #0875DA;
+    background-color: #3c8dbc;
   }
   .bg-info-primary-hover {
-    background-color: #0659A7;
+    background-color: #3c8dbc;
   }
   .bg-info-primary-active {
     background-color: #054885;
@@ -160,9 +160,9 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 <el-row :gutter="12">
   <el-col :span="6">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-blue-primary">Blue<div class="value">#0875DA</div></div>
-      <div class="demo-color-box bg-blue-hover">Hover<div class="value">#0867BF</div></div>
-      <div class="demo-color-box bg-blue-active">Active<div class="value">#0659A7</div></div>
+      <div class="demo-color-box bg-blue-primary">Blue<div class="value">#3c8dbc</div></div>
+      <div class="demo-color-box bg-blue-hover">Hover<div class="value">#3c8dbc</div></div>
+      <div class="demo-color-box bg-blue-active">Active<div class="value">#3c8dbc</div></div>
     </div>
   </el-col>
   <el-col :span="6">
@@ -175,8 +175,8 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="6">
     <div class="demo-color-box-group">
       <div class="demo-color-box bg-nav">Nav<div class="value">#054885</div></div>
-      <div class="demo-color-box bg-nav-hover">Nav-hover<div class="value">#0867BF</div></div>
-      <div class="demo-color-box bg-nav-active">Nav-active<div class="value">#0659A7</div></div>
+      <div class="demo-color-box bg-nav-hover">Nav-hover<div class="value">#3c8dbc</div></div>
+      <div class="demo-color-box bg-nav-active">Nav-active<div class="value">#3c8dbc</div></div>
     </div>
   </el-col>
 </el-row>
@@ -212,8 +212,8 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
   </el-col>
   <el-col :span="4">
     <div class="demo-color-box-group">
-      <div class="demo-color-box bg-info-primary">Info-primary<div class="value">#0875DA</div></div>
-      <div class="demo-color-box bg-info-primary-hover">Info-primary-hover<div class="value">#0659A7</div></div>
+      <div class="demo-color-box bg-info-primary">Info-primary<div class="value">#3c8dbc</div></div>
+      <div class="demo-color-box bg-info-primary-hover">Info-primary-hover<div class="value">#3c8dbc</div></div>
       <div class="demo-color-box bg-info-primary-active">Info-primary-active<div class="value">#054885</div></div>
       <div class="demo-color-box bg-info-primary-bg">Info-primary-bg<div class="value">#F0F8FF</div></div>
     </div>

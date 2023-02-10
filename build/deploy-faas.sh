@@ -9,8 +9,8 @@ SUB_FOLDER='2.2'
 mkdir $SUB_FOLDER
 rm -rf *.js *.css *.map static
 rm -rf $SUB_FOLDER/**
-cp -rf ../../examples/kyligence-ui/** .
-cp -rf ../../examples/kyligence-ui/** $SUB_FOLDER/
+cp -rf ../../examples/kyligence-kylin-ui/** .
+cp -rf ../../examples/kyligence-kylin-ui/** $SUB_FOLDER/
 cd ../..
 
 # deploy domestic site

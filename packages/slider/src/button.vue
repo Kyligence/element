@@ -29,7 +29,7 @@
 </template>
 
 <script>
-  import ElTooltip from 'kyligence-ui/packages/tooltip';
+  import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
 
   export default {
     name: 'ElSliderButton',

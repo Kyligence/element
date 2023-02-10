@@ -30,8 +30,8 @@
 </template>
 <script>
   import Menu from './menu-mixin';
-  import ElTooltip from 'kyligence-ui/packages/tooltip';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
+  import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
 
   export default {
     name: 'ElMenuItem',

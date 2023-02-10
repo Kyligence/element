@@ -14,15 +14,15 @@ The above website enables you to preview theme of a new theme color in real-time
 $--color-primary: teal;
 
 /* icon font path, required */
-$--font-path: '~kyligence-ui/lib/theme-chalk/fonts';
+$--font-path: '~kyligence-kylin-ui/lib/theme-chalk/fonts';
 
-@import "~kyligence-ui/packages/theme-chalk/src/index";
+@import "~kyligence-kylin-ui/packages/theme-chalk/src/index";
 ```
 
 Then in the entry file of your project, import this style file instead of Element's built CSS:
 ```JS
 import Vue from 'vue'
-import Element from 'kyligence-ui'
+import Element from 'kyligence-kylin-ui'
 import './element-variables.scss'
 
 Vue.use(Element)
@@ -100,7 +100,7 @@ By default the build theme file is placed inside `./theme`. You can specify its 
 
 ```javascript
 import '../theme/index.css'
-import ElementUI from 'kyligence-ui'
+import ElementUI from 'kyligence-kylin-ui'
 import Vue from 'vue'
 
 Vue.use(ElementUI)
@@ -112,7 +112,7 @@ If you are using `babel-plugin-component` for on-demand import, just modify `.ba
 {
   "plugins": [["component", [
     {
-      "libraryName": "kyligence-ui",
+      "libraryName": "kyligence-kylin-ui",
       "styleLibraryName": "~theme"
     }
   ]]]

@@ -1,5 +1,5 @@
-import dateUtil from 'kyligence-ui/src/utils/date';
-import { t } from 'kyligence-ui/src/locale';
+import dateUtil from 'kyligence-kylin-ui/src/utils/date';
+import { t } from 'kyligence-kylin-ui/src/locale';
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];

@@ -112,21 +112,21 @@
 </template>
 
 <script>
-import Popper from 'kyligence-ui/src/utils/vue-popper';
-import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-import Emitter from 'kyligence-ui/src/mixins/emitter';
-import Locale from 'kyligence-ui/src/mixins/locale';
-import Migrating from 'kyligence-ui/src/mixins/migrating';
-import ElInput from 'kyligence-ui/packages/input';
-import ElTag from 'kyligence-ui/packages/tag';
-import ElScrollbar from 'kyligence-ui/packages/scrollbar';
-import ElCascaderPanel from 'kyligence-ui/packages/cascader-panel';
-import AriaUtils from 'kyligence-ui/src/utils/aria-utils';
-import { t } from 'kyligence-ui/src/locale';
-import { isEqual, isEmpty, kebabCase } from 'kyligence-ui/src/utils/util';
-import { isUndefined, isFunction } from 'kyligence-ui/src/utils/types';
-import { isDef } from 'kyligence-ui/src/utils/shared';
-import { addResizeListener, removeResizeListener } from 'kyligence-ui/src/utils/resize-event';
+import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
+import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
+import ElInput from 'kyligence-kylin-ui/packages/input';
+import ElTag from 'kyligence-kylin-ui/packages/tag';
+import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
+import ElCascaderPanel from 'kyligence-kylin-ui/packages/cascader-panel';
+import AriaUtils from 'kyligence-kylin-ui/src/utils/aria-utils';
+import { t } from 'kyligence-kylin-ui/src/locale';
+import { isEqual, isEmpty, kebabCase } from 'kyligence-kylin-ui/src/utils/util';
+import { isUndefined, isFunction } from 'kyligence-kylin-ui/src/utils/types';
+import { isDef } from 'kyligence-kylin-ui/src/utils/shared';
+import { addResizeListener, removeResizeListener } from 'kyligence-kylin-ui/src/utils/resize-event';
 import debounce from 'throttle-debounce/debounce';
 
 const { keys: KeyCode } = AriaUtils;

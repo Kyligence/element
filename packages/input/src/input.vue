@@ -89,10 +89,10 @@
   </div>
 </template>
 <script>
-  import emitter from 'kyligence-ui/src/mixins/emitter';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
   import calcTextareaHeight from './calcTextareaHeight';
-  import merge from 'kyligence-ui/src/utils/merge';
+  import merge from 'kyligence-kylin-ui/src/utils/merge';
 
   export default {
     name: 'ElInput',

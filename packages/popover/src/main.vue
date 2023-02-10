@@ -22,10 +22,10 @@
   </span>
 </template>
 <script>
-import Popper from 'kyligence-ui/src/utils/vue-popper';
-import { on, off } from 'kyligence-ui/src/utils/dom';
-import { addClass, removeClass } from 'kyligence-ui/src/utils/dom';
-import { generateId } from 'kyligence-ui/src/utils/util';
+import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+import { on, off } from 'kyligence-kylin-ui/src/utils/dom';
+import { addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
+import { generateId } from 'kyligence-kylin-ui/src/utils/util';
 
 export default {
   name: 'ElPopover',

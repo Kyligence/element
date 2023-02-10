@@ -1,4 +1,4 @@
-import { once, on } from 'kyligence-ui/src/utils/dom';
+import { once, on } from 'kyligence-kylin-ui/src/utils/dom';
 
 export default {
   bind(el, binding, vnode) {

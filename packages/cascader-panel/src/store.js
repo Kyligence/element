@@ -1,5 +1,5 @@
 import Node from './node';
-import { coerceTruthyValueToArray, valueEquals } from 'kyligence-ui/src/utils/util';
+import { coerceTruthyValueToArray, valueEquals } from 'kyligence-kylin-ui/src/utils/util';
 
 const flatNodes = (data, leafOnly) => {
   return data.reduce((res, node) => {

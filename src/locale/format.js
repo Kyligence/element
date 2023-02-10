@@ -1,4 +1,4 @@
-import { hasOwn } from 'kyligence-ui/src/utils/util';
+import { hasOwn } from 'kyligence-kylin-ui/src/utils/util';
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**

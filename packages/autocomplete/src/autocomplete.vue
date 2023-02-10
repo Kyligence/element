@@ -60,13 +60,13 @@
 </template>
 <script>
   import debounce from 'throttle-debounce/debounce';
-  import ElInput from 'kyligence-ui/packages/input';
-  import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
+  import ElInput from 'kyligence-kylin-ui/packages/input';
+  import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
   import ElAutocompleteSuggestions from './autocomplete-suggestions.vue';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
-  import { generateId } from 'kyligence-ui/src/utils/util';
-  import Focus from 'kyligence-ui/src/mixins/focus';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
+  import { generateId } from 'kyligence-kylin-ui/src/utils/util';
+  import Focus from 'kyligence-kylin-ui/src/mixins/focus';
 
   export default {
     name: 'ElAutocomplete',

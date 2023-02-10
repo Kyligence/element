@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import {
   PopupManager
-} from 'kyligence-ui/src/utils/popup';
-import { on, off } from 'kyligence-ui/src/utils/dom';
+} from 'kyligence-kylin-ui/src/utils/popup';
+import { on, off } from 'kyligence-kylin-ui/src/utils/dom';
 
 const PopperJS = Vue.prototype.$isServer ? function() {} : require('./popper');
 const stop = e => e.stopPropagation();

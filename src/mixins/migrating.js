@@ -2,7 +2,7 @@
  * Show migrating guide in browser console.
  *
  * Usage:
- * import Migrating from 'kyligence-ui/src/mixins/migrating';
+ * import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
  *
  * mixins: [Migrating]
  *

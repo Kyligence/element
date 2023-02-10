@@ -96,8 +96,8 @@
 
 <script type="text/babel">
   import { getRangeHours, modifyTime } from '../util';
-  import ElScrollbar from 'kyligence-ui/packages/scrollbar';
-  import RepeatClick from 'kyligence-ui/src/directives/repeat-click';
+  import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
+  import RepeatClick from 'kyligence-kylin-ui/src/directives/repeat-click';
 
   export default {
     components: { ElScrollbar },

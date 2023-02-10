@@ -35,8 +35,8 @@ const defaults = {
 
 import Vue from 'vue';
 import msgboxVue from './main.vue';
-import merge from 'kyligence-ui/src/utils/merge';
-import { isVNode } from 'kyligence-ui/src/utils/vdom';
+import merge from 'kyligence-kylin-ui/src/utils/merge';
+import { isVNode } from 'kyligence-kylin-ui/src/utils/vdom';
 
 const MessageBoxConstructor = Vue.extend(msgboxVue);
 

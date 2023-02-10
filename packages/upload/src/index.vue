@@ -2,8 +2,8 @@
 import UploadList from './upload-list';
 import Upload from './upload';
 import IframeUpload from './iframe-upload';
-import ElProgress from 'kyligence-ui/packages/progress';
-import Migrating from 'kyligence-ui/src/mixins/migrating';
+import ElProgress from 'kyligence-kylin-ui/packages/progress';
+import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
 
 function noop() {}
 

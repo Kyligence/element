@@ -1,6 +1,6 @@
 <script>
   import TabBar from './tab-bar';
-  import { addResizeListener, removeResizeListener } from 'kyligence-ui/src/utils/resize-event';
+  import { addResizeListener, removeResizeListener } from 'kyligence-kylin-ui/src/utils/resize-event';
 
   function noop() {}
   const firstUpperCase = str => {

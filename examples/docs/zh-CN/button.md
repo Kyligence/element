@@ -755,8 +755,8 @@ dialog、messagebox 上的取消按钮用的是 次次要按钮 ，确认或者�
 // 下面是伪代码，只为说明
 // VueI18n 配置处
 import VueI18n from 'vue-i18n'
-import enLocale from 'kyligence-ui/lib/locale/lang/en'
-import zhLocale from 'kyligence-ui/lib/locale/lang/zh-CN'
+import enLocale from 'kyligence-kylin-ui/lib/locale/lang/en'
+import zhLocale from 'kyligence-kylin-ui/lib/locale/lang/zh-CN'
 import enKyAccountLocale from './locale/en'
 import zhKyAccountLocale from './locale/zh-CN'
 Vue.use(VueI18n)

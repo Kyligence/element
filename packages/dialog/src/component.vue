@@ -35,9 +35,9 @@
 </template>
 
 <script>
-  import Popup from 'kyligence-ui/src/utils/popup';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
-  import emitter from 'kyligence-ui/src/mixins/emitter';
+  import Popup from 'kyligence-kylin-ui/src/utils/popup';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
 
   export default {
     name: 'ElDialog',

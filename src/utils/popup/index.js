@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import merge from 'kyligence-ui/src/utils/merge';
-import PopupManager from 'kyligence-ui/src/utils/popup/popup-manager';
+import merge from 'kyligence-kylin-ui/src/utils/merge';
+import PopupManager from 'kyligence-kylin-ui/src/utils/popup/popup-manager';
 import getScrollBarWidth from '../scrollbar-width';
 import { getStyle } from '../dom';
 

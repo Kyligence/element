@@ -32,7 +32,7 @@
   </label>
 </template>
 <script>
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
 
   export default {
     name: 'ElRadioButton',

@@ -1,4 +1,4 @@
-import scrollbarWidth from 'kyligence-ui/src/utils/scrollbar-width';
+import scrollbarWidth from 'kyligence-kylin-ui/src/utils/scrollbar-width';
 import Vue from 'vue';
 
 class TableLayout {

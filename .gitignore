@@ -7,14 +7,15 @@ lerna-debug.log.*
 lib
 demo
 .idea
-examples/kyligence-ui
+examples/kyligence-kylin-ui
 examples/pages/en-US
 examples/pages/zh-CN
 examples/pages/es
-fe.element/kyligence-ui
+fe.element/kyligence-kylin-ui
 .npmrc
 coverage
 waiter.config.js
 build/bin/algolia-key.js
 .envrc
 .env
+package-lock.json

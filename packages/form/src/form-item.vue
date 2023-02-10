@@ -31,9 +31,9 @@
 </template>
 <script>
   import AsyncValidator from 'async-validator';
-  import emitter from 'kyligence-ui/src/mixins/emitter';
-  import objectAssign from 'kyligence-ui/src/utils/merge';
-  import { noop, getPropByPath } from 'kyligence-ui/src/utils/util';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import objectAssign from 'kyligence-kylin-ui/src/utils/merge';
+  import { noop, getPropByPath } from 'kyligence-kylin-ui/src/utils/util';
 
   export default {
     name: 'ElFormItem',

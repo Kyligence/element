@@ -97,7 +97,7 @@
 
 <script>
 import Vue from 'vue';
-import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
+import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
 import {
   formatDate,
   parseDate,
@@ -108,10 +108,10 @@ import {
   autoCompleteDateSplit,
   getCurrntParentByClass
 } from './util';
-import Popper from 'kyligence-ui/src/utils/vue-popper';
-import Emitter from 'kyligence-ui/src/mixins/emitter';
-import ElInput from 'kyligence-ui/packages/input';
-import merge from 'kyligence-ui/src/utils/merge';
+import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+import ElInput from 'kyligence-kylin-ui/packages/input';
+import merge from 'kyligence-kylin-ui/src/utils/merge';
 
 const NewPopper = {
   props: {

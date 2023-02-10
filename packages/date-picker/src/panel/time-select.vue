@@ -18,8 +18,8 @@
 </template>
 
 <script type="text/babel">
-  import ElScrollbar from 'kyligence-ui/packages/scrollbar';
-  import scrollIntoView from 'kyligence-ui/src/utils/scroll-into-view';
+  import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
+  import scrollIntoView from 'kyligence-kylin-ui/src/utils/scroll-into-view';
 
   const parseTime = function(time) {
     const values = (time || '').split(':');

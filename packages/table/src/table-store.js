@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import debounce from 'throttle-debounce/debounce';
-import merge from 'kyligence-ui/src/utils/merge';
+import merge from 'kyligence-kylin-ui/src/utils/merge';
 import { orderBy, getColumnById, getRowIdentity } from './util';
 
 const sortData = (data, states) => {

@@ -20,9 +20,9 @@
   </transition>
 </template>
 <script>
-  import Popper from 'kyligence-ui/src/utils/vue-popper';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import ElScrollbar from 'kyligence-ui/packages/scrollbar';
+  import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
 
   export default {
     components: { ElScrollbar },

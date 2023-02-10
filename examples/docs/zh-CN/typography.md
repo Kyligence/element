@@ -67,7 +67,7 @@
       color:#A5B2C5;
     }
     .color-098{
-      color:#0875DA;
+      color:#3c8dbc;
     }
     .dark-bg{
       padding:5px;
@@ -232,7 +232,7 @@ less 中的字号变量，只要将scss变量的$--替换成@即可。
     <tr>
       <td class="text color-098">Font Color</td>
       <td class="key">$--color-primary</td>
-      <td class="value">#0875DA</td>
+      <td class="value">#3c8dbc</td>
       <td class="note">适用于链接</td>
     </tr>
     <tr>

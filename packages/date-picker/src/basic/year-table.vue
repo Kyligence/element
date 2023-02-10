@@ -44,7 +44,7 @@
 </template>
 
 <script type="text/babel">
-  import { hasClass } from 'kyligence-ui/src/utils/dom';
+  import { hasClass } from 'kyligence-kylin-ui/src/utils/dom';
   import { isDate, range, nextDate, getDayCountOfYear } from '../util';
 
   const datesInYear = year => {

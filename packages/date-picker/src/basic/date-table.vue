@@ -31,8 +31,8 @@
 
 <script>
   import { getFirstDayOfMonth, getDayCountOfMonth, getWeekNumber, getStartDateOfMonth, nextDate, isDate } from '../util';
-  import { hasClass } from 'kyligence-ui/src/utils/dom';
-  import Locale from 'kyligence-ui/src/mixins/locale';
+  import { hasClass } from 'kyligence-kylin-ui/src/utils/dom';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
 
   const WEEKS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
   const clearHours = function(time) {

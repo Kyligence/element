@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Migrating from 'kyligence-ui/src/mixins/migrating';
+import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
 
 export default {
   name: 'ElSteps',

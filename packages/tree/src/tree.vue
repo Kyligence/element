@@ -29,9 +29,9 @@
   import TreeStore from './model/tree-store';
   import { getNodeKey, findNearestComponent } from './model/util';
   import ElTreeNode from './tree-node.vue';
-  import {t} from 'kyligence-ui/src/locale';
-  import emitter from 'kyligence-ui/src/mixins/emitter';
-  import { addClass, removeClass } from 'kyligence-ui/src/utils/dom';
+  import {t} from 'kyligence-kylin-ui/src/locale';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import { addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
 
   const DEFAULT_FUNC_TRUE = () => true;
 

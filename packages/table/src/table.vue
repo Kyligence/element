@@ -251,13 +251,13 @@
 </template>
 
 <script type="text/babel">
-  import ElCheckbox from 'kyligence-ui/packages/checkbox';
-  import ElRadio from 'kyligence-ui/packages/radio';
+  import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+  import ElRadio from 'kyligence-kylin-ui/packages/radio';
   import debounce from 'throttle-debounce/debounce';
-  import { addResizeListener, removeResizeListener } from 'kyligence-ui/src/utils/resize-event';
-  import Mousewheel from 'kyligence-ui/src/directives/mousewheel';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
+  import { addResizeListener, removeResizeListener } from 'kyligence-kylin-ui/src/utils/resize-event';
+  import Mousewheel from 'kyligence-kylin-ui/src/directives/mousewheel';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
   import TableStore from './table-store';
   import TableLayout from './table-layout';
   import TableBody from './table-body';

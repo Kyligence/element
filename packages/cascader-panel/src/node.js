@@ -1,5 +1,5 @@
-import { isEqual, capitalize } from 'kyligence-ui/src/utils/util';
-import { isDef } from 'kyligence-ui/src/utils/shared';
+import { isEqual, capitalize } from 'kyligence-kylin-ui/src/utils/util';
+import { isDef } from 'kyligence-kylin-ui/src/utils/shared';
 
 let uid = 0;
 

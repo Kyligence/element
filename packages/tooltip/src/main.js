@@ -1,8 +1,8 @@
-import Popper from 'kyligence-ui/src/utils/vue-popper';
+import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
 import debounce from 'throttle-debounce/debounce';
-import { addClass, removeClass, on, off } from 'kyligence-ui/src/utils/dom';
-import { getFirstComponentChild } from 'kyligence-ui/src/utils/vdom';
-import { generateId } from 'kyligence-ui/src/utils/util';
+import { addClass, removeClass, on, off } from 'kyligence-kylin-ui/src/utils/dom';
+import { getFirstComponentChild } from 'kyligence-kylin-ui/src/utils/vdom';
+import { generateId } from 'kyligence-kylin-ui/src/utils/util';
 import Vue from 'vue';
 
 export default {

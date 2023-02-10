@@ -1,9 +1,9 @@
 import Pager from './pager.vue';
-import ElSelect from 'kyligence-ui/packages/select';
-import ElOption from 'kyligence-ui/packages/option';
-import ElInput from 'kyligence-ui/packages/input';
-import Locale from 'kyligence-ui/src/mixins/locale';
-import { valueEquals } from 'kyligence-ui/src/utils/util';
+import ElSelect from 'kyligence-kylin-ui/packages/select';
+import ElOption from 'kyligence-kylin-ui/packages/option';
+import ElInput from 'kyligence-kylin-ui/packages/input';
+import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+import { valueEquals } from 'kyligence-kylin-ui/src/utils/util';
 
 export default {
   name: 'ElPagination',

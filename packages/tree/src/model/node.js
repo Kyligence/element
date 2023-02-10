@@ -1,4 +1,4 @@
-import objectAssign from 'kyligence-ui/src/utils/merge';
+import objectAssign from 'kyligence-kylin-ui/src/utils/merge';
 import { markNodeData, NODE_KEY } from './util';
 
 export const getChildState = node => {

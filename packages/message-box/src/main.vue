@@ -78,13 +78,13 @@
 </template>
 
 <script type="text/babel">
-  import Popup from 'kyligence-ui/src/utils/popup';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import ElInput from 'kyligence-ui/packages/input';
-  import ElButton from 'kyligence-ui/packages/button';
-  import { addClass, removeClass } from 'kyligence-ui/src/utils/dom';
-  import { t } from 'kyligence-ui/src/locale';
-  import Dialog from 'kyligence-ui/src/utils/aria-dialog';
+  import Popup from 'kyligence-kylin-ui/src/utils/popup';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+  import ElInput from 'kyligence-kylin-ui/packages/input';
+  import ElButton from 'kyligence-kylin-ui/packages/button';
+  import { addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
+  import { t } from 'kyligence-kylin-ui/src/locale';
+  import Dialog from 'kyligence-kylin-ui/src/utils/aria-dialog';
 
   let messageBox;
   let typeMap = {

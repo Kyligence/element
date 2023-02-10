@@ -17,16 +17,16 @@
 <script>
 import CascaderMenu from './cascader-menu';
 import Store from './store';
-import merge from 'kyligence-ui/src/utils/merge';
-import AriaUtils from 'kyligence-ui/src/utils/aria-utils';
-import scrollIntoView from 'kyligence-ui/src/utils/scroll-into-view';
+import merge from 'kyligence-kylin-ui/src/utils/merge';
+import AriaUtils from 'kyligence-kylin-ui/src/utils/aria-utils';
+import scrollIntoView from 'kyligence-kylin-ui/src/utils/scroll-into-view';
 import {
   noop,
   coerceTruthyValueToArray,
   isEqual,
   isEmpty,
   valueEquals
-} from 'kyligence-ui/src/utils/util';
+} from 'kyligence-kylin-ui/src/utils/util';
 
 const { keys: KeyCode } = AriaUtils;
 const DefaultProps = {

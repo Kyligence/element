@@ -1,4 +1,4 @@
-import { isString, isObject } from 'kyligence-ui/src/utils/types';
+import { isString, isObject } from 'kyligence-kylin-ui/src/utils/types';
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 

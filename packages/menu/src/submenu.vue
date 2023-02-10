@@ -1,8 +1,8 @@
 <script>
-  import ElCollapseTransition from 'kyligence-ui/src/transitions/collapse-transition';
+  import ElCollapseTransition from 'kyligence-kylin-ui/src/transitions/collapse-transition';
   import menuMixin from './menu-mixin';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import Popper from 'kyligence-ui/src/utils/vue-popper';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
 
   const poperMixins = {
     props: {

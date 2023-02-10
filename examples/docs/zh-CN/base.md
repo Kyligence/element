@@ -386,9 +386,9 @@
   }
 </style>
 
-## kyligence-ui 组件库的基础变量引用方式
+## kyligence-kylin-ui 组件库的基础变量引用方式
 
-为了各项目线统一使用css变量，所以可以再项目中直接引用kyligence-ui的变量文件var.scss；
+为了各项目线统一使用css变量，所以可以再项目中直接引用kyligence-kylin-ui的变量文件var.scss；
 因为var.scss在node_modules文件夹中，如果使用的地方都要引用一次，写的路径就特别长，而且每次都要检查路径是否正确，为了方便起见，所以在项目的webpack.base.conf.js文件中配置别名
 
 ### 使用scss的项目中的配置
@@ -401,7 +401,7 @@
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'themescss': resolve('node_modules/kyligence-ui/packages/theme-chalk/src')
+      'themescss': resolve('node_modules/kyligence-kylin-ui/packages/theme-chalk/src')
     }
   }
 ```
@@ -445,15 +445,15 @@ $--color-grey-2: #EEEEEE !default;
 $--color-grey-3: #E2ECF1 !default;
 $--color-grey-4: #F1F7FA !default;
 
-$--color-primary: #0875DA !default;
-$--color-primary-hover: #0867BF !default;
-$--color-primary-active: #0659A7 !default;
+$--color-primary: #3c8dbc !default;
+$--color-primary-hover: #3c8dbc !default;
+$--color-primary-active: #3c8dbc !default;
 $--color-secondary: #ECF0F8 !default;
 $--color-secondary-hover: #E6EBF4 !default;
 $--color-secondary-active: #CED6E4 !default;
 $--color-nav: #08457D !default;
-$--color-nav-hover: #0867BF !default;
-$--color-nav-active: #0659A7 !default;
+$--color-nav-hover: #3c8dbc !default;
+$--color-nav-active: #3c8dbc !default;
 
 $--color-primary-dark: #087AC8 !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* #2294e1 */
@@ -486,7 +486,7 @@ $--color-warning-hover: #EC8600 !default;
 $--color-warning-active: #844001 !default;
 $--color-warning-bg: #FFF2E5 !default;
 $--color-info: $--color-primary !default;
-$--color-info-hover: #0659A7 !default;
+$--color-info-hover: #3c8dbc !default;
 $--color-info-active: $--color-nav !default;
 $--color-info-bg: #F0F8FE !default;
 $--color-info-secondary: #A5B2C5 !default;
@@ -1247,7 +1247,7 @@ $--breakpoints-spec: (
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'themescss': resolve('node_modules/kyligence-ui/packages/theme-chalk/src')
+      'themescss': resolve('node_modules/kyligence-kylin-ui/packages/theme-chalk/src')
     }
   }
 ```
@@ -1276,15 +1276,15 @@ $--breakpoints-spec: (
 @color-grey-3: #E2ECF1;
 @color-grey-4: #F1F7FA;
 
-@color-primary: #0875DA;
-@color-primary-hover: #0867BF;
-@color-primary-active: #0659A7;
+@color-primary: #3c8dbc;
+@color-primary-hover: #3c8dbc;
+@color-primary-active: #3c8dbc;
 @color-secondary: #ECF0F8;
 @color-secondary-hover: #E6EBF4;
 @color-secondary-active: #CED6E4;
 @color-nav: #08457D;
-@color-nav-hover: #0867BF;
-@color-nav-active: #0659A7;
+@color-nav-hover: #3c8dbc;
+@color-nav-active: #3c8dbc;
 
 @color-primary-dark: #087AC8;
 @color-primary-light-1: mix(@color-white, @color-primary, 10%); /* #2294e1 */
@@ -1311,7 +1311,7 @@ $--breakpoints-spec: (
 @color-warning-active: #844001;
 @color-warning-bg: #FFF2E5;
 @color-info: @color-primary;
-@color-info-hover: #0659A7;
+@color-info-hover: #3c8dbc;
 @color-info-active: @color-nav;
 @color-info-bg: #F0F8FE;
 @color-info-secondary: #A5B2C5;

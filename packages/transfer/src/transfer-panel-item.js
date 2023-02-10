@@ -1,6 +1,6 @@
-import ElCheckbox from 'kyligence-ui/packages/checkbox';
-import ElButton from 'kyligence-ui/packages/button';
-import ElTooltip from 'kyligence-ui/packages/tooltip';
+import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+import ElButton from 'kyligence-kylin-ui/packages/button';
+import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
 
 export default {
   name: 'ElTransferPanelItem',

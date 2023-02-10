@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { addClass, removeClass } from 'kyligence-ui/src/utils/dom';
+import { addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
 
 let hasModal = false;
 

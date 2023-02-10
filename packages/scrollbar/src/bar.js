@@ -1,4 +1,4 @@
-import { on, off } from 'kyligence-ui/src/utils/dom';
+import { on, off } from 'kyligence-kylin-ui/src/utils/dom';
 import { renderThumbStyle, BAR_MAP } from './util';
 
 /* istanbul ignore next */

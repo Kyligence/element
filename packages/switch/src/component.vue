@@ -43,8 +43,8 @@
   </div>
 </template>
 <script>
-  import Focus from 'kyligence-ui/src/mixins/focus';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
+  import Focus from 'kyligence-kylin-ui/src/mixins/focus';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
 
   export default {
     name: 'ElSwitch',

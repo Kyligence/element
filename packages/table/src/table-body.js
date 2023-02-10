@@ -1,8 +1,8 @@
 import { getCell, getColumnByCell, getRowIdentity, getColumnById } from './util';
-import { hasClass, addClass, removeClass } from 'kyligence-ui/src/utils/dom';
-import ElCheckbox from 'kyligence-ui/packages/checkbox';
-import ElRadio from 'kyligence-ui/packages/radio';
-import ElTooltip from 'kyligence-ui/packages/tooltip';
+import { hasClass, addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
+import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+import ElRadio from 'kyligence-kylin-ui/packages/radio';
+import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
 import ElTableDataCell from './table-data-cell';

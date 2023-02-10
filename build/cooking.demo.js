@@ -19,9 +19,9 @@ function convert(str) {
 cooking.set({
   entry: isProd ? {
     docs: './examples/entry.js',
-    'kyligence-ui': './src/index.js'
+    'kyligence-kylin-ui': './src/index.js'
   } : (isPlay ? './examples/play.js' : './examples/entry.js'),
-  dist: './examples/kyligence-ui/',
+  dist: './examples/kyligence-kylin-ui/',
   template: [
     {
       template: './examples/index.tpl',
@@ -39,7 +39,7 @@ cooking.set({
   },
   minimize: true,
   chunk: isProd ? {
-    'common': { name: ['kyligence-ui', 'manifest'] }
+    'common': { name: ['kyligence-kylin-ui', 'manifest'] }
   } : false,
   extractCSS: true,
   alias: config.alias,

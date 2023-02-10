@@ -77,13 +77,13 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'kyligence-ui/src/utils/vue-popper';
-  import { PopupManager } from 'kyligence-ui/src/utils/popup';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
+  import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+  import { PopupManager } from 'kyligence-kylin-ui/src/utils/popup';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+  import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
   import Dropdown from './dropdown';
-  import ElCheckbox from 'kyligence-ui/packages/checkbox';
-  import ElCheckboxGroup from 'kyligence-ui/packages/checkbox-group';
+  import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+  import ElCheckboxGroup from 'kyligence-kylin-ui/packages/checkbox-group';
 
   export default {
     name: 'ElTableFilterPanel',

@@ -72,10 +72,10 @@
 </template>
 
 <script type="text/jsx">
-  import ElCollapseTransition from 'kyligence-ui/src/transitions/collapse-transition';
-  import ElCheckbox from 'kyligence-ui/packages/checkbox';
-  import ElTooltip from 'kyligence-ui/packages/tooltip';
-  import emitter from 'kyligence-ui/src/mixins/emitter';
+  import ElCollapseTransition from 'kyligence-kylin-ui/src/transitions/collapse-transition';
+  import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+  import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
   import { getNodeKey } from './model/util';
   import debounce from 'throttle-debounce/debounce';
 

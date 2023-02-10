@@ -1,8 +1,8 @@
 <script>
-import ElScrollbar from 'kyligence-ui/packages/scrollbar';
+import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
 import CascaderNode from './cascader-node.vue';
-import Locale from 'kyligence-ui/src/mixins/locale';
-import { generateId } from 'kyligence-ui/src/utils/util';
+import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+import { generateId } from 'kyligence-kylin-ui/src/utils/util';
 
 export default {
   name: 'ElCascaderMenu',

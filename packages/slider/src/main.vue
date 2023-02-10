@@ -83,9 +83,9 @@
 </template>
 
 <script type="text/babel">
-  import ElInputNumber from 'kyligence-ui/packages/input-number';
+  import ElInputNumber from 'kyligence-kylin-ui/packages/input-number';
   import SliderButton from './button.vue';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
 
   export default {
     name: 'ElSlider',

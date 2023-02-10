@@ -56,9 +56,9 @@
   </div>
 </template>
 <script>
-import ElInput from 'kyligence-ui/packages/input';
-import Focus from 'kyligence-ui/src/mixins/focus';
-import RepeatClick from 'kyligence-ui/src/directives/repeat-click';
+import ElInput from 'kyligence-kylin-ui/packages/input';
+import Focus from 'kyligence-kylin-ui/src/mixins/focus';
+import RepeatClick from 'kyligence-kylin-ui/src/directives/repeat-click';
 
 export default {
   name: 'ElInputNumber',

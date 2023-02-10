@@ -32,8 +32,8 @@
 </template>
 
 <script>
-  import { hasClass } from 'kyligence-ui/src/utils/dom';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
+  import { hasClass } from 'kyligence-kylin-ui/src/utils/dom';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
 
   export default {
     name: 'ElRate',

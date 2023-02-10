@@ -1,7 +1,7 @@
 <script>
-  import ElCheckbox from 'kyligence-ui/packages/checkbox';
-  import ElRadio from 'kyligence-ui/packages/radio';
-  import { isEqual } from 'kyligence-ui/src/utils/util';
+  import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+  import ElRadio from 'kyligence-kylin-ui/packages/radio';
+  import { isEqual } from 'kyligence-kylin-ui/src/utils/util';
 
   const stopPropagation = e => e.stopPropagation();
 

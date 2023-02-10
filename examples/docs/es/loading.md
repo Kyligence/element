@@ -226,7 +226,7 @@ Muestra una animación de pantalla completa mientras se cargan los datos
 Puede invocar el componente con un servicio. Importe el servicio:
 
 ```javascript
-import { Loading } from 'kyligence-ui';
+import { Loading } from 'kyligence-kylin-ui';
 ```
 Invocar:
 ```javascript

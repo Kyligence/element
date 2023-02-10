@@ -90,7 +90,7 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
-        background-color: #0875da;
+        background-color: #3c8dbc;
       }
     }
   }
@@ -103,7 +103,7 @@ export default {
         position: absolute;
         left: 0;
         bottom: 0;
-        background-color: #0875da;
+        background-color: #3c8dbc;
       }
     }
   }

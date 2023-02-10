@@ -172,25 +172,25 @@
 </template>
 
 <script type="text/babel">
-import Emitter from 'kyligence-ui/src/mixins/emitter';
-import Focus from 'kyligence-ui/src/mixins/focus';
-import Locale from 'kyligence-ui/src/mixins/locale';
-import ElInput from 'kyligence-ui/packages/input';
+import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+import Focus from 'kyligence-kylin-ui/src/mixins/focus';
+import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+import ElInput from 'kyligence-kylin-ui/packages/input';
 import ElSelectMenu from './select-dropdown.vue';
 import ElOption from './option.vue';
-import ElTag from 'kyligence-ui/packages/tag';
-import ElScrollbar from 'kyligence-ui/packages/scrollbar';
+import ElTag from 'kyligence-kylin-ui/packages/tag';
+import ElScrollbar from 'kyligence-kylin-ui/packages/scrollbar';
 import debounce from 'throttle-debounce/debounce';
-import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-import { addClass, removeClass, hasClass } from 'kyligence-ui/src/utils/dom';
+import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
+import { addClass, removeClass, hasClass } from 'kyligence-kylin-ui/src/utils/dom';
 import {
   addResizeListener,
   removeResizeListener
-} from 'kyligence-ui/src/utils/resize-event';
-import { t } from 'kyligence-ui/src/locale';
-import scrollIntoView from 'kyligence-ui/src/utils/scroll-into-view';
-import { getValueByPath } from 'kyligence-ui/src/utils/util';
-import { valueEquals } from 'kyligence-ui/src/utils/util';
+} from 'kyligence-kylin-ui/src/utils/resize-event';
+import { t } from 'kyligence-kylin-ui/src/locale';
+import scrollIntoView from 'kyligence-kylin-ui/src/utils/scroll-into-view';
+import { getValueByPath } from 'kyligence-kylin-ui/src/utils/util';
+import { valueEquals } from 'kyligence-kylin-ui/src/utils/util';
 import NavigationMixin from './navigation-mixin';
 
 const sizeMap = {

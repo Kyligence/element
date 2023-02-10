@@ -1,4 +1,4 @@
-import { addClass, removeClass } from 'kyligence-ui/src/utils/dom';
+import { addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
 
 class Transition {
   beforeEnter(el) {

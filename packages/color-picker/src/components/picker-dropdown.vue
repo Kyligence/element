@@ -40,10 +40,10 @@
   import SvPanel from './sv-panel';
   import HueSlider from './hue-slider';
   import AlphaSlider from './alpha-slider';
-  import Popper from 'kyligence-ui/src/utils/vue-popper';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import ElInput from 'kyligence-ui/packages/input';
-  import ElButton from 'kyligence-ui/packages/button';
+  import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+  import ElInput from 'kyligence-kylin-ui/packages/input';
+  import ElButton from 'kyligence-kylin-ui/packages/button';
 
   export default {
     name: 'el-color-picker-dropdown',

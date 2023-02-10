@@ -44,9 +44,9 @@
   </div>
 </template>
 <script>
-  import ElCollapseTransition from 'kyligence-ui/src/transitions/collapse-transition';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import { generateId } from 'kyligence-ui/src/utils/util';
+  import ElCollapseTransition from 'kyligence-kylin-ui/src/transitions/collapse-transition';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import { generateId } from 'kyligence-kylin-ui/src/utils/util';
 
   export default {
     name: 'ElCollapseItem',

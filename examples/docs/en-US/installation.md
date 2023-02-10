@@ -5,18 +5,18 @@
 Installing with npm is recommended and it works seamlessly with [webpack](https://webpack.js.org/).
 
 ```shell
-npm i kyligence-ui -S
+npm i kyligence-kylin-ui -S
 ```
 
 ### CDN
 
-Get the latest version from [unpkg.com/kyligence-ui](https://unpkg.com/kyligence-ui/) , and import JavaScript and CSS file in your page.
+Get the latest version from [unpkg.com/kyligence-kylin-ui](https://unpkg.com/kyligence-kylin-ui/) , and import JavaScript and CSS file in your page.
 
 ```html
 <!-- import CSS -->
-<link rel="stylesheet" href="https://unpkg.com/kyligence-ui/lib/theme-chalk/index.css">
+<link rel="stylesheet" href="https://unpkg.com/kyligence-kylin-ui/lib/theme-chalk/index.css">
 <!-- import JavaScript -->
-<script src="https://unpkg.com/kyligence-ui/lib/index.js"></script>
+<script src="https://unpkg.com/kyligence-kylin-ui/lib/index.js"></script>
 ```
 
 :::tip

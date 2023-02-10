@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/babel">
-  import Popper from 'kyligence-ui/src/utils/vue-popper';
+  import Popper from 'kyligence-kylin-ui/src/utils/vue-popper';
 
   export default {
     name: 'ElSelectDropdown',

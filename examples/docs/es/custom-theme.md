@@ -14,15 +14,15 @@ Este sitio, le permitirá obtener una vista previa del tema con un nuevo color e
 $--color-primary: teal;
 
 /* Ubicación de la fuente, obligatoria */
-$--font-path: '~kyligence-ui/lib/theme-chalk/fonts';
+$--font-path: '~kyligence-kylin-ui/lib/theme-chalk/fonts';
 
-@import "~kyligence-ui/packages/theme-chalk/src/index";
+@import "~kyligence-kylin-ui/packages/theme-chalk/src/index";
 ```
 
 Entonces, en el archivo principal del proyecto, importe este archivo de estilos en lugar de los estilos de Element:
 ```JS
 import Vue from 'vue'
-import Element from 'kyligence-ui'
+import Element from 'kyligence-kylin-ui'
 import './element-variables.scss'
 
 Vue.use(Element)
@@ -100,7 +100,7 @@ Por defecto, el archivo de tema construido es colocado dentro de `./theme`. Pued
 
 ```javascript
 import '../theme/index.css'
-import ElementUI from 'kyligence-ui'
+import ElementUI from 'kyligence-kylin-ui'
 import Vue from 'vue'
 
 Vue.use(ElementUI)
@@ -112,7 +112,7 @@ Si esta utilizando `babel-plugin-component` para importar bajo demanda, solo deb
 {
   "plugins": [["component", [
     {
-      "libraryName": "kyligence-ui",
+      "libraryName": "kyligence-kylin-ui",
       "styleLibraryName": "~theme"
     }
   ]]]

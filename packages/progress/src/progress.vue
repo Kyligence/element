@@ -108,7 +108,7 @@
             cx="50%"
             cy="50%"
             :r="50 - parseFloat(relativeStrokeWidth) / 2 - 1"
-            stroke="#0875DA"
+            stroke="#3c8dbc"
             :stroke-width="relativeStrokeWidth"
             :stroke-linecap="width < 50 ? 'inherit' : 'round'"
             fill="none"
@@ -285,7 +285,7 @@ export default {
           }
           break;
         default:
-          ret = '#0875DA';
+          ret = '#3c8dbc';
       }
       return ret;
     },

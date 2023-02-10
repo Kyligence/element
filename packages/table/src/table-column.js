@@ -1,8 +1,8 @@
-import ElCheckbox from 'kyligence-ui/packages/checkbox';
-import ElRadio from 'kyligence-ui/packages/radio';
-import ElTag from 'kyligence-ui/packages/tag';
-import objectAssign from 'kyligence-ui/src/utils/merge';
-import { getPropByPath } from 'kyligence-ui/src/utils/util';
+import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+import ElRadio from 'kyligence-kylin-ui/packages/radio';
+import ElTag from 'kyligence-kylin-ui/packages/tag';
+import objectAssign from 'kyligence-kylin-ui/src/utils/merge';
+import { getPropByPath } from 'kyligence-kylin-ui/src/utils/util';
 
 let columnIdSeed = 1;
 

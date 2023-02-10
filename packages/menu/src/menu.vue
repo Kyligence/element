@@ -14,10 +14,10 @@
   </el-menu-collapse-transition>
 </template>
 <script>
-  import emitter from 'kyligence-ui/src/mixins/emitter';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
-  import Menubar from 'kyligence-ui/src/utils/menu/aria-menubar';
-  import { addClass, removeClass, hasClass } from 'kyligence-ui/src/utils/dom';
+  import emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
+  import Menubar from 'kyligence-kylin-ui/src/utils/menu/aria-menubar';
+  import { addClass, removeClass, hasClass } from 'kyligence-kylin-ui/src/utils/dom';
 
   export default {
     name: 'ElMenu',
@@ -112,7 +112,7 @@
       },
       activeSubBackgroundColor: {
         type: String,
-        default: '#0659A7'
+        default: '#3c8dbc'
       },
       hoverBackgroundColor: {
         type: String,

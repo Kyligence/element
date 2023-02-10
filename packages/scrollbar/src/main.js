@@ -1,8 +1,8 @@
 // reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
 
-import { addResizeListener, removeResizeListener } from 'kyligence-ui/src/utils/resize-event';
-import scrollbarWidth from 'kyligence-ui/src/utils/scrollbar-width';
-import { toObject } from 'kyligence-ui/src/utils/util';
+import { addResizeListener, removeResizeListener } from 'kyligence-kylin-ui/src/utils/resize-event';
+import scrollbarWidth from 'kyligence-kylin-ui/src/utils/scrollbar-width';
+import { toObject } from 'kyligence-kylin-ui/src/utils/util';
 import Bar from './bar';
 
 /* istanbul ignore next */

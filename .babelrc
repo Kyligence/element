@@ -5,9 +5,9 @@
     "utils": {
       "plugins": [
         ["module-resolver", {
-          "root": ["kyligence-ui"],
+          "root": ["kyligence-kylin-ui"],
           "alias": {
-            "kyligence-ui/src": "kyligence-ui/lib"
+            "kyligence-kylin-ui/src": "kyligence-kylin-ui/lib"
           }
         }]
       ]

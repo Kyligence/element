@@ -17,8 +17,8 @@
 </template>
 
 <script type="text/babel">
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import { getValueByPath } from 'kyligence-ui/src/utils/util';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import { getValueByPath } from 'kyligence-kylin-ui/src/utils/util';
 
   export default {
     mixins: [Emitter],

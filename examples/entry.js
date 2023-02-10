@@ -23,7 +23,7 @@ Vue.locale('zh-cn', zhLocale);
 Vue.locale('en', enLocale);
 
 // 设置语言
-// import locale from 'kyligence-ui/src/locale';
+// import locale from 'kyligence-kylin-ui/src/locale';
 // locale.use(zhLocale);
 // console.log('locale', locale.t('el.select.noMatch'));
 

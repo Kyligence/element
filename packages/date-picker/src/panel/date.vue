@@ -154,10 +154,10 @@
     nextMonth,
     changeYearMonthAndClampDate
   } from '../util';
-  import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-  import Locale from 'kyligence-ui/src/mixins/locale';
-  import ElInput from 'kyligence-ui/packages/input';
-  import ElButton from 'kyligence-ui/packages/button';
+  import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
+  import Locale from 'kyligence-kylin-ui/src/mixins/locale';
+  import ElInput from 'kyligence-kylin-ui/packages/input';
+  import ElButton from 'kyligence-kylin-ui/packages/button';
   import TimePicker from './time';
   import YearTable from '../basic/year-table';
   import MonthTable from '../basic/month-table';

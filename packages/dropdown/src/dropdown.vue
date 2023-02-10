@@ -1,10 +1,10 @@
 <script>
-  import Clickoutside from 'kyligence-ui/src/utils/clickoutside';
-  import Emitter from 'kyligence-ui/src/mixins/emitter';
-  import Migrating from 'kyligence-ui/src/mixins/migrating';
-  import ElButton from 'kyligence-ui/packages/button';
-  import ElButtonGroup from 'kyligence-ui/packages/button-group';
-  import { generateId } from 'kyligence-ui/src/utils/util';
+  import Clickoutside from 'kyligence-kylin-ui/src/utils/clickoutside';
+  import Emitter from 'kyligence-kylin-ui/src/mixins/emitter';
+  import Migrating from 'kyligence-kylin-ui/src/mixins/migrating';
+  import ElButton from 'kyligence-kylin-ui/packages/button';
+  import ElButtonGroup from 'kyligence-kylin-ui/packages/button-group';
+  import { generateId } from 'kyligence-kylin-ui/src/utils/util';
 
   export default {
     name: 'ElDropdown',

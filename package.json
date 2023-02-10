@@ -1,8 +1,8 @@
 {
-  "name": "kyligence-ui",
-  "version": "4.1.8",
+  "name": "kyligence-kylin-ui",
+  "version": "5.0.3",
   "description": "Kyligence UI for Vue",
-  "main": "lib/kyligence-ui.common.js",
+  "main": "lib/kyligence-kylin-ui.common.js",
   "publishConfig": {
     "registry": "https://repo-ofs.kyligence.com/repository/npm-hosted/"
   },
@@ -20,8 +20,8 @@
     "build:utils": "cross-env BABEL_ENV=utils babel src --out-dir lib --ignore src/index.js",
     "build:umd": "node build/bin/build-locale.js",
     "clean": "rimraf lib && rimraf packages/*/lib && rimraf test/**/coverage && lerna clean --yes",
-    "deploy": "npm run deploy:build && gh-pages -d examples/kyligence-ui --remote eleme && del examples/kyligence-ui",
-    "deploy:build": "npm run build:file && cooking build -c build/cooking.demo.js -p && echo element.eleme.io>>examples/kyligence-ui/CNAME",
+    "deploy": "npm run deploy:build && gh-pages -d examples/kyligence-kylin-ui --remote eleme && del examples/kyligence-kylin-ui",
+    "deploy:build": "npm run build:file && cooking build -c build/cooking.demo.js -p && echo element.eleme.io>>examples/kyligence-kylin-ui/CNAME",
     "dev": "npm run build:file && cooking watch -c build/cooking.demo.js -p & node build/bin/template.js",
     "start": "npm run build:file && cooking watch -c build/cooking.demo.js -p & node build/bin/template.js",
     "dev:play": "npm run build:file && cross-env PLAY_ENV=true cooking watch -c build/cooking.demo.js -p",

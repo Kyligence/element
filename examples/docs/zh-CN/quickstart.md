@@ -1,18 +1,18 @@
 ## 快速上手
 
-本节将介绍如何在项目中使用 kyligence-ui
+本节将介绍如何在项目中使用 kyligence-kylin-ui
 
-### 引入 kyligence-ui
+### 引入 kyligence-kylin-ui
 
-你可以引入整个 kyligence-ui，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 kyligence-ui。
+你可以引入整个 kyligence-kylin-ui，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 kyligence-kylin-ui。
 
 #### 完整引入
 
 在 main.js 中写入以下内容：
 ```javascript
 import Vue from 'vue'
-import KyligenceUI from 'kyligence-ui'
-import 'kyligence-ui/lib/theme-chalk/index.css'
+import KyligenceUI from 'kyligence-kylin-ui'
+import 'kyligence-kylin-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 
 Vue.use(KyligenceUI)
@@ -22,7 +22,7 @@ new Vue({
   render: h => h(App)
 })
 ```
-以上代码便完成了 kyligence-ui 的引入。需要注意的是，样式文件需要单独引入。
+以上代码便完成了 kyligence-kylin-ui 的引入。需要注意的是，样式文件需要单独引入。
 
 #### 按需引入
 
@@ -41,7 +41,7 @@ npm install babel-plugin-component -D
     ["es2015", { "modules": false }]
   ],
   "plugins": [["component", {
-      "libraryName": "kyligence-ui",
+      "libraryName": "kyligence-kylin-ui",
       "styleLibraryName": "theme-chalk"
     }
   ]]
@@ -52,7 +52,7 @@ npm install babel-plugin-component -D
 
 ```javascript
 import Vue from 'vue'
-import { Button, Select } from 'kyligence-ui'
+import { Button, Select } from 'kyligence-kylin-ui'
 import App from './App.vue'
 
 Vue.component(Button.name, Button)
@@ -141,7 +141,7 @@ import {
   MessageBox,
   Message,
   Notification
-} from 'kyligence-ui'
+} from 'kyligence-kylin-ui'
 
 Vue.use(Pagination)
 Vue.use(Dialog)
@@ -219,26 +219,26 @@ Vue.prototype.$message = Message
 ```
 
 ### 全局配置
-在引入 kyligence-ui 时，可以传入一个全局配置对象。该对象目前仅支持 `size` 和 `closeOtherMessages` 字段，size用于改变组件的默认尺寸，closeOtherMessages用于控制是否关闭其他message，按照引入 kyligence-ui 的方式，具体操作如下：
+在引入 kyligence-kylin-ui 时，可以传入一个全局配置对象。该对象目前仅支持 `size` 和 `closeOtherMessages` 字段，size用于改变组件的默认尺寸，closeOtherMessages用于控制是否关闭其他message，按照引入 kyligence-kylin-ui 的方式，具体操作如下：
 
-完整引入 kyligence-ui：
+完整引入 kyligence-kylin-ui：
 ```JS
 import Vue from 'vue'
-import KyligenceUI from 'kyligence-ui'
+import KyligenceUI from 'kyligence-kylin-ui'
 Vue.use(KyligenceUI, { size: 'small', closeOtherMessages: true })
 ```
 
 同样支持组件级（目前支持所有Input输入框）的size配置，具体操作如下：
 ```JS
 import Vue from 'vue'
-import KyligenceUI from 'kyligence-ui'
+import KyligenceUI from 'kyligence-kylin-ui'
 Vue.use(KyligenceUI, { closeOtherMessages: true, { input: { size: 'small' } } })
 ```
 
-按需引入 kyligence-ui：
+按需引入 kyligence-kylin-ui：
 ```JS
 import Vue from 'vue'
-import { Button } from 'kyligence-ui'
+import { Button } from 'kyligence-kylin-ui'
 
 Vue.prototype.$ELEMENT = { size: 'small', closeOtherMessages: true }
 Vue.use(Button)

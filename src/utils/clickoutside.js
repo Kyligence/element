@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { on } from 'kyligence-ui/src/utils/dom';
+import { on } from 'kyligence-kylin-ui/src/utils/dom';
 
 const nodeList = [];
 const ctx = '@@clickoutsideContext';

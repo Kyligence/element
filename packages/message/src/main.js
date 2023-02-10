@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Main from './main.vue';
-import { PopupManager } from 'kyligence-ui/src/utils/popup';
-import { isVNode } from 'kyligence-ui/src/utils/vdom';
+import { PopupManager } from 'kyligence-kylin-ui/src/utils/popup';
+import { isVNode } from 'kyligence-kylin-ui/src/utils/vdom';
 let MessageConstructor = Vue.extend(Main);
 
 let instance;

@@ -12,7 +12,7 @@ cooking.set({
   externals: config.externals
 });
 
-cooking.add('output.filename', 'kyligence-ui.common.js');
+cooking.add('output.filename', 'kyligence-kylin-ui.common.js');
 cooking.add('loader.js.exclude', config.jsexclude);
 cooking.add('loader.scss', {
   test: /\.scss$/,

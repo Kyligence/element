@@ -18,14 +18,14 @@
 <path d="M92.9997 85.7398L97.4329 89.0699" stroke="#2492F7" stroke-width="1.48"/>
 <path d="M86.7801 91.66L89.7404 86.5594" stroke="#2492F7" stroke-width="1.48"/>
 <rect x="73.4602" y="13.9598" width="2.96" height="43.66" rx="0.74" transform="rotate(90 73.4602 13.9598)" fill="#CEE6FD"/>
-<rect x="32.7603" y="10.2599" width="2.22" height="3.7" fill="#0867BF"/>
+<rect x="32.7603" y="10.2599" width="2.22" height="3.7" fill="#3c8dbc"/>
 <rect x="31.2803" y="8.03992" width="5.18" height="4.44" rx="0.74" fill="#2492F7"/>
-<rect x="68.2803" y="10.2599" width="2.22" height="3.7" fill="#0867BF"/>
+<rect x="68.2803" y="10.2599" width="2.22" height="3.7" fill="#3c8dbc"/>
 <rect x="66.8003" y="8.03992" width="5.18" height="4.44" rx="0.74" fill="#2492F7"/>
 <rect x="73.4602" y="25.7999" width="2.96" height="43.66" rx="0.74" transform="rotate(90 73.4602 25.7999)" fill="#CEE6FD"/>
-<rect x="32.7603" y="22.0999" width="2.22" height="3.7" fill="#0867BF"/>
+<rect x="32.7603" y="22.0999" width="2.22" height="3.7" fill="#3c8dbc"/>
 <rect x="31.2803" y="19.8799" width="5.18" height="4.44" rx="0.74" fill="#2492F7"/>
-<rect x="68.2803" y="22.0999" width="2.22" height="3.7" fill="#0867BF"/>
+<rect x="68.2803" y="22.0999" width="2.22" height="3.7" fill="#3c8dbc"/>
 <rect x="66.8003" y="19.8799" width="5.18" height="4.44" rx="0.74" fill="#2492F7"/>
 <defs>
 <linearGradient id="paint0_linear" x1="50" y1="8" x2="50" y2="92" gradientUnits="userSpaceOnUse">

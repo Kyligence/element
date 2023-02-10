@@ -1,6 +1,6 @@
-import { hasClass, addClass, removeClass } from 'kyligence-ui/src/utils/dom';
-import ElCheckbox from 'kyligence-ui/packages/checkbox';
-import ElTag from 'kyligence-ui/packages/tag';
+import { hasClass, addClass, removeClass } from 'kyligence-kylin-ui/src/utils/dom';
+import ElCheckbox from 'kyligence-kylin-ui/packages/checkbox';
+import ElTag from 'kyligence-kylin-ui/packages/tag';
 import Vue from 'vue';
 import FilterPanel from './filter-panel.vue';
 import LayoutObserver from './layout-observer';
