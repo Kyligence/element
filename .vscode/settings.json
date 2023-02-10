@@ -1,0 +1,12 @@
+{
+  "i18n-ally.localesPaths": [
+    "examples/i18n",
+    "src/locale",
+    "src/locale/lang"
+  ],
+  "javascript.format.semicolons": "insert",
+  "prettier.trailingComma": "none",
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true
+}

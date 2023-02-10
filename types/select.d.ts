@@ -1,71 +1,75 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { ElementUIComponent, ElementUIComponentSize } from './component';
 
 export interface QueryChangeHandler {
   /**
    * @param queryString Current value of the text input
    */
-  (queryString: string): void
+  (queryString: string): void;
 }
 
 /** Dropdown Select Component */
 export declare class ElSelect extends ElementUIComponent {
   /** The form input value */
-  value: any
+  value: any;
 
   /** Whether multiple-select is activated */
-  multiple: boolean
+  multiple: boolean;
 
   /** Whether Select is disabled */
-  disabled: boolean
+  disabled: boolean;
 
   /** Unique identity key name for value, required when value is an object */
-  valueKey: string
+  valueKey: string;
 
   /** Size of Input */
-  size: ElementUIComponentSize
+  size: ElementUIComponentSize;
 
   /** Whether single select can be cleared */
-  clearable: boolean
+  clearable: boolean;
 
   /** Maximum number of options user can select when multiple is true. No limit when set to 0 */
-  multipleLimit: number
+  multipleLimit: number;
 
   /** The name attribute of select input */
-  name: string
+  name: string;
 
   /** Placeholder */
-  placeholder: string
+  placeholder: string;
 
   /** Whether Select is filterable */
-  filterable: boolean
+  filterable: boolean;
 
   /** Whether creating new items is allowed. To use this, filterable must be true */
-  allowCreate: boolean
+  allowCreate: boolean;
 
   /** Custom filter method */
-  filterMethod: QueryChangeHandler
+  filterMethod: QueryChangeHandler;
 
   /** Whether options are loaded from server */
-  remote: boolean
+  remote: boolean;
 
   /** Custom remote search method */
-  remoteMethod: QueryChangeHandler
+  remoteMethod: QueryChangeHandler;
 
   /** Whether Select is loading data from server */
-  loading: boolean
+  loading: boolean;
 
   /** Displayed text while loading data from server */
-  loadingText: string
+  loadingText: string;
 
   /** Displayed text when no data matches the filtering query */
-  noMatchText: string
+  noMatchText: string;
 
   /** Displayed text when there is no options */
-  noDataText: string
+  noDataText: string;
 
   /** Custom class name for Select's dropdown */
-  popperClass: string
+  popperClass: string;
 
   /** Select first matching option on enter key. Use with filterable or remote */
-  defaultFirstOption: boolean
+  defaultFirstOption: boolean;
+
+  duplicateRemove: boolean;
+
+  onBeforeCreate: (value: string) => void;
 }

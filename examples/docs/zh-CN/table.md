@@ -1,6 +1,22 @@
 
 <script>
+  function getHugeData() {
+    const hugeData = [];
+    for (let i = 0; i < 200; i += 1) {
+      hugeData.push({
+        date: '2016-05-03' + i,
+        name: '王小虎',
+        province: '上海',
+        city: '普陀区',
+        address: '上海市普陀区金沙江路 1518 弄',
+        zip: 200333,
+        tag: '家'
+      });
+    }
+    return hugeData;
+  }
   export default {
+    components:{},
     data() {
       return {
         tableEmpty: [],
@@ -227,6 +243,7 @@
           amount2: '4.1',
           amount3: 15
         }],
+        tableData7: getHugeData(),
         currentRow: null,
         multipleSelection: [],
         expandRows: ['12987125'],
@@ -440,55 +457,56 @@
 ```html
   <template>
     <div id="testDiv">
-    <el-table
-      :data="tableData"
-      @radio-change="radioChange"
-      style="width: 100%">
-      <el-table-column
-        type="radio"
-        prop="date">
-      </el-table-column>
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-      <el-table-column label="操作" width="80">
-        <template slot-scope="scope">
-          <el-dropdown trigger="click">
-            <span class="el-dropdown-link">
-              ...<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown" :append-to-body="false" :popper-container="'testDiv'">
-              <el-dropdown-item>优化建议</el-dropdown-item>
-              <el-dropdown-item>分区设置</el-dropdown-item>
-              <el-dropdown-item divided disabled>导入 MDX</el-dropdown-item>
-              <el-dropdown-item divided disabled>导入 TDS</el-dropdown-item>
-              <el-dropdown-item divided disabled>导出 MDX</el-dropdown-item>
-              <el-dropdown-item>导出元数据</el-dropdown-item>
-              <el-dropdown-item divided>重命名</el-dropdown-item>
-              <el-dropdown-item>克隆</el-dropdown-item>
-              <el-dropdown-item>删除</el-dropdown-item>
-              <el-dropdown-item>清空</el-dropdown-item>
-              <el-dropdown-item>模型下线</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </template>
-      </el-table-column>
-    </el-table>
+        <el-table
+          :data="tableData"
+          @radio-change="radioChange"
+          style="width: 100%">
+          <el-table-column
+            type="radio"
+            prop="date">
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="姓名"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="address"
+            label="地址">
+          </el-table-column>
+          <el-table-column label="操作" width="80">
+            <template slot-scope="scope">
+              <el-dropdown trigger="click">
+                <span class="el-dropdown-link">
+                  ...<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown" :append-to-body="false" :popper-container="'testDiv'">
+                  <el-dropdown-item>优化建议</el-dropdown-item>
+                  <el-dropdown-item>分区设置</el-dropdown-item>
+                  <el-dropdown-item divided disabled>导入 MDX</el-dropdown-item>
+                  <el-dropdown-item divided disabled>导入 TDS</el-dropdown-item>
+                  <el-dropdown-item divided disabled>导出 MDX</el-dropdown-item>
+                  <el-dropdown-item>导出元数据</el-dropdown-item>
+                  <el-dropdown-item divided>重命名</el-dropdown-item>
+                  <el-dropdown-item>克隆</el-dropdown-item>
+                  <el-dropdown-item>删除</el-dropdown-item>
+                  <el-dropdown-item>清空</el-dropdown-item>
+                  <el-dropdown-item>模型下线</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </template>
+          </el-table-column>
+        </el-table>
     </div>
   </template>
   <script>
     export default {
+      components:{ SortableTable },
       data() {
         return {
           tableData: [{
@@ -567,6 +585,69 @@
   </script>
 ```
 :::
+
+### 拖拽排序表格
+
+拖拽排序
+
+:::demo 示例
+```html
+  <template>
+    <div id="testDiv">
+      <el-table-draggable-wrapper handle=".draggable-td">
+        <el-table
+          :data="tableData"
+          @radio-change="radioChange"
+          style="width: 100%">
+          <el-table-column width="50">
+            <template slot-scope="scope">
+              <i class="el-ksd-n-icon-grab-dots-outlined draggable-td"></i>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="name"
+            label="姓名"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="address"
+            label="地址">
+          </el-table-column>
+        </el-table>
+      </el-table-draggable-wrapper>
+    </div>
+  </template>
+  <script>
+    export default {
+      data() {
+        return {
+          tableData: [{
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }, {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1517 弄'
+          }, {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1519 弄'
+          }, {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1516 弄'
+          }]
+        }
+      }
+    }
+  </script>
+```
 
 ### 空态 table
 
@@ -2357,6 +2438,80 @@ table 空态效果有多种组合。
 ```
 :::
 
+### 单元格懒加载
+
+定义 `virtual-cell-height=高度` 每一格单元格的高度，即可触发单元格滚动懒加载，来解决单元格内组件太复杂造成的性能慢问题。
+:::demo 通过给 `virtual-cell-height=40px` el-table 传入 高度属性，即可打开单元格滚动懒加载。
+
+```html
+<template>
+  <el-table
+    :data="tableData7"
+    height="250"
+    border
+    virtual-cell-height="40px"
+    style="width: 100%">
+    <el-table-column
+      prop="date"
+      label="日期"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址">
+    </el-table-column>
+  </el-table>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        tableData3: [{
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-06',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-07',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }]
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### Table Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -2389,6 +2544,7 @@ table 空态效果有多种组合。
 | summary-method | 自定义的合计计算方法 | Function({ columns, data }) | — | — |
 | span-method | 合并行或列的计算方法 | Function({ row, column, rowIndex, columnIndex }) | — | — |
 | show-empty-img | 控制table 空态时，是否显示空态图，默认显示 | boolean | - | true |
+| virtual-cell-height | 虚拟单元格高度 | string | - | - |
 
 ### Table Events
 | 事件名 | 说明 | 参数 |
@@ -2477,3 +2633,15 @@ table 空态效果有多种组合。
 | info-tooltip | 用于提示列的解释详细, 没有info-icon时，hover在label上出tooltips | String | - | - |
 | checkbox-disable-tooltip | disabled 状态的 checkbox 增加 tooltip 提示 | String, Function | - | - |
 | checkbox-disable-tooltip-placement | checkbox tooltip 展示方位 | String | - | - |
+
+### Table-draggable-wrapper Attributes
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| handle | 格式为简单css选择器的字符串，使列表单元中符合选择器的元素成为拖动的手柄，只有按住拖动手柄才能使列表单元进行拖动 | string | selection/index/expand | — |
+
+
+### Table-draggable-wrapper Events
+| 方法名 | 说明 | 参数 |
+| ---- | ---- | ---- |
+| drag | 开始拖拽时触发的事件 | {target, index} |
+| drop | 拖拽结束触发的事件 | {newIndex, oldIndex, target, list} |

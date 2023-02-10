@@ -4,6 +4,7 @@
 @import "mixins/mixins";
 @import "mixins/utils";
 
+$focus: focus-visible;
 // 次要按钮 - 默认按钮
 @include b(button) {
   display: inline-block;
@@ -43,7 +44,7 @@
     padding: 0px;
     color: $--link-color;
     &:not(.is-disabled):hover,
-    &:not(.is-disabled):focus {
+    &:not(.is-disabled):#{$focus} {
       color: $--link-hover-color;
     }
     &:not(.is-disabled):active {
@@ -63,13 +64,13 @@
   @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--button-font-size, $--button-border-radius, $--button-medium-line-height, $--button-medium-icon-padding, $--button-medium-icon-mini-padding);
 
   &:hover,
-  &:not(.is-disabled):focus {
+  &:not(.is-disabled):#{$focus} {
     color: $--button-default-hover-color;
     border-color: $--button-default-hover-fill;
     background-color: $--button-default-hover-fill;
   }
 
-  // &:not(.is-disabled):focus {
+  // &:not(.is-disabled):#{$focus} {
   //   color: $--button-default-color;
   //   border-color: $--button-default-border;
   //   background-color: $--button-default-fill;
@@ -117,13 +118,13 @@
     border-color: $--button-default-plain-border;
     color: $--button-default-plain-color;
     &:not(.is-disabled):hover,
-    &:not(.is-disabled):focus {
+    &:not(.is-disabled):#{$focus} {
       background: $--button-default-plain-fill;
       border-color: $--color-secondary-active;
       color: $--button-default-plain-color;
     }
 
-    // &:not(.is-disabled):focus {
+    // &:not(.is-disabled):#{$focus} {
     //   color: $--button-default-color;
     //   border-color: $--button-default-active-border;
     //   background-color: $--button-default-fill;
@@ -188,13 +189,13 @@
     background-color: $--button-primary-fill;
     border-color: $--button-primary-border;
     &:not(.is-disabled):hover,
-    &:not(.is-disabled):focus {
+    &:not(.is-disabled):#{$focus} {
       background: $--color-primary-hover;
       border-color: $--color-primary-hover;
       color: $--button-primary-color;
     }
 
-    // &:not(.is-disabled):focus {
+    // &:not(.is-disabled):#{$focus} {
     //   background-color: $--button-primary-fill;
     //   border-color: $--button-primary-border;
     //   color: $--button-primary-color;
@@ -236,12 +237,12 @@
       }
 
       &:hover,
-      &:focus {
+      &:#{$focus} {
         color: $--color-text-regular;
         border-color: $--background-color-hover;
         background-color: $--background-color-hover;
       }
-      // &:focus {
+      // &:#{$focus} {
       //   box-shadow: 0px 0px 0px 1px #FFFFFF, 0px 0px 0px 3px rgba(8, 121, 253, 0.64);
       // }
       &:active {
@@ -253,7 +254,7 @@
 
       &.is-disabled,
       &.is-disabled:hover,
-      &.is-disabled:focus {
+      &.is-disabled:#{$focus} {
         border-color: transparent;
         background-color: transparent;
       }
@@ -272,13 +273,13 @@
     background-color: $--button-danger-fill;
     border-color: $--button-danger-border;
     &:not(.is-disabled):hover,
-    &:not(.is-disabled):focus {
+    &:not(.is-disabled):#{$focus} {
       background: $--button-danger-hover-fill;
       border-color: $--button-danger-hover-border;
       color: $--button-primary-color;
     }
     
-    // &:not(.is-disabled):focus {
+    // &:not(.is-disabled):#{$focus} {
     //   color: $--button-primary-color;
     //   background-color: $--button-danger-fill;
     //   border-color: $--button-danger-border;
@@ -318,12 +319,12 @@
       background: transparent;
 
       &:hover,
-      &:focus {
+      &:#{$focus} {
         color: $--button-danger-fill;
         border-color: $--background-color-hover;
         background-color: $--background-color-hover;
       }
-      // &:focus {
+      // &:#{$focus} {
       //   box-shadow: 0px 0px 0px 1px #FFFFFF, 0px 0px 0px 3px rgba(8, 121, 253, 0.64);
       // }
       &:active {
@@ -335,7 +336,7 @@
 
       &.is-disabled,
       &.is-disabled:hover,
-      &.is-disabled:focus {
+      &.is-disabled:#{$focus} {
         border-color: transparent;
       }
     }
@@ -352,10 +353,14 @@
         margin-left: -6px;
       }
     }
+    .button-text {
+      display: inline-block;
+      min-width: 42px;
+    }
   }
   @include m(medium) {
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius, $--button-medium-line-height, $--button-medium-icon-padding, $--button-medium-icon-mini-padding);
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 2px;
       }
@@ -366,6 +371,10 @@
         right: -5px;
         margin-left: -5px;
       }
+    }
+    .button-text {
+      display: inline-block;
+      min-width: 38px;
     }
   }
   @include m(small) {
@@ -383,10 +392,14 @@
     span {
       line-height: $--button-mini-line-height;
     }
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 2px;
       }
+    }
+    .button-text {
+      display: inline-block;
+      min-width: 34px;
     }
   }
   @include m(mini) {
@@ -404,7 +417,7 @@
     span {
       line-height: $--button-small-line-height;
     }
-    & [class*="el-icon-"], & [class*="el-ksd-icon"] {
+    & [class*="el-icon-"], & [class*="el-ksd-icon"], & [class*="el-ksd-n-icon"] {
       & + span {
         margin-left: 1px;
       }
@@ -418,12 +431,12 @@
     padding-right: 0;
 
     &:hover,
-    &:focus {
+    &:#{$focus} {
       color: $--color-text-regular;
       border-color: $--background-color-hover;
       background-color: $--background-color-hover;
     }
-    // &:focus {
+    // &:#{$focus} {
     //   box-shadow: 0px 0px 0px 1px #FFFFFF, 0px 0px 0px 3px rgba(8, 121, 253, 0.64);
     // }
     &:active {
@@ -435,7 +448,7 @@
 
     &.is-disabled,
     &.is-disabled:hover,
-    &.is-disabled:focus {
+    &.is-disabled:#{$focus} {
       border-color: transparent;
     }
   }
@@ -485,7 +498,7 @@
     &:not(.is-disabled) {
       z-index: 1;
       &:hover,
-      &:focus,
+      &:#{$focus},
       &:active {
         z-index: 2;
       }

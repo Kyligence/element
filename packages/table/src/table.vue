@@ -43,6 +43,7 @@
         :row-class-name="rowClassName"
         :row-style="rowStyle"
         :highlight="highlightCurrentRow"
+        :virtual-cell-height="virtualCellHeight"
         :style="{
            width: bodyWidth
         }">
@@ -145,6 +146,7 @@
           :store="store"
           :stripe="stripe"
           :highlight="highlightCurrentRow"
+          :virtual-cell-height="virtualCellHeight"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :style="{
@@ -210,6 +212,7 @@
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :highlight="highlightCurrentRow"
+          :virtual-cell-height="virtualCellHeight"
           :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }">
@@ -291,6 +294,8 @@
       height: [String, Number],
 
       maxHeight: [String, Number],
+
+      virtualCellHeight: String,
 
       fit: {
         type: Boolean,

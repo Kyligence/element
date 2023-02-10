@@ -20,7 +20,11 @@
         default: 'top'
       },
       beforeLeave: Function,
-      disableCommand: Boolean
+      disableCommand: Boolean,
+      size: {
+        type: String,
+        default: 'medium'
+      }
     },
 
     provide() {
@@ -116,7 +120,8 @@
         editable,
         addable,
         tabPosition,
-        disableCommand
+        disableCommand,
+        size
       } = this;
 
       const newButton = editable || addable
@@ -161,7 +166,8 @@
           'el-tabs--card': type === 'card',
           [`el-tabs--${tabPosition}`]: true,
           'el-tabs--border-card': type === 'border-card',
-          'el-tabs--button': type === 'button'
+          'el-tabs--button': type === 'button',
+          [`el-tabs--${size}`]: true
         }}>
           { tabPosition !== 'bottom' ? [header, panels] : [panels, header] }
         </div>

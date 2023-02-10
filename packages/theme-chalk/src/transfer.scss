@@ -1,15 +1,15 @@
-@import "mixins/mixins";
-@import "mixins/utils";
-@import "common/var";
-@import "input";
-@import "button";
-@import "checkbox";
-@import "checkbox-group";
+@import 'mixins/mixins';
+@import 'mixins/utils';
+@import 'common/var';
+@import 'input';
+@import 'button';
+@import 'checkbox';
+@import 'checkbox-group';
 
 @include b(transfer) {
-  font-size: $--font-size-base;
+  font-size: $--font-size-extra-small;
   .load-more {
-    font-size: 12px;
+    font-size: $--font-size-extra-small;
     color: $--color-text-regular;
     text-align: center;
     cursor: pointer;
@@ -20,7 +20,7 @@
   @include e(buttons) {
     display: inline-block;
     vertical-align: middle;
-    padding: 0 10px;
+    padding: 0 8px;
   }
 
   @include e(button) {
@@ -47,21 +47,37 @@
         color: $--color-text-placeholder;
       }
     }
-
-    &:first-child {
-      margin-bottom: 10px;
+    .button-text {
+      min-width: 22px;
     }
-
-    &:nth-child(2) {
-      margin: 0;
-    }
-
-    i, span {
-      font-size: 14px;
-    }
-
-    & [class*="el-icon-"] + span {
+    & + & {
       margin-left: 0;
+      margin-top: 10px;
+    }
+
+    i,
+    span {
+      font-size: $--font-size-extra-small;
+    }
+
+    & [class*='el-icon-'] + span {
+      margin-left: 0;
+    }
+  }
+  &--no-buttons {
+    @include b(transfer) {
+      &__buttons {
+        display: none;
+      }
+      &-panel {
+        &:first-child {
+          border-radius: 6px 0 0 6px;
+          margin-right: -1px;
+        }
+        &:last-child {
+          border-radius: 0 6px 6px 0;
+        }
+      }
     }
   }
 }
@@ -80,6 +96,11 @@
 
   @include e(body) {
     height: $--transfer-panel-body-height;
+    display: flex;
+    flex-direction: column;
+    > :not(.el-transfer-panel__list) {
+      flex: none;
+    }
 
     @include when(with-footer) {
       padding-bottom: $--transfer-panel-footer-height;
@@ -93,6 +114,7 @@
     height: $--transfer-panel-body-height;
     overflow: auto;
     box-sizing: border-box;
+    position: relative;
 
     @include when(filterable) {
       height: #{$--transfer-panel-body-height - $--transfer-filter-height - 20px};
@@ -101,9 +123,10 @@
   }
 
   @include e(item) {
+    flex: 1;
+    overflow: hidden;
     height: $--transfer-item-height;
     line-height: $--transfer-item-height;
-    padding-left: 15px;
     display: block;
 
     & + .el-transfer-panel__item {
@@ -114,55 +137,103 @@
       color: $--color-text-primary;
     }
 
-    &:hover {
-      color: $--color-primary;
-    }
+    // &:hover {
+    //   color: $--color-primary;
+    // }
 
     &.el-checkbox .el-checkbox__label {
       width: 100%;
       @include utils-ellipsis;
       // display: block;
       box-sizing: border-box;
-      padding-left: 24px;
+      padding-left: 20px;
       line-height: $--transfer-item-height;
     }
 
     .el-checkbox__input {
+      height: fit-content;
+      line-height: 1;
       position: absolute;
-      top: 8px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &-dragger {
+      flex: none;
+      font-size: 16px;
+      margin-right: 8px;
+      cursor: grab;
+      &:hover {
+        color: $--color-primary;
+      }
+      &[disabled] {
+        cursor: not-allowed;
+        color: $--color-text-disabled;
+      }
+    }
+    &-icon {
+      color: $--color-text-secondary;
+      font-size: $--font-size-medium;
+      margin-right: 4px;
+    }
+    &-inline {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 8px;
+      font-size: $--font-size-extra-small;
+    }
+    &-inline &-left {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-inline &-right {
+      flex: none;
+      margin-left: 4px;
+      color: $--color-text-placeholder;
     }
   }
 
   @include e(filter) {
     text-align: center;
-    padding: 10px 15px;
-    padding-bottom: 9px;
+    padding: 0 8px;
+    margin-top: 8px;
+    margin-bottom: 4px;
     box-sizing: border-box;
     display: block;
     width: 100%;
-    border-bottom: 1px solid $--transfer-border-color;
 
     &.el-input-group {
       display: inline-table;
       .el-input-group__append {
-        padding: 0 15px 0 8px;
+        padding: 0 8px 0 8px;
       }
     }
 
     .el-input__inner {
       height: $--transfer-filter-height;
       width: 100%;
-      font-size: 12px;
+      font-size: $--font-size-extra-small;
       display: inline-block;
       box-sizing: border-box;
       border-radius: 2px;
       padding-right: 14px;
-      padding-left: 20px;
+      padding-left: 24px;
+      border: 1px solid $--border-secondary;
+      border-radius: 6px;
     }
 
+    .el-input__prefix {
+      left: 0;
+    }
     .el-input__suffix {
-      top: 10px;
-      right: 15px;
+      top: 0;
+      bottom: 0;
+      right: 8px;
+      margin: auto;
       // border: 1px solid $--border-color-base;
       color: $--color-info;
       // background-color: $--background-color-base;
@@ -180,50 +251,58 @@
     }
   }
 
-  .el-transfer-panel__header {
+  &__header {
     height: $--transfer-panel-header-height;
     // line-height: $--transfer-panel-header-height;
     background: $--color-white;
     margin: 0;
-    padding-left: 15px;
+    padding-left: 8px;
     padding-top: 4px;
     border-bottom: 1px solid $--transfer-border-color;
     box-sizing: border-box;
     color: $--color-text-primary;
+    position: relative;
 
     .el-checkbox {
       // display: block;
       // line-height: $--transfer-panel-header-height;
       color: $--color-text-primary;
       .el-checkbox__label {
-        font-size: 14px;
+        font-size: $--font-size-extra-small;
         color: $--color-text-primary;
-        font-weight: normal;
-
+        font-weight: 600;
       }
     }
     .count {
+      height: 12px;
+      height: fit-content;
       position: absolute;
-      right: 15px;
-      top: 8px;
-      color: $--color-text-primary;
-      font-size: 12px;
+      right: 8px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      color: $--color-text-placeholder;
+      font-size: $--font-size-extra-small;
       font-weight: normal;
     }
   }
 
-  .el-transfer-panel__footer {
+  &__footer {
     height: $--transfer-panel-footer-height;
+    overflow: hidden;
     background: $--color-white;
     margin: 0;
-    padding: 0;
+    padding: 8px;
     border-top: 1px solid $--transfer-border-color;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: $--index-normal;
-    @include utils-vertical-center;
+    // @include utils-vertical-center;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 
     .el-checkbox {
       padding-left: 20px;
@@ -231,13 +310,29 @@
     }
   }
 
-  .el-transfer-panel__empty {
+  &__empty {
     margin: 0;
     height: $--transfer-item-height;
     line-height: $--transfer-item-height;
-    padding: 6px 15px 0;
+    padding: 6px 8px 0;
     color: $--color-text-disabled;
     text-align: center;
+  }
+  &-check-disable &__header > .el-checkbox {
+    & > .el-checkbox__input {
+      display: none;
+    }
+    & > .el-checkbox__label {
+      padding-left: 0;
+    }
+  }
+  &-check-disable &__item {
+    & > .el-checkbox__input {
+      display: none;
+    }
+    & > .el-checkbox__label {
+      padding-left: 0;
+    }
   }
 
   .el-checkbox__label {
@@ -252,6 +347,90 @@
       height: 6px;
       width: 3px;
       left: 4px;
+    }
+  }
+
+  &__load-more {
+    font-size: $--font-size-extra-small;
+    padding: $--font-size-base;
+    color: $--color-text-regular;
+    text-align: center;
+    // cursor: pointer;
+    // &:hover {
+    //   color: $--color-primary;
+    // }
+  }
+
+  &-filterable &__header {
+    border: none;
+  }
+
+  @include e(functions) {
+    padding: 0 8px;
+    margin: 8px 0 4px 0;
+  }
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    &.sortable-ghost {
+      visibility: hidden !important;
+    }
+    &:hover {
+      background-color: $--background-color-secondary;
+    }
+  }
+  &__checkbox:hover &__item-hover {
+    display: flex;
+  }
+  &__item-hover {
+    width: fit-content;
+    height: 100%;
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    // padding: 0 4px;
+    background-color: $--background-color-secondary;
+    &::before {
+      content: '';
+      width: 8px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: -8px;
+      background: linear-gradient(
+        270deg,
+        $--background-color-secondary 18.75%,
+        rgba($--background-color-secondary, 0) 106.25%
+      );
+    }
+    &:first-child {
+      margin-left: 4px;
+    }
+    &:last-child {
+      margin-right: 4px;
+    }
+  }
+  .el-transfer-draggable--swap {
+    &-up,
+    &-down {
+      position: relative;
+      &::before {
+        content: '';
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        background-color: #0875da;
+      }
+    }
+    &-up::before {
+      top: 0;
+    }
+    &-down::before {
+      bottom: 0;
     }
   }
 }

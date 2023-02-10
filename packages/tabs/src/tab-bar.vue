@@ -30,7 +30,7 @@
 
             if (!tab.active) {
               // offset += $el[`client${firstUpperCase(sizeName)}`];
-              offset += $el[`offset${firstUpperCase(sizeName)}`] + 32;
+              offset += $el[`offset${firstUpperCase(sizeName)}`];
               return true;
             } else {
               // tabSize = $el[`client${firstUpperCase(sizeName)}`];

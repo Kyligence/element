@@ -12,6 +12,11 @@
   border: 1px solid $--tag-border;
   white-space: nowrap;
 
+  &.is-light {
+    background-color: $--color-info-bg;
+    border-color: $--color-info-bg;
+  }
+
   .el-tag__text {
     font-size: $--tag-font-size;
     line-height: $--tag-line-height;
@@ -69,6 +74,10 @@
     // &.closeable:hover {
     //   border-color: $--tag-info-color;
     // }
+    &.is-light {
+      background-color: $--color-info-secondary-bg;
+      border-color: $--color-info-secondary-bg;
+    }
 
     @include when(hit) {
       border-color: $--tag-info-color;
@@ -92,6 +101,10 @@
     // &.closeable:hover {
     //   border-color: $--tag-success-color;
     // }
+    &.is-light {
+      background-color: $--color-success-bg;
+      border-color: $--color-success-bg;
+    }
 
     @include when(hit) {
       border-color: $--tag-success-color;
@@ -115,6 +128,10 @@
     // &.closeable:hover {
     //   border-color: $--tag-warning-color;
     // }
+    &.is-light {
+      background-color: $--color-warning-bg;
+      border-color: $--color-warning-bg;
+    }
 
     @include when(hit) {
       border-color: $--tag-warning-color;
@@ -138,6 +155,10 @@
     // &.closeable:hover {
     //   border-color: $--tag-danger-color;
     // }
+    &.is-light {
+      background-color: $--color-danger-bg;
+      border-color: $--color-danger-bg;
+    }
 
     @include when(hit) {
       border-color: $--tag-danger-color;
@@ -150,6 +171,33 @@
     .el-tag__close:hover {
       // background-color: $--tag-danger-color;
       color: $--color-danger-hover;
+    }
+  }
+
+  @include m(beta) {
+    background-color: $--tag-beta-fill;
+    border-color: $--tag-beta-border;
+    color: $--tag-beta-color;
+
+    // &.closeable:hover {
+    //   border-color: $--tag-info-color;
+    // }
+    &.is-light {
+      background-color: $--tag-beta-light;
+      border-color: $--tag-beta-light;
+    }
+
+    @include when(hit) {
+      border-color: $--tag-info-color;
+    }
+
+    .el-tag__close {
+      color: $--tag-beta-color;
+    }
+
+    .el-tag__close:hover {
+      // background-color: $--tag-info-color;
+      color: $--color-beta-hover;
     }
   }
 

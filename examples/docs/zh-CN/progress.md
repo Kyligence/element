@@ -42,6 +42,7 @@
 <el-progress :percentage="20" color="#A5B2C5" status="discarded"></el-progress>
 <el-progress :percentage="50" status="success" ></el-progress>
 <el-progress :percentage="50" status="exception" ></el-progress>
+<el-progress :percentage="100" status="exception" ></el-progress>
 <el-progress :percentage="50" color="#000" icon-class="el-icon-edit"></el-progress>
 ```
 :::
@@ -78,6 +79,7 @@
 <el-progress type="circle" :percentage="25" loading :stroke-width="8"></el-progress>
 <el-progress type="circle" :percentage="100" status="success" :stroke-width="8"></el-progress>
 <el-progress type="circle" :percentage="50" status="exception" :stroke-width="8"></el-progress>
+<el-progress type="circle" :percentage="100" status="exception" :stroke-width="8"></el-progress>
 <el-progress type="circle" :percentage="50" color="#A5B2C5" icon-class="el-icon-edit" :stroke-width="8"></el-progress>
 ```
 :::

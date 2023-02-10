@@ -7,7 +7,8 @@
           { name: '标签二', type: 'success' },
           { name: '标签三', type: 'info' },
           { name: '标签四', type: 'warning' },
-          { name: '标签五', type: 'danger' }
+          { name: '标签五', type: 'danger' },
+          { name: '标签六', type: 'beta' }
         ],
         dynamicTags: ['标签一', '标签二', '标签三'],
         inputVisible: false,
@@ -71,6 +72,21 @@
 <el-tag type="info">标签三</el-tag>
 <el-tag type="warning">标签四</el-tag>
 <el-tag type="danger">标签五</el-tag>
+<el-tag type="beta">标签六</el-tag>
+```
+:::
+
+### 浅色 tags
+
+:::demo 由`type`属性来选择tag的类型，`is-light` 属性来定义是否为浅色。
+
+```html
+<el-tag is-light>标签一</el-tag>
+<el-tag type="success" is-light>标签二</el-tag>
+<el-tag type="info" is-light>标签三</el-tag>
+<el-tag type="warning" is-light>标签四</el-tag>
+<el-tag type="danger" is-light>标签五</el-tag>
+<el-tag type="beta" is-light>标签六</el-tag>
 ```
 :::
 
@@ -96,7 +112,8 @@
           { name: '标签二', type: 'success' },
           { name: '标签三', type: 'info' },
           { name: '标签四', type: 'warning' },
-          { name: '标签五', type: 'danger' }
+          { name: '标签五', type: 'danger' },
+          { name: '标签六', type: 'beta' }
         ]
       };
     }

@@ -76,6 +76,10 @@ $--color-info-secondary-hover: #546174 !default;
 $--color-info-secondary-active: #3B4759 !default;
 $--color-info-secondary-bg: #F8F9FB !default;
 $--color-info-secondary-tag-bg: #ECF0F8 !default;
+$--color-beta: #53198E !default;
+$--color-beta-hover: #6f4f8f !default;
+$--color-beta-tag-bg: #EBDCF9 !default;
+$--color-beta-tag-light: #F5EEFC !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
@@ -162,7 +166,7 @@ $--font-size-medium: 16px !default;
 $--font-size-large: 18px !default;
 $--font-color-disabled-base: #bbb !default;
 $--font-weight-primary: bold !default;
-$--font-weight-medium: 500 !default;
+$--font-weight-medium: 600 !default;
 $--font-line-height-primary: 24px !default;
 
 $--font-size-page: 26px !default;
@@ -320,7 +324,7 @@ $--select-option-disabled-color: $--color-text-placeholder !default;
 $--select-option-disabled-background: $--color-white !default;
 $--select-option-height: 34px !default;
 $--select-option-hover-background: $--background-color-secondary !default;
-$--select-option-selected: $--color-text-primary !default;
+$--select-option-selected: $--color-primary !default;
 $--select-option-selected-background: $--background-color-hover !default;
 $--select-option-selected-hover: $--background-color-hover !default;
 
@@ -708,6 +712,11 @@ $--tag-danger-fill: $--color-danger-tag-bg !default;
 $--tag-danger-border: $--color-danger-tag-bg !default;
 $--tag-danger-color: $--color-danger-active !default;
 
+$--tag-beta-fill: $--color-beta-tag-bg !default;
+$--tag-beta-border: $--color-beta-tag-bg !default;
+$--tag-beta-color: $--color-beta !default;
+$--tag-beta-light: $--color-beta-tag-light !default;
+
 /* Tree
 -------------------------- */
 $--tree-node-hover-color: $--background-color-secondary !default;
@@ -819,14 +828,14 @@ $--collapse-content-color: $--color-text-primary !default;
 
 /* Transfer
 --------------------------*/
-$--transfer-border-color: $--border-color-base !default;
+$--transfer-border-color: $--border-divider-color !default;
 $--transfer-border-radius: $--border-radius-base !default;
 $--transfer-panel-width: 200px !default;
 $--transfer-panel-header-height: 30px !default;
 $--transfer-panel-header-background: $--background-color-base !default;
-$--transfer-panel-footer-height: 40px !default;
+$--transfer-panel-footer-height: 44px !default;
 $--transfer-panel-body-height: 256px !default;
-$--transfer-item-height: 30px !default;
+$--transfer-item-height: 32px !default;
 $--transfer-item-hover-background: $--color-text-secondary !default;
 $--transfer-filter-height: 24px !default;
 

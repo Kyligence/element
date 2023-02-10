@@ -42,26 +42,20 @@
       align-items: center;
       justify-content: center;
 
-      .icon {
-        font-size: 32px;
-        text-align: center;
+      .icon-text {
+        font-size: 20px;
+        font-weight: 600;
         &.is-success {
-          background-color: $--color-success-bg;
-          border-radius: 100%;
+          // background-color: $--color-success-bg;
           color: $--color-success-hover;
         }
         &.is-exception {
-          background-color: $--color-danger-bg;
-          border-radius: 100%;
+          // background-color: $--color-danger-bg;
           color: $--color-danger-hover;
         }
         &.is-pending {
-          background-color: $--color-info-secondary-bg;
-          border-radius: 100%;
+          // background-color: $--color-info-secondary-bg;
           color: $--color-text-placeholder;
-        }
-        i {
-          vertical-align: sub;
         }
       }
     }

@@ -49,6 +49,10 @@ export default {
     hideAfter: {
       type: Number,
       default: 0
+    },
+    maxHeight: {
+      type: [Number, String, Boolean],
+      default: 130
     }
   },
 
@@ -62,6 +66,19 @@ export default {
   computed: {
     tooltipId() {
       return `el-tooltip-${generateId()}`;
+    },
+    tooltipStyle() {
+      const maxHeight = typeof this.maxHeight === 'number' ? `${this.maxHeight}px` : this.maxHeight;
+      const scrollStyle = {};
+
+      if (maxHeight) {
+        scrollStyle.maxHeight = maxHeight;
+        scrollStyle.overflowY = 'auto';
+        scrollStyle.textOverflow = 'ellipsis';
+        scrollStyle.overflowX = 'hidden';
+      }
+
+      return Object.assign({}, scrollStyle);
     }
   },
   beforeCreate() {
@@ -93,10 +110,8 @@ export default {
             id={this.tooltipId}
             aria-hidden={ (this.disabled || !this.showPopper) ? 'true' : 'false' }
             v-show={!this.disabled && this.showPopper}
-            class={
-              ['el-tooltip__popper', 'is-' + this.effect, this.popperClass]
-            }>
-            <div>
+            class={['el-tooltip__popper', 'is-' + this.effect, this.popperClass]}>
+            <div style={this.tooltipStyle}>
               { this.$slots.content || this.content }
             </div>
           </div>
