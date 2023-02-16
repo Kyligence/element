@@ -44,6 +44,7 @@
         :row-style="rowStyle"
         :highlight="highlightCurrentRow"
         :virtual-cell-height="virtualCellHeight"
+        :scroll-ancestors="scrollAncestors"
         :style="{
            width: bodyWidth
         }">
@@ -147,6 +148,7 @@
           :stripe="stripe"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :scroll-ancestors="scrollAncestors"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :style="{
@@ -213,6 +215,7 @@
           :row-style="rowStyle"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :scroll-ancestors="scrollAncestors"
           :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }">
@@ -296,6 +299,8 @@
       maxHeight: [String, Number],
 
       virtualCellHeight: String,
+
+      scrollAncestors: Function,
 
       fit: {
         type: Boolean,

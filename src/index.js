@@ -74,6 +74,7 @@ import Footer from '../packages/footer/index.js';
 import Avatar from '../packages/avatar/index.js';
 import Skeleton from '../packages/skeleton/index.js';
 import SkeletonItem from '../packages/skeleton-item/index.js';
+import Waypoint from '../packages/waypoint/index.js';
 import locale from 'kyligence-ui/src/locale';
 import CollapseTransition from 'kyligence-ui/src/transitions/collapse-transition';
 import { getKyligenceConfiguration } from './utils/global-configuration';
@@ -150,6 +151,7 @@ const components = [
   Avatar,
   Skeleton,
   SkeletonItem,
+  Waypoint,
   CollapseTransition
 ];
 
@@ -200,7 +202,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 module.exports = {
-  version: '4.1.8',
+  version: '4.1.9',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -278,7 +280,8 @@ module.exports = {
   Footer,
   Avatar,
   Skeleton,
-  SkeletonItem
+  SkeletonItem,
+  Waypoint
 };
 
 module.exports.default = module.exports;
