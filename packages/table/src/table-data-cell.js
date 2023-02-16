@@ -1,16 +1,15 @@
-import 'intersection-observer';
-import Vue from 'vue';
-import VueWaypoint from 'vue-waypoint';
-
-Vue.use(VueWaypoint);
+import ElWaypoint from 'kyligence-ui/packages/waypoint';
 
 export default {
   name: 'ElTableDataCell',
 
+  components: {
+    ElWaypoint
+  },
+
   props: {
-    virtualCellHeight: {
-      type: String
-    },
+    virtualCellHeight: String,
+    scrollAncestors: Function,
     row: {
       type: Object,
       required: true
@@ -64,21 +63,23 @@ export default {
   }),
 
   methods: {
-    handleHeaderWaypoint(params) {
-      const { going } = params;
-      if (going === 'in') {
-        this.headerInView = true;
-      } else if (going === 'out') {
-        this.headerInView = false;
-      }
+    getScrollParent() {
+      return this.$parent.$parent.$refs['bodyWrapper'];
     },
-    handleFooterWaypoint(params) {
-      const { going } = params;
-      if (going === 'in') {
-        this.footerInView = true;
-      } else if (going === 'out') {
-        this.footerInView = false;
-      }
+    getScrollAncestors() {
+      return [...(this.scrollAncestors ? this.scrollAncestors() : []), this.getScrollParent()];
+    },
+    handleHeaderEnter() {
+      this.headerInView = true;
+    },
+    handleFooterEnter() {
+      this.footerInView = true;
+    },
+    handleHeaderLeave() {
+      // this.headerInView = false;
+    },
+    handleFooterLeave() {
+      // this.footerInView = false;
     }
   },
 
@@ -98,7 +99,14 @@ export default {
           class={ this.getCellClass($index, cellIndex, row, column) }
           on-mouseenter={ ($event) => this.$emit('cell-mouse-enter', $event, row) }
           on-mouseleave={ ($event) => this.$emit('cell-mouse-leave', $event) }>
-          {isVirtual ? <div v-waypoint={{ active: true, callback: this.handleHeaderWaypoint, options }} /> : null}
+          {isVirtual ? (
+            <ElWaypoint
+              scrollParent={this.getScrollParent}
+              scrollAncestors={this.getScrollAncestors}
+              on-top-enter={this.handleHeaderEnter}
+              on-top-leave={this.handleHeaderLeave}
+            />
+          ) : null}
           {this.headerInView || this.footerInView || !isVirtual ? column.renderCell.call(
             this._renderProxy,
             h,
@@ -111,7 +119,14 @@ export default {
             },
             columnsHidden[cellIndex]
           ) : null}
-          {isVirtual ? <div v-waypoint={{ active: true, callback: this.handleFooterWaypoint, options }} /> : null}
+          {isVirtual ? (
+            <ElWaypoint
+              scrollParent={this.getScrollParent}
+              scrollAncestors={this.getScrollAncestors}
+              on-top-enter={this.handleFooterEnter}
+              on-top-leave={this.handleFooterLeave}
+            />
+          ) : null}
         </td>
       );
     }

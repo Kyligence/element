@@ -29,7 +29,8 @@ export default {
     rowStyle: [Object, Function],
     fixed: String,
     highlight: Boolean,
-    virtualCellHeight: String
+    virtualCellHeight: String,
+    scrollAncestors: Function
   },
 
   render(h) {
@@ -63,6 +64,7 @@ export default {
                     column={column}
                     columnsHidden={columnsHidden}
                     virtualCellHeight={this.virtualCellHeight}
+                    scrollAncestors={this.scrollAncestors}
                     $index={$index}
                     cellIndex={cellIndex}
                     store={this.store}
