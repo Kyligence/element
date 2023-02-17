@@ -1,6 +1,6 @@
 {
   "name": "kyligence-ui",
-  "version": "4.1.11",
+  "version": "4.1.12",
   "description": "Kyligence UI for Vue",
   "main": "lib/kyligence-ui.common.js",
   "publishConfig": {

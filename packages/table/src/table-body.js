@@ -30,6 +30,7 @@ export default {
     fixed: String,
     highlight: Boolean,
     virtualCellHeight: String,
+    virtualCellHolder: Function,
     scrollAncestors: Function
   },
 
@@ -64,6 +65,7 @@ export default {
                     column={column}
                     columnsHidden={columnsHidden}
                     virtualCellHeight={this.virtualCellHeight}
+                    virtualCellHolder={this.virtualCellHolder}
                     scrollAncestors={this.scrollAncestors}
                     $index={$index}
                     cellIndex={cellIndex}

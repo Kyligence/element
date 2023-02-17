@@ -44,6 +44,7 @@
         :row-style="rowStyle"
         :highlight="highlightCurrentRow"
         :virtual-cell-height="virtualCellHeight"
+        :virtual-cell-holder="virtualCellHolder"
         :scroll-ancestors="scrollAncestors"
         :style="{
            width: bodyWidth
@@ -148,6 +149,7 @@
           :stripe="stripe"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :virtual-cell-holder="virtualCellHolder"
           :scroll-ancestors="scrollAncestors"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
@@ -215,6 +217,7 @@
           :row-style="rowStyle"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :virtual-cell-holder="virtualCellHolder"
           :scroll-ancestors="scrollAncestors"
           :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
@@ -299,6 +302,8 @@
       maxHeight: [String, Number],
 
       virtualCellHeight: String,
+
+      virtualCellHolder: Function,
 
       scrollAncestors: Function,
 

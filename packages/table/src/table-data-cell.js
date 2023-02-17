@@ -9,6 +9,7 @@ export default {
 
   props: {
     virtualCellHeight: String,
+    virtualCellHolder: Function,
     scrollAncestors: Function,
     row: {
       type: Object,
@@ -64,6 +65,9 @@ export default {
     getScrollAncestors() {
       return [...(this.scrollAncestors ? this.scrollAncestors() : []), this.getScrollParent()];
     },
+    getVirtualCellHolder(h) {
+      return this.virtualCellHolder ? this.virtualCellHolder(h) : <el-skeleton class="cell" rows={1} animated />;
+    },
     handleHeaderEnter() {
       this.headerInView = true;
     },
@@ -113,7 +117,7 @@ export default {
               _self: self
             },
             columnsHidden[cellIndex]
-          ) : null}
+          ) : this.getVirtualCellHolder(h)}
           {isVirtual ? (
             <ElWaypoint
               scrollParent={this.getScrollParent}
@@ -153,7 +157,7 @@ export default {
             _self: self
           },
           columnsHidden[cellIndex]
-        ) : null}
+        ) : this.getVirtualCellHolder(h)}
         {isVirtual ? (
           <ElWaypoint
             scrollParent={this.getScrollParent}
