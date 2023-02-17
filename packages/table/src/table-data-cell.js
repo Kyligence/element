@@ -53,11 +53,6 @@ export default {
   },
 
   data: () => ({
-    options: {
-      root: null,
-      rootMargin: '0px 0px 0px 0px',
-      threshold: [0, 1]
-    },
     headerInView: false,
     footerInView: false
   }),
@@ -84,7 +79,7 @@ export default {
   },
 
   render(h) {
-    const { row, column, $index, cellIndex, store, options, self, columnsHidden, virtualCellHeight } = this;
+    const { row, column, $index, cellIndex, store, self, columnsHidden, virtualCellHeight } = this;
     const { rowspan, colspan } = this.getSpan(row, column, $index, cellIndex);
     const isVirtual = !!virtualCellHeight;
 
@@ -108,7 +103,7 @@ export default {
             />
           ) : null}
           {this.headerInView || this.footerInView || !isVirtual ? column.renderCell.call(
-            this._renderProxy,
+            this.$parent._renderProxy,
             h,
             {
               row,
@@ -139,9 +134,16 @@ export default {
         colspan={ colspan }
         on-mouseenter={ ($event) => this.$emit('cell-mouse-enter', $event, row) }
         on-mouseleave={ ($event) => this.$emit('cell-mouse-leave', $event) }>
-        {isVirtual ? <div v-waypoint={{ active: true, callback: this.handleHeaderWaypoint, options }} /> : null}
+        {isVirtual ? (
+          <ElWaypoint
+            scrollParent={this.getScrollParent}
+            scrollAncestors={this.getScrollAncestors}
+            on-top-enter={this.handleHeaderEnter}
+            on-top-leave={this.handleHeaderLeave}
+          />
+        ) : null}
         {this.headerInView || this.footerInView || !isVirtual ? column.renderCell.call(
-          this._renderProxy,
+          this.$parent._renderProxy,
           h,
           {
             row,
@@ -152,7 +154,14 @@ export default {
           },
           columnsHidden[cellIndex]
         ) : null}
-        {isVirtual ? <div v-waypoint={{ active: true, callback: this.handleFooterWaypoint, options }} /> : null}
+        {isVirtual ? (
+          <ElWaypoint
+            scrollParent={this.getScrollParent}
+            scrollAncestors={this.getScrollAncestors}
+            on-top-enter={this.handleFooterEnter}
+            on-top-leave={this.handleFooterEnter}
+          />
+        ) : null}
       </td>
     );
   }
