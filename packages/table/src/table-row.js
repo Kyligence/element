@@ -26,7 +26,8 @@ export default {
       return this.$parent.$parent.$refs['bodyWrapper'];
     },
     getScrollAncestors() {
-      return [...(this.scrollAncestors ? this.scrollAncestors() : []), this.getScrollParent()];
+      const scrollParent = this.getScrollParent();
+      return [...(this.scrollAncestors ? this.scrollAncestors() : []), ...(scrollParent ? [scrollParent] : [])];
     },
     getVirtualCellHolder(h) {
       return this.virtualCellHolder ? this.virtualCellHolder(h) : <el-skeleton class="cell" rows={1} animated />;
@@ -68,6 +69,7 @@ export default {
                     on-mouseleave={ $parent.handleCellMouseLeave }>
                     {isVirtual && cellIndex === 0 ? (
                       <ElWaypoint
+                        ref="waypointTop"
                         scrollParent={this.getScrollParent}
                         scrollAncestors={this.getScrollAncestors}
                         on-top-enter={this.handleHeaderEnter}
@@ -87,6 +89,7 @@ export default {
                     ) : this.getVirtualCellHolder(h)}
                     {isVirtual && cellIndex === 0 ? (
                       <ElWaypoint
+                        ref="waypointBottom"
                         scrollParent={this.getScrollParent}
                         scrollAncestors={this.getScrollAncestors}
                         on-top-enter={this.handleFooterEnter}
@@ -105,6 +108,7 @@ export default {
                     on-mouseleave={ $parent.handleCellMouseLeave }>
                     {isVirtual && cellIndex === 0 ? (
                       <ElWaypoint
+                        ref="waypointTop"
                         scrollParent={this.getScrollParent}
                         scrollAncestors={this.getScrollAncestors}
                         on-top-enter={this.handleHeaderEnter}
@@ -124,6 +128,7 @@ export default {
                     ) : this.getVirtualCellHolder(h)}
                     {isVirtual && cellIndex === 0 ? (
                       <ElWaypoint
+                        ref="waypointBottom"
                         scrollParent={this.getScrollParent}
                         scrollAncestors={this.getScrollAncestors}
                         on-top-enter={this.handleFooterEnter}

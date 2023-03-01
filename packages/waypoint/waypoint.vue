@@ -87,7 +87,8 @@ export default {
       if ($scrollAncestors && $scrollAncestors.length) {
         for (const $scrollAncestor of $scrollAncestors) {
           if (typeof $scrollAncestor === 'string') {
-            document.querySelector($scrollAncestor).removeEventListener('scroll', this.handleScroll);
+            const $el = document.querySelector($scrollAncestor);
+            if ($el) $el.removeEventListener('scroll', this.handleScroll);
           } else {
             $scrollAncestor.removeEventListener('scroll', this.handleScroll);
           }
