@@ -51,6 +51,7 @@ export default {
           {
             this._l(this.data, (row, $index) => [
               <el-table-row
+                ref={`row-${$index}`}
                 row={row}
                 index={$index}
                 columnsHidden={columnsHidden}

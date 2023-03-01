@@ -37,6 +37,7 @@
       :style="[bodyHeight]"
       @scroll="e => $emit('tbody-scroll', e)">
       <table-body
+        ref="tableBody"
         :context="context"
         :store="store"
         :stripe="stripe"
@@ -145,6 +146,7 @@
         fixedBodyHeight]">
         <table-body
           fixed="left"
+          ref="tableBody"
           :store="store"
           :stripe="stripe"
           :highlight="highlightCurrentRow"
@@ -211,6 +213,7 @@
         fixedBodyHeight]">
         <table-body
           fixed="right"
+          ref="tableBody"
           :store="store"
           :stripe="stripe"
           :row-class-name="rowClassName"
@@ -493,6 +496,26 @@
           this.layout.updateElsHeight();
         }
         this.layout.updateColumnsWidth();
+      },
+
+      verifyPosition() {
+        const { tableBody: $tableBody = {} } = this.$refs;
+        const refNames = Object.keys($tableBody.$refs || {});
+
+        for (let i = 0; i <= refNames.length; i += 1) {
+          const refName = refNames[i];
+          if (/^row-.$/.test(refName)) {
+            const $tableRow = $tableBody.$refs[refName] || {};
+            const { waypointTop, waypointBottom } = $tableRow.$refs || {};
+
+            if (waypointTop) {
+              waypointTop.verifyPosition();
+            }
+            if (waypointBottom) {
+              waypointBottom.verifyPosition();
+            }
+          }
+        }
       }
     },
 
