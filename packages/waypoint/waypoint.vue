@@ -98,7 +98,7 @@ export default {
     getClientRect(element) {
       if (element === window) {
         const { innerWidth: width, innerHeight: height } = element;
-        return { x: 0, y: 0, top: 0, right: 0, bottom: 0, left: 0, width, height };
+        return { top: 0, right: 0, bottom: 0, left: 0, width, height };
       }
       const rects = element.getClientRects();
       return rects.length ? rects[0] : undefined;
@@ -107,22 +107,22 @@ export default {
       return +value.replace('px', '');
     },
     topViewPort(parRect) {
-      return Math.max(0, parRect.y);
+      return Math.max(0, parRect.top);
     },
     bottomViewPort(parRect) {
-      return Math.min(window.innerHeight, parRect.y + parRect.height);
+      return Math.min(window.innerHeight, parRect.top + parRect.height);
     },
     isElTopInView(elRect, parRect) {
-      return elRect.y + this.string2Pixel(this.offsetTop) >= this.topViewPort(parRect) && elRect.y + this.string2Pixel(this.offsetTop) <= this.bottomViewPort(parRect);
+      return elRect.top + this.string2Pixel(this.offsetTop) >= this.topViewPort(parRect) && elRect.top + this.string2Pixel(this.offsetTop) <= this.bottomViewPort(parRect);
     },
     isElBottomInView(elRect, parRect) {
-      return elRect.y + elRect.height + this.string2Pixel(this.offsetBottom) >= this.topViewPort(parRect) && elRect.y + elRect.height + this.string2Pixel(this.offsetBottom) <= this.bottomViewPort(parRect);
+      return elRect.top + elRect.height + this.string2Pixel(this.offsetBottom) >= this.topViewPort(parRect) && elRect.top + elRect.height + this.string2Pixel(this.offsetBottom) <= this.bottomViewPort(parRect);
     },
     isElTopOutView(elRect, parRect) {
-      return elRect.y + this.string2Pixel(this.offsetTop) < this.topViewPort(parRect) || elRect.y + this.string2Pixel(this.offsetTop) > this.bottomViewPort(parRect);
+      return elRect.top + this.string2Pixel(this.offsetTop) < this.topViewPort(parRect) || elRect.top + this.string2Pixel(this.offsetTop) > this.bottomViewPort(parRect);
     },
     isElBottomOutView(elRect, parRect) {
-      return elRect.y + elRect.height + this.string2Pixel(this.offsetBottom) < this.topViewPort(parRect) || elRect.y + elRect.height + this.string2Pixel(this.offsetBottom) > this.bottomViewPort(parRect);
+      return elRect.top + elRect.height + this.string2Pixel(this.offsetBottom) < this.topViewPort(parRect) || elRect.top + elRect.height + this.string2Pixel(this.offsetBottom) > this.bottomViewPort(parRect);
     },
     verifyPosition() {
       const { $el } = this.$refs;
