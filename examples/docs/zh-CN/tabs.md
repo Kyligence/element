@@ -28,7 +28,10 @@
           content: 'Tab 2 content'
         }],
         tabIndex: 2,
-        tabPosition: 'top'
+        tabPosition: 'top',
+        btnTab1: 'data',
+        btnTab2: 'data',
+        btnTab3: 'data'
       }
     },
     methods: {
@@ -104,6 +107,15 @@
         
         this.editableTabsValue2 = activeName;
         this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+      },
+      changeBtnTabType1 (tab, event) {
+        console.log(tab, event);
+      },
+      changeBtnTabType2 (tab, event) {
+        console.log(tab, event);
+      },
+      changeBtnTabType3 (tab, event) {
+        console.log(tab, event);
       }
     }
   }
@@ -571,10 +583,75 @@ vue版本升级后，要求v-for使用时要规定key属性，不然会报警告
 ```
 :::
 
+### Tab button
+
+适用于 Tab 场景，就是有 tab head 和 body 的场景，切换 head 时，底下集中的一块内容会跟着互斥变化的 UI 场景。当前用的比较多的尺寸是 small 这个尺寸。
+如果是纯单选效果的，请移步使用 [Radio](#/zh-CN/component/radio#tab-an-niu-yang-shi) 组件中的 radio tab button 模式。
+
+:::demo
+```html
+<p>基础用法 - large size</p>
+<div>
+  <el-tabs v-model="btnTab1" size="large" type="button" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="列表" name="data">pane-data</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+
+<p style="margin-top:20px;">某选项带 tag 或者 icon，同时对于tag 或者 icon 上hover 时显示 tips,hover 区域可以自由定义，el-tooltip 包起需要tips 的原始即可。label 以 slot 形式填充时，样式微调就依赖项目里，不在组件库中进行写死</p>
+<div>
+  <el-tabs v-model="btnTab2" size="medium" type="button" @tab-click="changeBtnTabType2">
+    <el-tab-pane name="data">
+      <span slot="label">
+        <span>列表</span>
+        <el-tooltip content="我是推荐理由的 tips" placement="top">
+          <el-tag is-light size="mini" type="success">荐</el-tag>
+        </el-tooltip>
+      </span>
+      <div>pane-data</div>
+    </el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+
+<p>均分撑满整行的方式</p>
+<div>
+  <el-tabs v-model="btnTab3" size="small" type="button" :is-full="true" @tab-click="changeBtnTabType3">
+    <el-tab-pane label="列表" name="data">pane-data</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+
+<script>
+  export default {
+    data() {
+      return {
+        btnTab1: 'data',
+        btnTab2: 'data',
+        btnTab3: 'data'
+      }
+    },
+    methods: {
+      changeBtnTabType1 (tab, event) {
+        console.log(tab, event);
+      },
+      changeBtnTabType2 (tab, event) {
+        console.log(tab, event);
+      },
+      changeBtnTabType3 (tab, event) {
+        console.log(tab, event);
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### Tabs Attributes
 | 参数       | 说明     | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| type     | 风格类型   | string   | card/border-card  |     —    |
+| type     | 风格类型   | string   | card/border-card/button  |     —    |
+| is-full     | 是否占满全屏，不和 closable 等共用，配合 type 为 button 时效果使用   | boolean   | true/false  |     false    |
 | closable  | 标签是否可关闭   | boolean   | — |  false  |
 | addable  | 标签是否可增加   | boolean   | — |  false  |
 | editable  | 标签是否同时可增加和关闭   | boolean   | — |  false  |
