@@ -96,8 +96,15 @@
         width: $--radio-bordered-mini-input-width;
       }
     }
+    &.el-radio--tab{
+      .el-radio__label {
+        font-size: $--button-mini-font-size;
+        line-height: 16px;
+        padding-top:3px;
+        padding-bottom:3px;
+      }
+    }
   }
-
   & + .el-radio {
     margin-left: 8px;
   }
@@ -234,5 +241,31 @@
     font-size: $--radio-font-size;
     padding-left: 5px;
     line-height: 22px;
+  }
+
+  @include m(tab) {
+    text-align: center;
+    .el-radio__input {
+      display: none;
+    }
+    &.is-checked {
+      background: #fff;
+      border-radius: 4px;
+    }
+    &.is-equally-divided{
+      flex:1;
+      justify-content: center;
+    }
+    & + .el-radio--tab {
+      margin-left: 0px;
+    }
+    @include e(label) {
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top:5px;
+      padding-bottom:5px;
+    }
   }
 }

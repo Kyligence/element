@@ -3,6 +3,8 @@
     class="el-radio"
     :class="[
       radioSize ? 'el-radio--' + radioSize : '',
+      isTabRadio ? 'el-radio--tab' : '',
+      { 'is-equally-divided': isFlexEqually },
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
       { 'is-bordered': border },
@@ -103,10 +105,17 @@
         return (this.elFormItem || {}).elFormItemSize;
       },
       radioSize() {
-        const temRadioSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+        const tabRadioDefaultSize = this.isTabRadio ? 'small' : '';
+        const temRadioSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size || tabRadioDefaultSize;
         return this.isGroup
           ? this._radioGroup.radioGroupSize || temRadioSize
           : temRadioSize;
+      },
+      isTabRadio() {
+        return this.isGroup ? !!this._radioGroup.radioGroupIsTab : false;
+      },
+      isFlexEqually() {
+        return this.isGroup ? !!this._radioGroup.radioGroupIsFlexEqually : false;
       },
       isDisabled() {
         return this.isGroup
