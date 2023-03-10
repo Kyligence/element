@@ -360,6 +360,33 @@
         margin: 4px;
         font-size: 14px;
       }
+      > * {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .is-full{
+      display: block;
+      .el-tabs__nav{
+        display: flex;
+        width: 100%;
+        .el-tabs__item{
+          flex:1;
+          text-align: center;
+        }
+      }
+    }
+    &.el-tabs--small .el-tabs__item{
+      height: 26px;
+      line-height: 26px;
+    }
+    &.el-tabs--medium .el-tabs__item{
+      height: 28px;
+      line-height: 28px;
+    }
+    &.el-tabs--large .el-tabs__item{
+      height: 32px;
+      line-height: 32px;
     }
   }
   @include m(border-card) {
