@@ -24,6 +24,10 @@
       size: {
         type: String,
         default: 'medium'
+      },
+      isFull: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -121,7 +125,8 @@
         addable,
         tabPosition,
         disableCommand,
-        size
+        size,
+        isFull
       } = this;
 
       const newButton = editable || addable
@@ -149,7 +154,7 @@
         ref: 'nav'
       };
       const header = (
-        <div class={['el-tabs__header', `is-${tabPosition}`]}>
+        <div class={['el-tabs__header', `is-${tabPosition}`, isFull && 'is-full']}>
           {newButton}
           <tab-nav { ...navData }></tab-nav>
         </div>

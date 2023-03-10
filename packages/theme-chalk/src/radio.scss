@@ -251,6 +251,9 @@
     &.is-checked {
       background: #fff;
       border-radius: 4px;
+      .el-radio__label {
+        font-weight: 500;
+      }
     }
     &.is-equally-divided{
       flex:1;

@@ -242,6 +242,10 @@
 
 ### tab 按钮样式
 
+适用于纯单选效果的场景，没有其他整体模块与之联动的情况，使用此组件。
+
+如果是有 tab head 和 body 的场景，切换 head 时，底下集中的一块内容会跟着互斥变化的 UI 场景，请移步使用 [Tab](#/zh-CN/component/tabs#tab-button) 组件中的 button 模式。
+
 tab 按钮样式的单选组合，新增两个属性 is-tab 和 is-flex-equally，is-tab 控制 UI 风格，is-flex-equally 控制是否容器内等分展示
 
 :::demo 在 el-radio-group 元素上加上属性 is-tab 后，就定制为 tab 样式的单选按钮组 ，带上 is-flex-equally 属性的话就是等分模式
