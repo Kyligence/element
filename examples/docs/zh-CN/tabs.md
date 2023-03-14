@@ -120,6 +120,11 @@
     }
   }
 </script>
+<style>
+  .demo-radio-tab .ksd-tag-ml {
+    margin-left:4px;
+  }
+</style>
 
 ## Tabs 标签页
 
@@ -590,22 +595,63 @@ vue版本升级后，要求v-for使用时要规定key属性，不然会报警告
 
 :::demo
 ```html
-<p>基础用法 - large size</p>
+<p>基础用法 - large size，高度 34px,同 radio 的 medium 高度，对应 UED 稿子的 large 尺寸</p>
 <div>
   <el-tabs v-model="btnTab1" size="large" type="button" @tab-click="changeBtnTabType1">
-    <el-tab-pane label="列表" name="data">pane-data</el-tab-pane>
-    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+    <el-tab-pane label="列表" name="data">我是列表 tab 下的数据</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">我是图表 tab 下的数据</el-tab-pane>
   </el-tabs>
+  <p>同等效果的 medium - radio</p>
+  <div>
+    <el-radio-group v-model="btnTab1" size="medium" :is-tab="true">
+      <el-radio :label="'data'">列表</el-radio>
+      <el-radio :label="'chart'">图表</el-radio>
+    </el-radio-group>
+  </div>
 </div>
-
-<p style="margin-top:20px;">某选项带 tag 或者 icon，同时对于tag 或者 icon 上hover 时显示 tips,hover 区域可以自由定义，el-tooltip 包起需要tips 的原始即可。label 以 slot 形式填充时，样式微调就依赖项目里，不在组件库中进行写死</p>
+<hr />
+<p style="margin-top:40px;">基础用法 - medium size，高度 32px,同 radio 的 small 高度，对应 UED 稿子的 medium 尺寸</p>
 <div>
-  <el-tabs v-model="btnTab2" size="medium" type="button" @tab-click="changeBtnTabType2">
+  <el-tabs v-model="btnTab1" size="medium" type="button" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="列表" name="data">我是列表 tab 下的数据</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">我是图表 tab 下的数据</el-tab-pane>
+  </el-tabs>
+  <p>同等效果的 small - radio</p>
+  <div>
+    <el-radio-group v-model="btnTab1" size="small" :is-tab="true">
+      <el-radio :label="'data'">列表</el-radio>
+      <el-radio :label="'chart'">图表</el-radio>
+    </el-radio-group>
+  </div>
+</div>
+<hr />
+<p style="margin-top:40px;">基础用法 - small size，高度 28px,同 radio 的 mini 高度，对应 UED 稿子的 small 尺寸</p>
+<div>
+  <el-tabs v-model="btnTab1" size="small" type="button" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="列表" name="data">我是列表 tab 下的数据</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">我是图表 tab 下的数据</el-tab-pane>
+  </el-tabs>
+  <p>同等效果的 mini - radio</p>
+  <div>
+    <el-radio-group v-model="btnTab1" size="mini" :is-tab="true">
+      <el-radio :label="'data'">列表</el-radio>
+      <el-radio :label="'chart'">图表</el-radio>
+    </el-radio-group>
+  </div>
+</div>
+<hr />
+<p style="margin-top:40px;">
+某选项带 tag 或者 icon，同时对于tag 或者 icon 上hover 时显示 tips,hover 区域可以自由定义，el-tooltip 包起需要tips 的原始即可。label 以 slot 形式填充时，样式微调就依赖项目里，不在组件库中进行写死。
+<br>
+文本和右侧元素之间，是 4px 的间距，实际使用时，项目里自己使用项目里的原子类吧~
+</p>
+<div class="demo-radio-tab">
+  <el-tabs v-model="btnTab2" size="small" type="button" @tab-click="changeBtnTabType2">
     <el-tab-pane name="data">
       <span slot="label">
         <span>列表</span>
         <el-tooltip content="我是推荐理由的 tips" placement="top">
-          <el-tag is-light size="mini" type="success">荐</el-tag>
+          <el-tag class="ksd-tag-ml" is-light size="mini" type="success">荐</el-tag>
         </el-tooltip>
       </span>
       <div>pane-data</div>
@@ -613,12 +659,54 @@ vue版本升级后，要求v-for使用时要规定key属性，不然会报警告
     <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
   </el-tabs>
 </div>
-
-<p>均分撑满整行的方式</p>
+<hr />
+<p style="margin-top:40px;">
+  基础用法 - small size，高度 32px
+<br>均分撑满整行的方式
+</p>
 <div>
   <el-tabs v-model="btnTab3" size="small" type="button" :is-full="true" @tab-click="changeBtnTabType3">
     <el-tab-pane label="列表" name="data">pane-data</el-tab-pane>
     <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+<hr />
+<p style="margin-top:40px;">带 tag 的，均分撑满整行的方式</p>
+<div class="demo-radio-tab">
+  <el-tabs v-model="btnTab3" size="small" type="button" :is-full="true" @tab-click="changeBtnTabType3">
+    <el-tab-pane name="data">
+      <span slot="label">
+        <span>列表</span>
+        <el-tooltip content="我是推荐理由的 tips" placement="top">
+          <el-tag class="ksd-tag-ml" is-light size="mini" type="success">荐</el-tag>
+        </el-tooltip>
+      </span>
+      <div>pane-data</div>
+    </el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+<hr />
+<p style="margin-top:40px;">基础用法 - disabled</p>
+<div>
+  <el-tabs v-model="btnTab1" size="small" type="button" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="列表" name="data" disabled>pane-data</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+<hr />
+<p style="margin-top:40px;">撑满整行的 - disabled</p>
+<div>
+  <el-tabs v-model="btnTab1" size="small" type="button" :is-full="true" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="列表" name="data" disabled>pane-data</el-tab-pane>
+    <el-tab-pane label="图表" name="chart">pane-chart</el-tab-pane>
+  </el-tabs>
+</div>
+<p>label 内容比较少的时候</p>
+<div>
+  <el-tabs v-model="btnTab1" size="small" type="button" @tab-click="changeBtnTabType1">
+    <el-tab-pane label="年" name="data">我是列表 tab 下的数据</el-tab-pane>
+    <el-tab-pane label="月" name="chart">我是图表 tab 下的数据</el-tab-pane>
   </el-tabs>
 </div>
 
@@ -650,6 +738,7 @@ vue版本升级后，要求v-for使用时要规定key属性，不然会报警告
 ### Tabs Attributes
 | 参数       | 说明     | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
+| size     | 大小   | string   | large/medium/small  |     —    |
 | type     | 风格类型   | string   | card/border-card/button  |     —    |
 | is-full     | 是否占满全屏，不和 closable 等共用，配合 type 为 button 时效果使用   | boolean   | true/false  |     false    |
 | closable  | 标签是否可关闭   | boolean   | — |  false  |

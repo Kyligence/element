@@ -31,6 +31,15 @@
   };
 </script>
 
+<style>
+  .demo-radio-tab .ksd-tag-ml {
+    margin-left:4px;
+  }
+  .demo-radio-tab .ksd-fs-14 {
+    font-size: 14px;
+  }
+</style>
+
 ## Radio 单选框
 
 :::tip 
@@ -183,7 +192,7 @@
 
 实际应用场景可能有更复杂的情况，可以根据实际情况进行处理，提供的demo是为了说明有提供change这个事件。
 
-### 按钮样式
+### 按钮样式（弃用）
 
 按钮样式的单选组合。
 
@@ -251,15 +260,7 @@ tab 按钮样式的单选组合，新增两个属性 is-tab 和 is-flex-equally�
 :::demo 在 el-radio-group 元素上加上属性 is-tab 后，就定制为 tab 样式的单选按钮组 ，带上 is-flex-equally 属性的话就是等分模式
 ```html
 <template>
-  <p>基础使用 默认 size 为 small</p>
-  <div>
-    <el-radio-group v-model="tabRadio" :is-tab="true">
-      <el-radio :label="3">备选项</el-radio>
-      <el-radio :label="6">备选项</el-radio>
-      <el-radio :label="9">备选项</el-radio>
-    </el-radio-group>
-  </div>
-  <p>基础使用 size: medium</p>
+  <p>基础使用 size: medium，高度 34px</p>
   <div>
     <el-radio-group v-model="tabRadio" size="medium" :is-tab="true">
       <el-radio :label="3">备选项</el-radio>
@@ -267,12 +268,28 @@ tab 按钮样式的单选组合，新增两个属性 is-tab 和 is-flex-equally�
       <el-radio :label="9">备选项</el-radio>
     </el-radio-group>
   </div>
-  <p>基础使用 size: mini</p>
+  <p>基础使用，不设 size， 默认 size 为 small，高度 32px</p>
+  <div>
+    <el-radio-group v-model="tabRadio" :is-tab="true">
+      <el-radio :label="3">备选项</el-radio>
+      <el-radio :label="6">备选项</el-radio>
+      <el-radio :label="9">备选项</el-radio>
+    </el-radio-group>
+  </div>
+  <p>基础使用，size 为 mini 28px</p>
   <div>
     <el-radio-group v-model="tabRadio" size="mini" :is-tab="true">
       <el-radio :label="3">备选项</el-radio>
       <el-radio :label="6">备选项</el-radio>
       <el-radio :label="9">备选项</el-radio>
+    </el-radio-group>
+  </div>
+  <p>label 内容比较少的情况</p>
+  <div>
+    <el-radio-group v-model="tabRadio" :is-tab="true">
+      <el-radio :label="3">年</el-radio>
+      <el-radio :label="6">月</el-radio>
+      <el-radio :label="9">日</el-radio>
     </el-radio-group>
   </div>
   <p>等分模式</p>
@@ -284,21 +301,21 @@ tab 按钮样式的单选组合，新增两个属性 is-tab 和 is-flex-equally�
     </el-radio-group>
   </div>
   <p>某个选项带一个 tag 标签</p>
-  <div>
+  <div class="demo-radio-tab">
     <el-radio-group v-model="tabRadio" :is-tab="true" :is-flex-equally="true">
-      <el-radio :label="3">备选项 <el-tag is-light size="small">荐</el-tag></el-radio>
+      <el-radio :label="3">备选项 <el-tag class="ksd-tag-ml" is-light size="small">荐</el-tag></el-radio>
       <el-radio :label="6">备选项</el-radio>
       <el-radio :label="9">备选项</el-radio>
     </el-radio-group>
   </div>
   <p>某个选项带一个 icon 标签，hover 到 icon 上有 tooltip 提示</p>
-  <div>
+  <div class="demo-radio-tab">
     <el-radio-group v-model="tabRadio" :is-tab="true">
       <el-radio :label="3">备选项</el-radio>
       <el-radio :label="6">
         <span>备选项</span>
         <el-tooltip placement="top" content="该选项需要注意xxx">
-          <i class="el-ksd-icon-info_border_16"></i>
+          <i class="el-ksd-icon-info_border_16 ksd-tag-ml ksd-fs-14"></i>
         </el-tooltip>
       </el-radio>
       <el-radio :label="9">备选项</el-radio>
@@ -310,6 +327,24 @@ tab 按钮样式的单选组合，新增两个属性 is-tab 和 is-flex-equally�
       <el-radio :label="3">备选项</el-radio>
       <el-radio :label="6">备选项</el-radio>
       <el-radio :label="9">备选项</el-radio>
+    </el-radio-group>
+  </div>
+
+  <p>disable 单项</p>
+  <div>
+    <el-radio-group v-model="tabRadio" :is-tab="true">
+      <el-radio :label="3" disabled>备选项</el-radio>
+      <el-radio :label="6" disabled>备选项</el-radio>
+      <el-radio :label="9">备选项</el-radio>
+    </el-radio-group>
+  </div>
+
+  <p>均分模式时，disable 单项</p>
+  <div>
+    <el-radio-group v-model="tabRadio" :is-tab="true" :is-flex-equally="true">
+      <el-radio :label="3" disabled>备选项</el-radio>
+      <el-radio :label="6">备选项</el-radio>
+      <el-radio :label="9" disabled>备选项</el-radio>
     </el-radio-group>
   </div>
 </template>
