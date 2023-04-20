@@ -33,6 +33,15 @@
       "name": "组件",
       "groups": [
         {
+          "groupName": "Tools",
+          "list": [
+            {
+              "path": "/palette",
+              "title": "色板"
+            }
+          ]
+        },
+        {
           "groupName": "Basic",
           "list": [
             {

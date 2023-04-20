@@ -54,7 +54,7 @@
 
     &:hover {
       // background-color: $--tag-color;
-      color: $--color-info-hover;
+      color: $--color-white;
     }
   }
 
@@ -62,7 +62,7 @@
     cursor: pointer;
     &:hover {
       // background-color: $--tag-color;
-      color: $--color-info-hover;
+      // color: $--color-info-hover;
     }
   }
 
@@ -87,10 +87,10 @@
       color: $--tag-info-color;
     }
 
-    .el-tag__close:hover {
-      // background-color: $--tag-info-color;
-      color: $--color-info-secondary-hover;
-    }
+    // .el-tag__close:hover {
+    //   background-color: $--tag-info-color;
+    //   color: $--color-info-secondary-hover;
+    // }
   }
 
   @include m(success) {
@@ -114,10 +114,10 @@
       color: $--tag-success-color;
     }
 
-    .el-tag__close:hover {
-      // background-color: $--tag-success-color;
-      color: $--color-success-hover;
-    }
+    // .el-tag__close:hover {
+    //   background-color: $--tag-success-color;
+    //   color: $--color-success-hover;
+    // }
   }
 
   @include m(warning) {
@@ -141,10 +141,10 @@
       color: $--tag-warning-color;
     }
 
-    .el-tag__close:hover {
-      // background-color: $--tag-warning-color;
-      color: $--color-warning-hover;
-    }
+    // .el-tag__close:hover {
+    //   background-color: $--tag-warning-color;
+    //   color: $--color-warning-hover;
+    // }
   }
 
   @include m(danger) {
@@ -168,10 +168,10 @@
       color: $--tag-danger-color;
     }
 
-    .el-tag__close:hover {
-      // background-color: $--tag-danger-color;
-      color: $--color-danger-hover;
-    }
+    // .el-tag__close:hover {
+    //   background-color: $--tag-danger-color;
+    //   color: $--color-danger-hover;
+    // }
   }
 
   @include m(beta) {
@@ -195,10 +195,10 @@
       color: $--tag-beta-color;
     }
 
-    .el-tag__close:hover {
-      // background-color: $--tag-info-color;
-      color: $--color-beta-hover;
-    }
+    // .el-tag__close:hover {
+    //   background-color: $--tag-info-color;
+    //   color: $--color-beta-hover;
+    // }
   }
 
   @include m(medium) {

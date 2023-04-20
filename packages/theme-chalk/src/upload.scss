@@ -88,7 +88,7 @@
   }
 
   .el-upload__text {
-    color: $--color-text-regular;
+    color: $--color-text-disabled;
     font-size: 14px;
     text-align: center;
 
@@ -104,8 +104,8 @@
 
   @include when(dragover) {
     // TODO：颜色值
-    background-color: rgba(32, 159, 255, .06);
-    border: 2px dashed $--color-primary;
+    background-color: $--color-secondary;
+    border: 1px dashed $--color-primary;
   }
 }
 
