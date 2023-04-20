@@ -53,7 +53,7 @@
       bottom: 0;
       width: 100%;
       height: 1px;
-      background-color: $--border-divider-color;
+      background-color: $--border-secondary;
       z-index: $--index-normal;
     }
 
@@ -206,7 +206,7 @@
   }
   @include m(card) {
     > .el-tabs__header {
-      border-bottom: 1px solid $--border-divider-color;
+      border-bottom: 1px solid $--border-secondary;
       background-color: $--background-color-secondary;
     }
     > .el-tabs__header .el-tabs__nav-wrap::after {
@@ -255,7 +255,7 @@
       //   }
       // }
       &.is-active {
-        border: 1px solid $--border-divider-color;
+        border: 1px solid  $--border-secondary;
         // height: 37px;
         // line-height: 37px;
         border-bottom-color: $--color-white;

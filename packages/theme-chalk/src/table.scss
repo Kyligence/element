@@ -107,8 +107,7 @@
   @include e(expand-icon) {
     position: relative;
     cursor: pointer;
-    // TODO：颜色值
-    color: #5c5c5c;
+    color: $palette-gray-700;
     font-size: 14px;
     transition: transform 0.2s ease-in-out;
     height: 20px;

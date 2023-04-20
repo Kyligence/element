@@ -34,8 +34,7 @@
     &:active {
       outline: none;
       border-color: $--input-focus-border;
-      // TODO: 颜色值
-      box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
+      box-shadow: 0px 0px 0px 1px $--input-focus-border;
     }
   }
 
@@ -49,6 +48,12 @@
 
       &::placeholder {
         color: $--input-disabled-placeholder-color;
+      }
+      &:focus,
+      &:active {
+        outline: none;
+        border-color: $--input-disabled-border;
+        box-shadow: none;
       }
     }
   }
@@ -103,8 +108,7 @@
     &:active {
       outline: none;
       border-color: $--input-focus-border;
-      // TODO: 颜色值
-      box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
+      box-shadow: 0px 0px 0px 1px $--input-focus-border;
     }
   }
 
@@ -158,8 +162,7 @@
     .el-input__inner {
       outline: none;
       border-color: $--input-focus-border;
-      // TODO: 颜色值
-      box-shadow: 0px 0px 0px 2px rgba(8, 117, 218, 0.1);
+      box-shadow: 0px 0px 0px 1px $--input-focus-border;
     }
   }
 
@@ -173,6 +176,12 @@
 
       &::placeholder {
         color: $--input-disabled-placeholder-color;
+      }
+      &:focus,
+      &:active {
+        outline: none;
+        border-color: $--input-disabled-border;
+        box-shadow: none;
       }
     }
 

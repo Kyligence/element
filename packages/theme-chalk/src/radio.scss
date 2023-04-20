@@ -127,10 +127,12 @@
       }
       &.is-checked {
         .el-radio__inner {
+          opacity: 0.3;
           background-color: $--radio-disabled-checked-primary-input-fill;
-          border-color: $--radio-disabled-checked-primary-input-border-color;
+          border: 4px solid $--radio-disabled-checked-primary-input-border-color;
 
           &:hover {
+            opacity: 0.3;
             background-color: $--radio-disabled-checked-primary-input-fill;
             border-color: $--radio-disabled-checked-primary-input-border-color;
           }
@@ -141,7 +143,7 @@
         }
       }
       & + span.el-radio__label {
-        color: $--radio-disabled-text-color;
+        opacity: 0.3;
         cursor: not-allowed;
       }
     }
