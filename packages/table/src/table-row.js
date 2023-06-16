@@ -1,4 +1,4 @@
-import ElWaypoint from 'kyligence-ui/packages/waypoint';
+import ElWaypoint from 'kyligence-kylin-ui/packages/waypoint';
 
 export default {
   name: 'ElTableRow',
