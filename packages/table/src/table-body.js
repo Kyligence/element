@@ -5,7 +5,7 @@ import ElRadio from 'kyligence-kylin-ui/packages/radio';
 import ElTooltip from 'kyligence-kylin-ui/packages/tooltip';
 import debounce from 'throttle-debounce/debounce';
 import LayoutObserver from './layout-observer';
-import ElTableDataCell from './table-data-cell';
+import ElTableRow from './table-row';
 
 export default {
   name: 'ElTableBody',
@@ -16,7 +16,7 @@ export default {
     ElCheckbox,
     ElTooltip,
     ElRadio,
-    ElTableDataCell
+    ElTableRow
   },
 
   props: {
@@ -29,7 +29,9 @@ export default {
     rowStyle: [Object, Function],
     fixed: String,
     highlight: Boolean,
-    virtualCellHeight: String
+    virtualCellHeight: String,
+    virtualCellHolder: Function,
+    scrollAncestors: Function
   },
 
   render(h) {
@@ -47,34 +49,16 @@ export default {
         </colgroup>
         <tbody>
           {
-            this._l(this.data, (row, $index) =>
-              [<tr
-                style={ this.rowStyle ? this.getRowStyle(row, $index) : null }
-                key={ this.table.rowKey ? this.getKeyOfRow(row, $index) : $index }
-                on-dblclick={ ($event) => this.handleDoubleClick($event, row) }
-                on-click={ ($event) => this.handleClick($event, row) }
-                on-contextmenu={ ($event) => this.handleContextMenu($event, row) }
-                on-mouseenter={ _ => this.handleMouseEnter($index) }
-                on-mouseleave={ _ => this.handleMouseLeave() }
-                class={ [this.getRowClass(row, $index)] }>
-                {this._l(this.columns, (column, cellIndex) => (
-                  <ElTableDataCell
-                    row={row}
-                    column={column}
-                    columnsHidden={columnsHidden}
-                    virtualCellHeight={this.virtualCellHeight}
-                    $index={$index}
-                    cellIndex={cellIndex}
-                    store={this.store}
-                    self={this.context || this.table.$vnode.context}
-                    getSpan={this.getSpan}
-                    getCellStyle={this.getCellStyle}
-                    getCellClass={this.getCellClass}
-                    on-cell-mouse-enter={this.handleCellMouseEnter}
-                    on-cell-mouse-leave={this.handleCellMouseLeave}
-                  />
-                ))}
-              </tr>,
+            this._l(this.data, (row, $index) => [
+              <el-table-row
+                ref={`row-${$index}`}
+                row={row}
+                index={$index}
+                columnsHidden={columnsHidden}
+                virtualCellHeight={this.virtualCellHeight}
+                virtualCellHolder={this.virtualCellHolder}
+                scrollAncestors={this.scrollAncestors}
+              />,
               this.store.isRowExpanded(row)
                 ? (<tr>
                   <td colspan={ this.columns.length } class="el-table__expanded-cell">
@@ -82,8 +66,7 @@ export default {
                   </td>
                 </tr>)
                 : ''
-              ]
-            ).concat(
+            ]).concat(
               <el-tooltip effect={ this.table.tooltipEffect } placement="top" ref="tooltip" content={ this.tooltipContent }></el-tooltip>
             )
           }

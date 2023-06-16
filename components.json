@@ -72,5 +72,6 @@
   "footer": "./packages/footer/index.js",
   "avatar": "./packages/avatar/index.js",
   "skeleton": "./packages/skeleton/index.js",
-  "skeleton-item": "./packages/skeleton-item/index.js"
+  "skeleton-item": "./packages/skeleton-item/index.js",
+  "waypoint": "./packages/waypoint/index.js"
 }
