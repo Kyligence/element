@@ -2,9 +2,9 @@
 
 @font-face {
   font-family: "iconfont-new"; /* Project id 3265152 */
-  src: url('#{$--font-path-new}/iconfont.woff2?t=1672732373115') format('woff2'),
-       url('#{$--font-path-new}/iconfont.woff?t=1672732373115') format('woff'),
-       url('#{$--font-path-new}/iconfont.ttf?t=1672732373115') format('truetype');
+  src: url('#{$--font-path-new}/iconfont.woff2?t=1680516552171') format('woff2'),
+       url('#{$--font-path-new}/iconfont.woff?t=1680516552171') format('woff'),
+       url('#{$--font-path-new}/iconfont.ttf?t=1680516552171') format('truetype');
 }
 
 .iconfont-new {
@@ -30,6 +30,10 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.el-ksd-n-icon-top-filled:before {
+  content: "\e604";
 }
 
 .el-ksd-n-icon-bell-filled:before {

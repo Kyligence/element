@@ -1,6 +1,6 @@
 {
   "name": "kyligence-kylin-ui",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Kyligence UI for Vue",
   "main": "lib/kyligence-kylin-ui.common.js",
   "publishConfig": {
@@ -65,9 +65,7 @@
     "normalize-wheel": "^1.0.1",
     "sortablejs": "1.15.0",
     "throttle-debounce": "^1.0.1",
-    "user": "0.0.0",
-    "vue-waypoint": "^3.5.2",
-    "intersection-observer": "^0.12.2"
+    "user": "0.0.0"
   },
   "peerDependencies": {
     "vue": "2.5.2"
