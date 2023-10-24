@@ -18,3 +18,4 @@ waiter.config.js
 build/bin/algolia-key.js
 .envrc
 .env
+package-lock.json
