@@ -1,6 +1,10 @@
 <template>
   <div
-    class="el-radio-group"
+    :class="[
+      'el-radio-group',
+      isTab ? 'el-radio-group-tab' : '',
+      isFlexEqually ? 'is-flex' : ''
+    ]"
     role="radiogroup"
     @keydown="handleKeydown"
   >
@@ -34,7 +38,15 @@
       size: String,
       fill: String,
       textColor: String,
-      disabled: Boolean
+      disabled: Boolean,
+      isTab: {
+        type: Boolean,
+        default: false
+      },
+      isFlexEqually: {
+        type: Boolean,
+        default: false
+      }
     },
 
     computed: {
@@ -43,6 +55,12 @@
       },
       radioGroupSize() {
         return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
+      },
+      radioGroupIsTab() {
+        return !!this.isTab;
+      },
+      radioGroupIsFlexEqually() {
+        return this.isFlexEqually;
       }
     },
 

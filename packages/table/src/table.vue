@@ -37,6 +37,7 @@
       :style="[bodyHeight]"
       @scroll="e => $emit('tbody-scroll', e)">
       <table-body
+        ref="tableBody"
         :context="context"
         :store="store"
         :stripe="stripe"
@@ -44,6 +45,8 @@
         :row-style="rowStyle"
         :highlight="highlightCurrentRow"
         :virtual-cell-height="virtualCellHeight"
+        :virtual-cell-holder="virtualCellHolder"
+        :scroll-ancestors="scrollAncestors"
         :style="{
            width: bodyWidth
         }">
@@ -143,10 +146,13 @@
         fixedBodyHeight]">
         <table-body
           fixed="left"
+          ref="tableBody"
           :store="store"
           :stripe="stripe"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :virtual-cell-holder="virtualCellHolder"
+          :scroll-ancestors="scrollAncestors"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :style="{
@@ -207,12 +213,15 @@
         fixedBodyHeight]">
         <table-body
           fixed="right"
+          ref="tableBody"
           :store="store"
           :stripe="stripe"
           :row-class-name="rowClassName"
           :row-style="rowStyle"
           :highlight="highlightCurrentRow"
           :virtual-cell-height="virtualCellHeight"
+          :virtual-cell-holder="virtualCellHolder"
+          :scroll-ancestors="scrollAncestors"
           :style="{
             width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
           }">
@@ -296,6 +305,10 @@
       maxHeight: [String, Number],
 
       virtualCellHeight: String,
+
+      virtualCellHolder: Function,
+
+      scrollAncestors: Function,
 
       fit: {
         type: Boolean,
@@ -483,6 +496,26 @@
           this.layout.updateElsHeight();
         }
         this.layout.updateColumnsWidth();
+      },
+
+      verifyPosition() {
+        const { tableBody: $tableBody = {} } = this.$refs;
+        const refNames = Object.keys($tableBody.$refs || {});
+
+        for (let i = 0; i <= refNames.length; i += 1) {
+          const refName = refNames[i];
+          if (/^row-.$/.test(refName)) {
+            const $tableRow = $tableBody.$refs[refName] || {};
+            const { waypointTop, waypointBottom } = $tableRow.$refs || {};
+
+            if (waypointTop) {
+              waypointTop.verifyPosition();
+            }
+            if (waypointBottom) {
+              waypointBottom.verifyPosition();
+            }
+          }
+        }
       }
     },
 

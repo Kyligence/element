@@ -2449,6 +2449,7 @@ table 空态效果有多种组合。
     :data="tableData7"
     height="250"
     border
+    :scroll-ancestors="() => ['.page-component__scroll .el-scrollbar__wrap']"
     virtual-cell-height="40px"
     style="width: 100%">
     <el-table-column

@@ -6,4 +6,11 @@
   line-height: 1;
   vertical-align: middle;
   font-size: 0;
+  &.el-radio-group-tab{
+    background: #ECF0F8;
+    border-radius: 6px;
+    &.is-flex{
+      display: flex;
+    }
+  }
 }
